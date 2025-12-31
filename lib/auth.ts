@@ -106,12 +106,19 @@ export const authOptions: NextAuthOptions = {
       return token
     },
     async redirect({ url, baseUrl }) {
+      // Ensure baseUrl is set, fallback to NEXTAUTH_URL or localhost
+      const base = baseUrl || process.env.NEXTAUTH_URL || "http://localhost:3000"
+      
       // If the url is relative, prefix it with the base url
-      if (url.startsWith("/")) return `${baseUrl}${url}`
+      if (url.startsWith("/")) return `${base}${url}`
       // If the url is on the same origin, allow it
-      else if (new URL(url).origin === baseUrl) return url
+      try {
+        if (new URL(url).origin === base) return url
+      } catch {
+        // Invalid URL, return base dashboard
+      }
       // Otherwise, redirect to dashboard (default for header login)
-      return `${baseUrl}/dashboard`
+      return `${base}/dashboard`
     },
     async session({ session, token }) {
       if (token.id) {

@@ -97,10 +97,23 @@ export default function UploadPage() {
         })
 
         const result = await response.json()
+
+        if (!response.ok) {
+          throw new Error(result.error || result.message || "Upload mislukt")
+        }
+
+        if (!result.url) {
+          throw new Error("Geen URL ontvangen van upload")
+        }
         return result.url
       })
 
       const uploadedUrls = await Promise.all(uploadPromises)
+      
+      // Check if all uploads succeeded
+      if (uploadedUrls.some(url => !url)) {
+        throw new Error("Sommige foto's konden niet worden geüpload")
+      }
 
       // Create project with default pack 928 (portetfotos m/v)
       const response = await fetch("/api/projects/create-with-pack", {
@@ -111,13 +124,16 @@ export default function UploadPage() {
         body: JSON.stringify({
           projectName: wizardData.projectName,
           gender: wizardData.gender,
-
           selectedPackId: "928", // Portetfotos m/v pack
           uploadedPhotos: uploadedUrls,
         }),
       })
 
-      const result = await response.json()
+      const result = await response.json().catch(() => ({ message: "Onbekende fout bij het parsen van de response" }))
+
+      if (!response.ok) {
+        throw new Error(result.message || result.error || `Server fout: ${response.status}`)
+      }
 
       if (result.projectId) {
         // Store project data for payment page
@@ -130,6 +146,9 @@ export default function UploadPage() {
         // Clear wizard data
         localStorage.removeItem("wizardData")
         router.push(`/generate/${result.projectId}`)
+      } else if (result.message) {
+        // API returned an error message
+        throw new Error(result.message)
       } else {
         // Even if Astria API fails, continue to pricing with uploaded photos
         console.warn("Astria API failed, but continuing to pricing with uploaded photos")
@@ -143,8 +162,22 @@ export default function UploadPage() {
         router.push(`/generate/temp`)
       }
     } catch (error) {
-      console.error("Error:", error)
-      alert("Er is een fout opgetreden. Probeer het opnieuw.")
+      console.error("Upload error details:", error)
+      const errorMessage = error instanceof Error ? error.message : "Er is een fout opgetreden"
+      
+      // Show more specific error messages
+      let userMessage = "Er is een fout opgetreden. Probeer het opnieuw."
+      if (errorMessage.includes("credits")) {
+        userMessage = "Je hebt niet genoeg credits. Koop eerst credits om door te gaan."
+      } else if (errorMessage.includes("Unauthorized")) {
+        userMessage = "Je bent niet ingelogd. Log opnieuw in en probeer het opnieuw."
+      } else if (errorMessage.includes("Upload")) {
+        userMessage = "Upload mislukt. Controleer je internetverbinding en probeer het opnieuw."
+      } else if (errorMessage) {
+        userMessage = errorMessage
+      }
+      
+      alert(userMessage)
     } finally {
       setUploading(false)
     }

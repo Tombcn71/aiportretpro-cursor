@@ -7,28 +7,10 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, X, ChevronDown, ChevronUp, Shield, Check, LinkedinIcon } from "lucide-react"
 import Header from "@/components/header"
 import { Facebook, Instagram } from "lucide-react"
-import AIHeadshotsShowcase from "@/components/ai-headshots-showcase"
-import HowItWorks from "@/components/how-it-works"
+import ReviewsEnVoorbeelden from "@/components/reviews-en-voorbeelden"
 
-// Gallery photos: New 16 professional photos in man-woman alternating order
-const galleryPhotos = [
-  "/images/professional-man-1.jpg", // Position 1 - Man
-  "/images/professional-woman-1.jpg", // Position 2 - Woman
-  "/images/professional-man-2.jpg", // Position 3 - Man
-  "/images/professional-woman-2.jpg", // Position 4 - Woman
-  "/images/professional-man-3.jpg", // Position 5 - Man
-  "/images/professional-woman-1.jpg", // Position 6 - Woman
-  "/images/professional-man-4.jpg", // Position 7 - Man
-  "/images/professional-woman-4.jpg", // Position 8 - Woman
-  "/images/professional-man-5.jpg", // Position 9 - Man
-  "/images/professional-woman-5.jpg", // Position 10 - Woman
-  "/images/professional-man-6.jpg", // Position 11 - Man
-  "/images/professional-woman-6.jpg", // Position 12 - Woman
-  "/images/professional-man-7.jpg", // Position 13 - Man
-  "/images/professional-woman-7.jpg", // Position 14 - Woman
-  "/images/professional-man-8.jpg", // Position 15 - Man
-  "/images/professional-woman-8.jpg", // Position 16 - Woman
-]
+// Gallery photos: All images from the shoot folder (1.png through 26.png)
+const galleryPhotos = Array.from({ length: 26 }, (_, i) => `/images/shoot/${i + 1}.png`)
 
 const companies = [
   { name: "Microsoft", logo: "/placeholder.svg?height=40&width=120&text=Microsoft" },
@@ -88,6 +70,7 @@ export default function LinkedInProfielFotoPage() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null)
   const [isVisible, setIsVisible] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
 
   // Prevent hydration mismatch
   useEffect(() => {
@@ -116,6 +99,17 @@ export default function LinkedInProfielFotoPage() {
     return () => window.removeEventListener("scroll", toggleVisibility)
   }, [])
 
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+
+    return () => window.removeEventListener("resize", checkMobile)
+  }, [])
+
   const openLightbox = (imageSrc: string) => {
     setSelectedImage(imageSrc)
   }
@@ -134,6 +128,21 @@ export default function LinkedInProfielFotoPage() {
 
       {/* Hero Section - LinkedIn Optimized */}
       <section className="container mx-auto px-4 py-6 text-center">
+        {/* Stars and Trust Badge */}
+        <div className="flex flex-col items-center gap-2 mb-6">
+          <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1">
+              {[...Array(5)].map((_, i) => (
+                <svg key={i} className="w-4 h-4 fill-yellow-400" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+              ))}
+            </div>
+            <span className="text-sm md:text-base font-semibold text-gray-900">4.6/5</span>
+          </div>
+          <p className="text-sm md:text-base text-gray-700">🎉 Meer dan 1200 professionals geholpen</p>
+        </div>
+        
         <h1 className="tracking-tight text-xl md:text-4xl font-bold mb-6 leading-tight">
           <span className="block">Professionele foto voor LinkedIn laten maken?</span>
           <span className="text-[#0077B5] block">Dit kan nu ook online zonder fotograaf!</span>
@@ -147,9 +156,9 @@ export default function LinkedInProfielFotoPage() {
             <span className="text-center">✅</span>
             <span>6 x goedkoper dan een fotograaf</span>
             <span className="text-center">✅</span>
-            <span>40 professionele foto's in 15 min</span>
+            <span>Niet te onderscheiden van echte foto's</span>
             <span className="text-center">✅</span>
-            <span>Perfect voor linkedin, website en print</span>
+            <span>Gebruikt door 1200+ tevreden klanten</span>
           </div>
         </div>
 
@@ -182,13 +191,13 @@ export default function LinkedInProfielFotoPage() {
               {galleryPhotos.map((photo, index) => (
                 <div key={`carousel-${index}`} className="carousel-item">
                   <div className="relative">
-                    <div className="w-52 h-[10.11rem] md:w-80 md:h-[15.56rem] rounded-xl md:rounded-2xl overflow-hidden bg-gray-100 shadow-md md:shadow-lg">
+                    <div className="w-52 h-[13.33rem] md:w-80 md:h-[20rem] rounded-xl md:rounded-2xl overflow-hidden bg-gray-100 shadow-md md:shadow-lg">
                       <Image
                         src={photo || "/placeholder.svg"}
                         alt={`LinkedIn portret voorbeeld ${index + 1}`}
-                        width={1152}
-                        height={896}
-                        className="w-full h-full object-contain bg-gray-50 brightness-110 contrast-105"
+                        width={320}
+                        height={400}
+                        className="w-full h-full object-cover bg-gray-50 brightness-110 contrast-105"
                         priority={index < 10}
                       />
                     </div>
@@ -199,13 +208,13 @@ export default function LinkedInProfielFotoPage() {
               {galleryPhotos.map((photo, index) => (
                 <div key={`carousel-dup-${index}`} className="carousel-item">
                   <div className="relative">
-                    <div className="w-52 h-[10.11rem] md:w-80 md:h-[15.56rem] rounded-xl md:rounded-2xl overflow-hidden bg-gray-100 shadow-md md:shadow-lg">
+                    <div className="w-52 h-[13.33rem] md:w-80 md:h-[20rem] rounded-xl md:rounded-2xl overflow-hidden bg-gray-100 shadow-md md:shadow-lg">
                       <Image
                         src={photo || "/placeholder.svg"}
                         alt={`LinkedIn portret voorbeeld ${index + 1}`}
-                        width={1152}
-                        height={896}
-                        className="w-full h-full object-contain bg-gray-50 brightness-110 contrast-105"
+                        width={320}
+                        height={400}
+                        className="w-full h-full object-cover bg-gray-50 brightness-110 contrast-105"
                       />
                     </div>
                   </div>
@@ -216,11 +225,63 @@ export default function LinkedInProfielFotoPage() {
         </div>
       </section>
 
+      {/* How It Works */}
+      <section id="hoe-het-werkt" className="py-12 md:py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-12">Zo werkt het</h2>
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-[#0077B5] rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">
+                1
+              </div>
+              <h3 className="text-xl font-semibold mb-3">Upload je foto's</h3>
+              <p className="text-gray-600">
+                Upload minimaal 6 foto's van jezelf met verschillende uitdrukkingen en achtergronden
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-[#0077B5] rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">
+                2
+              </div>
+              <h3 className="text-xl font-semibold mb-3">AI doet zijn werk</h3>
+              <p className="text-gray-600">
+                Onze AI analyseert je foto's en maakt professionele portretten in verschillende stijlen
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-[#0077B5] rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">
+                3
+              </div>
+              <h3 className="text-xl font-semibold mb-3">Download je foto's</h3>
+              <p className="text-gray-600">Ontvang 40 professionele foto's in hoge resolutie binnen 15 minuten</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      {/* AI Headshots Showcase - Replaces Photo Gallery */}
-      <AIHeadshotsShowcase />
- {/* How It Works - New Component */}
- <HowItWorks />
+      {/* Reviews en Voorbeelden */}
+      <ReviewsEnVoorbeelden />
+
+      {/* Resultaten Sectie */}
+      <section id="voorbeelden" className="py-12 md:py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-12">
+            Bekijk de resultaten van AI Portret Pro
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {(isMobile ? galleryPhotos.slice(-6) : galleryPhotos.slice(0, 12)).map((photo, index) => (
+              <div
+                key={index}
+                className="relative aspect-[3/4] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
+                onClick={() => openLightbox(photo)}
+              >
+                <Image src={photo || "/placeholder.svg"} alt={`Voorbeeld ${index + 1}`} fill className="object-cover" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* AI vs Traditional Comparison */}
       <section className="py-16 bg-gradient-to-r from-[#0077B5]/5 to-blue-50">
         <div className="container mx-auto px-4">

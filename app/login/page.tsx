@@ -180,9 +180,9 @@ export default function LoginPage() {
             {/* Main title - Show on buttons screen or login mode only */}
             {!showEmailForm ? (
               <CardTitle className="text-xl md:text-2xl text-gray-900 mb-3 font-normal pl-0">
-                Even registreren voor veilige betaling en toegang tot de app.
+                Laatste stap voor je betaling
                 <br />
-                <span className="text-[#0077B5]">Binnen 2 minuten klaar!</span>
+                <span className="text-gray-700">Maak een account voor toegang tot de app. Binnen 2 minuten klaar!</span>
               </CardTitle>
             ) : !isSignUp ? (
               <CardTitle className="text-xl md:text-2xl text-gray-900 mb-3 font-normal pl-0">
@@ -196,16 +196,6 @@ export default function LoginPage() {
             {!showEmailForm ? (
               <>
                 {/* Main choice buttons */}
-                <Button
-                  onClick={() => setShowEmailForm(true)}
-                  disabled={loading}
-                  variant="outline"
-                  className="w-full border-2 border-[#0077B5] text-[#0077B5] hover:bg-[#0077B5] hover:text-white flex items-center justify-center space-x-3 py-6 text-lg font-semibold"
-                >
-                  <MailPlus className="h-6 w-6" />
-                  <span>Ga door met email</span>
-                </Button>
-
                 <Button
                   onClick={handleGoogleSignIn}
                   disabled={loading}
@@ -230,6 +220,16 @@ export default function LoginPage() {
                     />
                   </svg>
                   <span>Ga door met Google</span>
+                </Button>
+
+                <Button
+                  onClick={() => setShowEmailForm(true)}
+                  disabled={loading}
+                  variant="outline"
+                  className="w-full border-2 border-[#0077B5] text-[#0077B5] hover:bg-[#0077B5] hover:text-white flex items-center justify-center space-x-3 py-6 text-lg font-semibold"
+                >
+                  <MailPlus className="h-6 w-6" />
+                  <span>Ga door met e-mail</span>
                 </Button>
               </>
             ) : (
@@ -305,28 +305,29 @@ export default function LoginPage() {
 
             <div className="text-left">
               <p className="text-xs text-gray-500 mb-4">
-                Nieuwe accounts vallen onder onze{" "}
+                Door te registreren ga je akkoord met onze{" "}
                 <Button variant="link" className="text-xs text-[#0077B5] p-0 h-auto font-normal underline">
                   <a href="/terms" target="_blank" rel="noopener noreferrer">
-                    algemene voorwaarden
+                    Algemene Voorwaarden
                   </a>
                 </Button>
                 {" "}en ons{" "}
                 <Button variant="link" className="text-xs text-[#0077B5] p-0 h-auto font-normal underline">
                   <a href="/privacy" target="_blank" rel="noopener noreferrer">
-                    privacybeleid
+                    Privacybeleid
                   </a>
                 </Button>
                 .
               </p>
               
-              {/* Benefits with green checkmarks */}
+              {/* Benefits */}
               <div className="space-y-2 text-sm text-gray-600">
+                <div className="font-semibold text-gray-700 mb-2">Jouw zekerheden:</div>
                 <div className="flex items-center space-x-2">
                   <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
-                  <span>14 dagen geld terug garantie</span>
+                  <span>14 dagen geld-terug-garantie</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">

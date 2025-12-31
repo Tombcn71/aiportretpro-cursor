@@ -91,11 +91,12 @@ export default function PricingPage() {
   }
 
   const features = [
-    "5 Verschillende zakelijke outfits",
-    "5 Verschillende poses en achtergronden",
-    "HD kwaliteit downloads",
+    "40 Professionele portretfoto's",
+    "5 Verschillende outfits & achtergronden",
+    "HD kwaliteit (geschikt voor print)",
     "Klaar binnen 15 minuten",
-    "Perfect voor LinkedIn, Social Media, CV, Website en Print",
+    "Perfect voor LinkedIn, CV & Website",
+    "Niet goed? Geld terug",
   ]
 
   // Show loading while checking session
@@ -116,13 +117,10 @@ export default function PricingPage() {
       <div className="container mx-auto px-4 py-12 md:py-20">
         <div className="text-center mb-4 md:mb-8 max-w-3xl mx-auto">
           <h1 className="text-xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 md:mb-4 leading-tight">
-            Professionele fotoshoot voor<span className="text-[#0077B5]"> 6x goedkoper</span> dan bij een fotograaf
+            Professionele fotoshoot: 6x goedkoper dan bij een fotograaf
           </h1>
           <p className="text-sm md:text-base lg:text-lg text-gray-600 leading-relaxed">
-            De prijs van een zakelijke fotoshoot in Nederland is gemiddeld{" "}
-            <a href="/blog/wat-kost-zakelijke-fotoshoot-nederland" className="text-[#0077B5] hover:text-[#005885] underline font-medium">
-              €175
-            </a>.
+            Een zakelijke shoot kost gemiddeld € 175. Bij ons slechts € 29.
           </p>
         </div>
 
@@ -131,9 +129,10 @@ export default function PricingPage() {
             <CardHeader className="text-center pt-6 md:pt-8 px-4 md:px-6">
               <CardTitle className="text-xl md:text-2xl font-bold">Professional</CardTitle>
               <div className="mt-4">
-                <span className="text-2xl md:text-4xl font-bold text-[#0077B5]">€29</span>
+                <span className="text-2xl md:text-4xl font-bold text-[#0077B5]">€ 29</span>
+                <span className="text-gray-600 ml-2">eenmalig</span>
               </div>
-              <p className="text-gray-600 mt-2">40 professionele portretfoto's</p>
+              <p className="text-gray-600 mt-2">Geen abonnement</p>
             </CardHeader>
 
             <CardContent className="space-y-6 px-4 md:px-6 pb-6 md:pb-8">
@@ -146,13 +145,18 @@ export default function PricingPage() {
                 ))}
               </ul>
 
-              <Button
-                onClick={handlePlanSelect}
-                disabled={loading}
-                className="w-full bg-[#0077B5] hover:bg-[#004182] text-white py-3 md:py-4 text-base md:text-lg font-semibold"
-              >
-                {loading ? "Laden..." : "Betaal Veilig & Start Direct"}
-              </Button>
+              <div className="space-y-3">
+                <Button
+                  onClick={handlePlanSelect}
+                  disabled={loading}
+                  className="w-full bg-[#0077B5] hover:bg-[#004182] text-white py-3 md:py-4 text-base md:text-lg font-semibold"
+                >
+                  {loading ? "Laden..." : "Betaal Veilig & Start Direct"}
+                </Button>
+                <p className="text-center text-sm text-gray-600">
+                  🔒 Veilig via iDEAL of Creditcard
+                </p>
+              </div>
             </CardContent>
           </Card>
         </div>

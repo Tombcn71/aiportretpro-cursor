@@ -14,25 +14,8 @@ interface PhotoGalleryProps {
   columns?: 2 | 3 | 4 | 5 | 6
 }
 
-// Gallery photos: New 16 professional photos in man-woman alternating order
-const galleryPhotos = [
-  "/images/professional-man-1.jpg", // Position 1 - Man
-  "/images/professional-woman-1.jpg", // Position 2 - Woman
-  "/images/professional-man-2.jpg", // Position 3 - Man
-  "/images/professional-woman-2.jpg", // Position 4 - Woman
-  "/images/professional-man-3.jpg", // Position 5 - Man
-  "/images/professional-woman-3.jpg", // Position 6 - Woman
-  "/images/professional-man-4.jpg", // Position 7 - Man
-  "/images/professional-woman-4.jpg", // Position 8 - Woman
-  "/images/professional-man-5.jpg", // Position 9 - Man
-  "/images/professional-woman-5.jpg", // Position 10 - Woman
-  "/images/professional-man-6.jpg", // Position 11 - Man
-  "/images/professional-woman-6.jpg", // Position 12 - Woman
-  "/images/professional-man-7.jpg", // Position 13 - Man
-  "/images/professional-woman-7.jpg", // Position 14 - Woman
-  "/images/professional-man-8.jpg", // Position 15 - Man
-  "/images/professional-woman-8.jpg", // Position 16 - Woman
-]
+// Gallery photos: All images from the shoot folder (1.png through 26.png)
+const galleryPhotos = Array.from({ length: 26 }, (_, i) => `/images/shoot/${i + 1}.png`)
 
 export default function PhotoGallery({
   title = "AI portretfoto's voorbeelden",

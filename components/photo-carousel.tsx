@@ -5,16 +5,11 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 
-const photos = [
-  { src: "/images/professional-man-1.jpg", alt: "Professional headshot 1" },
-  { src: "/images/professional-woman-1.jpg", alt: "Professional headshot 2" },
-  { src: "/images/professional-man-2.jpg", alt: "Professional headshot 3" },
-  { src: "/images/professional-woman-2.jpg", alt: "Professional headshot 4" },
-  { src: "/images/professional-man-3.jpg", alt: "Professional headshot 5" },
-  { src: "/images/professional-woman-3.jpg", alt: "Professional headshot 6" },
-  { src: "/images/professional-man-4.jpg", alt: "Professional headshot 7" },
-  { src: "/images/professional-woman-4.jpg", alt: "Professional headshot 8" },
-]
+// Generate photos array from all images in the shoot folder (1.png through 26.png)
+const photos = Array.from({ length: 26 }, (_, i) => ({
+  src: `/images/shoot/${i + 1}.png`,
+  alt: `Professional headshot ${i + 1}`,
+}))
 
 export default function PhotoCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -61,12 +56,12 @@ export default function PhotoCarousel() {
 
         <div className="relative">
           <div className="flex justify-center">
-            <div className="relative w-96 h-[18.67rem] rounded-lg overflow-hidden shadow-lg">
+            <div className="relative w-96 h-[28rem] rounded-lg overflow-hidden shadow-lg">
               <Image
                 src={photos[currentIndex].src || "/placeholder.svg"}
                 alt={photos[currentIndex].alt}
                 fill
-                className="object-contain bg-gray-50 transition-opacity duration-700"
+                className="object-cover bg-gray-50 transition-opacity duration-700"
               />
             </div>
           </div>
