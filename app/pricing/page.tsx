@@ -92,7 +92,7 @@ export default function PricingPage() {
 
   const features = [
     "40 Professionele portretfoto's",
-    "5 Verschillende outfits & achtergronden",
+    "Verschillende outfits & achtergronden",
     "HD kwaliteit (geschikt voor print)",
     "Klaar binnen 15 minuten",
     "Perfect voor LinkedIn, CV & Website",

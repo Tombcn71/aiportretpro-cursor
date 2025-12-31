@@ -22,12 +22,12 @@ const reviews = [
   },
   {
     type: "review" as const,
-    name: "Mark de Vries",
+    name: "Mark Hovenkamp",
     role: "IT Consultant",
     location: "Rotterdam",
     review: "Prima oplossing voor als je geen zin hebt in het gedoe van een fotoshoot. De kwaliteit is gewoon goed genoeg voor m'n website en visitekaartjes, en het scheelt behoorlijk in de portemonnee.",
     rating: 5,
-    avatarInitials: "MD",
+    avatarInitials: "MH",
   },
   {
     type: "voorbeeld" as const,
@@ -51,12 +51,12 @@ const reviews = [
   },
   {
     type: "review" as const,
-    name: "Emma Smit",
+    name: "Emma de Jager",
     role: "HR Manager",
     location: "Eindhoven",
     review: "Blij mee. De foto's zien er verzorgd uit en de prijs is fair. Een stuk efficiënter dan een middag bij een fotograaf.",
     rating: 5,
-    avatarInitials: "ES",
+    avatarInitials: "EJ",
   },
   {
     type: "voorbeeld" as const,
@@ -118,13 +118,13 @@ const reviews = [
   },
   {
     type: "voorbeeld" as const,
-    name: "Marieke Jansen",
+    name: "Jayden Jansen",
     role: "Communicatie Adviseur",
     location: "Nijmegen",
     review: "Efficiënte manier om je profiel op te frissen. De foto's zijn zakelijk en de levering was sneller dan verwacht. Erg tevreden met het resultaat.",
     rating: 5,
     photoIndex: 7, // Vrouw (foto 8.png)
-    avatarInitials: "MJ",
+    avatarInitials: "JJ",
   },
   {
     type: "voorbeeld" as const,
@@ -167,12 +167,12 @@ const reviews = [
   },
   {
     type: "review" as const,
-    name: "Iris de Vries",
+    name: "Iris de Nooyer",
     role: "Business Analyst",
     location: "Groningen",
     review: "Handig systeem. Je uploadt een paar foto's en de AI doet de rest. De uitstraling is zakelijk en degelijk. Precies wat ik zocht voor mijn nieuwe rol.",
     rating: 5,
-    avatarInitials: "IV",
+    avatarInitials: "IN",
   },
   {
     type: "voorbeeld" as const,
@@ -196,12 +196,12 @@ const reviews = [
   },
   {
     type: "review" as const,
-    name: "Daan Bakker",
+    name: "Daan Steijn",
     role: "Data Scientist",
     location: "Amsterdam",
     review: "Technisch zit het goed in elkaar. Je ziet bijna niet dat er geen camera aan te pas is gekomen. Voor mijn LinkedIn is dit ruim voldoende. Werkt gewoon.",
     rating: 5,
-    avatarInitials: "DB",
+    avatarInitials: "DS",
   },
   {
     type: "voorbeeld" as const,
@@ -225,22 +225,22 @@ const reviews = [
   },
   {
     type: "review" as const,
-    name: "Saskia de Wit",
+    name: "Saskia van Ambacht",
     role: "Communicatie Manager",
     location: "Breda",
     review: "Geen poespas, gewoon doen wat het belooft. De foto's zijn scherp en bruikbaar voor zakelijke uitingen. Absoluut de moeite waard.",
     rating: 5,
-    avatarInitials: "SW",
+    avatarInitials: "SA",
   },
   {
     type: "voorbeeld" as const,
-    name: "Lotte Smit",
+    name: "Shanti Smit",
     role: "Event Manager",
     location: "Rotterdam",
     review: "Goede prijs-kwaliteitverhouding. Ik had m'n foto's snel binnen en ze zien er professioneel uit. Ideaal voor een snelle update van mijn profiel.",
     rating: 5,
     photoIndex: 15, // Vrouw (foto 16.png)
-    avatarInitials: "LS",
+    avatarInitials: "SS",
   },
   {
     type: "voorbeeld" as const,
@@ -283,12 +283,12 @@ const reviews = [
   },
   {
     type: "review" as const,
-    name: "Maud Jansen",
+    name: "Maud Verbeek",
     role: "Marketing Director",
     location: "Amsterdam",
     review: "Verrassend resultaat. Het is even wennen aan het idee, maar de foto's zijn van hoge kwaliteit en heel bruikbaar. Een fijne ervaring.",
     rating: 5,
-    avatarInitials: "MJ",
+    avatarInitials: "MV",
   },
   {
     type: "voorbeeld" as const,
@@ -398,8 +398,8 @@ export default function ReviewsEnVoorbeelden({ title = "Reviews en Voorbeelden" 
                       />
                       {/* Badge rechtsboven op foto */}
                       <div className="absolute top-2 right-2 z-10">
-                        <div className="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">
-                          UPDATED MODEL
+                        <div className="bg-[#0077B5] text-white text-xs font-bold px-2 py-1 rounded">
+                          AI Resultaat
                         </div>
                       </div>
                       {/* Hover overlay */}

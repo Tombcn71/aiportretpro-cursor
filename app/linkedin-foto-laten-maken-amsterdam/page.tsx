@@ -147,18 +147,20 @@ export default function LinkedInAmsterdamPage() {
         
         <h1 className="tracking-tight text-xl md:text-4xl font-bold mb-6 leading-tight">
           <span className="block">LinkedIn Foto Laten Maken Amsterdam? </span>
-          <span className="text-[#0077B5] block">Dit kan nu ook online zonder fotograaf!</span>
+          <span className="text-[#0077B5] block">Zonder het gedoe van een fotoshoot?</span>
         </h1>
-        <p className="text-gray-500 text-lg mb-6 font-light italic">Even wat foto uploaden, dat is alles.</p>
+        <p className="text-gray-500 text-lg mb-6">
+          Upload een paar selfies en onze AI doet de rest. Ontvang binnen 15 minuten 40 zakelijke portretten
+        </p>
 
         <div className="text-md md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto text-center">
           <div className="inline-grid grid-cols-[auto_1fr] gap-x-2 items-start text-start justify-center">
             <span className="text-center">✅</span>
             <span>6 x goedkoper dan een fotograaf</span>
             <span className="text-center">✅</span>
-            <span>Niet te onderscheiden van echte foto's</span>
+            <span>Niet van echt te onderscheiden</span>
             <span className="text-center">✅</span>
-            <span>Gebruikt door 1200+ tevreden klanten</span>
+            <span>Klaar binnen 15 minuten</span>
           </div>
         </div>
 
@@ -262,168 +264,82 @@ export default function LinkedInAmsterdamPage() {
       {/* Reviews en Voorbeelden */}
       <ReviewsEnVoorbeelden />
 
-      {/* Resultaten Sectie */}
-      <section id="voorbeelden" className="py-12 md:py-16">
+      {/* Comparison Section */}
+      <section className="py-12 md:py-16 bg-gradient-to-br from-blue-50 to-orange-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-12">
-            Bekijk de resultaten van AI Portret Pro
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-12 max-w-3xl mx-auto">
+            Waarom €200+ betalen voor een middag in een studio?
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {(isMobile ? galleryPhotos.slice(-6) : galleryPhotos.slice(0, 12)).map((photo, index) => (
-              <div
-                key={index}
-                className="relative aspect-[3/4] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
-                onClick={() => openLightbox(photo)}
-              >
-                <Image src={photo || "/placeholder.svg"} alt={`Voorbeeld ${index + 1}`} fill className="object-cover" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* AI vs Traditional Comparison */}
-      <section className="py-16 bg-gradient-to-r from-[#0077B5]/5 to-blue-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
-              AI fotografie vs. traditionele fotograaf
-            </h2>
-            <p className="text-lg text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-              Waarom je hierna niet meer naar een fotostudio hoeft te gaan
-            </p>
-
-            <div className="grid md:grid-cols-2 gap-8">
-              {/* Traditional Photography */}
-              <div className="bg-white p-8 rounded-lg border border-gray-200">
-                <h3 className="text-2xl font-semibold mb-6 text-gray-800">Traditionele Fotograaf</h3>
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                    <span className="text-gray-600">€180+ per sessie</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                    <span className="text-gray-600">Halve dag kwijt + reistijd</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                    <span className="text-gray-600">5-10 foto's maximum</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                    <span className="text-gray-600">Wachten op afspraak</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                    <span className="text-gray-600">Stress voor de camera</span>
-                  </div>
-                </div>
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {/* Traditional Photographer */}
+            <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg border-2 border-gray-200">
+              <div className="text-center mb-6">
+                <div className="text-5xl mb-3">❌</div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">De traditionele fotograaf</h3>
               </div>
-
-              {/* AI Photography */}
-              <div className="bg-[#0077B5] p-8 rounded-lg text-white relative overflow-hidden">
-                <div className="absolute top-4 right-4 bg-yellow-400 text-black px-3 py-1 rounded-full text-sm font-semibold">
-                  POPULAIR
-                </div>
-                <h3 className="text-2xl font-semibold mb-6">AI Portret Pro</h3>
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                    <span>Slechts €29 totaal</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                    <span>15 minuten resultaat</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                    <span>40 professionele variaties</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                    <span>Direct beschikbaar 24/7</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                    <span>Gewoon thuis op je bank</span>
-                  </div>
-                </div>
-              </div>
+              <ul className="space-y-4">
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-gray-900">Prijs:</span>
+                  <span className="text-gray-600">Vaak tussen de €150 en €350.</span>
+                </li>
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-gray-900">Tijd:</span>
+                  <span className="text-gray-600">Afspraak plannen, reistijd en een uur poseren.</span>
+                </li>
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-gray-900">Geduld:</span>
+                  <span className="text-gray-600">1 tot 2 weken wachten op de nabewerking.</span>
+                </li>
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-gray-900">Resultaat:</span>
+                  <span className="text-gray-600">Slechts 3 tot 5 foto's inbegrepen (bijbetalen voor meer).</span>
+                </li>
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-gray-900">Risico:</span>
+                  <span className="text-gray-600">Niet tevreden? Jammer, je betaalt de fotograaf voor zijn tijd.</span>
+                </li>
+              </ul>
             </div>
 
-            
-          </div>
-        </div>
-      </section>
-
-     
-
-      {/* Testimonials Grid */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
-            Wat professionals zeggen over hun AI LinkedIn foto's
-          </h2>
-          <p className="text-lg text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-            Vele professionals gingen je voor
-          </p>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {/* Testimonial 1 */}
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-[#0077B5] rounded-full flex items-center justify-center">
-                  <span className="text-white font-semibold text-lg">SB</span>
-                </div>
-                <div>
-                  <h4 className="font-semibold">Sarah B.</h4>
-                  <p className="text-sm text-gray-600">Marketing Manager</p>
-                </div>
+            {/* AI Portret Pro */}
+            <div className="bg-gradient-to-br from-[#0077B5] to-[#005a8c] rounded-2xl p-6 md:p-8 shadow-2xl border-2 border-[#0077B5] relative overflow-hidden">
+              <div className="absolute top-0 right-0 bg-[#FF8C00] text-white px-4 py-1 text-sm font-bold transform rotate-12 translate-x-4 -translate-y-2">
+                DE SLIMME KEUZE
               </div>
-              <p className="text-gray-700 mb-4">
-                "Binnen 2 weken na het plaatsen van mijn nieuwe AI LinkedIn foto kreeg ik 3 aanvragen van recruiters. De kwaliteit is echt indrukwekkend!"
-              </p>
-              <div className="flex text-yellow-400">
-                {"★".repeat(5)}
+              <div className="text-center mb-6">
+                <div className="text-5xl mb-3">✅</div>
+                <h3 className="text-xl font-bold text-white mb-2">AI Portret Pro</h3>
+                <div className="text-sm text-blue-100 mt-1">(De slimme keuze)</div>
               </div>
-            </div>
-
-            {/* Testimonial 2 */}
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-[#0077B5] rounded-full flex items-center justify-center">
-                  <span className="text-white font-semibold text-lg">MH</span>
-                </div>
-                <div>
-                  <h4 className="font-semibold">Mark H.</h4>
-                  <p className="text-sm text-gray-600">IT Consultant</p>
-                </div>
-              </div>
-              <p className="text-gray-700 mb-4">
-                "Veel beter dan verwacht! Niemand kan zien dat het AI is. Heb de oude fotostudio foto's direct vervangen."
-              </p>
-              <div className="flex text-yellow-400">
-                {"★".repeat(5)}
-              </div>
-            </div>
-
-            {/* Testimonial 3 */}
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-[#0077B5] rounded-full flex items-center justify-center">
-                  <span className="text-white font-semibold text-lg">LV</span>
-                </div>
-                <div>
-                  <h4 className="font-semibold">Lisa V.</h4>
-                  <p className="text-sm text-gray-600">Financial Advisor</p>
-                </div>
-              </div>
-              <p className="text-gray-700 mb-4">
-                "40 foto's voor €29? Dit kost bij een fotograaf makkelijk €300+. Super tevreden met de professionele uitstraling."
-              </p>
-              <div className="flex text-yellow-400">
-                {"★".repeat(5)}
+              <ul className="space-y-4">
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-white">Prijs:</span>
+                  <span className="text-blue-100">Eenmalig €29 (geen verborgen kosten).</span>
+                </li>
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-white">Gemak:</span>
+                  <span className="text-blue-100">Direct beginnen vanaf je eigen bank, geen afspraak nodig.</span>
+                </li>
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-white">Snelheid:</span>
+                  <span className="text-blue-100">Binnen 15 minuten alle foto's in je dashboard.</span>
+                </li>
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-white">Resultaat:</span>
+                  <span className="text-blue-100">Je krijgt direct 40+ verschillende zakelijke portretten.</span>
+                </li>
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-white">Garantie:</span>
+                  <span className="text-blue-100">Niet goed? Geld terug. Zo simpel is het.</span>
+                </li>
+              </ul>
+              <div className="mt-6">
+                <Button asChild size="lg" className="w-full bg-[#FF8C00] hover:bg-[#FFA500] text-white font-bold">
+                  <Link href="/pricing">
+                    Bespaar €170+ Nu <ArrowRight className="ml-2" />
+                  </Link>
+                </Button>
               </div>
             </div>
           </div>
@@ -560,7 +476,7 @@ export default function LinkedInAmsterdamPage() {
             Klaar voor je perfecte LinkedIn profielfoto?
           </h2>
           <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            Start binnen 5 minuten en ontvang 40 professionele LinkedIn foto's binnen 15 minuten.
+            Start direct en ontvang 40 professionele LinkedIn foto's binnen 15 minuten.
           </p>
 
           <Button
@@ -581,98 +497,35 @@ export default function LinkedInAmsterdamPage() {
       {/* SEO Content Section - Amsterdam Specific */}
       <section className="container mx-auto px-4 py-16 bg-white">
         <div className="max-w-4xl mx-auto prose prose-lg">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">LinkedIn foto laten maken in Amsterdam: De moderne manier</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-6">Professionele LinkedIn Foto Laten Maken in Amsterdam: De Slimme Keuze voor 2026</h2>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            Amsterdam staat bekend als het economische hart van Nederland, waar dagelijks duizenden professionals werken aan hun carrière. In deze dynamische zakelijke omgeving is je LinkedIn profiel cruciaal voor netwerken, carrièrekansen en bedrijfsgroei. Een professionele LinkedIn foto kan het verschil maken tussen opvallen of onderbelicht blijven in de Amsterdamse zakenwereld.
+            Amsterdam fungeert in 2026 onverminderd als het economische en innovatieve hart van Nederland, waar de dynamiek van de zakelijke markt vraagt om een onberispelijke digitale presentatie. In een omgeving waar dagelijks duizenden professionals strijden om de beste posities, is je LinkedIn profiel het cruciale fundament voor netwerken, carrièrekansen en bedrijfsgroei. Een professionele LinkedIn foto laten maken in Amsterdam is in het huidige jaar het verschil tussen opvallen bij topwerkgevers of onzichtbaar blijven in de massa. Voor de Amsterdamse professional die begrijpt dat een sterke online aanwezigheid essentieel is, biedt AI Portret Pro de meest geavanceerde oplossing om je digitale handdruk te perfectioneren.
           </p>
 
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
-            <h4 className="text-xl font-semibold text-gray-900 mb-3">Speciaal voor Amsterdam</h4>
-            <p className="text-gray-700">
-              Als professional in Amsterdam weet je dat een sterke LinkedIn aanwezigheid essentieel is. 
-              Of je nu een nieuwe baan zoekt, als zzp'er werkt, of gewoon je netwerk wilt uitbreiden - 
-              een professionele foto helpt je om op te vallen bij recruiters en nieuwe opdrachten binnen te halen.
-            </p>
-          </div>
-
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">LinkedIn foto Amsterdam: Waarom duizenden Amsterdammers AI kiezen</h3>
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">De verschuiving naar AI-fotografie in de Amsterdamse zakelijke wereld</h3>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            Meer dan 450.000 professionals in Amsterdam gebruiken LinkedIn actief voor hun carrière. Met zoveel concurrentie is een professionele profielfoto niet langer optioneel - het is essentieel. Traditionele fotoshoots in Amsterdam kosten gemiddeld €175-250 en vereisen reistijd door de drukke stad. Daarom kiezen steeds meer Amsterdamse professionals voor AI fotografie: binnen 15 minuten professionele resultaten, voor een fractie van de prijs.
+            Met meer dan 450.000 actieve professionals op LinkedIn in de regio Amsterdam is de concurrentie groter dan ooit. Waar een traditionele fotoshoot in de stad voorheen gepaard ging met hoge kosten tussen de honderdvijfenzestig en tweehonderdvijftig euro, biedt onze AI-technologie in 2026 een efficiënt alternatief. Amsterdamse professionals kiezen massaal voor deze methode omdat het de noodzaak wegneemt om door de drukke binnenstad te reizen of hoge parkeerkosten te betalen bij studio's in Oud-Zuid of de Pijp. Binnen vijftien minuten genereert onze engine resultaten van studiokwaliteit tegen een fractie van de prijs, wat essentieel is voor de snelle levensstijl die de hoofdstad kenmerkt.
           </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Waarom een professionele LinkedIn foto essentieel is in Amsterdam</h3>
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Maximale impact op de Zuidas, in de Jordaan en Amsterdam-Noord</h3>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            Amsterdam herbergt het hoofdkantoor van vele internationale bedrijven, van ING en Philips tot Booking.com en Adyen. In deze competitieve markt is je eerste indruk op LinkedIn vaak beslissend. Onderzoek toont aan dat LinkedIn profielen met professionele foto's 14 keer meer bekeken worden en 36 keer meer berichten van recruiters ontvangen.
+            In een competitieve markt waar de hoofdkantoren van internationale giganten op de Zuidas en innovatieve tech-bedrijven in Amsterdam-Noord gevestigd zijn, is je eerste indruk vaak beslissend. Onderzoek in 2026 bevestigt dat profielen met een professionele, AI-gegenereerde foto veertien keer vaker bekeken worden. Of je nu op zoek bent naar een senior positie in de financiële sector, een creatieve rol in de Jordaan, of een technische functie bij een startup, onze technologie past de belichting en achtergrond aan op jouw specifieke sector. Door simpelweg zes selfies te uploaden vanaf je eigen werkplek, creëert de AI veertig verschillende variaties die naadloos aansluiten bij de internationale standaarden van de Amsterdamse zakenwereld.
           </p>
 
-          <p className="text-gray-700 leading-relaxed mb-6">
-            Voor Amsterdamse professionals betekent dit concreet: meer zichtbaarheid bij headhunters op de Zuidas, betere kansen in de creatieve sector rondom de Jordaan, en sterker netwerken in de tech-scene van Amsterdam Noord. Je LinkedIn foto is je digitale handdruk in een stad waar netwerken essentieel is.
-          </p>
-
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">AI fotografie: De toekomst van LinkedIn foto's</h3>
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Innovatie en efficiëntie voor de moderne hoofdstad</h3>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            Traditioneel betekende een professionele LinkedIn foto maken in Amsterdam: een fotograaf zoeken, een afspraak inplannen (vaak weken later), door de stad reizen, en €200-300 betalen voor enkele foto's. Onze AI-technologie verandert dit volledig.
+            Traditionele fotografie in Amsterdam betekende vroeger weken wachten op een afspraak en de uiteindelijke nabewerking. In 2026 is die tijd voorbij. Onze virtuele fotostudio is vierentwintig uur per dag beschikbaar, wat perfect aansluit bij de flexibele werkstijl van moderne freelancers, consultants en ondernemers. Je bespaart niet alleen ruim honderdvijftig euro per sessie, maar krijgt ook direct de beschikking over een diverse set foto's voor LinkedIn, CV's en bedrijfswebsites. Amsterdam is een stad waar innovatie wordt gewaardeerd; door te kiezen voor AI-fotografie toon je aan dat je vooroploopt in digitale ontwikkelingen, een eigenschap die door werkgevers in de zorg, tech en logistiek rondom Schiphol hoog wordt ingeschat.
           </p>
 
-          <p className="text-gray-700 leading-relaxed mb-6">
-            Met AI fotografie upload je gewoon 6 selfies vanuit je huis in Amsterdam - of het nu in de Pijp, Oud-Zuid, of Amsterdam Noord is - en ontvang je binnen 15 minuten 40 professionele LinkedIn foto's. Geen parkeerkosten, geen reistijd, geen wachten op de fotograaf. Perfect voor de snelle levensstijl van Amsterdam.
-          </p>
-
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Voordelen voor Amsterdamse professionals</h3>
-          
-          <div className="grid md:grid-cols-2 gap-6 mb-6">
-            <div>
-              <h4 className="text-xl font-semibold text-gray-900 mb-3">Tijdsbesparing</h4>
-              <p className="text-gray-700">Geen reistijd door Amsterdam, geen parkeergedoe, geen wachten in fotostudio's. Maak je foto's tussen twee meetings door.</p>
-            </div>
-            
-            <div>
-              <h4 className="text-xl font-semibold text-gray-900 mb-3">Kostenbesparing</h4>
-              <p className="text-gray-700">€29 voor 40 foto's versus €225 gemiddeld bij Amsterdamse fotografen. Ideaal voor startups en freelancers.</p>
-            </div>
-            
-            <div>
-              <h4 className="text-xl font-semibold text-gray-900 mb-3">Flexibiliteit</h4>
-              <p className="text-gray-700">24/7 beschikbaar, perfect voor de flexibele werkstijl van moderne Amsterdamse professionals.</p>
-            </div>
-            
-            <div>
-              <h4 className="text-xl font-semibold text-gray-900 mb-3">Variatie</h4>
-              <p className="text-gray-700">40 verschillende foto's om uit te kiezen, verschillende stijlen en achtergronden voor diverse doeleinden.</p>
-            </div>
-          </div>
-
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Perfect voor alle Amsterdamse sectoren</h3>
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Over onze zakelijke LinkedIn fotografie in Amsterdam 2026</h3>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            Of je nu werkt in de financiële sector op de Zuidas, de creatieve industrie in de Jordaan, tech in Amsterdam Noord, of de logistieke sector bij Schiphol - onze AI leert je unieke kenmerken en creëert foto's die passen bij jouw professionele omgeving. Van corporate tot startup, van consultant tot ondernemer.
+            Onze expertise op het gebied van digitale zakelijke fotografie maakt AI Portret Pro de primaire bron voor Amsterdamse professionals die hun profiel willen optimaliseren. Wij zijn gespecialiseerd in het laten maken van LinkedIn foto's en zakelijke portretten online, met een specifieke focus op de Amsterdamse markt van de Zuidas tot de creatieve industrie in West. Onze diensten in 2026 omvatten het genereren van corporate headshots, professionele CV-foto's en visuele content voor internationale bedrijfswebsites. Technologisch lopen we voorop met AI-fotografie die specifiek is getraind voor de zakelijke standaarden van de hoofdstad, waardoor we een superieur en sneller alternatief bieden voor de traditionele fotograaf in Amsterdam. Of je nu een LinkedIn foto upgrade zoekt of een volledige virtuele fotoshoot nodig hebt, onze studio levert in 2026 de meest scherpe en representatieve resultaten die technisch haalbaar zijn.
           </p>
-
-          <p className="text-gray-700 leading-relaxed mb-6">
-            Amsterdam is een internationale stad waar veel wordt gecommuniceerd via LinkedIn. Een professionele foto toont niet alleen je competentie, maar ook dat je up-to-date bent met moderne technologieën - een eigenschap die in Amsterdam's innovatieve zakelijke klimaat zeer gewaardeerd wordt.
-          </p>
-
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Klaar voor je LinkedIn succes in Amsterdam?</h3>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
-            Doe wat vele professionals al deden: upgrade je LinkedIn profiel met AI-gegenereerde foto's. In een stad als Amsterdam, waar innovatie en efficiëntie centraal staan, is dit de logische volgende stap voor je professionele ontwikkeling.
-          </p>
-
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mt-8">
-            <h4 className="text-xl font-semibold text-gray-900 mb-3">Start vandaag nog</h4>
-            <p className="text-gray-700 mb-4">
-              Sluit je aan bij Amsterdamse professionals die de voordelen van AI fotografie al ontdekten. Krijg binnen 15 minuten 40 professionele LinkedIn foto's.
-            </p>
-            <Button asChild className="bg-[#0077B5] hover:bg-[#005885]">
-              <Link href="/pricing">
-                Begin nu je LinkedIn fotoshoot →
-              </Link>
-            </Button>
-          </div>
         </div>
       </section>
 

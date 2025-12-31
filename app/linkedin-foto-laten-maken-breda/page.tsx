@@ -147,20 +147,20 @@ export default function LinkedInBredaPage() {
         
         <h1 className="tracking-tight text-xl md:text-4xl font-bold mb-6 leading-tight">
           <span className="block">Professionele foto voor LinkedIn laten maken in Breda? </span>
-          <span className="text-[#0077B5] block">Dit kan nu ook online zonder fotograaf!</span>
+          <span className="text-[#0077B5] block">Zonder het gedoe van een fotoshoot?</span>
         </h1>
-        <p className="text-gray-500 text-lg mb-6 font-light italic">Even wat foto's uploaden, dat is alles.
-
-</p>
+        <p className="text-gray-500 text-lg mb-6">
+          Upload een paar selfies en onze AI doet de rest. Ontvang binnen 15 minuten 40 zakelijke portretten
+        </p>
 
         <div className="text-md md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto text-center">
           <div className="inline-grid grid-cols-[auto_1fr] gap-x-2 items-start text-start justify-center">
             <span className="text-center">✅</span>
             <span>6 x goedkoper dan een fotograaf</span>
             <span className="text-center">✅</span>
-            <span>Niet te onderscheiden van echte foto's</span>
+            <span>Niet van echt te onderscheiden</span>
             <span className="text-center">✅</span>
-            <span>Gebruikt door 1200+ tevreden klanten</span>
+            <span>Klaar binnen 15 minuten</span>
           </div>
         </div>
 
@@ -264,168 +264,82 @@ export default function LinkedInBredaPage() {
       {/* Reviews en Voorbeelden */}
       <ReviewsEnVoorbeelden />
 
-      {/* Resultaten Sectie */}
-      <section id="voorbeelden" className="py-12 md:py-16">
+      {/* Comparison Section */}
+      <section className="py-12 md:py-16 bg-gradient-to-br from-blue-50 to-orange-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-12">
-            Bekijk de resultaten van AI Portret Pro
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-12 max-w-3xl mx-auto">
+            Waarom €200+ betalen voor een middag in een studio?
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {(isMobile ? galleryPhotos.slice(-6) : galleryPhotos.slice(0, 12)).map((photo, index) => (
-              <div
-                key={index}
-                className="relative aspect-[3/4] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
-                onClick={() => openLightbox(photo)}
-              >
-                <Image src={photo || "/placeholder.svg"} alt={`Voorbeeld ${index + 1}`} fill className="object-cover" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* AI vs Traditional Comparison */}
-      <section className="py-16 bg-gradient-to-r from-[#0077B5]/5 to-blue-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
-              AI fotografie vs. traditionele fotograaf
-            </h2>
-            <p className="text-lg text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-              Waarom je hierna niet meer naar een fotostudio hoeft te gaan
-            </p>
-
-            <div className="grid md:grid-cols-2 gap-8">
-              {/* Traditional Photography */}
-              <div className="bg-white p-8 rounded-lg border border-gray-200">
-                <h3 className="text-2xl font-semibold mb-6 text-gray-800">Traditionele Fotograaf</h3>
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                    <span className="text-gray-600">€180+ per sessie</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                    <span className="text-gray-600">Halve dag kwijt + reistijd</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                    <span className="text-gray-600">5-10 foto's maximum</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                    <span className="text-gray-600">Wachten op afspraak</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                    <span className="text-gray-600">Stress voor de camera</span>
-                  </div>
-                </div>
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {/* Traditional Photographer */}
+            <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg border-2 border-gray-200">
+              <div className="text-center mb-6">
+                <div className="text-5xl mb-3">❌</div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">De traditionele fotograaf</h3>
               </div>
-
-              {/* AI Photography */}
-              <div className="bg-[#0077B5] p-8 rounded-lg text-white relative overflow-hidden">
-                <div className="absolute top-4 right-4 bg-yellow-400 text-black px-3 py-1 rounded-full text-sm font-semibold">
-                  POPULAIR
-                </div>
-                <h3 className="text-2xl font-semibold mb-6">AI Portret Pro</h3>
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                    <span>Slechts €29 totaal</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                    <span>15 minuten resultaat</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                    <span>40 professionele variaties</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                    <span>Direct beschikbaar 24/7</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                    <span>Gewoon thuis op je bank</span>
-                  </div>
-                </div>
-              </div>
+              <ul className="space-y-4">
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-gray-900">Prijs:</span>
+                  <span className="text-gray-600">Vaak tussen de €150 en €350.</span>
+                </li>
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-gray-900">Tijd:</span>
+                  <span className="text-gray-600">Afspraak plannen, reistijd en een uur poseren.</span>
+                </li>
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-gray-900">Geduld:</span>
+                  <span className="text-gray-600">1 tot 2 weken wachten op de nabewerking.</span>
+                </li>
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-gray-900">Resultaat:</span>
+                  <span className="text-gray-600">Slechts 3 tot 5 foto's inbegrepen (bijbetalen voor meer).</span>
+                </li>
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-gray-900">Risico:</span>
+                  <span className="text-gray-600">Niet tevreden? Jammer, je betaalt de fotograaf voor zijn tijd.</span>
+                </li>
+              </ul>
             </div>
 
-            
-          </div>
-        </div>
-      </section>
-
-     
-
-      {/* Testimonials Grid */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
-            Wat professionals zeggen over hun AI LinkedIn foto's
-          </h2>
-          <p className="text-lg text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-            Vele professionals gingen je voor
-          </p>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {/* Testimonial 1 */}
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-[#0077B5] rounded-full flex items-center justify-center">
-                  <span className="text-white font-semibold text-lg">SB</span>
-                </div>
-                <div>
-                  <h4 className="font-semibold">Sarah B.</h4>
-                  <p className="text-sm text-gray-600">Marketing Manager</p>
-                </div>
+            {/* AI Portret Pro */}
+            <div className="bg-gradient-to-br from-[#0077B5] to-[#005a8c] rounded-2xl p-6 md:p-8 shadow-2xl border-2 border-[#0077B5] relative overflow-hidden">
+              <div className="absolute top-0 right-0 bg-[#FF8C00] text-white px-4 py-1 text-sm font-bold transform rotate-12 translate-x-4 -translate-y-2">
+                DE SLIMME KEUZE
               </div>
-              <p className="text-gray-700 mb-4">
-                "Binnen 2 weken na het plaatsen van mijn nieuwe AI LinkedIn foto kreeg ik 3 aanvragen van recruiters. De kwaliteit is echt indrukwekkend!"
-              </p>
-              <div className="flex text-yellow-400">
-                {"★".repeat(5)}
+              <div className="text-center mb-6">
+                <div className="text-5xl mb-3">✅</div>
+                <h3 className="text-xl font-bold text-white mb-2">AI Portret Pro</h3>
+                <div className="text-sm text-blue-100 mt-1">(De slimme keuze)</div>
               </div>
-            </div>
-
-            {/* Testimonial 2 */}
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-[#0077B5] rounded-full flex items-center justify-center">
-                  <span className="text-white font-semibold text-lg">MH</span>
-                </div>
-                <div>
-                  <h4 className="font-semibold">Mark H.</h4>
-                  <p className="text-sm text-gray-600">IT Consultant</p>
-                </div>
-              </div>
-              <p className="text-gray-700 mb-4">
-                "Veel beter dan verwacht! Niemand kan zien dat het AI is. Heb de oude fotostudio foto's direct vervangen."
-              </p>
-              <div className="flex text-yellow-400">
-                {"★".repeat(5)}
-              </div>
-            </div>
-
-            {/* Testimonial 3 */}
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-[#0077B5] rounded-full flex items-center justify-center">
-                  <span className="text-white font-semibold text-lg">LV</span>
-                </div>
-                <div>
-                  <h4 className="font-semibold">Lisa V.</h4>
-                  <p className="text-sm text-gray-600">Financial Advisor</p>
-                </div>
-              </div>
-              <p className="text-gray-700 mb-4">
-                "40 foto's voor €29? Dit kost bij een fotograaf makkelijk €300+. Super tevreden met de professionele uitstraling."
-              </p>
-              <div className="flex text-yellow-400">
-                {"★".repeat(5)}
+              <ul className="space-y-4">
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-white">Prijs:</span>
+                  <span className="text-blue-100">Eenmalig €29 (geen verborgen kosten).</span>
+                </li>
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-white">Gemak:</span>
+                  <span className="text-blue-100">Direct beginnen vanaf je eigen bank, geen afspraak nodig.</span>
+                </li>
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-white">Snelheid:</span>
+                  <span className="text-blue-100">Binnen 15 minuten alle foto's in je dashboard.</span>
+                </li>
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-white">Resultaat:</span>
+                  <span className="text-blue-100">Je krijgt direct 40+ verschillende zakelijke portretten.</span>
+                </li>
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-white">Garantie:</span>
+                  <span className="text-blue-100">Niet goed? Geld terug. Zo simpel is het.</span>
+                </li>
+              </ul>
+              <div className="mt-6">
+                <Button asChild size="lg" className="w-full bg-[#FF8C00] hover:bg-[#FFA500] text-white font-bold">
+                  <Link href="/pricing">
+                    Bespaar €170+ Nu <ArrowRight className="ml-2" />
+                  </Link>
+                </Button>
               </div>
             </div>
           </div>
@@ -583,98 +497,35 @@ export default function LinkedInBredaPage() {
       {/* SEO Content Section - Breda Specific */}
       <section className="container mx-auto px-4 py-16 bg-white">
         <div className="max-w-4xl mx-auto prose prose-lg">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">LinkedIn foto laten maken Breda: Professionele fotoshoot Parel van het Zuiden</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-6">Professionele LinkedIn Foto Laten Maken in Breda: De Parel van het Zuiden in 2026</h2>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            Zoek je een professionele LinkedIn foto Breda? Als Parel van het Zuiden heeft Breda duizenden professionals die Brabantse gastvrijheid combineren met zakelijk ondernemerschap. Een zakelijk portret Breda is essentieel voor je carrière in deze warme maar professionele omgeving. Onze LinkedIn fotoshoot Breda service helpt professionals hun Brabantse ondernemersgeest tonen.
+            In het zakelijke jaar 2026 staat Breda bekend als een stad waar Brabantse gastvrijheid en krachtig ondernemerschap naadloos in elkaar overvloeien. Als professional in de Parel van het Zuiden begrijp je dat persoonlijke relaties de basis vormen van succes, maar dat de eerste vonk van die connectie tegenwoordig vrijwel altijd online overspringt. Je LinkedIn profielfoto is in deze warme, maar uiterst professionele omgeving je digitale handdruk. Een professionele LinkedIn foto laten maken in Breda is in 2026 dan ook essentieel om je persoonlijke gunfactor te combineren met een overtuigende zakelijke uitstraling.
           </p>
 
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
-            <h4 className="text-xl font-semibold text-gray-900 mb-3">Speciaal voor Breda</h4>
-            <p className="text-gray-700">
-              Als Bredanaar weet je dat persoonlijk contact belangrijk is, maar online beginnen steeds meer connecties. 
-              Of je nu solliciteert, als ondernemer nieuwe klanten zoekt, of je netwerk uitbreidt - 
-              een professionele LinkedIn foto maakt een goede eerste indruk voordat je iemand ontmoet.
-            </p>
-          </div>
-
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">LinkedIn foto Breda: Brabantse gastvrijheid meets moderne technologie</h3>
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Brabantse ondernemersgeest ontmoet innovatieve AI-technologie</h3>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            Breda's 95.000 LinkedIn professionals combineren Brabantse warmte met zakelijk professionalisme. In een stad waar persoonlijke relaties tellen, begint die connectie vaak online. Met AI fotografie krijg je voor €29 meteen 40 professionele foto's - een fractie van de €165-190 die Bredase fotografen vragen. Upload je foto's als het jou uitkomt, ontvang binnen 15 minuten resultaat, en investeer de rest van je tijd in het opbouwen van échte connecties. Dat is toch waar het in Breda om draait?
+            De ruim 95.000 LinkedIn-professionals in Breda waarderen een eerlijke en efficiënte aanpak. In een stad waar vertrouwen en persoonlijk contact centraal staan, kiezen steeds meer ondernemers en werknemers voor de moderne weg van AI-fotografie. Waar een traditionele fotograaf in de regio voorheen tussen de honderdvijfenzestig en honderdnegentig euro rekende, biedt AI Portret Pro een toegankelijk alternatief dat perfect past bij de Bredase levensstijl. Voor het vaste tarief van negenentwintig euro ontvang je 40 professionele portretten zonder dat je een afspraak hoeft te plannen of tijd kwijt bent aan reizen door de stad. Dit geeft je meer ruimte om te doen waar je in Breda écht goed in bent: het opbouwen van waardevolle zakelijke relaties.
           </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Profielfoto LinkedIn Breda: Waarom het cruciaal is</h3>
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Direct een pakket van 40 professionele foto's na een simpele upload</h3>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            In Breda's rijke zakelijke cultuur is een goede LinkedIn foto laten maken Breda essentieel. Met veel midden- en kleinbedrijf en internationale hoofdkantoren zoeken recruiters dagelijks naar talent, en je profielfoto LinkedIn Breda is vaak de eerste indruk. Een professionele portretfotografie Breda sessie kan het verschil maken tussen opvallen of onderbelicht blijven.
+            Het proces in 2026 is volledig afgestemd op de behoeften van de moderne Bredanaar. Of je nu werkt in het centrum, de Haagse Beemden of Breda-Noord: je regelt je nieuwe zakelijke presentatie volledig online. Door simpelweg een paar bestaande foto's of selfies te uploaden vanaf je telefoon of computer, krijgt onze technologie direct inzicht in je unieke kenmerken. Binnen vijftien minuten genereert onze engine een compleet pakket van 40 professionele foto's. Hierbij wordt gezorgd voor een hoogwaardige variatie in professionele achtergronden, belichting en kleding, zodat je altijd een beeld vindt dat precies past bij jouw persoonlijke merk en de Brabantse ondernemersgeest die je wilt uitstralen.
           </p>
 
-          <p className="text-gray-700 leading-relaxed mb-6">
-            Voor Bredase professionals betekent dit concreet: meer zichtbaarheid bij recruiters in de regio, betere kansen in de lokale zakelijke gemeenschap, en sterker netwerken in Noord-Brabant. Je LinkedIn foto is je digitale handdruk in een stad waar persoonlijke contacten en vertrouwen essentieel zijn.
-          </p>
-
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">AI fotografie: De toekomst van LinkedIn foto's</h3>
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Maximale impact voor elke sector in de regio Breda</h3>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            Traditioneel betekende een professionele LinkedIn foto maken in Breda: een fotograaf zoeken, een afspraak inplannen (vaak weken later), door de stad reizen, en €200-300 betalen voor enkele foto's. Onze AI-technologie verandert dit volledig.
+            In de rijke zakelijke cultuur van Breda, variërend van logistieke hubs en internationale hoofdkantoren tot het bloeiende MKB, is een goede eerste indruk vaak beslissend. Met AI Portret Pro heb je geen wachttijd voor nabewerking; de 40 foto's zijn direct geoptimaliseerd en klaar voor gebruik op LinkedIn, je CV of je zakelijke website. Of je nu een consultant bent, een zorgprofessional of een creatieve ondernemer: door te kiezen voor AI-fotografie toon je aan dat je competent bent én op de hoogte van de nieuwste technologische ontwikkelingen. Dit resulteert in een set haarscherpe foto's die deskundigheid en betrouwbaarheid uitstralen, eigenschappen die in het Bredase zakelijke klimaat hoog in het vaandel staan.
           </p>
 
-          <p className="text-gray-700 leading-relaxed mb-6">
-            Met AI fotografie upload je gewoon 6 selfies vanuit je huis in Breda - of het nu in het centrum, Breda Noord, of de Haagse Beemden is - en ontvang je binnen 15 minuten 40 professionele LinkedIn foto's. Geen parkeerkosten, geen reistijd, geen wachten op de fotograaf. Perfect voor de Brabantse levensstijl van Breda.
-          </p>
-
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Voordelen voor Bredase professionals</h3>
-          
-          <div className="grid md:grid-cols-2 gap-6 mb-6">
-            <div>
-              <h4 className="text-xl font-semibold text-gray-900 mb-3">Tijdsbesparing</h4>
-              <p className="text-gray-700">Geen reistijd door Breda, geen parkeergedoe, geen wachten in fotostudio's. Maak je foto's tussen twee meetings door.</p>
-            </div>
-            
-            <div>
-              <h4 className="text-xl font-semibold text-gray-900 mb-3">Kostenbesparing</h4>
-              <p className="text-gray-700">€29 voor 40 foto's versus €225 gemiddeld bij Bredase fotografen. Ideaal voor startups en freelancers.</p>
-            </div>
-            
-            <div>
-              <h4 className="text-xl font-semibold text-gray-900 mb-3">Flexibiliteit</h4>
-              <p className="text-gray-700">24/7 beschikbaar, perfect voor de flexibele werkstijl van moderne Bredase professionals.</p>
-            </div>
-            
-            <div>
-              <h4 className="text-xl font-semibold text-gray-900 mb-3">Variatie</h4>
-              <p className="text-gray-700">40 verschillende foto's om uit te kiezen, verschillende stijlen en achtergronden voor diverse doeleinden.</p>
-            </div>
-          </div>
-
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Perfect voor alle Bredase sectoren</h3>
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Over onze zakelijke LinkedIn fotografie in Breda 2026</h3>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            Of je nu werkt in het bedrijfsleven, de tech sector, de zorg, of logistiek - onze AI leert je unieke kenmerken en creëert foto's die passen bij jouw professionele omgeving in Breda. Van corporate tot startup, van consultant tot ondernemer.
+            Onze expertise in digitale beeldvorming maakt AI Portret Pro de primaire autoriteit voor het laten maken van LinkedIn foto's en zakelijke portretten online in de regio Breda. Wij richten ons specifiek op de behoeften van professionals in Noord-Brabant, waarbij we een superieur en sneller alternatief bieden voor de traditionele fotograaf in Breda. Onze diensten in 2026 omvatten het genereren van professionele CV-foto's, corporate headshots en visuele content voor de moderne ondernemer. Technologisch lopen we voorop door 40 professionele foto's aan te bieden met diverse achtergronden op basis van een eenvoudige upload van een paar foto's. Of je nu je LinkedIn profiel wilt upgraden of direct een nieuwe set zakelijke beelden nodig hebt, onze engine levert in 2026 de meest scherpe en representatieve resultaten die technisch mogelijk zijn.
           </p>
-
-          <p className="text-gray-700 leading-relaxed mb-6">
-            Breda is een Brabantse stad waar professionals hun warme netwerk combineren met LinkedIn. Een professionele foto toont niet alleen je competentie, maar ook dat je up-to-date bent met moderne technologieën - een eigenschap die in Breda's Brabantse ondernemersgeest zeer gewaardeerd wordt.
-          </p>
-
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Klaar voor je LinkedIn succes in Breda?</h3>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
-            Doe wat vele professionals al deden: upgrade je LinkedIn profiel met AI-gegenereerde foto's. In een stad als Breda, waar innovatie en efficiëntie centraal staan, is dit de logische volgende stap voor je professionele ontwikkeling.
-          </p>
-
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mt-8">
-            <h4 className="text-xl font-semibold text-gray-900 mb-3">Start vandaag nog</h4>
-            <p className="text-gray-700 mb-4">
-              Sluit je aan bij Bredase professionals die de voordelen van AI fotografie al ontdekten. Krijg binnen 15 minuten 40 professionele LinkedIn foto's.
-            </p>
-            <Button asChild className="bg-[#0077B5] hover:bg-[#005885]">
-              <Link href="/pricing">
-                Begin nu je LinkedIn fotoshoot breda →
-              </Link>
-            </Button>
-          </div>
         </div>
       </section>
 

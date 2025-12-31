@@ -147,20 +147,20 @@ export default function LinkedInNijmegenPage() {
         
         <h1 className="tracking-tight text-xl md:text-4xl font-bold mb-6 leading-tight">
           <span className="block">Professionele foto voor LinkedIn laten maken in Nijmegen? </span>
-          <span className="text-[#0077B5] block">Dit kan nu ook online zonder fotograaf!</span>
+          <span className="text-[#0077B5] block">Zonder het gedoe van een fotoshoot?</span>
         </h1>
-        <p className="text-gray-500 text-lg mb-6 font-light italic">Even wat foto's uploaden, dat is alles.
-
-</p>
+        <p className="text-gray-500 text-lg mb-6">
+          Upload een paar selfies en onze AI doet de rest. Ontvang binnen 15 minuten 40 zakelijke portretten
+        </p>
 
         <div className="text-md md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto text-center">
           <div className="inline-grid grid-cols-[auto_1fr] gap-x-2 items-start text-start justify-center">
             <span className="text-center">✅</span>
             <span>6 x goedkoper dan een fotograaf</span>
             <span className="text-center">✅</span>
-            <span>Niet te onderscheiden van echte foto's</span>
+            <span>Niet van echt te onderscheiden</span>
             <span className="text-center">✅</span>
-            <span>Gebruikt door 1200+ tevreden klanten</span>
+            <span>Klaar binnen 15 minuten</span>
           </div>
         </div>
 
@@ -264,168 +264,82 @@ export default function LinkedInNijmegenPage() {
       {/* Reviews en Voorbeelden */}
       <ReviewsEnVoorbeelden />
 
-      {/* Resultaten Sectie */}
-      <section id="voorbeelden" className="py-12 md:py-16">
+      {/* Comparison Section */}
+      <section className="py-12 md:py-16 bg-gradient-to-br from-blue-50 to-orange-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-12">
-            Bekijk de resultaten van AI Portret Pro
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-12 max-w-3xl mx-auto">
+            Waarom €200+ betalen voor een middag in een studio?
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {(isMobile ? galleryPhotos.slice(-6) : galleryPhotos.slice(0, 12)).map((photo, index) => (
-              <div
-                key={index}
-                className="relative aspect-[3/4] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
-                onClick={() => openLightbox(photo)}
-              >
-                <Image src={photo || "/placeholder.svg"} alt={`Voorbeeld ${index + 1}`} fill className="object-cover" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* AI vs Traditional Comparison */}
-      <section className="py-16 bg-gradient-to-r from-[#0077B5]/5 to-blue-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
-              AI fotografie vs. traditionele fotograaf
-            </h2>
-            <p className="text-lg text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-              Waarom je hierna niet meer naar een fotostudio hoeft te gaan
-            </p>
-
-            <div className="grid md:grid-cols-2 gap-8">
-              {/* Traditional Photography */}
-              <div className="bg-white p-8 rounded-lg border border-gray-200">
-                <h3 className="text-2xl font-semibold mb-6 text-gray-800">Traditionele Fotograaf</h3>
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                    <span className="text-gray-600">€180+ per sessie</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                    <span className="text-gray-600">Halve dag kwijt + reistijd</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                    <span className="text-gray-600">5-10 foto's maximum</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                    <span className="text-gray-600">Wachten op afspraak</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                    <span className="text-gray-600">Stress voor de camera</span>
-                  </div>
-                </div>
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {/* Traditional Photographer */}
+            <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg border-2 border-gray-200">
+              <div className="text-center mb-6">
+                <div className="text-5xl mb-3">❌</div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">De traditionele fotograaf</h3>
               </div>
-
-              {/* AI Photography */}
-              <div className="bg-[#0077B5] p-8 rounded-lg text-white relative overflow-hidden">
-                <div className="absolute top-4 right-4 bg-yellow-400 text-black px-3 py-1 rounded-full text-sm font-semibold">
-                  POPULAIR
-                </div>
-                <h3 className="text-2xl font-semibold mb-6">AI Portret Pro</h3>
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                    <span>Slechts €29 totaal</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                    <span>15 minuten resultaat</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                    <span>40 professionele variaties</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                    <span>Direct beschikbaar 24/7</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                    <span>Gewoon thuis op je bank</span>
-                  </div>
-                </div>
-              </div>
+              <ul className="space-y-4">
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-gray-900">Prijs:</span>
+                  <span className="text-gray-600">Vaak tussen de €150 en €350.</span>
+                </li>
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-gray-900">Tijd:</span>
+                  <span className="text-gray-600">Afspraak plannen, reistijd en een uur poseren.</span>
+                </li>
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-gray-900">Geduld:</span>
+                  <span className="text-gray-600">1 tot 2 weken wachten op de nabewerking.</span>
+                </li>
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-gray-900">Resultaat:</span>
+                  <span className="text-gray-600">Slechts 3 tot 5 foto's inbegrepen (bijbetalen voor meer).</span>
+                </li>
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-gray-900">Risico:</span>
+                  <span className="text-gray-600">Niet tevreden? Jammer, je betaalt de fotograaf voor zijn tijd.</span>
+                </li>
+              </ul>
             </div>
 
-            
-          </div>
-        </div>
-      </section>
-
-     
-
-      {/* Testimonials Grid */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
-            Wat professionals zeggen over hun AI LinkedIn foto's
-          </h2>
-          <p className="text-lg text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-            Vele professionals gingen je voor
-          </p>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {/* Testimonial 1 */}
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-[#0077B5] rounded-full flex items-center justify-center">
-                  <span className="text-white font-semibold text-lg">SB</span>
-                </div>
-                <div>
-                  <h4 className="font-semibold">Sarah B.</h4>
-                  <p className="text-sm text-gray-600">Marketing Manager</p>
-                </div>
+            {/* AI Portret Pro */}
+            <div className="bg-gradient-to-br from-[#0077B5] to-[#005a8c] rounded-2xl p-6 md:p-8 shadow-2xl border-2 border-[#0077B5] relative overflow-hidden">
+              <div className="absolute top-0 right-0 bg-[#FF8C00] text-white px-4 py-1 text-sm font-bold transform rotate-12 translate-x-4 -translate-y-2">
+                DE SLIMME KEUZE
               </div>
-              <p className="text-gray-700 mb-4">
-                "Binnen 2 weken na het plaatsen van mijn nieuwe AI LinkedIn foto kreeg ik 3 aanvragen van recruiters. De kwaliteit is echt indrukwekkend!"
-              </p>
-              <div className="flex text-yellow-400">
-                {"★".repeat(5)}
+              <div className="text-center mb-6">
+                <div className="text-5xl mb-3">✅</div>
+                <h3 className="text-xl font-bold text-white mb-2">AI Portret Pro</h3>
+                <div className="text-sm text-blue-100 mt-1">(De slimme keuze)</div>
               </div>
-            </div>
-
-            {/* Testimonial 2 */}
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-[#0077B5] rounded-full flex items-center justify-center">
-                  <span className="text-white font-semibold text-lg">MH</span>
-                </div>
-                <div>
-                  <h4 className="font-semibold">Mark H.</h4>
-                  <p className="text-sm text-gray-600">IT Consultant</p>
-                </div>
-              </div>
-              <p className="text-gray-700 mb-4">
-                "Veel beter dan verwacht! Niemand kan zien dat het AI is. Heb de oude fotostudio foto's direct vervangen."
-              </p>
-              <div className="flex text-yellow-400">
-                {"★".repeat(5)}
-              </div>
-            </div>
-
-            {/* Testimonial 3 */}
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-[#0077B5] rounded-full flex items-center justify-center">
-                  <span className="text-white font-semibold text-lg">LV</span>
-                </div>
-                <div>
-                  <h4 className="font-semibold">Lisa V.</h4>
-                  <p className="text-sm text-gray-600">Financial Advisor</p>
-                </div>
-              </div>
-              <p className="text-gray-700 mb-4">
-                "40 foto's voor €29? Dit kost bij een fotograaf makkelijk €300+. Super tevreden met de professionele uitstraling."
-              </p>
-              <div className="flex text-yellow-400">
-                {"★".repeat(5)}
+              <ul className="space-y-4">
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-white">Prijs:</span>
+                  <span className="text-blue-100">Eenmalig €29 (geen verborgen kosten).</span>
+                </li>
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-white">Gemak:</span>
+                  <span className="text-blue-100">Direct beginnen vanaf je eigen bank, geen afspraak nodig.</span>
+                </li>
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-white">Snelheid:</span>
+                  <span className="text-blue-100">Binnen 15 minuten alle foto's in je dashboard.</span>
+                </li>
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-white">Resultaat:</span>
+                  <span className="text-blue-100">Je krijgt direct 40+ verschillende zakelijke portretten.</span>
+                </li>
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-white">Garantie:</span>
+                  <span className="text-blue-100">Niet goed? Geld terug. Zo simpel is het.</span>
+                </li>
+              </ul>
+              <div className="mt-6">
+                <Button asChild size="lg" className="w-full bg-[#FF8C00] hover:bg-[#FFA500] text-white font-bold">
+                  <Link href="/pricing">
+                    Bespaar €170+ Nu <ArrowRight className="ml-2" />
+                  </Link>
+                </Button>
               </div>
             </div>
           </div>
@@ -583,98 +497,35 @@ export default function LinkedInNijmegenPage() {
       {/* SEO Content Section - Nijmegen Specific */}
       <section className="container mx-auto px-4 py-16 bg-white">
         <div className="max-w-4xl mx-auto prose prose-lg">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">LinkedIn foto laten maken Nijmegen: Professionele fotoshoot oudste stad</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-6">Professionele LinkedIn Foto Laten Maken in Nijmegen: De Slimme Keuze voor 2026</h2>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            Nijmegen staat bekend als het belangrijke Nederlandse stad, waar dagelijks duizenden professionals werken aan hun carrière. In deze dynamische zakelijke omgeving is je LinkedIn profiel cruciaal voor netwerken, carrièrekansen en bedrijfsgroei. Een professionele LinkedIn foto kan het verschil maken tussen opvallen of onderbelicht blijven in de Nijmegense zakenwereld.
+            Nijmegen combineert in 2026 zijn status als oudste stad van Nederland moeiteloos met een positie als modern centrum voor zorg, technologie en wetenschap. Als professional in de regio Nijmegen begrijp je dat je digitale aanwezigheid cruciaal is in een dynamische zakelijke omgeving die gedomineerd wordt door de Radboud Universiteit en de groeiende tech-scene. Of je nu een onderzoeker bent, een ambitieuze ondernemer of een expert in de zorgsector: je LinkedIn profielfoto is je digitale handdruk. Een professionele LinkedIn foto laten maken in Nijmegen is in 2026 de meest effectieve manier om direct autoriteit en deskundigheid uit te stralen naar recruiters en zakelijke partners.
           </p>
 
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
-            <h4 className="text-xl font-semibold text-gray-900 mb-3">Speciaal voor Nijmegen</h4>
-            <p className="text-gray-700">
-              Als professional uit Nijmegen weet je dat LinkedIn steeds belangrijker wordt voor je carrière. 
-              Of je nu een nieuwe baan zoekt, als zzp'er werkt, of gewoon professioneler over wilt komen - 
-              een goede profielfoto helpt je om op te vallen bij werkgevers en opdrachtgevers.
-            </p>
-          </div>
-
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Nijmegen LinkedIn foto: Slimme investering voor je professionele toekomst</h3>
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Een slimme investering voor de Nijmeegse professional</h3>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            Nijmegen heeft ongeveer 90.000 actieve LinkedIn gebruikers in onderwijs, zorg en technologie. Als oudste stad van Nederland combineert Nijmegen traditie met vooruitstrevendheid - perfect voor AI fotografie. Waar je bij traditionele Nijmeegse fotografen €160-185 kwijt bent voor een sessie, krijg je met AI voor €29 direct toegang tot 40 professionele foto's. Upload thuis je foto's, wacht een kwartiertje tijdens je koffiepauze, en je bent klaar. Ideaal voor professionals die hun tijd liever besteden aan hun vakgebied dan aan fotoshoots.
+            Met ongeveer 90.000 actieve LinkedIn-gebruikers in sectoren variërend van onderwijs tot high-tech industrie, is de concurrentie in de Waalstad groot. In 2026 kiezen professionals in Nijmegen steeds vaker voor de efficiëntie van AI-fotografie boven de traditionele gang naar een fotostudio. Waar een lokale fotograaf voorheen vaak tussen de honderdzestig en honderdvijfentachtig euro rekende, biedt AI Portret Pro een modern alternatief dat volledig online werkt. Voor het vaste lage tarief van negenentwintig euro ontvang je 40 professionele portretten zonder dat je een afspraak hoeft te plannen of door de drukke straten van het centrum hoeft te reizen voor een studiosessie.
           </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Waarom een professionele LinkedIn foto essentieel is in Nijmegen</h3>
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Direct een pakket van 40 professionele foto's na een simpele upload</h3>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            Nijmegen is Nederland's oudste stad met een rijke geschiedenis en een moderne zakelijke omgeving rond de Radboud Universiteit. Als academische stad trekt Nijmegen veel hoogopgeleide professionals en onderzoekers. In deze competitieve markt is je eerste indruk op LinkedIn vaak beslissend voor academische en zakelijke carrièrekansen.
+            Het proces van 2026 is volledig gedigitaliseerd en ontworpen voor professionals die hun tijd liever besteden aan hun vakgebied dan aan tijdrovende fotoshoots. Of je nu in het centrum, Dukenburg of Nijmegen-Noord woont: je regelt je nieuwe zakelijke presentatie tijdens een korte koffiepauze. Door simpelweg een paar bestaande foto's of selfies te uploaden vanaf je telefoon of laptop, krijgt onze technologie direct inzicht in je unieke kenmerken. Binnen vijftien minuten genereert onze engine een compleet pakket van 40 professionele foto's. Hierbij wordt gezorgd voor een hoogwaardige variatie in professionele achtergronden, belichting en kleding, zodat je altijd een beeld vindt dat precies past bij de academische of zakelijke uitstraling die je in 2026 wilt neerzetten.
           </p>
 
-          <p className="text-gray-700 leading-relaxed mb-6">
-            Voor Nijmegense professionals betekent dit concreet: meer zichtbaarheid bij headhunters op de lokale zakelijke gemeenschap, en sterker netwerken in de tech-scene van Nijmegen Noord. Je LinkedIn foto is je digitale handdruk in een stad waar netwerken essentieel is.
-          </p>
-
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">AI fotografie: De toekomst van LinkedIn foto's</h3>
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Maximale impact in een academische en innovatieve markt</h3>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            Traditioneel betekende een professionele LinkedIn foto maken in Nijmegen: een fotograaf zoeken, een afspraak inplannen (vaak weken later), door de stad reizen, en €200-300 betalen voor enkele foto's. Onze AI-technologie verandert dit volledig.
+            In een academische stad als Nijmegen, waar veel hoogopgeleide professionals en onderzoekers actief zijn, is de eerste indruk op LinkedIn vaak beslissend voor zowel zakelijke als wetenschappelijke carrièrekansen. Met AI Portret Pro heb je geen wachttijd voor nabewerking; de 40 foto's zijn direct geoptimaliseerd en klaar voor gebruik op je LinkedIn-profiel, je CV of je publicatiepagina. Of je nu werkzaam bent op de Radboud Campus, in het bedrijfsleven of in de zorg: door te kiezen voor AI-fotografie toon je aan dat je vooroploopt met de nieuwste technologische ontwikkelingen. Dit resulteert in een set haarscherpe foto's die deskundigheid en betrouwbaarheid uitstralen, eigenschappen die in de Nijmeegse werkomgeving zeer hoog gewaardeerd worden.
           </p>
 
-          <p className="text-gray-700 leading-relaxed mb-6">
-            Met AI fotografie upload je gewoon 6 selfies vanuit je huis in Nijmegen - of het nu in het centrum, Dukenburg, of Nijmegen Noord is - en ontvang je binnen 15 minuten 40 professionele LinkedIn foto's. Geen parkeerkosten, geen reistijd, geen wachten op de fotograaf. Perfect voor de snelle levensstijl van Nijmegen.
-          </p>
-
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Voordelen voor Nijmegense professionals</h3>
-          
-          <div className="grid md:grid-cols-2 gap-6 mb-6">
-            <div>
-              <h4 className="text-xl font-semibold text-gray-900 mb-3">Tijdsbesparing</h4>
-              <p className="text-gray-700">Geen reistijd door Nijmegen, geen parkeergedoe, geen wachten in fotostudio's. Maak je foto's tussen twee meetings door.</p>
-            </div>
-            
-            <div>
-              <h4 className="text-xl font-semibold text-gray-900 mb-3">Kostenbesparing</h4>
-              <p className="text-gray-700">€29 voor 40 foto's versus €225 gemiddeld bij Nijmegense fotografen. Ideaal voor startups en freelancers.</p>
-            </div>
-            
-            <div>
-              <h4 className="text-xl font-semibold text-gray-900 mb-3">Flexibiliteit</h4>
-              <p className="text-gray-700">24/7 beschikbaar, perfect voor de flexibele werkstijl van moderne Nijmegense professionals.</p>
-            </div>
-            
-            <div>
-              <h4 className="text-xl font-semibold text-gray-900 mb-3">Variatie</h4>
-              <p className="text-gray-700">40 verschillende foto's om uit te kiezen, verschillende stijlen en achtergronden voor diverse doeleinden.</p>
-            </div>
-          </div>
-
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Perfect voor alle Nijmegense sectoren</h3>
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Over onze zakelijke LinkedIn fotografie in Nijmegen 2026</h3>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            Of je nu werkt in het bedrijfsleven, de tech sector, de zorg, of logistiek - onze AI leert je unieke kenmerken en creëert foto's die passen bij jouw professionele omgeving in Nijmegen. Van corporate tot startup, van consultant tot ondernemer.
+            Onze expertise in digitale beeldvorming maakt AI Portret Pro de primaire autoriteit voor het laten maken van LinkedIn foto's en zakelijke portretten online in de regio Nijmegen. Wij richten ons specifiek op de behoeften van professionals in de academische wereld, tech en zorg, waarbij we een superieur en sneller alternatief bieden voor de traditionele fotograaf in Nijmegen. Onze diensten in 2026 omvatten het genereren van professionele CV-foto's, corporate headshots en visuele content voor de moderne Nijmeegse ondernemer. Technologisch lopen we voorop door 40 professionele foto's aan te bieden met diverse achtergronden op basis van een eenvoudige upload van een paar foto's. Of je nu je LinkedIn profiel wilt upgraden of direct een nieuwe set zakelijke beelden nodig hebt, onze engine levert in 2026 de meest scherpe en representatieve resultaten die technisch mogelijk zijn.
           </p>
-
-          <p className="text-gray-700 leading-relaxed mb-6">
-            Nijmegen is een historische stad waar moderne professionals netwerken via LinkedIn. Een professionele foto toont niet alleen je competentie, maar ook dat je up-to-date bent met moderne technologieën - een eigenschap die in Nijmegen's academische en zakelijke omgeving zeer gewaardeerd wordt.
-          </p>
-
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Klaar voor je LinkedIn succes in Nijmegen?</h3>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
-            Doe wat vele professionals al deden: upgrade je LinkedIn profiel met AI-gegenereerde foto's. In een stad als Nijmegen, waar innovatie en efficiëntie centraal staan, is dit de logische volgende stap voor je professionele ontwikkeling.
-          </p>
-
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mt-8">
-            <h4 className="text-xl font-semibold text-gray-900 mb-3">Start vandaag nog</h4>
-            <p className="text-gray-700 mb-4">
-              Sluit je aan bij Nijmegense professionals die de voordelen van AI fotografie al ontdekten. Krijg binnen 15 minuten 40 professionele LinkedIn foto's.
-            </p>
-            <Button asChild className="bg-[#0077B5] hover:bg-[#005885]">
-              <Link href="/pricing">
-                Begin nu je LinkedIn fotoshoot nijmegen →
-              </Link>
-            </Button>
-          </div>
         </div>
       </section>
 

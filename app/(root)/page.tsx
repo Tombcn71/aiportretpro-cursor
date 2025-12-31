@@ -29,55 +29,33 @@ const companies = [
 
 const faqData = [
   {
-    question: "Hoe werkt deze app precies?",
+    question: "Hoe werkt het precies?",
     answer:
-      "Onze app gebruikt slimme computerprogramma's (we noemen dat Artificiële Intelligentie of AI) om jouw gewone foto's om te toveren in professionele portretfoto's. Je uploadt een paar van je eigen foto's. De AI leert van deze foto's hoe jij eruitziet. Daarna kan het nieuwe foto's van jou maken in allerlei stijlen, alsof je bij een professionele fotograaf bent geweest.",
+      "Je uploadt minimaal 4 normale foto's (selfies) van jezelf. Onze AI analyseert je gezicht en maakt binnen 15 minuten 40 nieuwe, professionele portretten in verschillende zakelijke outfits en achtergronden",
   },
-  
   {
-    question: "Is het veilig om mijn foto's te uploaden? Wat gebeurt ermee?",
+    question: "Hoe lang duurt het?",
     answer:
-      "Ja, veiligheid is onze top prioriteit! Je foto's worden alleen gebruikt om de AI te trainen zodat deze de beste portretfoto's van jou kan maken. Zodra jouw portretfoto's klaar zijn en jij ze hebt gedownload, worden de getrainde modellen binnen 30 dagen van onze servers verwijderd, de originele foto's slaan we nooit op. We delen je foto's nooit met derden.",
+      "Zodra je foto's zijn geüpload, gaat onze AI aan de slag. Na maximaal 15 minuten staan je 40 portretten klaar in je dashboard.",
   },
   {
-    question: "Hoeveel foto's moet ik uploaden voor het beste resultaat?",
+    question: "Zijn mijn foto's en betaling veilig?",
     answer:
-      "Om de AI zo goed mogelijk te laten leren hoe jij eruitziet, raden we aan om minimaal 6 foto's te uploaden. Upload foto's met goede belichting, gemaakt op verschillende dagen met verschillende kleding en verschillende achtergronden. Een mix van close-ups en mid-range shots werkt het beste. Zorg ervoor dat je gezicht duidelijk zichtbaar is.",
+      "Ja. Wij gebruiken je foto's alleen om jouw portretten te genereren en verwijderen ze daarna van onze servers. Betalingen verlopen via Stripe, de veiligste betaalprovider ter wereld (iDEAL & Creditcard).",
   },
-  
-  
   {
-    question: "Hoe lang duurt het voordat mijn portretfoto's klaar zijn?",
+    question: "Mag ik de foto's overal gebruiken?",
+    answer: "Ja, je krijgt de volledige commerciële rechten. De foto's zijn jouw eigendom en perfect voor LinkedIn, je CV, je website of print.",
+  },
+  {
+    question: "Wat als ik niet tevreden ben?",
     answer:
-      "De AI training en het genereren van je professionele portretfoto's duurt ongeveer 15 minuten. Ze verschijnen automatisch in je dashboard. De tijd kan soms iets variëren afhankelijk van hoe druk het is.",
+      "Heb jij niet minstens 4 profielwaardige foto's? Geen zorgen, we hebben een 14 dagen niet-goed-geld-terug garantie.",
   },
   {
-    question: "Wat voor kleding draag ik tijdens de fotoshoot?",
-    answer: "Je draagt tijdens de fotoshoot professionele outfits zoals; blazers, pakken, overhemden en blouses.",
-  },
-  {
-    question: "Wat voor achtergrond hebben mijn foto's?",
+    question: "Hebben jullie een klantenservice?",
     answer:
-      "We gebruiken professionele achtergronden zoals een grijze studio back-drop en achtergronden van kantoren en trendy werkplekken",
-  },
-  {
-    question: "Heb ik het recht om de foto's overal te gebruiken?",
-    answer: "Ja, je hebt alle commerciële en persoonlijke rechten op jouw foto's.",
-  },
-  {
-    question: "Zijn mijn betalingsgegevens veilig?",
-    answer:
-      "Ja, wij gebruiken Stripe als betaalplatform, stripe faciliteert ideal en credit card betalingen, wij zelf slaan nooit betalingsgegevens op.",
-  },
-  {
-    question: "Hoe kan ik contact met jullie opnemen?",
-    answer:
-      "Stuur ons een bericht via de live chat of het contactformulier, indien niet direct, zullen wij contact met je opnemen via het e-mailadres dat je hebt opgegeven via de chat. Je kunt ook via de contact knop onder de faq contact opnemen. Ons team spreekt Nederlands.",
-  },
-  {
-    question: "Kan ik een terugbetaling krijgen als ik niet tevreden ben?",
-    answer:
-      "Net als bij traditionele fotoshoots zijn niet alle foto's goed. Wij laten je alle resultaten zien zodat je zelf de goede uit kan kiezen. Wij beloven dat je aankoop van AI Portret Pro 100% risicoloos is want als je niet minstens 1 bruikbare portretfoto in je bestelling vindt, je 100% van je betaling terugkrijgt. Voorwaarde is wel dat je geen enkele foto gedownload hebt. Om dit proces in gang te zetten stuur ons een bericht via het contact formulier.",
+      "Zeker! Wij zijn een Nederlandse klantenservice. Heb je een vraag? Je kunt ons direct bereiken via info@aiportretpro.nl of chat en we helpen je persoonlijk verder.",
   },
 ]
 
@@ -152,9 +130,9 @@ export default function HomePage() {
         
         <h1 className="tracking-tight text-xl md:text-4xl font-bold mb-6 leading-tight">
           <span className="block">Professionele zakelijke foto’s nodig?</span>
-          <span className="text-[#0077B5] block">Zonder het gedoe van een fotoshoot</span>
+          <span className="text-[#0077B5] block">Zonder het gedoe van een fotoshoot?</span>
         </h1>
-        <p className=" text-lg mb-6 font-light ">Ontvang binnen 15 minuten 40 zakelijke portretten. Upload een paar selfies en onze AI doet de rest</p>
+        <p className=" text-lg mb-6 font-light ">Upload een paar selfies en onze AI doet de rest. Ontvang binnen 15 minuten 40 zakelijke portretten</p>
 
         <div className="text-md md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto text-center">
           <div className="inline-grid grid-cols-[auto_1fr] gap-x-2 items-start text-start justify-center">
@@ -299,7 +277,7 @@ export default function HomePage() {
                 </li>
                 <li className="flex flex-col gap-1">
                   <span className="font-semibold text-white">Snelheid:</span>
-                  <span className="text-blue-100">Binnen 15 minuten alle foto's in je mailbox.</span>
+                  <span className="text-blue-100">Binnen 15 minuten alle foto's in je dashboard.</span>
                 </li>
                 <li className="flex flex-col gap-1">
                   <span className="font-semibold text-white">Resultaat:</span>
@@ -339,7 +317,7 @@ export default function HomePage() {
       <section id="faq" className="container mx-auto px-4 py-12 md:py-16 bg-gray-50">
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-4">Veelgestelde Vragen</h2>
         <p className="text-lg text-gray-600 text-center mb-8 md:mb-12 max-w-2xl mx-auto">
-          Hier beantwoorden we de meest voorkomende vragen over onze app, zodat je precies weet hoe het werkt!
+          Alles wat je moet weten voor je begint.
         </p>
         <div className="max-w-3xl mx-auto">
           {faqData.map((faq, index) => (
@@ -379,154 +357,43 @@ export default function HomePage() {
       <section className="py-12 md:py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">
-              Professionele Zakelijke Foto's Laten Maken Online - De Slimme Keuze voor Professionals
+            <h2 className="text-lg md:text-2xl font-semibold text-gray-500 mb-6 text-center">
+              Professionele Zakelijke Foto's Laten Maken Online – De Slimme Keuze voor Professionals in 2026
             </h2>
             
-            <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-6">
-              <p className="text-lg">
-                Wil je <strong>professionele zakelijke foto's laten maken</strong> zonder de hoge kosten van een traditionele fotograaf? 
-                Met onze revolutionaire AI-technologie krijg je <strong>40 professionele foto's in slechts 15 minuten</strong> voor 
-                slechts €29. Perfect voor LinkedIn, CV, website, visitekaartjes en alle zakelijke doeleinden.
+            <div className="prose prose-sm md:prose-base max-w-none text-gray-400 md:text-gray-500 leading-relaxed space-y-4 md:space-y-6">
+              <p className="text-sm md:text-base">
+                In de snel veranderende zakelijke wereld van 2026 is je digitale eerste indruk belangrijker dan ooit. Wie vandaag de dag professionele zakelijke foto's wil laten maken, hoeft niet langer te rekenen op de hoge kosten of het tijdrovende proces van een traditionele fotostudio. Dankzij onze revolutionaire AI-technologie van de nieuwste generatie ontvang je nu veertig professionele portretten in slechts vijftien minuten tijd voor het vaste tarief van negenentwintig euro. Dit maakt onze service de meest efficiënte keuze voor iedereen die een krachtige indruk wil maken op LinkedIn, een CV, de bedrijfswebsite of digitale visitekaartjes.
               </p>
 
-              <div className="grid md:grid-cols-2 gap-8 my-8">
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-4">Waarom Kiezen voor AI Portretfotografie?</h3>
-                  <ul className="space-y-2 text-gray-700">
-                    <li className="flex items-start gap-2">
-                      <span className="text-green-600 mt-1">✓</span>
-                      <span><strong>6x goedkoper</strong> dan traditionele fotoshoots</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-green-600 mt-1">✓</span>
-                      <span><strong>Geen afspraak nodig</strong> - start direct vanuit huis</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-green-600 mt-1">✓</span>
-                      <span><strong>40 verschillende poses</strong> en achtergronden</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-green-600 mt-1">✓</span>
-                      <span><strong>Professionele kwaliteit</strong> gegarandeerd</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-green-600 mt-1">✓</span>
-                      <span><strong>14-dagen geld terug garantie</strong></span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-4">Perfect Voor Elk Doel</h3>
-                  <ul className="space-y-2 text-gray-700">
-                    <li className="flex items-start gap-2">
-                      <span className="text-blue-600 mt-1">📸</span>
-                      <span><strong>LinkedIn profielfoto's</strong> die opvallen</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-blue-600 mt-1">💼</span>
-                      <span><strong>CV en sollicitatie foto's</strong></span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-blue-600 mt-1">🌐</span>
-                      <span><strong>Website en bedrijfsprofiel</strong></span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-blue-600 mt-1">📧</span>
-                      <span><strong>E-mail handtekening</strong> en visitekaartjes</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-blue-600 mt-1">📱</span>
-                      <span><strong>Social media profielen</strong></span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <p>
-                Of je nu een <strong>zakelijke foto nodig hebt</strong> voor je startup, een <strong>headshot voor je corporate functie</strong>, 
-                of <strong>professionele foto's voor je bedrijfsprofiel</strong> - onze AI fotografie service biedt de perfecte oplossing. 
-                Geen gedoe met studio afspraken, dure fotograaf tarieven, of lange wachttijden.
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">De voordelen van AI portretfotografie in het nieuwe jaar</h3>
+              
+              <p className="text-sm md:text-base">
+                Het jaar 2026 markeert een definitieve omslag in de manier waarop we naar professionele fotografie kijken. Onze service is meer dan zes keer goedkoper dan traditionele fotoshoots, zonder dat dit ten koste gaat van de kwaliteit. Je hebt geen afspraak meer nodig en hoeft niet door de stad te reizen voor een sessie; je start het proces simpelweg direct vanuit huis of vanaf je werkplek. Met de keuze uit veertig verschillende poses en achtergronden ben je verzekerd van een gevarieerd pakket dat perfect aansluit bij jouw specifieke sector. Bovendien bieden wij volledige zekerheid met onze veertien dagen geld-terug-garantie, omdat wij overtuigd zijn van de professionele kwaliteit die onze 2026-engine levert.
               </p>
 
-              <div className="bg-blue-50 p-6 rounded-lg my-8">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Hoe Werkt Het?</h3>
-                <div className="space-y-3 text-gray-700">
-                  <div className="flex items-start gap-3">
-                    <span className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">1</span>
-                    <span><strong>Upload 6-12 foto's</strong> van jezelf (verschillende hoeken en kleding)</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <span className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">2</span>
-                    <span><strong>AI analyseert je gezicht</strong> en leert je unieke kenmerken</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <span className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">3</span>
-                    <span><strong>15 minuten wachten</strong> terwijl de magie gebeurt</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <span className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">4</span>
-                    <span><strong>Download 40 professionele foto's</strong> in hoge resolutie</span>
-                  </div>
-                </div>
-              </div>
-
-              <p>
-                Onze <strong>AI portretfotografie</strong> gebruikt de nieuwste technologie om foto's te creëren die 
-                onmogelijk te onderscheiden zijn van echte studio foto's. Met professionele belichting, 
-                zakelijke achtergronden en perfect gepositioneerde shots, krijg je het beste van beide werelden: 
-                <strong>professionele kwaliteit tegen een fractie van de kosten</strong>.
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Een veelzijdige oplossing voor elke zakelijke behoefte</h3>
+              
+              <p className="text-sm md:text-base">
+                Onze AI-fotografie is ontworpen om te voldoen aan elk denkbaar professioneel doel. Of je nu op zoek bent naar LinkedIn profielfoto's die direct opvallen bij recruiters, representatieve foto's voor een overtuigend CV of beelden voor een complete bedrijfswebsite, onze technologie levert resultaten die onmogelijk te onderscheiden zijn van echte studiofotografie. Ook voor e-mail handtekeningen, moderne visitekaartjes en zakelijke social media profielen biedt onze service in 2026 de perfecte uitkomst. Geen gedoe meer met dure studiokosten of lange wachttijden op de nabewerking door een fotograaf; je krijgt direct de uitstraling die bij je carrière past.
               </p>
 
-              <p>
-                Sluit je aan bij duizenden tevreden professionals die al hun <strong>zakelijke foto's lieten maken</strong> 
-                met onze service. Van startende ondernemers tot C-level executives - iedereen kan profiteren van 
-                een krachtige, professionele uitstraling die de juiste indruk maakt.
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Hoe het proces in 2026 werkt</h3>
+              
+              <p className="text-sm md:text-base">
+                Het proces is volledig geoptimaliseerd voor snelheid en gebruiksvriendelijkheid. Je begint door zes tot twaalf foto's van jezelf te uploaden, bij voorkeur vanuit verschillende hoeken en met gevarieerde kleding. Vervolgens analyseert onze geavanceerde AI je gelaatstrekken en leert het je unieke kenmerken kennen om een natuurgetrouw resultaat te garanderen. Terwijl de technologie op de achtergrond zijn werk doet, hoef je slechts vijftien minuten te wachten tot je veertig professionele foto's in hoge resolutie kunt downloaden vanuit je persoonlijke dashboard.
               </p>
 
-              <div className="bg-gray-50 p-6 rounded-lg my-8">
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">Populaire Zoektermen & Services</h3>
-                <div className="grid md:grid-cols-3 gap-4 text-sm text-gray-600">
-                  <div>
-                    <h4 className="font-semibold text-gray-800 mb-2">Fotografie Services</h4>
-                    <ul className="space-y-1">
-                      <li>• Profielfoto laten maken</li>
-                      <li>• Zakelijke portretfoto</li>
-                      <li>• Corporate headshots</li>
-                      <li>• Business foto's online</li>
-                      <li>• CV foto professioneel</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-800 mb-2">Platform Specifiek</h4>
-                    <ul className="space-y-1">
-                      <li>• LinkedIn profielfoto maken</li>
-                      <li>• Instagram business profiel</li>
-                      <li>• Website about page foto</li>
-                      <li>• Social media headshot</li>
-                      <li>• Online dating profielfoto</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-800 mb-2">Technologie</h4>
-                    <ul className="space-y-1">
-                      <li>• AI fotografie Nederland</li>
-                      <li>• Kunstmatige intelligentie foto</li>
-                      <li>• Online fotoshoot thuis</li>
-                      <li>• Virtuele fotostudio</li>
-                      <li>• Automatische achtergrond</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Waarom AI Portret Pro de standaard is voor jouw succes</h3>
+              
+              <p className="text-sm md:text-base">
+                In 2026 combineren wij de nieuwste ontwikkelingen op het gebied van kunstmatige intelligentie met de fijne kneepjes van klassieke portretfotografie. Onze algoritmes zijn getraind op tienduizenden zakelijke headshots, waardoor we de ideale balans vinden tussen een natuurlijke uitstraling en zakelijke autoriteit. Met professionele belichting en moderne achtergronden die aansluiten bij de trends van dit jaar, bieden wij de kwaliteit van een topstudio tegen een fractie van de gebruikelijke kosten. Sluit je aan bij de duizenden professionals, van startende ondernemers tot ervaren executives, die hun zakelijke uitstraling in 2026 al naar een hoger niveau hebben getild.
+              </p>
 
-              <p>
-                <strong>Waarom AI Portret Pro de beste keuze is voor jouw zakelijke foto's:</strong> 
-                We combineren geavanceerde AI-technologie met jarenlange ervaring in professionele fotografie. 
-                Onze algoritmes zijn getraind op duizenden zakelijke portretten, waardoor we de perfecte balans 
-                vinden tussen natuurlijkheid en professionaliteit. Of je nu werkt in tech, finance, marketing, 
-                consulting, of welke sector dan ook - wij zorgen ervoor dat je de juiste indruk maakt.
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Over onze zakelijke fotografie in 2026</h3>
+              
+              <p className="text-sm md:text-base">
+                Onze expertise strekt zich uit over alle facetten van digitale zakelijke fotografie. AI Portret Pro is de primaire bron voor het laten maken van profielfoto's en zakelijke portretten online, met een specifieke focus op de Nederlandse markt. Onze diensten omvatten het genereren van corporate headshots, professionele CV-foto's en visuele content voor moderne bedrijfswebsites. Technologisch lopen we voorop met AI-fotografie die specifiek is getraind voor zakelijke doeleinden, waardoor we een superieur en sneller alternatief bieden voor de traditionele fotograaf. Of je nu zoekt naar een LinkedIn foto upgrade of een volledige online fotoshoot, onze virtuele studio levert in 2026 de meest scherpe en representatieve resultaten die momenteel technisch mogelijk zijn.
               </p>
             </div>
           </div>
@@ -600,12 +467,6 @@ export default function HomePage() {
             <div className="flex flex-col space-y-4">
               <h4 className="text-white font-semibold text-sm uppercase tracking-wide">Navigatie</h4>
               <div className="flex flex-col space-y-2">
-                <Link
-                  href="/over-ons"
-                  className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
-                >
-                  Over Ons
-                </Link>
                 <Link href="/pricing" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
                   Prijzen
                 </Link>

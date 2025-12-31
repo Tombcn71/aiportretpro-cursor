@@ -147,20 +147,20 @@ export default function LinkedInGroningenPage() {
         
         <h1 className="tracking-tight text-xl md:text-4xl font-bold mb-6 leading-tight">
           <span className="block">Professionele foto voor LinkedIn laten maken in Groningen? </span>
-          <span className="text-[#0077B5] block">Dit kan nu ook online zonder fotograaf!</span>
+          <span className="text-[#0077B5] block">Zonder het gedoe van een fotoshoot?</span>
         </h1>
-        <p className="text-gray-500 text-lg mb-6 font-light italic">Even wat foto's uploaden, dat is alles.
-
-</p>
+        <p className="text-gray-500 text-lg mb-6">
+          Upload een paar selfies en onze AI doet de rest. Ontvang binnen 15 minuten 40 zakelijke portretten
+        </p>
 
         <div className="text-md md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto text-center">
           <div className="inline-grid grid-cols-[auto_1fr] gap-x-2 items-start text-start justify-center">
             <span className="text-center">✅</span>
             <span>6 x goedkoper dan een fotograaf</span>
             <span className="text-center">✅</span>
-            <span>Niet te onderscheiden van echte foto's</span>
+            <span>Niet van echt te onderscheiden</span>
             <span className="text-center">✅</span>
-            <span>Gebruikt door 1200+ tevreden klanten</span>
+            <span>Klaar binnen 15 minuten</span>
           </div>
         </div>
 
@@ -264,168 +264,82 @@ export default function LinkedInGroningenPage() {
       {/* Reviews en Voorbeelden */}
       <ReviewsEnVoorbeelden />
 
-      {/* Resultaten Sectie */}
-      <section id="voorbeelden" className="py-12 md:py-16">
+      {/* Comparison Section */}
+      <section className="py-12 md:py-16 bg-gradient-to-br from-blue-50 to-orange-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-12">
-            Bekijk de resultaten van AI Portret Pro
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-12 max-w-3xl mx-auto">
+            Waarom €200+ betalen voor een middag in een studio?
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {(isMobile ? galleryPhotos.slice(-6) : galleryPhotos.slice(0, 12)).map((photo, index) => (
-              <div
-                key={index}
-                className="relative aspect-[3/4] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
-                onClick={() => openLightbox(photo)}
-              >
-                <Image src={photo || "/placeholder.svg"} alt={`Voorbeeld ${index + 1}`} fill className="object-cover" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* AI vs Traditional Comparison */}
-      <section className="py-16 bg-gradient-to-r from-[#0077B5]/5 to-blue-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
-              AI fotografie vs. traditionele fotograaf
-            </h2>
-            <p className="text-lg text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-              Waarom je hierna niet meer naar een fotostudio hoeft te gaan
-            </p>
-
-            <div className="grid md:grid-cols-2 gap-8">
-              {/* Traditional Photography */}
-              <div className="bg-white p-8 rounded-lg border border-gray-200">
-                <h3 className="text-2xl font-semibold mb-6 text-gray-800">Traditionele Fotograaf</h3>
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                    <span className="text-gray-600">€180+ per sessie</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                    <span className="text-gray-600">Halve dag kwijt + reistijd</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                    <span className="text-gray-600">5-10 foto's maximum</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                    <span className="text-gray-600">Wachten op afspraak</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                    <span className="text-gray-600">Stress voor de camera</span>
-                  </div>
-                </div>
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {/* Traditional Photographer */}
+            <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg border-2 border-gray-200">
+              <div className="text-center mb-6">
+                <div className="text-5xl mb-3">❌</div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">De traditionele fotograaf</h3>
               </div>
-
-              {/* AI Photography */}
-              <div className="bg-[#0077B5] p-8 rounded-lg text-white relative overflow-hidden">
-                <div className="absolute top-4 right-4 bg-yellow-400 text-black px-3 py-1 rounded-full text-sm font-semibold">
-                  POPULAIR
-                </div>
-                <h3 className="text-2xl font-semibold mb-6">AI Portret Pro</h3>
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                    <span>Slechts €29 totaal</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                    <span>15 minuten resultaat</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                    <span>40 professionele variaties</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                    <span>Direct beschikbaar 24/7</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                    <span>Gewoon thuis op je bank</span>
-                  </div>
-                </div>
-              </div>
+              <ul className="space-y-4">
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-gray-900">Prijs:</span>
+                  <span className="text-gray-600">Vaak tussen de €150 en €350.</span>
+                </li>
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-gray-900">Tijd:</span>
+                  <span className="text-gray-600">Afspraak plannen, reistijd en een uur poseren.</span>
+                </li>
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-gray-900">Geduld:</span>
+                  <span className="text-gray-600">1 tot 2 weken wachten op de nabewerking.</span>
+                </li>
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-gray-900">Resultaat:</span>
+                  <span className="text-gray-600">Slechts 3 tot 5 foto's inbegrepen (bijbetalen voor meer).</span>
+                </li>
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-gray-900">Risico:</span>
+                  <span className="text-gray-600">Niet tevreden? Jammer, je betaalt de fotograaf voor zijn tijd.</span>
+                </li>
+              </ul>
             </div>
 
-            
-          </div>
-        </div>
-      </section>
-
-     
-
-      {/* Testimonials Grid */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
-            Wat professionals zeggen over hun AI LinkedIn foto's
-          </h2>
-          <p className="text-lg text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-            Vele professionals gingen je voor
-          </p>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {/* Testimonial 1 */}
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-[#0077B5] rounded-full flex items-center justify-center">
-                  <span className="text-white font-semibold text-lg">SB</span>
-                </div>
-                <div>
-                  <h4 className="font-semibold">Sarah B.</h4>
-                  <p className="text-sm text-gray-600">Marketing Manager</p>
-                </div>
+            {/* AI Portret Pro */}
+            <div className="bg-gradient-to-br from-[#0077B5] to-[#005a8c] rounded-2xl p-6 md:p-8 shadow-2xl border-2 border-[#0077B5] relative overflow-hidden">
+              <div className="absolute top-0 right-0 bg-[#FF8C00] text-white px-4 py-1 text-sm font-bold transform rotate-12 translate-x-4 -translate-y-2">
+                DE SLIMME KEUZE
               </div>
-              <p className="text-gray-700 mb-4">
-                "Binnen 2 weken na het plaatsen van mijn nieuwe AI LinkedIn foto kreeg ik 3 aanvragen van recruiters. De kwaliteit is echt indrukwekkend!"
-              </p>
-              <div className="flex text-yellow-400">
-                {"★".repeat(5)}
+              <div className="text-center mb-6">
+                <div className="text-5xl mb-3">✅</div>
+                <h3 className="text-xl font-bold text-white mb-2">AI Portret Pro</h3>
+                <div className="text-sm text-blue-100 mt-1">(De slimme keuze)</div>
               </div>
-            </div>
-
-            {/* Testimonial 2 */}
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-[#0077B5] rounded-full flex items-center justify-center">
-                  <span className="text-white font-semibold text-lg">MH</span>
-                </div>
-                <div>
-                  <h4 className="font-semibold">Mark H.</h4>
-                  <p className="text-sm text-gray-600">IT Consultant</p>
-                </div>
-              </div>
-              <p className="text-gray-700 mb-4">
-                "Veel beter dan verwacht! Niemand kan zien dat het AI is. Heb de oude fotostudio foto's direct vervangen."
-              </p>
-              <div className="flex text-yellow-400">
-                {"★".repeat(5)}
-              </div>
-            </div>
-
-            {/* Testimonial 3 */}
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-[#0077B5] rounded-full flex items-center justify-center">
-                  <span className="text-white font-semibold text-lg">LV</span>
-                </div>
-                <div>
-                  <h4 className="font-semibold">Lisa V.</h4>
-                  <p className="text-sm text-gray-600">Financial Advisor</p>
-                </div>
-              </div>
-              <p className="text-gray-700 mb-4">
-                "40 foto's voor €29? Dit kost bij een fotograaf makkelijk €300+. Super tevreden met de professionele uitstraling."
-              </p>
-              <div className="flex text-yellow-400">
-                {"★".repeat(5)}
+              <ul className="space-y-4">
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-white">Prijs:</span>
+                  <span className="text-blue-100">Eenmalig €29 (geen verborgen kosten).</span>
+                </li>
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-white">Gemak:</span>
+                  <span className="text-blue-100">Direct beginnen vanaf je eigen bank, geen afspraak nodig.</span>
+                </li>
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-white">Snelheid:</span>
+                  <span className="text-blue-100">Binnen 15 minuten alle foto's in je dashboard.</span>
+                </li>
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-white">Resultaat:</span>
+                  <span className="text-blue-100">Je krijgt direct 40+ verschillende zakelijke portretten.</span>
+                </li>
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-white">Garantie:</span>
+                  <span className="text-blue-100">Niet goed? Geld terug. Zo simpel is het.</span>
+                </li>
+              </ul>
+              <div className="mt-6">
+                <Button asChild size="lg" className="w-full bg-[#FF8C00] hover:bg-[#FFA500] text-white font-bold">
+                  <Link href="/pricing">
+                    Bespaar €170+ Nu <ArrowRight className="ml-2" />
+                  </Link>
+                </Button>
               </div>
             </div>
           </div>
@@ -583,98 +497,35 @@ export default function LinkedInGroningenPage() {
       {/* SEO Content Section - Groningen Specific */}
       <section className="container mx-auto px-4 py-16 bg-white">
         <div className="max-w-4xl mx-auto prose prose-lg">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">LinkedIn foto laten maken Groningen: Professionele fotoshoot noordelijke hoofdstad</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-6">Professionele LinkedIn Foto Laten Maken in Groningen: Dé Keuze voor de Noordelijke Professional in 2026</h2>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            Groningen staat bekend als het belangrijke Nederlandse stad, waar dagelijks duizenden professionals werken aan hun carrière. In deze dynamische zakelijke omgeving is je LinkedIn profiel cruciaal voor netwerken, carrièrekansen en bedrijfsgroei. Een professionele LinkedIn foto kan het verschil maken tussen opvallen of onderbelicht blijven in de Groningense zakenwereld.
+            In het zakelijke jaar 2026 is Groningen onverminderd de economische motor van Noord-Nederland. Met een bloeiende sector in energie, zorg en onderwijs, en een sterke verbinding met de Rijksuniversiteit, is de stad een magneet voor ambitieuze professionals. In deze dynamische omgeving is je digitale aanwezigheid op LinkedIn cruciaal voor het ontsluiten van nieuwe carrièrekansen en internationale netwerken. Een professionele LinkedIn foto laten maken in Groningen is in 2026 de slimste manier om je digitale handdruk te verzilveren en op te vallen in de noordelijke zakenwereld.
           </p>
 
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
-            <h4 className="text-xl font-semibold text-gray-900 mb-3">Speciaal voor Groningen</h4>
-            <p className="text-gray-700">
-              Als professional in Groningen weet je dat een sterke LinkedIn aanwezigheid belangrijk is voor je carrière. 
-              Of je nu een nieuwe baan zoekt, als zzp'er werkt, of gewoon je netwerk wilt uitbreiden - 
-              een professionele profielfoto maakt het verschil bij sollicitaties en nieuwe opdrachten.
-            </p>
-          </div>
-
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">LinkedIn foto Groningen: Slimme keuze voor Noord-Nederlandse professionals</h3>
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">De nuchtere en slimme keuze voor professionals in Noord-Nederland</h3>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            Groningen telt ruim 120.000 actieve LinkedIn gebruikers in onderwijs, energie en zorg. Als noordelijke professional weet je dat je soms harder moet werken voor zichtbaarheid dan Randstad-collega's. Een professionele LinkedIn foto is je eerste kans om indruk te maken op recruiters uit heel Nederland. Met AI fotografie betaal je €29 in plaats van de €165-200 die Groningse fotografen vragen, en je hebt binnen 15 minuten resultaat. Praktisch, betaalbaar, professioneel - typisch Gronings eigenlijk.
+            Groningen telt in 2026 ruim 120.000 actieve LinkedIn-gebruikers die begrijpen dat zichtbaarheid essentieel is. Als noordelijke professional weet je dat kwaliteit en nuchterheid hand in hand gaan. Daarom kiezen steeds meer mensen in de regio voor de efficiëntie van AI-fotografie boven de traditionele gang naar een fotostudio. Waar een lokale fotograaf voorheen vaak tussen de honderdvijfenzestig en tweehonderd euro rekende voor een enkele sessie, biedt AI Portret Pro een praktisch en betaalbaar alternatief. Voor het vaste tarief van negenentwintig euro ontvang je 40 professionele portretten zonder dat je een afspraak hoeft te maken of door de drukke binnenstad hoeft te reizen.
           </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Waarom een professionele LinkedIn foto essentieel is in Groningen</h3>
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Direct een pakket van 40 professionele foto's na een simpele upload</h3>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            Groningen is de economische motor van Noord-Nederland, met de Rijksuniversiteit, energiebedrijven en een groeiende startup scene. Als noordelijke hoofdstad trekt de stad ambitieuze professionals uit heel Scandinavië en de Baltische staten. In deze competitieve markt is je eerste indruk op LinkedIn vaak beslissend voor internationale carrièrekansen.
+            Het proces in 2026 is volledig ingericht op de snelheid van de moderne tijd. Je hoeft niet langer een middag vrij te plannen voor een fotoshoot in het centrum of de Korrewegwijk. Door simpelweg een paar bestaande foto's of selfies te uploaden vanaf je eigen werkplek, krijgt onze technologie direct inzicht in je unieke kenmerken. Binnen vijftien minuten genereert onze engine een compleet pakket van 40 professionele foto's. Hierbij wordt gezorgd voor een hoogwaardige variatie in professionele achtergronden, belichting en kleding, zodat je altijd een beeld vindt dat precies past bij de uitstraling die je in 2026 wilt neerzetten.
           </p>
 
-          <p className="text-gray-700 leading-relaxed mb-6">
-            Voor Groningense professionals betekent dit concreet: meer zichtbaarheid bij headhunters op de lokale zakelijke gemeenschap, en sterker netwerken in de tech-scene van Groningen Noord. Je LinkedIn foto is je digitale handdruk in een stad waar netwerken essentieel is.
-          </p>
-
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">AI fotografie: De toekomst van LinkedIn foto's</h3>
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Maximale impact voor elke sector in de noordelijke hoofdstad</h3>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            Traditioneel betekende een professionele LinkedIn foto maken in Groningen: een fotograaf zoeken, een afspraak inplannen (vaak weken later), door de stad reizen, en €200-300 betalen voor enkele foto's. Onze AI-technologie verandert dit volledig.
+            In de competitieve markt van Groningen, waar talent uit heel Europa samenkomt, is je eerste indruk op LinkedIn vaak beslissend voor internationale carrièrekansen. Met AI Portret Pro heb je geen wachttijd voor nabewerking; de 40 foto's zijn direct geoptimaliseerd en klaar voor gebruik. Of je nu werkt in de tech-scene van Groningen-Noord, de energiesector of de academische wereld: door te kiezen voor AI-fotografie toon je aan dat je vooroploopt met moderne technologie. Dit resulteert in een set haarscherpe foto's die deskundigheid en autoriteit uitstralen, eigenschappen die in de ondernemende Groningse mentaliteit zeer gewaardeerd worden.
           </p>
 
-          <p className="text-gray-700 leading-relaxed mb-6">
-            Met AI fotografie upload je gewoon 6 selfies vanuit je huis in Groningen - of het nu in het centrum, de Korreweg, of Groningen Noord is - en ontvang je binnen 15 minuten 40 professionele LinkedIn foto's. Geen parkeerkosten, geen reistijd, geen wachten op de fotograaf. Perfect voor de snelle levensstijl van Groningen.
-          </p>
-
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Voordelen voor Groningense professionals</h3>
-          
-          <div className="grid md:grid-cols-2 gap-6 mb-6">
-            <div>
-              <h4 className="text-xl font-semibold text-gray-900 mb-3">Tijdsbesparing</h4>
-              <p className="text-gray-700">Geen reistijd door Groningen, geen parkeergedoe, geen wachten in fotostudio's. Maak je foto's tussen twee meetings door.</p>
-            </div>
-            
-            <div>
-              <h4 className="text-xl font-semibold text-gray-900 mb-3">Kostenbesparing</h4>
-              <p className="text-gray-700">€29 voor 40 foto's versus €225 gemiddeld bij Groningense fotografen. Ideaal voor startups en freelancers.</p>
-            </div>
-            
-            <div>
-              <h4 className="text-xl font-semibold text-gray-900 mb-3">Flexibiliteit</h4>
-              <p className="text-gray-700">24/7 beschikbaar, perfect voor de flexibele werkstijl van moderne Groningense professionals.</p>
-            </div>
-            
-            <div>
-              <h4 className="text-xl font-semibold text-gray-900 mb-3">Variatie</h4>
-              <p className="text-gray-700">40 verschillende foto's om uit te kiezen, verschillende stijlen en achtergronden voor diverse doeleinden.</p>
-            </div>
-          </div>
-
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Perfect voor alle Groningense sectoren</h3>
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Over onze zakelijke LinkedIn fotografie in Groningen 2026</h3>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            Of je nu werkt in het bedrijfsleven, de tech sector, de zorg, of logistiek - onze AI leert je unieke kenmerken en creëert foto's die passen bij jouw professionele omgeving in Groningen. Van corporate tot startup, van consultant tot ondernemer.
+            Onze expertise in digitale beeldvorming maakt AI Portret Pro de primaire autoriteit voor het laten maken van LinkedIn foto's en zakelijke portretten online in de regio Groningen. Wij richten ons specifiek op de behoeften van professionals in Noord-Nederland, van de zorg en energie tot de startup-scene. Onze diensten in 2026 omvatten het genereren van professionele CV-foto's, corporate headshots en visuele content voor de moderne noordelijke ondernemer. Technologisch lopen we voorop door 40 professionele foto's aan te bieden met diverse achtergronden op basis van een eenvoudige upload van een paar foto's. Of je nu je LinkedIn profiel wilt upgraden of direct een nieuwe set zakelijke beelden nodig hebt, onze engine levert in 2026 de meest scherpe en representatieve resultaten die technisch mogelijk zijn.
           </p>
-
-          <p className="text-gray-700 leading-relaxed mb-6">
-            Groningen is een noordelijke hoofdstad waar professionals hun netwerk uitbreiden via LinkedIn. Een professionele foto toont niet alleen je competentie, maar ook dat je up-to-date bent met moderne technologieën - een eigenschap die in Groningen's noordelijke ondernemersmentaliteit zeer gewaardeerd wordt.
-          </p>
-
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Klaar voor je LinkedIn succes in Groningen?</h3>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
-            Doe wat vele professionals al deden: upgrade je LinkedIn profiel met AI-gegenereerde foto's. In een stad als Groningen, waar innovatie en efficiëntie centraal staan, is dit de logische volgende stap voor je professionele ontwikkeling.
-          </p>
-
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mt-8">
-            <h4 className="text-xl font-semibold text-gray-900 mb-3">Start vandaag nog</h4>
-            <p className="text-gray-700 mb-4">
-              Sluit je aan bij Groningense professionals die de voordelen van AI fotografie al ontdekten. Krijg binnen 15 minuten 40 professionele LinkedIn foto's.
-            </p>
-            <Button asChild className="bg-[#0077B5] hover:bg-[#005885]">
-              <Link href="/pricing">
-                Begin nu je LinkedIn fotoshoot groningen →
-              </Link>
-            </Button>
-          </div>
         </div>
       </section>
 

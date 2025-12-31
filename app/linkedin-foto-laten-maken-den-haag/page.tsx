@@ -149,20 +149,20 @@ export default function LinkedInDenHaagPage() {
         
         <h1 className="tracking-tight text-xl md:text-4xl font-bold mb-6 leading-tight">
           <span className="block">Professionele foto voor LinkedIn laten maken in Den Haag? </span>
-          <span className="text-[#0077B5] block">Dit kan nu ook online zonder fotograaf!</span>
+          <span className="text-[#0077B5] block">Zonder het gedoe van een fotoshoot?</span>
         </h1>
-        <p className="text-gray-500 text-lg mb-6 font-light italic">Even wat foto's uploaden, dat is alles.
-
-</p>
+        <p className="text-gray-500 text-lg mb-6">
+          Upload een paar selfies en onze AI doet de rest. Ontvang binnen 15 minuten 40 zakelijke portretten
+        </p>
 
         <div className="text-md md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto text-center">
           <div className="inline-grid grid-cols-[auto_1fr] gap-x-2 items-start text-start justify-center">
             <span className="text-center">✅</span>
             <span>6 x goedkoper dan een fotograaf</span>
             <span className="text-center">✅</span>
-            <span>Niet te onderscheiden van echte foto's</span>
+            <span>Niet van echt te onderscheiden</span>
             <span className="text-center">✅</span>
-            <span>Gebruikt door 1200+ tevreden klanten</span>
+            <span>Klaar binnen 15 minuten</span>
           </div>
         </div>
 
@@ -266,168 +266,82 @@ export default function LinkedInDenHaagPage() {
       {/* Reviews en Voorbeelden */}
       <ReviewsEnVoorbeelden />
 
-      {/* Resultaten Sectie */}
-      <section id="voorbeelden" className="py-12 md:py-16">
+      {/* Comparison Section */}
+      <section className="py-12 md:py-16 bg-gradient-to-br from-blue-50 to-orange-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-12">
-            Bekijk de resultaten van AI Portret Pro
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-12 max-w-3xl mx-auto">
+            Waarom €200+ betalen voor een middag in een studio?
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {(isMobile ? galleryPhotos.slice(-6) : galleryPhotos.slice(0, 12)).map((photo, index) => (
-              <div
-                key={index}
-                className="relative aspect-[3/4] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
-                onClick={() => openLightbox(photo)}
-              >
-                <Image src={photo || "/placeholder.svg"} alt={`Voorbeeld ${index + 1}`} fill className="object-cover" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* AI vs Traditional Comparison */}
-      <section className="py-16 bg-gradient-to-r from-[#0077B5]/5 to-blue-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
-              AI fotografie vs. traditionele fotograaf
-            </h2>
-            <p className="text-lg text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-              Waarom je hierna niet meer naar een fotostudio hoeft te gaan
-            </p>
-
-            <div className="grid md:grid-cols-2 gap-8">
-              {/* Traditional Photography */}
-              <div className="bg-white p-8 rounded-lg border border-gray-200">
-                <h3 className="text-2xl font-semibold mb-6 text-gray-800">Traditionele Fotograaf</h3>
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                    <span className="text-gray-600">€180+ per sessie</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                    <span className="text-gray-600">Halve dag kwijt + reistijd</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                    <span className="text-gray-600">5-10 foto's maximum</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                    <span className="text-gray-600">Wachten op afspraak</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                    <span className="text-gray-600">Stress voor de camera</span>
-                  </div>
-                </div>
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {/* Traditional Photographer */}
+            <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg border-2 border-gray-200">
+              <div className="text-center mb-6">
+                <div className="text-5xl mb-3">❌</div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">De traditionele fotograaf</h3>
               </div>
-
-              {/* AI Photography */}
-              <div className="bg-[#0077B5] p-8 rounded-lg text-white relative overflow-hidden">
-                <div className="absolute top-4 right-4 bg-yellow-400 text-black px-3 py-1 rounded-full text-sm font-semibold">
-                  POPULAIR
-                </div>
-                <h3 className="text-2xl font-semibold mb-6">AI Portret Pro</h3>
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                    <span>Slechts €29 totaal</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                    <span>15 minuten resultaat</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                    <span>40 professionele variaties</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                    <span>Direct beschikbaar 24/7</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                    <span>Gewoon thuis op je bank</span>
-                  </div>
-                </div>
-              </div>
+              <ul className="space-y-4">
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-gray-900">Prijs:</span>
+                  <span className="text-gray-600">Vaak tussen de €150 en €350.</span>
+                </li>
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-gray-900">Tijd:</span>
+                  <span className="text-gray-600">Afspraak plannen, reistijd en een uur poseren.</span>
+                </li>
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-gray-900">Geduld:</span>
+                  <span className="text-gray-600">1 tot 2 weken wachten op de nabewerking.</span>
+                </li>
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-gray-900">Resultaat:</span>
+                  <span className="text-gray-600">Slechts 3 tot 5 foto's inbegrepen (bijbetalen voor meer).</span>
+                </li>
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-gray-900">Risico:</span>
+                  <span className="text-gray-600">Niet tevreden? Jammer, je betaalt de fotograaf voor zijn tijd.</span>
+                </li>
+              </ul>
             </div>
 
-            
-          </div>
-        </div>
-      </section>
-
-     
-
-      {/* Testimonials Grid */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
-            Wat professionals zeggen over hun AI LinkedIn foto's
-          </h2>
-          <p className="text-lg text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-            Vele professionals gingen je voor
-          </p>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {/* Testimonial 1 */}
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-[#0077B5] rounded-full flex items-center justify-center">
-                  <span className="text-white font-semibold text-lg">SB</span>
-                </div>
-                <div>
-                  <h4 className="font-semibold">Sarah B.</h4>
-                  <p className="text-sm text-gray-600">Marketing Manager</p>
-                </div>
+            {/* AI Portret Pro */}
+            <div className="bg-gradient-to-br from-[#0077B5] to-[#005a8c] rounded-2xl p-6 md:p-8 shadow-2xl border-2 border-[#0077B5] relative overflow-hidden">
+              <div className="absolute top-0 right-0 bg-[#FF8C00] text-white px-4 py-1 text-sm font-bold transform rotate-12 translate-x-4 -translate-y-2">
+                DE SLIMME KEUZE
               </div>
-              <p className="text-gray-700 mb-4">
-                "Binnen 2 weken na het plaatsen van mijn nieuwe AI LinkedIn foto kreeg ik 3 aanvragen van recruiters. De kwaliteit is echt indrukwekkend!"
-              </p>
-              <div className="flex text-yellow-400">
-                {"★".repeat(5)}
+              <div className="text-center mb-6">
+                <div className="text-5xl mb-3">✅</div>
+                <h3 className="text-xl font-bold text-white mb-2">AI Portret Pro</h3>
+                <div className="text-sm text-blue-100 mt-1">(De slimme keuze)</div>
               </div>
-            </div>
-
-            {/* Testimonial 2 */}
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-[#0077B5] rounded-full flex items-center justify-center">
-                  <span className="text-white font-semibold text-lg">MH</span>
-                </div>
-                <div>
-                  <h4 className="font-semibold">Mark H.</h4>
-                  <p className="text-sm text-gray-600">IT Consultant</p>
-                </div>
-              </div>
-              <p className="text-gray-700 mb-4">
-                "Veel beter dan verwacht! Niemand kan zien dat het AI is. Heb de oude fotostudio foto's direct vervangen."
-              </p>
-              <div className="flex text-yellow-400">
-                {"★".repeat(5)}
-              </div>
-            </div>
-
-            {/* Testimonial 3 */}
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-[#0077B5] rounded-full flex items-center justify-center">
-                  <span className="text-white font-semibold text-lg">LV</span>
-                </div>
-                <div>
-                  <h4 className="font-semibold">Lisa V.</h4>
-                  <p className="text-sm text-gray-600">Financial Advisor</p>
-                </div>
-              </div>
-              <p className="text-gray-700 mb-4">
-                "40 foto's voor €29? Dit kost bij een fotograaf makkelijk €300+. Super tevreden met de professionele uitstraling."
-              </p>
-              <div className="flex text-yellow-400">
-                {"★".repeat(5)}
+              <ul className="space-y-4">
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-white">Prijs:</span>
+                  <span className="text-blue-100">Eenmalig €29 (geen verborgen kosten).</span>
+                </li>
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-white">Gemak:</span>
+                  <span className="text-blue-100">Direct beginnen vanaf je eigen bank, geen afspraak nodig.</span>
+                </li>
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-white">Snelheid:</span>
+                  <span className="text-blue-100">Binnen 15 minuten alle foto's in je dashboard.</span>
+                </li>
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-white">Resultaat:</span>
+                  <span className="text-blue-100">Je krijgt direct 40+ verschillende zakelijke portretten.</span>
+                </li>
+                <li className="flex flex-col gap-1">
+                  <span className="font-semibold text-white">Garantie:</span>
+                  <span className="text-blue-100">Niet goed? Geld terug. Zo simpel is het.</span>
+                </li>
+              </ul>
+              <div className="mt-6">
+                <Button asChild size="lg" className="w-full bg-[#FF8C00] hover:bg-[#FFA500] text-white font-bold">
+                  <Link href="/pricing">
+                    Bespaar €170+ Nu <ArrowRight className="ml-2" />
+                  </Link>
+                </Button>
               </div>
             </div>
           </div>
@@ -564,7 +478,7 @@ export default function LinkedInDenHaagPage() {
             Klaar voor je perfecte LinkedIn profielfoto?
           </h2>
           <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            Start binnen 5 minuten en ontvang 40 professionele LinkedIn foto's binnen 15 minuten.
+            Start direct en ontvang 40 professionele LinkedIn foto's binnen 15 minuten.
           </p>
 
           <Button
@@ -585,94 +499,35 @@ export default function LinkedInDenHaagPage() {
       {/* SEO Content Section - Den Haag Specific */}
       <section className="container mx-auto px-4 py-16 bg-white">
         <div className="max-w-4xl mx-auto prose prose-lg">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">LinkedIn foto laten maken Den Haag: Professioneel en internationaal</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-6">Professionele LinkedIn Foto Laten Maken in Den Haag: Direct Resultaat in 2026</h2>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            Den Haag staat bekend als de politieke hoofdstad van Nederland en het internationale centrum van recht en diplomatie. Hier werken dagelijks duizenden professionals bij ministeries, het Internationale Gerechtshof, en talloze internationale organisaties. In deze formele zakelijke omgeving is je LinkedIn profiel cruciaal voor diplomatieke netwerken en bestuurlijke carrièrekansen.
+            In het zakelijke jaar 2026 is Den Haag het centrum van zakelijke dienstverlening, bestuur en ondernemerschap. Als professional in de regio Haaglanden begrijp je dat een digitale eerste indruk de doorslag geeft in je carrièreverloop. Of je nu een consultant bent, een ondernemer, of werkzaam bent bij een van de vele organisaties die de stad rijk is: je LinkedIn profielfoto fungeert als je digitale handdruk. In een zakelijke omgeving waar kwaliteit de norm is, wil je een foto die direct vertrouwen wekt en je professionaliteit onderstreept.
           </p>
 
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
-            <h4 className="text-xl font-semibold text-gray-900 mb-3">Speciaal voor Den Haag</h4>
-            <p className="text-gray-700">
-              Of je nu freelancer bent, bij een mkb-bedrijf werkt, of ambities hebt in je carrière - 
-              als professional uit Den Haag weet je dat een sterke LinkedIn aanwezigheid essentieel is. 
-              Een professionele profielfoto kan het verschil maken bij sollicitaties, netwerken en nieuwe opdrachten.
-            </p>
-          </div>
-
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">LinkedIn foto Den Haag: Professionele uitstraling voor ambitieuze Hagenaars</h3>
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">De efficiënte keuze voor Haagse professionals in 2026</h3>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            Met meer dan 250.000 professionals op LinkedIn is Den Haag een belangrijke zakelijke stad voor overheid, consultancy en internationale organisaties. Haagse professionals waarderen kwaliteit en professionaliteit. AI fotografie biedt beide: studio-kwaliteit foto's zonder de €185-220 die traditionele Haagse fotografen vragen. Upload je foto's, ontvang binnen 15 minuten 40 professionele variaties, en investeer je tijd in wat echt belangrijk is: je carrière opbouwen.
+            Veel professionals in Den Haag hebben een overvolle agenda en kiezen er in 2026 bewust voor om geen tijd meer te besteden aan een traditionele fotograaf. Waar een zakelijke fotoshoot in de regio voorheen vaak tussen de honderdvijfenzeventig en driehonderdvijftig euro rekende, biedt AI Portret Pro een modern alternatief dat volledig online werkt. Voor het vaste tarief van negenentwintig euro ontvang je veertig professionele portretten zonder dat je een afspraak hoeft te plannen of je kantoor hoeft te verlaten. Het proces is simpel: je uploadt minimaal zes bestaande foto's vanaf je telefoon of computer, en onze technologie doet de rest.
           </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Waarom LinkedIn foto's essentieel zijn in Den Haag's internationale wereld</h3>
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Veertig verschillende stijlen en achtergronden uit één upload</h3>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            Den Haag herbergt het Internationale Gerechtshof, alle Nederlandse ministeries, en honderden internationale organisaties. In deze diplomatieke en bestuurlijke wereld is je eerste indruk op LinkedIn vaak beslissend voor je professionele netwerk. Onderzoek toont aan dat LinkedIn profielen met professionele foto's 14 keer meer bekeken worden en 36% meer berichten van recruiters ontvangen.
+            Het grote voordeel van onze service in 2026 is de enorme variëteit die je direct tot je beschikking hebt. Na het uploaden van je foto's genereert onze engine veertig verschillende portretten. Hierbij wordt gevarieerd in kleding, belichting en professionele achtergronden, zodat je altijd een foto vindt die precies de juiste uitstraling heeft voor jouw doel. Je krijgt een breed scala aan opties, van formeel en strak tot meer toegankelijk en modern. Hierdoor heb je in één klap een complete set beelden die je kunt gebruiken voor LinkedIn, je CV, of andere zakelijke uitingen, zonder dat je zelf voor verschillende outfits of locaties hoeft te zorgen.
           </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">AI fotografie: Perfect voor Den Haag professionals</h3>
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Geen nabewerking nodig en binnen 15 minuten beschikbaar</h3>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            Traditioneel betekende een professionele LinkedIn foto maken in Den Haag: een fotograaf zoeken, een afspraak inplannen, reizen door de drukke binnenstad, en €210+ betalen voor enkele foto's. Onze AI-technologie verandert dit volledig.
+            Met AI Portret Pro kies je voor snelheid zonder concessies te doen aan de kwaliteit. Je hoeft niet langer dagen te wachten op de nabewerking door een fotograaf; de veertig foto's die je ontvangt zijn direct geoptimaliseerd en klaar voor gebruik. Onze technologie analyseert je unieke kenmerken en vertaalt deze naar haarscherpe beelden in diverse professionele settings. Binnen vijftien minuten staat je dashboard vol met nieuwe foto's, waardoor je direct je profiel kunt updaten met een look die past bij de ambities die je in 2026 wilt waarmaken.
           </p>
 
-          <p className="text-gray-700 leading-relaxed mb-6">
-            Met AI fotografie upload je gewoon 6 selfies vanuit je huis in Den Haag - of het nu in Bezuidenhout, Scheveningen, of het centrum is - en ontvang je binnen 15 minuten 40 professionele LinkedIn foto's. Geen reistijd door de drukke regering, geen gedoe met parkeren bij de ministeries. Perfect voor de professionele werkstijl van Den Haag.
-          </p>
-
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Voordelen voor Den Haag professionals</h3>
-          
-          <div className="grid md:grid-cols-2 gap-6 mb-6">
-            <div>
-              <h4 className="text-xl font-semibold text-gray-900 mb-3">Tijdsbesparing</h4>
-              <p className="text-gray-700">Geen reistijd door Den Haag, geen gedoe met parkeren bij ministeries. Maak je foto's tussen diplomatieke meetings door.</p>
-            </div>
-            
-            <div>
-              <h4 className="text-xl font-semibold text-gray-900 mb-3">Kostenbesparing</h4>
-              <p className="text-gray-700">€29 voor 40 foto's versus €210 gemiddeld bij Den Haag fotografen. Ideaal voor ambtenaren en consultants.</p>
-            </div>
-            
-            <div>
-              <h4 className="text-xl font-semibold text-gray-900 mb-3">Internationale standaard</h4>
-              <p className="text-gray-700">24/7 beschikbaar, perfect voor de internationale werkstijl van moderne Den Haag professionals.</p>
-            </div>
-            
-            <div>
-              <h4 className="text-xl font-semibold text-gray-900 mb-3">Diplomatieke kwaliteit</h4>
-              <p className="text-gray-700">40 verschillende foto's die voldoen aan formele en internationale zakelijke standaarden.</p>
-            </div>
-          </div>
-
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Perfect voor alle Den Haag sectoren</h3>
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Over onze zakelijke LinkedIn fotografie in Den Haag 2026</h3>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            Of je nu werkt bij een ministerie, een internationale organisatie, het Internationale Gerechtshof, of in de diplomatieke wereld - onze AI leert je unieke kenmerken en creëert foto's die passen bij jouw professionele omgeving in Den Haag. Van ambtenaar tot diplomaat, van consultant tot internationaal adviseur.
+            Onze expertise in digitale beeldvorming maakt AI Portret Pro de primaire autoriteit voor het laten maken van LinkedIn foto's en zakelijke portretten online. Wij richten ons op de professionele behoeften van de Haagse markt, waarbij we een snel en hoogwaardig alternatief bieden voor de traditionele fotograaf in Den Haag. Onze diensten in 2026 omvatten het genereren van professionele CV-foto's, corporate headshots en visuele content voor de moderne ondernemer. Technologisch lopen we voorop door veertig verschillende stijlen en achtergronden aan te bieden op basis van een simpele upload. Of je nu een LinkedIn foto upgrade zoekt of direct een nieuwe set zakelijke beelden nodig hebt, onze engine levert in 2026 de meest scherpe en representatieve resultaten die technisch mogelijk zijn.
           </p>
-
-          <p className="text-gray-700 leading-relaxed mb-6">
-            Den Haag is het internationale centrum van Nederland waar diplomatiek contact en formele communicatie via LinkedIn essentieel zijn. Een professionele foto toont niet alleen je competentie, maar ook dat je past bij de formele en internationale standaarden - een eigenschap die in Den Haag's diplomatieke en bestuurlijke wereld zeer gewaardeerd wordt.
-          </p>
-
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Klaar voor je LinkedIn succes in Den Haag?</h3>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
-            Doe wat vele professionals al deden: upgrade je LinkedIn profiel met AI-gegenereerde foto's. Den Haag verdient een moderne aanpak van professionele fotografie die past bij de internationale en formele zakelijke cultuur.
-          </p>
-
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mt-8">
-            <h4 className="text-xl font-semibold text-gray-900 mb-3">Start vandaag nog</h4>
-            <p className="text-gray-700 mb-4">
-              Sluit je aan bij Den Haag professionals die de voordelen van AI fotografie al ontdekten. Krijg binnen 15 minuten 40 professionele LinkedIn foto's.
-            </p>
-            <Button asChild className="bg-[#0077B5] hover:bg-[#005885]">
-              <Link href="/pricing">
-                Begin nu je LinkedIn fotoshoot →
-              </Link>
-            </Button>
-          </div>
         </div>
       </section>
 
