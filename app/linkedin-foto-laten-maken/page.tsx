@@ -265,8 +265,7 @@ export default function LinkedInProfielFotoPage() {
           className=" bg-[#FF8C00] hover:bg-[#FFA500] text-white px-6 md:px-10 py-8 md:py-8 text-base md:text-lg mb-3 md:max-w-sm"
         >
           <Link href="/pricing">
-            <LinkedinIcon className="mr-2 h-5 md:h-6 w-5 md:w-6" />
-            Start je LinkedIn fotoshoot - € 29 <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
+            Start jouw fotoshoot nu - € 29 <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
           </Link>
         </Button>
 
@@ -373,7 +372,7 @@ export default function LinkedInProfielFotoPage() {
                 <div className="flex items-center gap-2 mb-6">
                   <span className="text-3xl">❌</span>
                   <h3 className="text-2xl font-semibold text-gray-800">De traditionele fotograaf</h3>
-                </div>
+                  </div>
                 <div className="space-y-5">
                   <div>
                     <p className="font-semibold text-gray-800 mb-1">Prijs:</p>
@@ -406,7 +405,7 @@ export default function LinkedInProfielFotoPage() {
                 <div className="flex items-center gap-2 mb-6">
                   <span className="text-3xl">✅</span>
                   <h3 className="text-2xl font-semibold">AI Portret Pro</h3>
-                </div>
+                  </div>
                 <p className="text-blue-100 mb-6 text-sm">(De slimme keuze)</p>
                 <div className="space-y-5">
                   <div>
@@ -765,8 +764,7 @@ export default function LinkedInProfielFotoPage() {
           {isClient && (
             <Link href="/pricing">
               <Button size="lg" className="bg-[#FFA500] hover:bg-[#FF8C00] text-white px-8 py-4 text-lg">
-                <LinkedinIcon className="mr-2 h-5 w-5" />
-                Start je LinkedIn fotoshoot - € 29 <ArrowRight className="ml-2 h-5 w-5" />
+                Start jouw fotoshoot nu - € 29 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
           )}
@@ -905,8 +903,7 @@ export default function LinkedInProfielFotoPage() {
               className="w-full bg-[#FF8C00] hover:bg-[#FFA500] text-white px-6 py-8 text-base font-semibold"
             >
               <Link href="/pricing">
-                <LinkedinIcon className="mr-2 h-5 w-5" />
-                LinkedIn fotoshoot - € 29 <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
+                Start jouw fotoshoot nu - € 29 <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
               </Link>
             </Button>
           </div>

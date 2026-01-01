@@ -674,7 +674,7 @@ export default function HomePage() {
               className="w-full bg-[#FF8C00] hover:bg-[#FFA500] text-white px-6 py-8 text-base font-semibold"
             >
               <Link href="/pricing">
-                Start jouw fotoshoot nu — € 29 <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
+                Start jouw fotoshoot nu - € 29 <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
               </Link>
             </Button>
           </div>
