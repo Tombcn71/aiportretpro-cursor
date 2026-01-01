@@ -397,8 +397,8 @@ export default function ReviewsEnVoorbeelden({ title = "Reviews en Voorbeelden" 
                         sizes="(max-width: 768px) 50vw, 25vw"
                       />
                       {/* Badge rechtsboven op foto */}
-                      <div className="absolute top-2 right-2 z-10">
-                        <div className="bg-[#0077B5] text-white text-xs font-bold px-2 py-1 rounded">
+                      <div className="absolute top-1 right-1 md:top-2 md:right-2 z-10">
+                        <div className="bg-[#0077B5] text-white text-[10px] md:text-xs font-bold px-1.5 py-0.5 md:px-2 md:py-1 rounded">
                           AI Resultaat
                         </div>
                       </div>
