@@ -549,37 +549,41 @@ export default function LinkedInAlmerePage() {
       </section>
 
       {/* SEO Content Section - Almere Specific */}
-      <section className="container mx-auto px-4 py-16 bg-white">
-        <div className="max-w-4xl mx-auto prose prose-lg">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Professionele LinkedIn Profielfoto Laten Maken in Almere: Geen Fotostudio Nodig in 2026</h2>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+      <section className="py-12 md:py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-lg md:text-2xl font-semibold text-gray-500 mb-6 text-center">Professionele LinkedIn Profielfoto Laten Maken in Almere: Geen Fotostudio Nodig in 2026            </h2>
+            
+            <div className="prose prose-sm md:prose-base max-w-none text-gray-400 md:text-gray-500 leading-relaxed space-y-4 md:space-y-6">
+              <p className="text-sm md:text-base">
             Almere verstevigt in 2026 zijn positie als de snelst groeiende en meest moderne zakelijke hub van Nederland. Of je nu werkt in Almere Stad, Almere Poort, Almere Haven of een van de andere wijken: je LinkedIn profielfoto is je digitale handdruk. In deze vooruitstrevende omgeving waar innovatie en technologie centraal staan, is een professionele LinkedIn profielfoto laten maken in Almere de slimste manier om je expertise te tonen. Geen dure fotostudio nodig, geen gedoe met afspraken plannen, en binnen 15 minuten klaar.
-          </p>
+              </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Waarom professionals in Almere Stad, Poort en Haven kiezen voor AI profielfoto's</h3>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Waarom professionals in Almere Stad, Poort en Haven kiezen voor AI profielfoto's</h3>
+              
+              <p className="text-sm md:text-base">
             Met ruim 85.000 LinkedIn-gebruikers in Almere is de behoefte aan een sterke visuele presentatie groter dan ooit. Almeerders zijn tech-savvy en waarderen oplossingen die tijd en geld besparen. In 2026 kiezen professionals in Almere Stad, Almere Poort en Almere Haven massaal voor de efficiëntie van AI-fotografie. Waar een traditionele fotograaf in de regio voorheen tussen de €155 en €185 rekende, biedt AI Portret Pro een modern alternatief dat volledig online werkt. Voor slechts €29 ontvang je 40 professionele profielfoto's zonder dat je een afspraak hoeft te plannen of de polder uit moet reizen voor een studiosessie. Geen fotostudio nodig, gewoon vanuit huis of je werkplek in Almere.
-          </p>
+              </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Binnen 15 minuten 40 profielfoto's klaar: perfect voor Almere's snelle levensstijl</h3>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Binnen 15 minuten 40 profielfoto's klaar: perfect voor Almere's snelle levensstijl</h3>
+              
+              <p className="text-sm md:text-base">
             Het proces in 2026 is volledig afgestemd op de snelle levensstijl van Almere. Of je nu in Almere Stad werkt, in Almere Poort woont, of in Almere Haven gevestigd bent: je regelt je nieuwe zakelijke profielfoto's gewoon vanuit huis. Door simpelweg een paar bestaande foto's of selfies te uploaden vanaf je smartphone of laptop, krijgt onze AI-technologie direct inzicht in je unieke kenmerken. Binnen 15 minuten genereert onze engine een compleet pakket van 40 professionele profielfoto's. Geen wachttijd, geen fotostudio nodig, en direct klaar voor gebruik op LinkedIn, je CV of je website. Perfect voor de drukke professional in Almere die geen tijd heeft voor een traditionele fotoshoot.
-          </p>
+              </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">6x goedkoper dan een fotograaf: de slimme keuze voor Almere professionals</h3>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">6x goedkoper dan een fotograaf: de slimme keuze voor Almere professionals</h3>
+              
+              <p className="text-sm md:text-base">
             In de competitieve arbeidsmarkt van Almere, waar startups en moderne bedrijven de boventoon voeren, is je eerste indruk op LinkedIn vaak beslissend. Met AI Portret Pro heb je geen wachttijd voor nabewerking; de 40 profielfoto's zijn direct geoptimaliseerd en klaar voor gebruik. Of je nu werkt in de tech-sector in Almere Stad, de zorg in Almere Poort, de logistiek in Almere Haven of als zzp'er: door te kiezen voor AI-fotografie toon je aan dat je vooroploopt met de nieuwste technologieën. Dit resulteert in een set haarscherpe profielfoto's die deskundigheid en autoriteit uitstralen. En het beste: 6x goedkoper dan een traditionele fotograaf, zonder gedoe, en binnen 15 minuten klaar.
-          </p>
+              </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Over onze zakelijke LinkedIn profielfoto service in Almere 2026</h3>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Over onze zakelijke LinkedIn profielfoto service in Almere 2026</h3>
+              
+              <p className="text-sm md:text-base">
             Onze expertise in digitale beeldvorming maakt AI Portret Pro de primaire autoriteit voor het laten maken van LinkedIn profielfoto's en zakelijke foto's online in de regio Almere. Wij richten ons specifiek op de behoeften van professionals in Almere Stad, Almere Poort, Almere Haven en de rest van Flevoland. Onze diensten in 2026 omvatten het genereren van professionele CV-foto's, corporate headshots en visuele content voor de moderne ondernemer. Geen fotostudio nodig, geen gedoe met afspraken, en binnen 15 minuten klaar. Technologisch lopen we voorop door 40 professionele profielfoto's aan te bieden met diverse achtergronden op basis van een eenvoudige upload van een paar foto's. Of je nu je LinkedIn profiel wilt upgraden of direct een nieuwe set zakelijke beelden nodig hebt, onze engine levert in 2026 de meest scherpe en representatieve resultaten die technisch mogelijk zijn. Perfect voor professionals in Almere die snelheid, kwaliteit en gemak waarderen.
-          </p>
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 

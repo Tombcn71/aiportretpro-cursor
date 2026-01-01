@@ -527,37 +527,43 @@ export default function LinkedInRotterdamPage() {
       </section>
 
       {/* SEO Content Section - Rotterdam Specific */}
-      <section className="container mx-auto px-4 py-16 bg-white">
-        <div className="max-w-4xl mx-auto prose prose-lg">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Professionele LinkedIn Profielfoto Laten Maken in Rotterdam: De No-Nonsense Keuze voor 2026</h2>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+      <section className="py-12 md:py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-lg md:text-2xl font-semibold text-gray-500 mb-6 text-center">
+              Professionele LinkedIn Profielfoto Laten Maken in Rotterdam: De No-Nonsense Keuze voor 2026
+            </h2>
+            
+            <div className="prose prose-sm md:prose-base max-w-none text-gray-400 md:text-gray-500 leading-relaxed space-y-4 md:space-y-6">
+              <p className="text-sm md:text-base">
             In het zakelijke hart van Nederland, van de Kop van Zuid tot de Waalhaven, is stilstaan geen optie. In 2026 is je digitale aanwezigheid in de Rotterdamse haven- en techsector belangrijker dan ooit. Een professionele LinkedIn foto laten maken in Rotterdam hoeft geen middag te kosten bij een fotograaf in het centrum. Met AI Portret Pro kies je voor de Rotterdamse aanpak: efficiënt, kwalitatief hoogstaand en zonder onnodige kosten. Of je nu op de Coolsingel werkt of in de logistiek op de Maasvlakte, wij zorgen dat je digitale handdruk staat als een huis. Rotterdam versterkt in 2026 zijn positie als de internationale handelsmetropool van Europa, waar een sterke digitale aanwezigheid essentieel is voor elke professional. Of je nu werkzaam bent in de maritieme sector op de Maasvlakte, de logistieke ketens aanstuurt of je carrière opbouwt in de financiële dienstverlening rondom de Coolsingel: je LinkedIn profielfoto is je belangrijkste visitekaartje. Een professionele LinkedIn profielfoto laten maken in Rotterdam is in het huidige zakelijke klimaat van 2026 de meest effectieve manier om je no-nonsense mentaliteit en vakmanschap te tonen aan een wereldwijd netwerk van recruiters en zakenpartners.
-          </p>
+              </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Efficiënte AI-fotografie voor de Rotterdamse werkmentaliteit</h3>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Efficiënte AI-fotografie voor de Rotterdamse werkmentaliteit</h3>
+              
+              <p className="text-sm md:text-base">
             Met meer dan 300.000 actieve LinkedIn-gebruikers in de regio Rotterdam, van de haven tot aan het zakelijke district, is de behoefte aan snelheid en kwaliteit groter dan ooit. De bekende Rotterdamse spreuk "niet lullen maar poetsen" vormt de basis voor onze AI-service in 2026. Waar een traditionele fotoshoot in de stad voorheen gepaard ging met hoge kosten tussen de honderdvijfenzeventig en tweehonderdvijfentwintig euro, biedt AI Portret Pro een directe oplossing zonder gedoe. Ambitieuze professionals kiezen voor deze methode omdat het de noodzaak wegneemt voor tijdrovende afspraken bij fotostudio's in drukke wijken zoals Kralingen of het Centrum. Binnen vijftien minuten genereert onze technologie veertig hoogwaardige profielfoto's voor het vaste lage tarief van negenentwintig euro.
-          </p>
+              </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Optimale presentatie van de Kop van Zuid tot Rotterdam-Noord</h3>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Optimale presentatie van de Kop van Zuid tot Rotterdam-Noord</h3>
+              
+              <p className="text-sm md:text-base">
             In een internationale zakenwereld is de eerste indruk op platforms zoals LinkedIn vaak beslissend voor het binnenhalen van nieuwe opdrachten of het vinden van een volgende carrièrestap. In 2026 maken headhunters en internationale bedrijven op de Kop van Zuid en in de tech-scene van Rotterdam-Noord intensief gebruik van AI-gestuurde zoekopdrachten, waarbij een professionele profielfoto de kans op interactie aanzienlijk vergroot. Of je nu als architect, consultant, zzp'er of havenprofessional werkt, onze AI-technologie analyseert je gelaatstrekken via zes eenvoudige selfies en plaatst je in een setting die zakelijke autoriteit uitstraalt. Dit bespaart niet alleen aanzienlijke reistijd door de havenstad, maar voorkomt ook de hoge parkeerkosten die gepaard gaan met een bezoek aan een fysieke studio.
-          </p>
+              </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Innovatieve technologie voor een innovatieve havenstad</h3>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Innovatieve technologie voor een innovatieve havenstad</h3>
+              
+              <p className="text-sm md:text-base">
             Traditionele LinkedIn profielfoto laten maken in Rotterdam betekende vroeger vaak weken wachten op de nabewerking van slechts enkele beelden. In 2026 is die efficiëntie volledig getransformeerd. Onze virtuele fotostudio is vierentwintig uur per dag beschikbaar, wat naadloos aansluit bij de dynamische levensstijl van de moderne Rotterdammer. Door te kiezen voor AI-fotografie toon je aan dat je op de hoogte bent van de nieuwste technologische ontwikkelingen, een eigenschap die in het innovatieve en resultaatgerichte zakenklimaat van de havenstad zeer gewaardeerd wordt. Je krijgt de beschikking over een diverse set van veertig foto's, waardoor je voor elk platform – van je CV tot je bedrijfswebsite – altijd de juiste professionele uitstraling paraat hebt.
-          </p>
+              </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Over onze zakelijke LinkedIn fotografie in Rotterdam 2026</h3>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Over onze zakelijke LinkedIn fotografie in Rotterdam 2026</h3>
+              
+              <p className="text-sm md:text-base">
             Onze expertise in digitale zakelijke fotografie maakt AI Portret Pro de primaire bron voor Rotterdamse professionals die hun online profiel willen versterken. Wij zijn gespecialiseerd in het laten maken van LinkedIn foto's en zakelijke profielfoto's online, met een specifieke focus op de Rotterdamse markt en de internationale handelssectoren. Onze diensten in 2026 omvatten het genereren van corporate headshots, professionele CV-foto's en visuele content voor maritieme en logistieke bedrijfswebsites. Technologisch lopen we voorop met AI-fotografie die specifiek is getraind voor de no-nonsense standaarden van de havenstad, waardoor we een superieur en sneller alternatief bieden voor de traditionele fotograaf in Rotterdam. Of je nu een LinkedIn foto upgrade zoekt of een volledige virtuele fotoshoot nodig hebt, onze studio levert in 2026 de meest scherpe en representatieve resultaten die technisch mogelijk zijn.
-          </p>
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 

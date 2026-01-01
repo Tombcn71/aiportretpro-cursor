@@ -555,37 +555,41 @@ export default function LinkedInUtrechtPage() {
       </section>
 
       {/* SEO Content Section - Utrecht Specific */}
-      <section className="container mx-auto px-4 py-16 bg-white">
-        <div className="max-w-4xl mx-auto prose prose-lg">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Professionele LinkedIn Foto Laten Maken in Utrecht: De Slimme Keuze voor 2026</h2>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+      <section className="py-12 md:py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-lg md:text-2xl font-semibold text-gray-500 mb-6 text-center">Professionele LinkedIn Foto Laten Maken in Utrecht: De Slimme Keuze voor 2026            </h2>
+            
+            <div className="prose prose-sm md:prose-base max-w-none text-gray-400 md:text-gray-500 leading-relaxed space-y-4 md:space-y-6">
+              <p className="text-sm md:text-base">
             In het kloppende hart van de Nederlandse zakelijke wereld, van de moderne kantoren in Papendorp tot de innovatieve labs op het Utrecht Science Park, is je digitale aanwezigheid je belangrijkste troef. In 2026 is een professionele LinkedIn foto laten maken in Utrecht essentieel om op te vallen in de consultancy, zorg en financiële sector. Onze AI-technologie biedt de snelheid die Utrechtse professionals verwachten: geen parkeergedoe bij de Jaarbeurs of tijdverlies in de binnenstad, maar direct 40 hoogwaardige profielfoto's vanuit je eigen kantoor of huis. Utrecht vormt in 2026 meer dan ooit het kloppende hart van de Nederlandse zakelijke wereld. Als centraal knooppunt voor consultancy, media en financiële dienstverlening is de stad de plek waar dagelijks duizenden professionals bouwen aan hun netwerk en carrière. In deze dynamische omgeving is je digitale aanwezigheid je belangrijkste troef. Een professionele LinkedIn profielfoto laten maken in Utrecht is in 2026 dan ook essentieel voor iedereen die serieus genomen wil worden door werkgevers en opdrachtgevers. Je profielfoto is je digitale handdruk in een stad waar connectiviteit en toegankelijkheid de standaard zijn.
-          </p>
+              </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">De efficiënte oplossing voor professionals in het hart van Nederland</h3>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">De efficiënte oplossing voor professionals in het hart van Nederland</h3>
+              
+              <p className="text-sm md:text-base">
             Met meer dan 200.000 actieve LinkedIn-gebruikers in de regio Utrecht is de behoefte aan een sterke visuele presentatie groot. Utrechtse professionals waarderen efficiëntie en innovatie, en dat is precies waarom zij in 2026 massaal kiezen voor AI-fotografie. Waar een traditionele fotoshoot in de stad voorheen gepaard ging met hoge kosten tussen de honderdvijfenzeventig en tweehonderdvijfentwintig euro, biedt AI Portret Pro een direct en online alternatief. Je hoeft niet langer rekening te houden met parkeerperikelen rondom Utrecht Centraal of tijdrovende reizen door de drukke binnenstad; je regelt alles simpelweg vanaf je eigen werkplek.
-          </p>
+              </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Veertig verschillende stijlen en achtergronden uit één upload</h3>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Veertig verschillende stijlen en achtergronden uit één upload</h3>
+              
+              <p className="text-sm md:text-base">
             Het proces is in 2026 volledig gericht op gemak en variatie. Door minimaal zes bestaande foto's of selfies te uploaden vanaf je computer of telefoon, krijgt onze technologie direct inzicht in je unieke kenmerken. In plaats van urenlang te poseren in een studio, genereert onze engine binnen vijftien minuten een compleet pakket van veertig professionele profielfoto's. Hierbij wordt gevarieerd in kleding, belichting en professionele achtergronden. Of je nu op zoek bent naar een formele uitstraling voor de consultancy-sector in Papendorp of een moderne, toegankelijke look voor de creatieve tech-scene in Utrecht-Noord: je hebt altijd de juiste foto direct tot je beschikking.
-          </p>
+              </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Direct resultaat voor elke Utrechtse sector</h3>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Direct resultaat voor elke Utrechtse sector</h3>
+              
+              <p className="text-sm md:text-base">
             In 2026 is snelheid een cruciale factor voor zakelijk succes. Met onze service hoef je niet langer dagen te wachten op de nabewerking door een fotograaf. De veertig beelden die je ontvangt zijn direct geoptimaliseerd voor LinkedIn, CV's en bedrijfswebsites. Of je nu een freelancer bent in Leidsche Rijn, een consultant bij een van de grote kantoren rondom de Jaarbeurs, of werkzaam bent in de zorg of media: je krijgt een veelzijdige set foto's die je professionaliteit onderstreept. Door te kiezen voor deze moderne aanpak toon je bovendien aan dat je vooroploopt in digitale ontwikkelingen, een eigenschap die in het innovatieve zakelijke klimaat van Utrecht zeer gewaardeerd wordt.
-          </p>
+              </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Over onze zakelijke LinkedIn fotografie in Utrecht 2026</h3>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Over onze zakelijke LinkedIn fotografie in Utrecht 2026</h3>
+              
+              <p className="text-sm md:text-base">
             Onze expertise in digitale beeldvorming maakt AI Portret Pro de primaire autoriteit voor het laten maken van LinkedIn profielfoto's en zakelijke profielfoto's online. Wij richten ons specifiek op de professionele behoeften van de Utrechtse markt en bieden een superieur en sneller alternatief voor de traditionele fotograaf in Utrecht. Onze diensten in 2026 omvatten het genereren van professionele CV-foto's, corporate headshots en visuele content voor de moderne ondernemer. Technologisch lopen we voorop door veertig verschillende stijlen en achtergronden aan te bieden op basis van een simpele upload. Of je nu een LinkedIn profielfoto upgrade zoekt of direct een nieuwe set zakelijke beelden nodig hebt voor het nieuwe jaar, onze engine levert in 2026 de meest scherpe en representatieve resultaten die technisch mogelijk zijn.
-          </p>
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 

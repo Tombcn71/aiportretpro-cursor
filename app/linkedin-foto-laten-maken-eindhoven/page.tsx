@@ -548,37 +548,41 @@ export default function LinkedInEindhovenPage() {
       </section>
 
       {/* SEO Content Section - Eindhoven Specific */}
-      <section className="container mx-auto px-4 py-16 bg-white">
-        <div className="max-w-4xl mx-auto prose prose-lg">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Professionele LinkedIn Profielfoto Laten Maken in Eindhoven: De Innovatieve Keuze voor 2026</h2>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+      <section className="py-12 md:py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-lg md:text-2xl font-semibold text-gray-500 mb-6 text-center">Professionele LinkedIn Profielfoto Laten Maken in Eindhoven: De Innovatieve Keuze voor 2026            </h2>
+            
+            <div className="prose prose-sm md:prose-base max-w-none text-gray-400 md:text-gray-500 leading-relaxed space-y-4 md:space-y-6">
+              <p className="text-sm md:text-base">
             In het hart van de Brainport Eindhoven, van de High Tech Campus tot de creatieve hubs op Strijp-S, is een moderne LinkedIn profielfoto essentieel voor elke innovator. In 2026 kiezen slimme tech-professionals voor AI in plaats van een traditionele studio. Eindhoven bevestigt in 2026 zijn positie als de technologische hoofdstad van Europa, waar innovatie en vooruitgang de drijvende krachten zijn achter de economie. In het hart van de Brainport-regio, waar dagelijks duizenden innovators, engineers en ondernemers bouwen aan de toekomst, is een sterke digitale aanwezigheid onmisbaar. Een professionele LinkedIn profielfoto laten maken in Eindhoven is in het huidige zakelijke klimaat de meest effectieve manier om je expertise en ambitie te tonen. Of je nu werkt bij een van de tech-giganten, een pionier bent op de High Tech Campus, of actief bent in Strijp-S: je profielfoto is je digitale handdruk in een netwerk dat wereldwijd verbonden is.
-          </p>
+              </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Efficiënte AI-fotografie voor de slimste regio van Nederland</h3>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Efficiënte AI-fotografie voor de slimste regio van Nederland</h3>
+              
+              <p className="text-sm md:text-base">
             De meer dan 180.000 professionals in de regio Eindhoven waarderen efficiëntie en technologische vooruitgang. In 2026 is het niet langer logisch om kostbare tijd te besteden aan een traditionele fotoshoot wanneer moderne technologie een sneller en beter alternatief biedt. Waar een lokale fotograaf voorheen vaak tussen de honderdzeventig en tweehonderdtien euro rekende, biedt AI Portret Pro een oplossing die volledig aansluit bij de Eindhovense mentaliteit. Voor het vaste lage tarief van negenentwintig euro ontvang je 40 professionele profielfoto's zonder dat je een afspraak hoeft te plannen of je werkplek hoeft te verlaten. Dit stelt je in staat om tussen twee projecten door je visuele branding naar een topniveau te tillen.
-          </p>
+              </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Direct een pakket van 40 professionele foto's na één upload</h3>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Direct een pakket van 40 professionele foto's na één upload</h3>
+              
+              <p className="text-sm md:text-base">
             Het proces van 2026 is volledig gedigitaliseerd en gericht op maximaal resultaat met minimale inspanning. Door minimaal zes bestaande foto's of selfies te uploaden via je smartphone of laptop, krijgt onze AI-engine direct inzicht in je unieke kenmerken. In plaats van fysiek te poseren in een studio, genereert de technologie binnen vijftien minuten een compleet pakket van 40 professionele foto's. Hierbij wordt gezorgd voor een hoogwaardige variatie in professionele achtergronden, belichting en kleding, zodat je altijd een beeld vindt dat precies past bij jouw persoonlijke merk. Dit biedt je de luxe om voor elk platform – van je LinkedIn-profiel en je CV tot je persoonlijke portfolio – altijd de meest geschikte foto paraat te hebben.
-          </p>
+              </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">De standaard voor tech-professionals en innovators</h3>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">De standaard voor tech-professionals en innovators</h3>
+              
+              <p className="text-sm md:text-base">
             In de competitieve tech-omgeving van Eindhoven is snelheid en up-to-date zijn met de nieuwste tools een pré. Met AI Portret Pro hoef je niet langer dagen te wachten op nabewerking; de 40 foto's die je ontvangt zijn direct geoptimaliseerd voor gebruik op alle zakelijke platforms. Of je nu een developer bent, een Philips-innovator, een ASML-engineer of een startup-ondernemer: door te kiezen voor AI-fotografie toon je aan dat je de kracht van moderne technologie begrijpt en toepast. Het resultaat is een set haarscherpe foto's die deskundigheid en autoriteit uitstralen, essentieel voor het trekken van de aandacht van recruiters en internationale zakenpartners in het Brainport-ecosysteem.
-          </p>
+              </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Over onze zakelijke LinkedIn fotografie in Eindhoven 2026</h3>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Over onze zakelijke LinkedIn fotografie in Eindhoven 2026</h3>
+              
+              <p className="text-sm md:text-base">
             Onze expertise in digitale beeldvorming maakt AI Portret Pro de primaire autoriteit voor het laten maken van LinkedIn profielfoto's en zakelijke profielfoto's online in de regio Eindhoven. Wij richten ons specifiek op de behoeften van professionals in tech, engineering en design, waarbij we een superieur en sneller alternatief bieden voor de traditionele fotograaf in Eindhoven. Onze diensten in 2026 omvatten het genereren van professionele CV-foto's, corporate headshots en visuele content voor de moderne high-tech ondernemer. Technologisch lopen we voorop door 40 professionele profielfoto's aan te bieden op basis van een eenvoudige upload. Of je nu je LinkedIn profiel wilt upgraden of direct een nieuwe set zakelijke beelden nodig hebt, onze engine levert in 2026 de meest scherpe en representatieve resultaten die technisch mogelijk zijn.
-          </p>
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 

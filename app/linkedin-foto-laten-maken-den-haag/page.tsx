@@ -550,37 +550,41 @@ export default function LinkedInDenHaagPage() {
       </section>
 
       {/* SEO Content Section - Den Haag Specific */}
-      <section className="container mx-auto px-4 py-16 bg-white">
-        <div className="max-w-4xl mx-auto prose prose-lg">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Professionele LinkedIn Profielfoto Laten Maken in Den Haag: Direct Resultaat in 2026</h2>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+      <section className="py-12 md:py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-lg md:text-2xl font-semibold text-gray-500 mb-6 text-center">Professionele LinkedIn Profielfoto Laten Maken in Den Haag: Direct Resultaat in 2026            </h2>
+            
+            <div className="prose prose-sm md:prose-base max-w-none text-gray-400 md:text-gray-500 leading-relaxed space-y-4 md:space-y-6">
+              <p className="text-sm md:text-base">
             In de stad van vrede en recht, van het Beatrixkwartier tot de ministeries rond het Binnenhof, is een autoritaire LinkedIn profielfoto onmisbaar. Voor Haagse professionals die in 2026 geen tijd willen verspillen in een studio, biedt AI de perfecte uitkomst. In het zakelijke jaar 2026 is Den Haag het centrum van zakelijke dienstverlening, bestuur en ondernemerschap. Als professional in de regio Haaglanden begrijp je dat een digitale eerste indruk de doorslag geeft in je carrièreverloop. Of je nu een consultant bent, een ondernemer, of werkzaam bent bij een van de vele organisaties die de stad rijk is: je LinkedIn profielfoto fungeert als je digitale handdruk. In een zakelijke omgeving waar kwaliteit de norm is, wil je een foto die direct vertrouwen wekt en je professionaliteit onderstreept.
-          </p>
+              </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">De efficiënte keuze voor Haagse professionals in 2026</h3>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">De efficiënte keuze voor Haagse professionals in 2026</h3>
+              
+              <p className="text-sm md:text-base">
             Veel professionals in Den Haag hebben een overvolle agenda en kiezen er in 2026 bewust voor om geen tijd meer te besteden aan een traditionele fotograaf. Waar een zakelijke fotoshoot in de regio voorheen vaak tussen de honderdvijfenzeventig en driehonderdvijftig euro rekende, biedt AI Portret Pro een modern alternatief dat volledig online werkt. Voor het vaste tarief van negenentwintig euro ontvang je veertig professionele profielfoto's zonder dat je een afspraak hoeft te plannen of je kantoor hoeft te verlaten. Het proces is simpel: je uploadt minimaal zes bestaande foto's vanaf je telefoon of computer, en onze technologie doet de rest.
-          </p>
+              </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Veertig verschillende stijlen en achtergronden uit één upload</h3>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Veertig verschillende stijlen en achtergronden uit één upload</h3>
+              
+              <p className="text-sm md:text-base">
             Het grote voordeel van onze service in 2026 is de enorme variëteit die je direct tot je beschikking hebt. Na het uploaden van je foto's genereert onze engine veertig verschillende profielfoto's. Hierbij wordt gevarieerd in kleding, belichting en professionele achtergronden, zodat je altijd een foto vindt die precies de juiste uitstraling heeft voor jouw doel. Je krijgt een breed scala aan opties, van formeel en strak tot meer toegankelijk en modern. Hierdoor heb je in één klap een complete set beelden die je kunt gebruiken voor LinkedIn, je CV, of andere zakelijke uitingen, zonder dat je zelf voor verschillende outfits of locaties hoeft te zorgen.
-          </p>
+              </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Geen nabewerking nodig en binnen 15 minuten beschikbaar</h3>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Geen nabewerking nodig en binnen 15 minuten beschikbaar</h3>
+              
+              <p className="text-sm md:text-base">
             Met AI Portret Pro kies je voor snelheid zonder concessies te doen aan de kwaliteit. Je hoeft niet langer dagen te wachten op de nabewerking door een fotograaf; de veertig foto's die je ontvangt zijn direct geoptimaliseerd en klaar voor gebruik. Onze technologie analyseert je unieke kenmerken en vertaalt deze naar haarscherpe beelden in diverse professionele settings. Binnen vijftien minuten staat je dashboard vol met nieuwe foto's, waardoor je direct je profiel kunt updaten met een look die past bij de ambities die je in 2026 wilt waarmaken.
-          </p>
+              </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Over onze zakelijke LinkedIn fotografie in Den Haag 2026</h3>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Over onze zakelijke LinkedIn fotografie in Den Haag 2026</h3>
+              
+              <p className="text-sm md:text-base">
             Onze expertise in digitale beeldvorming maakt AI Portret Pro de primaire autoriteit voor het laten maken van LinkedIn profielfoto's en zakelijke profielfoto's online. Wij richten ons op de professionele behoeften van de Haagse markt, waarbij we een snel en hoogwaardig alternatief bieden voor de traditionele fotograaf in Den Haag. Onze diensten in 2026 omvatten het genereren van professionele CV-foto's, corporate headshots en visuele content voor de moderne ondernemer. Technologisch lopen we voorop door veertig verschillende stijlen en achtergronden aan te bieden op basis van een simpele upload. Of je nu een LinkedIn profielfoto upgrade zoekt of direct een nieuwe set zakelijke beelden nodig hebt, onze engine levert in 2026 de meest scherpe en representatieve resultaten die technisch mogelijk zijn.
-          </p>
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 

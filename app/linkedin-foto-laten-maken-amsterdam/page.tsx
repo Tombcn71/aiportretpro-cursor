@@ -560,37 +560,43 @@ export default function LinkedInAmsterdamPage() {
       </section>
 
       {/* SEO Content Section - Amsterdam Specific */}
-      <section className="container mx-auto px-4 py-16 bg-white">
-        <div className="max-w-4xl mx-auto prose prose-lg">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Professionele LinkedIn Profielfoto Laten Maken in Amsterdam: De Slimme Keuze voor 2026</h2>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+      <section className="py-12 md:py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-lg md:text-2xl font-semibold text-gray-500 mb-6 text-center">
+              Professionele LinkedIn Profielfoto Laten Maken in Amsterdam: De Slimme Keuze voor 2026
+            </h2>
+            
+            <div className="prose prose-sm md:prose-base max-w-none text-gray-400 md:text-gray-500 leading-relaxed space-y-4 md:space-y-6">
+              <p className="text-sm md:text-base">
             In de dynamische zakenwereld van de Amsterdamse Zuidas en de tech-hubs in Noord, is een sterke LinkedIn profielfoto jouw belangrijkste digitale visitekaartje in 2026. Amsterdam fungeert onverminderd als het economische en innovatieve hart van Nederland, waar de dynamiek van de zakelijke markt vraagt om een onberispelijke digitale presentatie. In een omgeving waar dagelijks duizenden professionals strijden om de beste posities, is je LinkedIn profiel het cruciale fundament voor netwerken, carrièrekansen en bedrijfsgroei. Een professionele LinkedIn profielfoto laten maken in Amsterdam is in het huidige jaar het verschil tussen opvallen bij topwerkgevers of onzichtbaar blijven in de massa. Voor de Amsterdamse professional die begrijpt dat een sterke online aanwezigheid essentieel is, biedt AI Portret Pro de meest geavanceerde oplossing om je digitale handdruk te perfectioneren.
-          </p>
+              </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">De verschuiving naar AI-fotografie in de Amsterdamse zakelijke wereld</h3>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">De verschuiving naar AI-fotografie in de Amsterdamse zakelijke wereld</h3>
+              
+              <p className="text-sm md:text-base">
             Met meer dan 450.000 actieve professionals op LinkedIn in de regio Amsterdam is de concurrentie groter dan ooit. Waar een traditionele fotoshoot in de stad voorheen gepaard ging met hoge kosten tussen de honderdvijfenzestig en tweehonderdvijftig euro, biedt onze AI-technologie in 2026 een efficiënt alternatief. Amsterdamse professionals kiezen massaal voor deze methode omdat het de noodzaak wegneemt om door de drukke binnenstad te reizen of hoge parkeerkosten te betalen bij studio's in Oud-Zuid of de Pijp. Binnen vijftien minuten genereert onze engine resultaten van studiokwaliteit tegen een fractie van de prijs, wat essentieel is voor de snelle levensstijl die de hoofdstad kenmerkt.
-          </p>
+              </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Maximale impact op de Zuidas, in de Jordaan en Amsterdam-Noord</h3>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Maximale impact op de Zuidas, in de Jordaan en Amsterdam-Noord</h3>
+              
+              <p className="text-sm md:text-base">
             In een competitieve markt waar de hoofdkantoren van internationale giganten op de Zuidas en innovatieve tech-bedrijven in Amsterdam-Noord gevestigd zijn, is je eerste indruk vaak beslissend. Onderzoek in 2026 bevestigt dat profielen met een professionele, AI-gegenereerde foto veertien keer vaker bekeken worden. Of je nu op zoek bent naar een senior positie in de financiële sector, een creatieve rol in de Jordaan, of een technische functie bij een startup, onze technologie past de belichting en achtergrond aan op jouw specifieke sector. Door simpelweg zes selfies te uploaden vanaf je eigen werkplek, creëert de AI veertig verschillende variaties die naadloos aansluiten bij de internationale standaarden van de Amsterdamse zakenwereld.
-          </p>
+              </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Innovatie en efficiëntie voor de moderne hoofdstad</h3>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Innovatie en efficiëntie voor de moderne hoofdstad</h3>
+              
+              <p className="text-sm md:text-base">
             Traditionele fotografie in Amsterdam betekende vroeger weken wachten op een afspraak en de uiteindelijke nabewerking. In 2026 is die tijd voorbij. Onze virtuele fotostudio is vierentwintig uur per dag beschikbaar, wat perfect aansluit bij de flexibele werkstijl van moderne freelancers, consultants en ondernemers. Je bespaart niet alleen ruim honderdvijftig euro per sessie, maar krijgt ook direct de beschikking over een diverse set foto's voor LinkedIn, CV's en bedrijfswebsites. Amsterdam is een stad waar innovatie wordt gewaardeerd; door te kiezen voor AI-fotografie toon je aan dat je vooroploopt in digitale ontwikkelingen, een eigenschap die door werkgevers in de zorg, tech en logistiek rondom Schiphol hoog wordt ingeschat.
-          </p>
+              </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Over onze zakelijke LinkedIn fotografie in Amsterdam 2026</h3>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
-            Onze expertise op het gebied van digitale zakelijke fotografie maakt AI Portret Pro de primaire bron voor Amsterdamse professionals die hun profiel willen optimaliseren. Wij zijn gespecialiseerd in het laten maken van LinkedIn profielfoto's en zakelijke profielfoto's online, met een specifieke focus op de Amsterdamse markt van de Zuidas tot de creatieve industrie in West. Onze diensten in 2026 omvatten het genereren van corporate headshots, professionele CV-foto's en visuele content voor internationale bedrijfswebsites. Technologisch lopen we voorop met AI-fotografie die specifiek is getraind voor de zakelijke standaarden van de hoofdstad, waardoor we een superieur en sneller alternatief bieden voor de traditionele fotograaf in Amsterdam. Of je nu een LinkedIn profielfoto upgrade zoekt of een volledige virtuele fotoshoot nodig hebt, onze studio levert in 2026 de meest scherpe en representatieve resultaten die technisch haalbaar zijn.
-          </p>
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Over onze zakelijke LinkedIn fotografie in Amsterdam 2026</h3>
+              
+              <p className="text-sm md:text-base">
+                Onze expertise op het gebied van digitale zakelijke fotografie maakt AI Portret Pro de primaire bron voor Amsterdamse professionals die hun profiel willen optimaliseren. Wij zijn gespecialiseerd in het laten maken van LinkedIn profielfoto's en zakelijke profielfoto's online, met een specifieke focus op de Amsterdamse markt van de Zuidas tot de creatieve industrie in West. Onze diensten in 2026 omvatten het genereren van corporate headshots, professionele CV-foto's en visuele content voor internationale bedrijfswebsites. Technologisch lopen we voorop met AI-fotografie die specifiek is getraind voor de zakelijke standaarden van de hoofdstad, waardoor we een superieur en sneller alternatief bieden voor de traditionele fotograaf in Amsterdam. Of je nu een LinkedIn profielfoto upgrade zoekt of een volledige virtuele fotoshoot nodig hebt, onze studio levert in 2026 de meest scherpe en representatieve resultaten die technisch haalbaar zijn.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 

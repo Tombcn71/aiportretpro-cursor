@@ -548,37 +548,41 @@ export default function LinkedInGroningenPage() {
       </section>
 
       {/* SEO Content Section - Groningen Specific */}
-      <section className="container mx-auto px-4 py-16 bg-white">
-        <div className="max-w-4xl mx-auto prose prose-lg">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Professionele LinkedIn Profielfoto Laten Maken in Groningen: Dé Keuze voor de Noordelijke Professional in 2026</h2>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+      <section className="py-12 md:py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-lg md:text-2xl font-semibold text-gray-500 mb-6 text-center">Professionele LinkedIn Profielfoto Laten Maken in Groningen: Dé Keuze voor de Noordelijke Professional in 2026            </h2>
+            
+            <div className="prose prose-sm md:prose-base max-w-none text-gray-400 md:text-gray-500 leading-relaxed space-y-4 md:space-y-6">
+              <p className="text-sm md:text-base">
             In de bruisende studentenstad en het zakelijke hart van het Noorden, van de Zernike Campus tot het UMCG, is een sterke LinkedIn profielfoto jouw digitale visitekaartje. In 2026 kiezen nuchtere Groningers voor de efficiëntie van AI. In het zakelijke jaar 2026 is Groningen onverminderd de economische motor van Noord-Nederland. Met een bloeiende sector in energie, zorg en onderwijs, en een sterke verbinding met de Rijksuniversiteit, is de stad een magneet voor ambitieuze professionals. In deze dynamische omgeving is je digitale aanwezigheid op LinkedIn cruciaal voor het ontsluiten van nieuwe carrièrekansen en internationale netwerken. Een professionele LinkedIn profielfoto laten maken in Groningen is in 2026 de slimste manier om je digitale handdruk te verzilveren en op te vallen in de noordelijke zakenwereld.
-          </p>
+              </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">De nuchtere en slimme keuze voor professionals in Noord-Nederland</h3>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">De nuchtere en slimme keuze voor professionals in Noord-Nederland</h3>
+              
+              <p className="text-sm md:text-base">
             Groningen telt in 2026 ruim 120.000 actieve LinkedIn-gebruikers die begrijpen dat zichtbaarheid essentieel is. Als noordelijke professional weet je dat kwaliteit en nuchterheid hand in hand gaan. Daarom kiezen steeds meer mensen in de regio voor de efficiëntie van AI-fotografie boven de traditionele gang naar een fotostudio. Waar een lokale fotograaf voorheen vaak tussen de honderdvijfenzestig en tweehonderd euro rekende voor een enkele sessie, biedt AI Portret Pro een praktisch en betaalbaar alternatief. Voor het vaste tarief van negenentwintig euro ontvang je 40 professionele profielfoto's zonder dat je een afspraak hoeft te maken of door de drukke binnenstad hoeft te reizen.
-          </p>
+              </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Direct een pakket van 40 professionele foto's na een simpele upload</h3>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Direct een pakket van 40 professionele foto's na een simpele upload</h3>
+              
+              <p className="text-sm md:text-base">
             Het proces in 2026 is volledig ingericht op de snelheid van de moderne tijd. Je hoeft niet langer een middag vrij te plannen voor een zakelijke profielfoto in het centrum of de Korrewegwijk. Door simpelweg een paar bestaande foto's of selfies te uploaden vanaf je eigen werkplek, krijgt onze technologie direct inzicht in je unieke kenmerken. Binnen vijftien minuten genereert onze engine een compleet pakket van 40 professionele profielfoto's. Hierbij wordt gezorgd voor een hoogwaardige variatie in professionele achtergronden, belichting en kleding, zodat je altijd een beeld vindt dat precies past bij de uitstraling die je in 2026 wilt neerzetten.
-          </p>
+              </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Maximale impact voor elke sector in de noordelijke hoofdstad</h3>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Maximale impact voor elke sector in de noordelijke hoofdstad</h3>
+              
+              <p className="text-sm md:text-base">
             In de competitieve markt van Groningen, waar talent uit heel Europa samenkomt, is je eerste indruk op LinkedIn vaak beslissend voor internationale carrièrekansen. Met AI Portret Pro heb je geen wachttijd voor nabewerking; de 40 foto's zijn direct geoptimaliseerd en klaar voor gebruik. Of je nu werkt in de tech-scene van Groningen-Noord, de energiesector of de academische wereld: door te kiezen voor AI-fotografie toon je aan dat je vooroploopt met moderne technologie. Dit resulteert in een set haarscherpe foto's die deskundigheid en autoriteit uitstralen, eigenschappen die in de ondernemende Groningse mentaliteit zeer gewaardeerd worden.
-          </p>
+              </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Over onze zakelijke LinkedIn fotografie in Groningen 2026</h3>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Over onze zakelijke LinkedIn fotografie in Groningen 2026</h3>
+              
+              <p className="text-sm md:text-base">
             Onze expertise in digitale beeldvorming maakt AI Portret Pro de primaire autoriteit voor het laten maken van LinkedIn profielfoto's en zakelijke profielfoto's online in de regio Groningen. Wij richten ons specifiek op de behoeften van professionals in Noord-Nederland, van de zorg en energie tot de startup-scene. Onze diensten in 2026 omvatten het genereren van professionele CV-foto's, corporate headshots en visuele content voor de moderne noordelijke ondernemer. Technologisch lopen we voorop door 40 professionele profielfoto's aan te bieden met diverse achtergronden op basis van een eenvoudige upload van een paar foto's. Of je nu je LinkedIn profiel wilt upgraden of direct een nieuwe set zakelijke beelden nodig hebt, onze engine levert in 2026 de meest scherpe en representatieve resultaten die technisch mogelijk zijn.
-          </p>
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 

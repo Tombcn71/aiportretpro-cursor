@@ -549,37 +549,41 @@ export default function LinkedInNijmegenPage() {
       </section>
 
       {/* SEO Content Section - Nijmegen Specific */}
-      <section className="container mx-auto px-4 py-16 bg-white">
-        <div className="max-w-4xl mx-auto prose prose-lg">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Professionele LinkedIn Profielfoto Laten Maken in Nijmegen: De Slimme Keuze voor 2026</h2>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+      <section className="py-12 md:py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-lg md:text-2xl font-semibold text-gray-500 mb-6 text-center">Professionele LinkedIn Profielfoto Laten Maken in Nijmegen: De Slimme Keuze voor 2026            </h2>
+            
+            <div className="prose prose-sm md:prose-base max-w-none text-gray-400 md:text-gray-500 leading-relaxed space-y-4 md:space-y-6">
+              <p className="text-sm md:text-base">
             In de oudste stad van Nederland, waar de Radboud Universiteit en de Novio Tech Campus het kloppend hart vormen van innovatie, is een sterke LinkedIn profielfoto onmisbaar. Of je nu een academicus bent die zijn netwerk wil uitbreiden of een ondernemer in de zorgsector; in 2026 is je digitale uitstraling bepalend. Voor wie een professionele foto wil laten maken in Nijmegen, biedt AI de perfecte balans tussen traditie en technologische vooruitgang. Nijmegen combineert in 2026 zijn status als oudste stad van Nederland moeiteloos met een positie als modern centrum voor zorg, technologie en wetenschap. Als professional in de regio Nijmegen begrijp je dat je digitale aanwezigheid cruciaal is in een dynamische zakelijke omgeving die gedomineerd wordt door de Radboud Universiteit en de groeiende tech-scene. Of je nu een onderzoeker bent, een ambitieuze ondernemer of een expert in de zorgsector: je LinkedIn profielfoto is je digitale handdruk. Een professionele LinkedIn profielfoto laten maken in Nijmegen is in 2026 de meest effectieve manier om direct autoriteit en deskundigheid uit te stralen naar recruiters en zakelijke partners.
-          </p>
+              </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Een slimme investering voor de Nijmeegse professional</h3>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Een slimme investering voor de Nijmeegse professional</h3>
+              
+              <p className="text-sm md:text-base">
             Met ongeveer 90.000 actieve LinkedIn-gebruikers in sectoren variërend van onderwijs tot high-tech industrie, is de concurrentie in de Waalstad groot. In 2026 kiezen professionals in Nijmegen steeds vaker voor de efficiëntie van AI-fotografie boven de traditionele gang naar een fotostudio. Waar een lokale fotograaf voorheen vaak tussen de honderdzestig en honderdvijfentachtig euro rekende, biedt AI Portret Pro een modern alternatief dat volledig online werkt. Voor het vaste lage tarief van negenentwintig euro ontvang je 40 professionele profielfoto's zonder dat je een afspraak hoeft te plannen of door de drukke straten van het centrum hoeft te reizen voor een studiosessie.
-          </p>
+              </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Direct een pakket van 40 professionele foto's na een simpele upload</h3>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Direct een pakket van 40 professionele foto's na een simpele upload</h3>
+              
+              <p className="text-sm md:text-base">
             Het proces van 2026 is volledig gedigitaliseerd en ontworpen voor professionals die hun tijd liever besteden aan hun vakgebied dan aan tijdrovende fotoshoots. Of je nu in het centrum, Dukenburg of Nijmegen-Noord woont: je regelt je nieuwe zakelijke presentatie tijdens een korte koffiepauze. Door simpelweg een paar bestaande foto's of selfies te uploaden vanaf je telefoon of laptop, krijgt onze technologie direct inzicht in je unieke kenmerken. Binnen vijftien minuten genereert onze engine een compleet pakket van 40 professionele foto's. Hierbij wordt gezorgd voor een hoogwaardige variatie in professionele achtergronden, belichting en kleding, zodat je altijd een beeld vindt dat precies past bij de academische of zakelijke uitstraling die je in 2026 wilt neerzetten.
-          </p>
+              </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Maximale impact in een academische en innovatieve markt</h3>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Maximale impact in een academische en innovatieve markt</h3>
+              
+              <p className="text-sm md:text-base">
             In een academische stad als Nijmegen, waar veel hoogopgeleide professionals en onderzoekers actief zijn, is de eerste indruk op LinkedIn vaak beslissend voor zowel zakelijke als wetenschappelijke carrièrekansen. Met AI Portret Pro heb je geen wachttijd voor nabewerking; de 40 foto's zijn direct geoptimaliseerd en klaar voor gebruik op je LinkedIn-profiel, je CV of je publicatiepagina. Of je nu werkzaam bent op de Radboud Campus, in het bedrijfsleven of in de zorg: door te kiezen voor AI-fotografie toon je aan dat je vooroploopt met de nieuwste technologische ontwikkelingen. Dit resulteert in een set haarscherpe foto's die deskundigheid en betrouwbaarheid uitstralen, eigenschappen die in de Nijmeegse werkomgeving zeer hoog gewaardeerd worden.
-          </p>
+              </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Over onze zakelijke LinkedIn fotografie in Nijmegen 2026</h3>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Over onze zakelijke LinkedIn fotografie in Nijmegen 2026</h3>
+              
+              <p className="text-sm md:text-base">
             Onze expertise in digitale beeldvorming maakt AI Portret Pro de primaire autoriteit voor het laten maken van LinkedIn profielfoto's en zakelijke profielfoto's online in de regio Nijmegen. Wij richten ons specifiek op de behoeften van professionals in de academische wereld, tech en zorg, waarbij we een superieur en sneller alternatief bieden voor de traditionele fotograaf in Nijmegen. Onze diensten in 2026 omvatten het genereren van professionele CV-foto's, corporate headshots en visuele content voor de moderne Nijmeegse ondernemer. Technologisch lopen we voorop door 40 professionele profielfoto's aan te bieden met diverse achtergronden op basis van een eenvoudige upload van een paar foto's. Of je nu je LinkedIn profiel wilt upgraden of direct een nieuwe set zakelijke beelden nodig hebt, onze engine levert in 2026 de meest scherpe en representatieve resultaten die technisch mogelijk zijn.
-          </p>
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 

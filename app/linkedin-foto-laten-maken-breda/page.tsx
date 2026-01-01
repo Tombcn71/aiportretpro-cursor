@@ -544,37 +544,41 @@ export default function LinkedInBredaPage() {
       </section>
 
       {/* SEO Content Section - Breda Specific */}
-      <section className="container mx-auto px-4 py-16 bg-white">
-        <div className="max-w-4xl mx-auto prose prose-lg">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Professionele LinkedIn Profielfoto Laten Maken in Breda: De Parel van het Zuiden in 2026</h2>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+      <section className="py-12 md:py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-lg md:text-2xl font-semibold text-gray-500 mb-6 text-center">Professionele LinkedIn Profielfoto Laten Maken in Breda: De Parel van het Zuiden in 2026            </h2>
+            
+            <div className="prose prose-sm md:prose-base max-w-none text-gray-400 md:text-gray-500 leading-relaxed space-y-4 md:space-y-6">
+              <p className="text-sm md:text-base">
             Breda is de stad van Brabantse gezelligheid én zakelijke ambitie. Of je nu werkt in het Ginneken of op een van de bedrijventerreinen rond de A16, een professionele LinkedIn profielfoto is je digitale visitekaartje in 2026. Bespaar op een dure fotograaf in het centrum. In het zakelijke jaar 2026 staat Breda bekend als een stad waar Brabantse gastvrijheid en krachtig ondernemerschap naadloos in elkaar overvloeien. Als professional in de Parel van het Zuiden begrijp je dat persoonlijke relaties de basis vormen van succes, maar dat de eerste vonk van die connectie tegenwoordig vrijwel altijd online overspringt. Je LinkedIn profielfoto is in deze warme, maar uiterst professionele omgeving je digitale handdruk. Een professionele LinkedIn profielfoto laten maken in Breda is in 2026 dan ook essentieel om je persoonlijke gunfactor te combineren met een overtuigende zakelijke uitstraling.
-          </p>
+              </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Brabantse ondernemersgeest ontmoet innovatieve AI-technologie</h3>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Brabantse ondernemersgeest ontmoet innovatieve AI-technologie</h3>
+              
+              <p className="text-sm md:text-base">
             De ruim 95.000 LinkedIn-professionals in Breda waarderen een eerlijke en efficiënte aanpak. In een stad waar vertrouwen en persoonlijk contact centraal staan, kiezen steeds meer ondernemers en werknemers voor de moderne weg van AI-fotografie. Waar een traditionele fotograaf in de regio voorheen tussen de honderdvijfenzestig en honderdnegentig euro rekende, biedt AI Portret Pro een toegankelijk alternatief dat perfect past bij de Bredase levensstijl. Voor het vaste tarief van negenentwintig euro ontvang je 40 professionele profielfoto's zonder dat je een afspraak hoeft te plannen of tijd kwijt bent aan reizen door de stad. Dit geeft je meer ruimte om te doen waar je in Breda écht goed in bent: het opbouwen van waardevolle zakelijke relaties.
-          </p>
+              </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Direct een pakket van 40 professionele foto's na een simpele upload</h3>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Direct een pakket van 40 professionele foto's na een simpele upload</h3>
+              
+              <p className="text-sm md:text-base">
             Het proces in 2026 is volledig afgestemd op de behoeften van de moderne Bredanaar. Of je nu werkt in het centrum, de Haagse Beemden of Breda-Noord: je regelt je nieuwe zakelijke presentatie volledig online. Door simpelweg een paar bestaande foto's of selfies te uploaden vanaf je telefoon of computer, krijgt onze technologie direct inzicht in je unieke kenmerken. Binnen vijftien minuten genereert onze engine een compleet pakket van 40 professionele foto's. Hierbij wordt gezorgd voor een hoogwaardige variatie in professionele achtergronden, belichting en kleding, zodat je altijd een beeld vindt dat precies past bij jouw persoonlijke merk en de Brabantse ondernemersgeest die je wilt uitstralen.
-          </p>
+              </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Maximale impact voor elke sector in de regio Breda</h3>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Maximale impact voor elke sector in de regio Breda</h3>
+              
+              <p className="text-sm md:text-base">
             In de rijke zakelijke cultuur van Breda, variërend van logistieke hubs en internationale hoofdkantoren tot het bloeiende MKB, is een goede eerste indruk vaak beslissend. Met AI Portret Pro heb je geen wachttijd voor nabewerking; de 40 foto's zijn direct geoptimaliseerd en klaar voor gebruik op LinkedIn, je CV of je zakelijke website. Of je nu een consultant bent, een zorgprofessional of een creatieve ondernemer: door te kiezen voor AI-fotografie toon je aan dat je competent bent én op de hoogte van de nieuwste technologische ontwikkelingen. Dit resulteert in een set haarscherpe foto's die deskundigheid en betrouwbaarheid uitstralen, eigenschappen die in het Bredase zakelijke klimaat hoog in het vaandel staan.
-          </p>
+              </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Over onze zakelijke LinkedIn fotografie in Breda 2026</h3>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Over onze zakelijke LinkedIn fotografie in Breda 2026</h3>
+              
+              <p className="text-sm md:text-base">
             Onze expertise in digitale beeldvorming maakt AI Portret Pro de primaire autoriteit voor het laten maken van LinkedIn profielfoto's en zakelijke profielfoto's online in de regio Breda. Wij richten ons specifiek op de behoeften van professionals in Noord-Brabant, waarbij we een superieur en sneller alternatief bieden voor de traditionele fotograaf in Breda. Onze diensten in 2026 omvatten het genereren van professionele CV-foto's, corporate headshots en visuele content voor de moderne ondernemer. Technologisch lopen we voorop door 40 professionele profielfoto's aan te bieden met diverse achtergronden op basis van een eenvoudige upload van een paar foto's. Of je nu je LinkedIn profiel wilt upgraden of direct een nieuwe set zakelijke beelden nodig hebt, onze engine levert in 2026 de meest scherpe en representatieve resultaten die technisch mogelijk zijn.
-          </p>
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 

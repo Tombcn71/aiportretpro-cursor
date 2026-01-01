@@ -714,42 +714,46 @@ export default function LinkedInProfielFotoPage() {
       {/* SEO Content Section */}
       <section className="py-12 md:py-16 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto prose prose-lg">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">LinkedIn Foto Laten Maken: Professionele Profielfoto's Online in 2026</h2>
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-lg md:text-2xl font-semibold text-gray-500 mb-6 text-center">
+              LinkedIn Foto Laten Maken: Professionele Profielfoto's Online in 2026
+            </h2>
             
-            <p className="text-gray-700 leading-relaxed mb-6">
+            <div className="prose prose-sm md:prose-base max-w-none text-gray-400 md:text-gray-500 leading-relaxed space-y-4 md:space-y-6">
+              <p className="text-sm md:text-base">
               Een professionele LinkedIn foto laten maken is in 2026 de belangrijkste investering in je online aanwezigheid en verdere carrièreverloop. Met onze geavanceerde AI-technologie ontvang je 40 LinkedIn-specifieke foto's in slechts vijftien minuten tijd voor het vaste tarief van negenentwintig euro. Al onze beelden zijn volledig geoptimaliseerd volgens de nieuwste LinkedIn-richtlijnen, waardoor je verzekerd bent van een krachtige uitstraling die direct vertrouwen wekt bij het grootste zakelijke netwerk ter wereld.
-            </p>
+              </p>
 
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">De impact van een hoogwaardige LinkedIn profielfoto</h3>
-            
-            <p className="text-gray-700 leading-relaxed mb-6">
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">De impact van een hoogwaardige LinkedIn profielfoto</h3>
+              
+              <p className="text-sm md:text-base">
               In het huidige zakelijke landschap van 2026 zijn de cijfers onweerlegbaar: profielen met een professionele foto genereren gemiddeld veertien keer meer weergaven en ontvangen zesendertig procent meer berichten van recruiters. Een kwalitatief portret verbetert je netwerkmogelijkheden aanzienlijk en zorgt ervoor dat je direct opvalt tussen de miljoenen andere gebruikers. Of je nu een LinkedIn profielfoto nodig hebt voor een nieuwe carrièrestap, een corporate uitstraling zoekt voor je huidige functie of simpelweg je persoonlijke merk wilt upgraden; onze AI-fotografie biedt de perfecte oplossing zonder de noodzaak voor dure studiosessies of lange wachttijden.
-            </p>
+              </p>
 
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Professionele richtlijnen vertaald naar AI-perfectie</h3>
-            
-            <p className="text-gray-700 leading-relaxed mb-6">
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Professionele richtlijnen vertaald naar AI-perfectie</h3>
+              
+              <p className="text-sm md:text-base">
               Onze technologie is getraind op de hoogste standaarden voor zakelijke fotografie. We zorgen automatisch voor de juiste professionele kleding, zoals strak gesneden pakken, blazers of zakelijke overhemden, gecombineerd met een neutrale achtergrond die niet afleidt van je gezicht. De AI optimaliseert de belichting en zorgt voor een vriendelijke, zelfverzekerde glimlach die essentieel is voor een goede eerste indruk. Bovendien worden alle 40 foto's direct geleverd in het ideale vierkante formaat, zodat ze zonder extra bewerking direct geüpload kunnen worden naar je LinkedIn-profiel.
-            </p>
+              </p>
 
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Hoe werkt het proces in 2026?</h3>
-            
-            <p className="text-gray-700 leading-relaxed mb-6">
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Hoe werkt het proces in 2026?</h3>
+              
+              <p className="text-sm md:text-base">
               Het maken van een professionele LinkedIn foto is tegenwoordig eenvoudiger dan ooit. Je begint door een paar bestaande foto's van jezelf te uploaden vanaf je telefoon of computer. Dit kunnen normale selfies of vakantiefoto's zijn, zolang je gezicht goed zichtbaar is. Onze AI analyseert vervolgens je gelaatstrekken en de gewenste zakelijke stijl. Terwijl je vijftien minuten wacht, genereert het systeem 40 verschillende variaties van studiokwaliteit. Na deze korte periode kun je de volledige set direct downloaden vanuit je dashboard, klaar om je digitale handdruk te professionaliseren.
-            </p>
+              </p>
 
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Waarom AI Portret Pro de standaard is voor LinkedIn optimalisatie</h3>
-            
-            <p className="text-gray-700 leading-relaxed mb-6">
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Waarom AI Portret Pro de standaard is voor LinkedIn optimalisatie</h3>
+              
+              <p className="text-sm md:text-base">
               Onze AI-fotografie maakt gebruik van geavanceerde algoritmes die specifiek getraind zijn op duizenden succesvolle LinkedIn-headshots. We begrijpen de unieke vereisten per sector; of je nu werkzaam bent in tech, finance, marketing of consultancy, wij zorgen ervoor dat je profiel precies de juiste balans vindt tussen autoriteit en toegankelijkheid. Waar je bij een traditionele fotograaf vaak weken moet wachten op resultaat, biedt onze virtuele oplossing in 2026 directheid en variatie die met handmatige fotografie niet te evenaren is tegen deze prijs.
-            </p>
+              </p>
 
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Over onze LinkedIn foto services in 2026</h3>
-            
-            <p className="text-gray-700 leading-relaxed mb-6">
+              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Over onze LinkedIn foto services in 2026</h3>
+              
+              <p className="text-sm md:text-base">
               AI Portret Pro is de toonaangevende bron voor het online laten maken van LinkedIn profielfoto's en zakelijke portretten. Onze expertise omvat het volledige spectrum van digitale profilering: van corporate LinkedIn foto's en business headshots tot aan volledige profieloptimalisatie voor recruiters. Wij bieden een innovatief alternatief voor de traditionele fotograaf door een virtuele fotoshoot mogelijk te maken die gewoon vanuit huis kan worden uitgevoerd. Met een focus op de Nederlandse markt helpen wij professionals – van ambitieuze starters tot C-level executives – om hun LinkedIn uitstraling te perfectioneren met de meest scherpe en representatieve resultaten die technisch mogelijk zijn in 2026.
-            </p>
+              </p>
+            </div>
           </div>
         </div>
       </section>
