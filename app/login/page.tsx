@@ -180,9 +180,9 @@ export default function LoginPage() {
             {/* Main title - Show on buttons screen or login mode only */}
             {!showEmailForm ? (
               <CardTitle className="text-xl md:text-2xl text-gray-900 mb-3 font-normal pl-0">
-                Even registreren voor veilige betaling en toegang tot de app.
+                Bijna bij de kassa
                 <br />
-                <span className="text-gray-700">Binnen 1 minuut klaar!</span>
+                <span className="text-gray-700">Log in om je bestelling af te ronden.</span>
               </CardTitle>
             ) : !isSignUp ? (
               <CardTitle className="text-xl md:text-2xl text-gray-900 mb-3 font-normal pl-0">
@@ -231,6 +231,9 @@ export default function LoginPage() {
                   <MailPlus className="h-6 w-6" />
                   <span>Ga door met e-mail</span>
                 </Button>
+                <div className="text-sm text-gray-600 text-center mt-3">
+                  🔒 Veilig betalen met iDEAL <span className="text-green-500">✓</span> 14 dagen geld-terug-garantie
+                </div>
               </>
             ) : (
               <>
@@ -319,29 +322,6 @@ export default function LoginPage() {
                 </Button>
                 .
               </p>
-              
-              {/* Benefits */}
-              <div className="space-y-2 text-sm text-gray-600">
-                <div className="font-semibold text-gray-700 mb-2">Jouw zekerheden:</div>
-                <div className="flex items-center space-x-2">
-                  <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  <span>14 dagen geld-terug-garantie</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  <span>Nederlandse klantenservice</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  <span>Foto's klaar in 15 minuten</span>
-                </div>
-              </div>
             </div>
           </CardContent>
         </Card>
