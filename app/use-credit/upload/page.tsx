@@ -111,7 +111,7 @@ export default function UploadPage() {
               </div>
             </div>
             <CardTitle className="text-2xl">Upload Je Foto's</CardTitle>
-            <p className="text-gray-600">Upload minimaal 6 hoge kwaliteit foto's voor het beste resultaat</p>
+            <p className="text-gray-600">Upload minimaal 4 hoge kwaliteit foto's voor het beste resultaat</p>
           </CardHeader>
         </Card>
 

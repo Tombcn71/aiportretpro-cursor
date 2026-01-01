@@ -225,7 +225,7 @@ export default function HomePage() {
           <span className="block">Professionele zakelijke foto’s nodig?</span>
           <span className="text-[#0077B5] block">Zonder het gedoe van een fotoshoot?</span>
         </h1>
-        <p className=" text-lg mb-6 font-light ">Upload een paar selfies en onze AI doet de rest. Ontvang binnen 15 minuten 40 zakelijke profielfoto's</p>
+        <p className=" text-lg mb-6 font-light ">Upload een paar selfies en onze AI doet de rest. Ontvang binnen 15 minuten 40 professionele foto's</p>
 
         <div className="text-md md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto text-center">
           <div className="inline-grid grid-cols-[auto_1fr] gap-x-2 items-start text-start justify-center">
@@ -243,7 +243,7 @@ export default function HomePage() {
           size="lg"
           className=" bg-[#FF8C00] hover:bg-[#FFA500] text-white px-6 md:px-10 py-8 md:py-8 text-base md:text-lg mb-3 md:max-w-sm"
         >
-          <Link href="/pricing">
+         <Link href="/login?callbackUrl=/payment">
             Start jouw fotoshoot nu - € 29 <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
           </Link>
         </Button>
@@ -462,7 +462,7 @@ export default function HomePage() {
               <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Hoe het proces in 2026 werkt</h3>
               
               <p className="text-sm md:text-base">
-                Het proces is volledig geoptimaliseerd voor snelheid en gebruiksvriendelijkheid. Je begint door zes tot twaalf foto's van jezelf te uploaden, bij voorkeur vanuit verschillende hoeken en met gevarieerde kleding. Vervolgens analyseert onze geavanceerde AI je gelaatstrekken en leert het je unieke kenmerken kennen om een natuurgetrouw resultaat te garanderen. Terwijl de technologie op de achtergrond zijn werk doet, hoef je slechts vijftien minuten te wachten tot je veertig professionele foto's in hoge resolutie kunt downloaden vanuit je persoonlijke dashboard.
+                Het proces is volledig geoptimaliseerd voor snelheid en gebruiksvriendelijkheid. Je begint door vier tot twaalf verschillende foto's van jezelf te uploaden. Vervolgens analyseert onze geavanceerde AI je gelaatstrekken en leert het je unieke kenmerken kennen om een natuurgetrouw resultaat te garanderen. Terwijl de technologie op de achtergrond zijn werk doet, hoef je slechts vijftien minuten te wachten tot je veertig professionele foto's in hoge resolutie kunt downloaden vanuit je persoonlijke dashboard.
               </p>
 
               <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Waarom AI Portret Pro de standaard is voor jouw succes</h3>

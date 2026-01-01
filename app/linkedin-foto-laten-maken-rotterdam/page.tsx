@@ -209,7 +209,7 @@ export default function LinkedInRotterdamPage() {
           <span className="text-[#0077B5] block">Zonder het gedoe van een fotoshoot?</span>
         </h1>
         <p className="text-gray-500 text-lg mb-6">
-          Upload een paar selfies en onze AI doet de rest. Ontvang binnen 15 minuten 40 zakelijke profielfoto's
+          Upload een paar selfies en onze AI doet de rest. Ontvang binnen 15 minuten 40 professionele foto's
 </p>
 
         <div className="text-md md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto text-center">

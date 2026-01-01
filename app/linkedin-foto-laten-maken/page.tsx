@@ -11,6 +11,7 @@ import ReviewsEnVoorbeelden from "@/components/reviews-en-voorbeelden"
 import ReviewSchema from "@/components/review-schema"
 import FAQSchema from "@/components/faq-schema"
 import SchemaMarkup from "@/components/schema-markup"
+import HowItWorks from "@/components/how-it-works"
 
 // Gallery photos: All images from the shoot folder (1.png through 26.png)
 const galleryPhotos = Array.from({ length: 26 }, (_, i) => `/images/shoot/${i + 1}.png`)
@@ -245,7 +246,7 @@ export default function LinkedInProfielFotoPage() {
           <span className="text-[#0077B5] block">Zonder het gedoe van een fotoshoot?</span>
         </h1>
         <p className="text-gray-500 text-lg mb-6">
-          Upload een paar selfies en onze AI doet de rest. Ontvang binnen 15 minuten 40 zakelijke portretten
+          Upload een paar selfies en onze AI doet de rest. Ontvang binnen 15 minuten 40 professionele foto's
 </p>
 
         <div className="text-md md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto text-center">
@@ -322,38 +323,8 @@ export default function LinkedInProfielFotoPage() {
       </section>
 
       {/* How It Works */}
-      <section id="hoe-het-werkt" className="py-12 md:py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-12">Zo werkt het</h2>
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-[#0077B5] rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">
-                1
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Upload je foto's</h3>
-              <p className="text-gray-600">
-                Upload minimaal 6 foto's van jezelf met verschillende uitdrukkingen en achtergronden
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-[#0077B5] rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">
-                2
-              </div>
-              <h3 className="text-xl font-semibold mb-3">AI doet zijn werk</h3>
-              <p className="text-gray-600">
-                Onze AI analyseert je foto's en maakt professionele portretten in verschillende stijlen
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-[#0077B5] rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">
-                3
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Download je foto's</h3>
-              <p className="text-gray-600">Ontvang 40 professionele foto's in hoge resolutie binnen 15 minuten</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* How It Works */}
+      <HowItWorks />
 
       {/* Reviews en Voorbeelden */}
       <ReviewsEnVoorbeelden />

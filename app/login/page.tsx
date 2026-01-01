@@ -180,9 +180,9 @@ export default function LoginPage() {
             {/* Main title - Show on buttons screen or login mode only */}
             {!showEmailForm ? (
               <CardTitle className="text-xl md:text-2xl text-gray-900 mb-3 font-normal pl-0">
-                Laatste stap voor je betaling
+                Even registreren voor veilige betaling en toegang tot de app.
                 <br />
-                <span className="text-gray-700">Maak een account voor toegang tot de app. Binnen 2 minuten klaar!</span>
+                <span className="text-gray-700">Binnen 1 minuut klaar!</span>
               </CardTitle>
             ) : !isSignUp ? (
               <CardTitle className="text-xl md:text-2xl text-gray-900 mb-3 font-normal pl-0">
