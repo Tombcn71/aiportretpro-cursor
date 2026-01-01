@@ -224,7 +224,7 @@ export default function LinkedInAlmerePage() {
           size="lg"
           className=" bg-[#FF8C00] hover:bg-[#FFA500] text-white px-6 md:px-10 py-8 md:py-8 text-base md:text-lg mb-3 md:max-w-sm"
         >
-          <Link href="/pricing">
+          <Link href="/login?callbackUrl=/payment">
             <LinkedinIcon className="mr-2 h-5 md:h-6 w-5 md:w-6" />
             Start jouw fotoshoot nu - € 29 <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
           </Link>
@@ -360,7 +360,7 @@ export default function LinkedInAlmerePage() {
               </ul>
               <div className="mt-6">
                 <Button asChild size="lg" className="w-full bg-[#FF8C00] hover:bg-[#FFA500] text-white font-bold">
-                  <Link href="/pricing">
+                  <Link href="/login?callbackUrl=/payment">
                     Bespaar €170+ Nu <ArrowRight className="ml-2" />
                   </Link>
                 </Button>
@@ -508,7 +508,7 @@ export default function LinkedInAlmerePage() {
             size="lg"
             className="bg-white text-[#0077B5] hover:bg-gray-100 text-lg px-8 py-4 mr-4 mb-4 md:mb-0"
           >
-            <Link href="/pricing">
+            <Link href="/login?callbackUrl=/payment">
               <LinkedinIcon className="mr-2 h-5 w-5" />
               Start nu voor €29
             </Link>
@@ -671,17 +671,19 @@ export default function LinkedInAlmerePage() {
       {isVisible && (
         <div className="fixed bottom-4 left-4 right-4 z-[2147483647] md:hidden">
           <div className="bg-white rounded-lg shadow-lg border border-gray-200 p-3">
-            <p className="text-center text-md font-bold text-gray-800 mb-4 mt-4">
-              Doe direct jouw LinkedIn fotoshoot almere online, makkelijk vanuit thuis zonder gedoe!
+            <p className="text-center text-md font-bold text-gray-800 mb-2 mt-4">
+              Professionele foto's in 15 minuten
+            </p>
+            <p className="text-center text-sm text-gray-600 mb-4">
+              Geen gedoe direct resultaat
             </p>
             <Button
               asChild
               size="lg"
               className="w-full bg-[#FF8C00] hover:bg-[#FFA500] text-white px-6 py-8 text-base font-semibold"
             >
-              <Link href="/pricing">
-                <LinkedinIcon className="mr-2 h-5 w-5" />
-                LinkedIn fotoshoot almere - € 29 <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
+              <Link href="/login?callbackUrl=/payment">
+                Start jouw fotoshoot nu - € 29 <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
               </Link>
             </Button>
           </div>

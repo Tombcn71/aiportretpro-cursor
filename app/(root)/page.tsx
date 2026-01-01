@@ -383,7 +383,7 @@ export default function HomePage() {
               </ul>
               <div className="mt-6">
                 <Button asChild size="lg" className="w-full bg-[#FF8C00] hover:bg-[#FFA500] text-white font-bold">
-                  <Link href="/pricing">
+                  <Link href="/login?callbackUrl=/payment">
                     Bespaar €170+ Nu <ArrowRight className="ml-2" />
                   </Link>
                 </Button>
@@ -489,7 +489,7 @@ export default function HomePage() {
           </h2>
           <p className="text-xl text-gray-600 mb-8">Laat zien wie je bent met een krachtige, professionele foto</p>
           {isClient && (
-            <Link href="/pricing">
+            <Link href="/login?callbackUrl=/payment">
               <Button size="lg" className="bg-[#FFA500] hover:bg-[#FF8C00] text-white px-8 py-4 text-lg">
                 Start jouw fotoshoot nu - € 29 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
@@ -665,15 +665,18 @@ export default function HomePage() {
       {isVisible && (
         <div className="fixed bottom-4 left-4 right-4 z-[2147483647] md:hidden">
           <div className="bg-white rounded-lg shadow-lg border border-gray-200 p-3">
-            <p className="text-center text-md font-bold text-gray-800 mb-4 mt-4">
+            <p className="text-center text-md font-bold text-gray-800 mb-2 mt-4">
               Professionele foto's in 15 minuten
+            </p>
+            <p className="text-center text-sm text-gray-600 mb-4">
+              Geen gedoe direct resultaat
             </p>
             <Button
               asChild
               size="lg"
               className="w-full bg-[#FF8C00] hover:bg-[#FFA500] text-white px-6 py-8 text-base font-semibold"
             >
-              <Link href="/pricing">
+              <Link href="/login?callbackUrl=/payment">
                 Start jouw fotoshoot nu - € 29 <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
               </Link>
             </Button>

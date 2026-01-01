@@ -22,7 +22,7 @@ export default function HeroSection() {
         size="lg"
         className="bg-[#FFA500] hover:bg-[#FF8C00] text-white px-6 md:px-8 py-3 md:py-4 text-base md:text-lg mb-8"
       >
-        <Link href="/login?source=homepage">
+        <Link href="/login?callbackUrl=/payment">
           <Camera className="mr-2 h-4 md:h-5 w-4 md:w-5" />
           Start jouw fotoshoot nu - 19,99€ <ArrowRight className="ml-2 h-4 md:h-5 w-4 md:w-5" />
         </Link>
