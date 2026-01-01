@@ -1,20 +1,20 @@
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "LinkedIn Foto Laten Maken Rotterdam? | AI Portret Pro €29",
-  description: "Probeer onze online AI fotoshoot: 40 professionele foto's in 15 min. 6x goedkoper dan een traditionele fotograaf!",
-  keywords: "LinkedIn foto laten maken Rotterdam, profielfoto LinkedIn Rotterdam, fotograaf LinkedIn Rotterdam, zakelijk portret Rotterdam, LinkedIn fotoshoot Rotterdam, professionele foto Rotterdam, headshot fotograaf Rotterdam, AI fotografie Rotterdam",
+  title: "LinkedIn Profielfoto Laten Maken Rotterdam | Direct Online Klaar",
+  description: "Professionele zakelijke profielfoto laten maken in Rotterdam? Dé no-nonsense oplossing voor havenprofessionals en ondernemers. Ontvang 40+ AI LinkedIn foto's binnen 15 min.",
+  keywords: ["LinkedIn profielfoto Rotterdam", "Zakelijke foto Rotterdam", "Havenprofessional profielfoto", "Kop van Zuid zakelijke portretten", "AI fotograaf Rotterdam"],
   openGraph: {
-    title: "LinkedIn Foto Laten Maken Rotterdam | AI Fotoshoot €29",
-    description: "Probeer onze online AI fotoshoot: 40 professionele foto's in 15 min. 6x goedkoper dan een traditionele fotograaf!",
+    title: "LinkedIn Profielfoto Laten Maken Rotterdam | Direct Online Klaar",
+    description: "Professionele zakelijke profielfoto laten maken in Rotterdam? Dé no-nonsense oplossing voor havenprofessionals en ondernemers. Ontvang 40+ AI LinkedIn foto's binnen 15 min.",
     url: "https://aiportretpro.nl/linkedin-foto-laten-maken-rotterdam",
     type: "website",
     locale: "nl_NL",
   },
   twitter: {
     card: "summary_large_image",
-    title: "LinkedIn Foto Laten Maken Rotterdam? | AI Portret Pro €29",
-    description: "Probeer onze online AI fotoshoot: 40 professionele foto's in 15 min. 6x goedkoper dan een traditionele fotograaf!",
+    title: "LinkedIn Profielfoto Laten Maken Rotterdam | Direct Online Klaar",
+    description: "Professionele zakelijke profielfoto laten maken in Rotterdam? Dé no-nonsense oplossing voor havenprofessionals en ondernemers. Ontvang 40+ AI LinkedIn foto's binnen 15 min.",
   },
   alternates: {
     canonical: "https://aiportretpro.nl/linkedin-foto-laten-maken-rotterdam",

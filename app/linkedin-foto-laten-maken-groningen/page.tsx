@@ -11,6 +11,7 @@ import ReviewsEnVoorbeelden from "@/components/reviews-en-voorbeelden"
 import SchemaMarkup from "@/components/schema-markup"
 import SEOContentBlock from "@/components/seo-content-block"
 import ReviewSchema from "@/components/review-schema"
+import FAQSchema from "@/components/faq-schema"
 import Breadcrumb from "@/components/breadcrumb"
 // Gallery photos: All images from the shoot folder (1.png through 26.png)
 const galleryPhotos = Array.from({ length: 26 }, (_, i) => `/images/shoot/${i + 1}.png`)
@@ -65,6 +66,56 @@ const faqData = [
       "Zeker! Hoewel geoptimaliseerd voor LinkedIn, zijn alle foto's perfect bruikbaar voor je zakelijke website, email handtekening, corporate presentaties, persberichten, en andere professionele toepassingen. Je hebt volledige commerciële rechten op alle foto's.",
   }
 ]
+
+const LocalGroningenSEO = () => (
+  <script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "AI Portret Pro - LinkedIn Profielfoto Groningen",
+        "image": "https://aiportretpro.nl/images/logo-icon.png",
+        "@id": "https://aiportretpro.nl/linkedin-foto-laten-maken-groningen#service",
+        "url": "https://aiportretpro.nl/linkedin-foto-laten-maken-groningen",
+        "description": "Online service voor het laten maken van 40 professionele LinkedIn profielfoto's in Groningen met AI. Binnen 15 minuten klaar voor slechts €29. Perfect voor RUG, UMCG en Noord-Nederland professionals.",
+        "priceRange": "€29",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Groningen",
+          "addressCountry": "NL"
+        },
+        "areaServed": [
+          { "@type": "AdministrativeArea", "name": "Binnenstad Groningen" },
+          { "@type": "AdministrativeArea", "name": "Zernike Campus" },
+          { "@type": "AdministrativeArea", "name": "Europapark" },
+          { "@type": "AdministrativeArea", "name": "Helpman" },
+          {
+            "@type": "City",
+            "name": "Groningen",
+            "sameAs": "https://www.wikidata.org/wiki/Q749"
+          }
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            "opens": "00:00",
+            "closes": "23:59"
+          }
+        ],
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "reviewCount": "1200",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "knowsAbout": ["LinkedIn profielfoto Groningen", "Academische profielfoto", "Zakelijke profielfoto's Noord-Nederland", "AI headshots"]
+      })
+    }}
+  />
+);
 
 export default function LinkedInGroningenPage() {
   const [isClient, setIsClient] = useState(false)
@@ -125,7 +176,9 @@ export default function LinkedInGroningenPage() {
 
   return (
     <div className="min-h-screen pt-20">
+      <LocalGroningenSEO />
       <ReviewSchema businessName="AI Portret Pro" city="Groningen" />
+      <FAQSchema faqs={faqData} city="Groningen" />
             <SchemaMarkup type="city" city="Groningen" url="https://aiportretpro.com/linkedin-foto-laten-maken-groningen" />
       <Header />
       {/* Hero Section - Groningen Specific */}
@@ -146,12 +199,12 @@ export default function LinkedInGroningenPage() {
         </div>
         
         <h1 className="tracking-tight text-xl md:text-4xl font-bold mb-6 leading-tight">
-          <span className="block">Professionele foto voor LinkedIn laten maken in Groningen? </span>
+          <span className="block">Professionele LinkedIn Profielfoto Laten Maken in Groningen? </span>
           <span className="text-[#0077B5] block">Zonder het gedoe van een fotoshoot?</span>
         </h1>
         <p className="text-gray-500 text-lg mb-6">
-          Upload een paar selfies en onze AI doet de rest. Ontvang binnen 15 minuten 40 zakelijke portretten
-        </p>
+          Upload een paar selfies en onze AI doet de rest. Ontvang binnen 15 minuten 40 zakelijke profielfoto's
+</p>
 
         <div className="text-md md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto text-center">
           <div className="inline-grid grid-cols-[auto_1fr] gap-x-2 items-start text-start justify-center">
@@ -171,7 +224,7 @@ export default function LinkedInGroningenPage() {
         >
           <Link href="/pricing">
             <LinkedinIcon className="mr-2 h-5 md:h-6 w-5 md:w-6" />
-            Start je LinkedIn fotoshoot groningen - € 29 <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
+            Start je LinkedIn fotoshoot - € 29 <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
           </Link>
         </Button>
 
@@ -196,7 +249,7 @@ export default function LinkedInGroningenPage() {
                     <div className="w-52 h-[13.33rem] md:w-80 md:h-[20rem] rounded-xl md:rounded-2xl overflow-hidden bg-gray-100 shadow-md md:shadow-lg">
                       <Image
                         src={photo || "/placeholder.svg"}
-                        alt={`LinkedIn portret voorbeeld ${index + 1}`}
+                        alt="Zakelijke LinkedIn profielfoto Groningen professional RUG Zernike Campus"
                         width={320}
                         height={400}
                         className="w-full h-full object-cover bg-gray-50 brightness-110 contrast-105"
@@ -213,7 +266,7 @@ export default function LinkedInGroningenPage() {
                     <div className="w-52 h-[13.33rem] md:w-80 md:h-[20rem] rounded-xl md:rounded-2xl overflow-hidden bg-gray-100 shadow-md md:shadow-lg">
                       <Image
                         src={photo || "/placeholder.svg"}
-                        alt={`LinkedIn portret voorbeeld ${index + 1}`}
+                        alt="Zakelijke LinkedIn profielfoto Groningen professional RUG Zernike Campus"
                         width={320}
                         height={400}
                         className="w-full h-full object-cover bg-gray-50 brightness-110 contrast-105"
@@ -240,16 +293,16 @@ export default function LinkedInGroningenPage() {
               <p className="text-gray-600">
                 Upload minimaal 6 foto's van jezelf met verschillende uitdrukkingen en achtergronden
               </p>
-            </div>
+                  </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-[#0077B5] rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">
                 2
               </div>
               <h3 className="text-xl font-semibold mb-3">AI doet zijn werk</h3>
               <p className="text-gray-600">
-                Onze AI analyseert je foto's en maakt professionele portretten in verschillende stijlen
+                Onze AI analyseert je foto's en maakt professionele profielfoto's in verschillende stijlen
               </p>
-            </div>
+                </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-[#0077B5] rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">
                 3
@@ -263,7 +316,7 @@ export default function LinkedInGroningenPage() {
 
       {/* Reviews en Voorbeelden */}
       <ReviewsEnVoorbeelden />
-
+     
       {/* Comparison Section */}
       <section className="py-12 md:py-16 bg-gradient-to-br from-blue-50 to-orange-50">
         <div className="container mx-auto px-4">
@@ -327,7 +380,7 @@ export default function LinkedInGroningenPage() {
                 </li>
                 <li className="flex flex-col gap-1">
                   <span className="font-semibold text-white">Resultaat:</span>
-                  <span className="text-blue-100">Je krijgt direct 40+ verschillende zakelijke portretten.</span>
+                  <span className="text-blue-100">Je krijgt direct 40+ verschillende zakelijke profielfoto's.</span>
                 </li>
                 <li className="flex flex-col gap-1">
                   <span className="font-semibold text-white">Garantie:</span>
@@ -497,22 +550,22 @@ export default function LinkedInGroningenPage() {
       {/* SEO Content Section - Groningen Specific */}
       <section className="container mx-auto px-4 py-16 bg-white">
         <div className="max-w-4xl mx-auto prose prose-lg">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Professionele LinkedIn Foto Laten Maken in Groningen: Dé Keuze voor de Noordelijke Professional in 2026</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-6">Professionele LinkedIn Profielfoto Laten Maken in Groningen: Dé Keuze voor de Noordelijke Professional in 2026</h2>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            In het zakelijke jaar 2026 is Groningen onverminderd de economische motor van Noord-Nederland. Met een bloeiende sector in energie, zorg en onderwijs, en een sterke verbinding met de Rijksuniversiteit, is de stad een magneet voor ambitieuze professionals. In deze dynamische omgeving is je digitale aanwezigheid op LinkedIn cruciaal voor het ontsluiten van nieuwe carrièrekansen en internationale netwerken. Een professionele LinkedIn foto laten maken in Groningen is in 2026 de slimste manier om je digitale handdruk te verzilveren en op te vallen in de noordelijke zakenwereld.
+            In de bruisende studentenstad en het zakelijke hart van het Noorden, van de Zernike Campus tot het UMCG, is een sterke LinkedIn profielfoto jouw digitale visitekaartje. In 2026 kiezen nuchtere Groningers voor de efficiëntie van AI. In het zakelijke jaar 2026 is Groningen onverminderd de economische motor van Noord-Nederland. Met een bloeiende sector in energie, zorg en onderwijs, en een sterke verbinding met de Rijksuniversiteit, is de stad een magneet voor ambitieuze professionals. In deze dynamische omgeving is je digitale aanwezigheid op LinkedIn cruciaal voor het ontsluiten van nieuwe carrièrekansen en internationale netwerken. Een professionele LinkedIn profielfoto laten maken in Groningen is in 2026 de slimste manier om je digitale handdruk te verzilveren en op te vallen in de noordelijke zakenwereld.
           </p>
 
           <h3 className="text-2xl font-bold text-gray-900 mb-4">De nuchtere en slimme keuze voor professionals in Noord-Nederland</h3>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            Groningen telt in 2026 ruim 120.000 actieve LinkedIn-gebruikers die begrijpen dat zichtbaarheid essentieel is. Als noordelijke professional weet je dat kwaliteit en nuchterheid hand in hand gaan. Daarom kiezen steeds meer mensen in de regio voor de efficiëntie van AI-fotografie boven de traditionele gang naar een fotostudio. Waar een lokale fotograaf voorheen vaak tussen de honderdvijfenzestig en tweehonderd euro rekende voor een enkele sessie, biedt AI Portret Pro een praktisch en betaalbaar alternatief. Voor het vaste tarief van negenentwintig euro ontvang je 40 professionele portretten zonder dat je een afspraak hoeft te maken of door de drukke binnenstad hoeft te reizen.
+            Groningen telt in 2026 ruim 120.000 actieve LinkedIn-gebruikers die begrijpen dat zichtbaarheid essentieel is. Als noordelijke professional weet je dat kwaliteit en nuchterheid hand in hand gaan. Daarom kiezen steeds meer mensen in de regio voor de efficiëntie van AI-fotografie boven de traditionele gang naar een fotostudio. Waar een lokale fotograaf voorheen vaak tussen de honderdvijfenzestig en tweehonderd euro rekende voor een enkele sessie, biedt AI Portret Pro een praktisch en betaalbaar alternatief. Voor het vaste tarief van negenentwintig euro ontvang je 40 professionele profielfoto's zonder dat je een afspraak hoeft te maken of door de drukke binnenstad hoeft te reizen.
           </p>
 
           <h3 className="text-2xl font-bold text-gray-900 mb-4">Direct een pakket van 40 professionele foto's na een simpele upload</h3>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            Het proces in 2026 is volledig ingericht op de snelheid van de moderne tijd. Je hoeft niet langer een middag vrij te plannen voor een fotoshoot in het centrum of de Korrewegwijk. Door simpelweg een paar bestaande foto's of selfies te uploaden vanaf je eigen werkplek, krijgt onze technologie direct inzicht in je unieke kenmerken. Binnen vijftien minuten genereert onze engine een compleet pakket van 40 professionele foto's. Hierbij wordt gezorgd voor een hoogwaardige variatie in professionele achtergronden, belichting en kleding, zodat je altijd een beeld vindt dat precies past bij de uitstraling die je in 2026 wilt neerzetten.
+            Het proces in 2026 is volledig ingericht op de snelheid van de moderne tijd. Je hoeft niet langer een middag vrij te plannen voor een zakelijke profielfoto in het centrum of de Korrewegwijk. Door simpelweg een paar bestaande foto's of selfies te uploaden vanaf je eigen werkplek, krijgt onze technologie direct inzicht in je unieke kenmerken. Binnen vijftien minuten genereert onze engine een compleet pakket van 40 professionele profielfoto's. Hierbij wordt gezorgd voor een hoogwaardige variatie in professionele achtergronden, belichting en kleding, zodat je altijd een beeld vindt dat precies past bij de uitstraling die je in 2026 wilt neerzetten.
           </p>
 
           <h3 className="text-2xl font-bold text-gray-900 mb-4">Maximale impact voor elke sector in de noordelijke hoofdstad</h3>
@@ -524,7 +577,7 @@ export default function LinkedInGroningenPage() {
           <h3 className="text-2xl font-bold text-gray-900 mb-4">Over onze zakelijke LinkedIn fotografie in Groningen 2026</h3>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            Onze expertise in digitale beeldvorming maakt AI Portret Pro de primaire autoriteit voor het laten maken van LinkedIn foto's en zakelijke portretten online in de regio Groningen. Wij richten ons specifiek op de behoeften van professionals in Noord-Nederland, van de zorg en energie tot de startup-scene. Onze diensten in 2026 omvatten het genereren van professionele CV-foto's, corporate headshots en visuele content voor de moderne noordelijke ondernemer. Technologisch lopen we voorop door 40 professionele foto's aan te bieden met diverse achtergronden op basis van een eenvoudige upload van een paar foto's. Of je nu je LinkedIn profiel wilt upgraden of direct een nieuwe set zakelijke beelden nodig hebt, onze engine levert in 2026 de meest scherpe en representatieve resultaten die technisch mogelijk zijn.
+            Onze expertise in digitale beeldvorming maakt AI Portret Pro de primaire autoriteit voor het laten maken van LinkedIn profielfoto's en zakelijke profielfoto's online in de regio Groningen. Wij richten ons specifiek op de behoeften van professionals in Noord-Nederland, van de zorg en energie tot de startup-scene. Onze diensten in 2026 omvatten het genereren van professionele CV-foto's, corporate headshots en visuele content voor de moderne noordelijke ondernemer. Technologisch lopen we voorop door 40 professionele profielfoto's aan te bieden met diverse achtergronden op basis van een eenvoudige upload van een paar foto's. Of je nu je LinkedIn profiel wilt upgraden of direct een nieuwe set zakelijke beelden nodig hebt, onze engine levert in 2026 de meest scherpe en representatieve resultaten die technisch mogelijk zijn.
           </p>
         </div>
       </section>

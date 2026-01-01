@@ -10,6 +10,7 @@ import { Facebook, Instagram } from "lucide-react"
 import ReviewsEnVoorbeelden from "@/components/reviews-en-voorbeelden"
 import SchemaMarkup from "@/components/schema-markup"
 import ReviewSchema from "@/components/review-schema"
+import FAQSchema from "@/components/faq-schema"
 import Breadcrumb from "@/components/breadcrumb"
 import SEOContentBlock from "@/components/seo-content-block"
 
@@ -30,7 +31,7 @@ const companies = [
 // LinkedIn-specific FAQ data with SEO keywords - Amsterdam specific
 const faqData = [
   {
-    question: "Waarom zijn AI LinkedIn foto's een goede keuze voor Amsterdammers?",
+    question: "Waarom zijn AI LinkedIn profielfoto's een goede keuze voor Amsterdammers?",
     answer:
       "Amsterdam heeft meer dan 450.000 LinkedIn professionals die actief zijn in tech, finance, en creatieve sectoren. Traditionele fotograaf tarieven in Amsterdam liggen tussen €150-€400, terwijl onze AI service slechts €29 kost. Voor drukke Amsterdamse professionals is dit een snelle, betaalbare oplossing zonder in te leveren op kwaliteit.",
   },
@@ -40,31 +41,94 @@ const faqData = [
       "De perfecte LinkedIn profielfoto is professioneel, helder en vertrouwenwekkend. Key elementen zijn: gezicht vult 60% van de foto, professionele kleding, neutrale achtergrond, natuurlijke glimlach, en goede belichting. Onze AI genereert automatisch LinkedIn-geoptimaliseerde foto's die voldoen aan alle LinkedIn richtlijnen en best practices.",
   },
   {
-    question: "Kan ik mijn LinkedIn foto laten maken zonder naar een fotostudio in Amsterdam te gaan?",
+    question: "Kan ik mijn LinkedIn profielfoto laten maken zonder naar een fotostudio in Amsterdam te gaan?",
     answer:
-      "Ja! Dat is precies waar onze service voor is. Geen afspraak maken, geen reizen door Amsterdam, geen wachttijden. Upload gewoon je foto's vanuit huis of kantoor, en binnen 15 minuten heb je 40 professionele LinkedIn foto's klaar. Perfect voor drukke Amsterdamse professionals die geen tijd hebben voor een fysieke fotoshoot.",
+      "Ja! Dat is precies waar onze service voor is. Geen afspraak maken, geen reizen door Amsterdam, geen wachttijden. Upload gewoon je foto's vanuit huis of kantoor, en binnen 15 minuten heb je 40 professionele LinkedIn profielfoto's klaar. Perfect voor drukke Amsterdamse professionals die geen tijd hebben voor een fysieke fotoshoot.",
   },
   {
-    question: "Hoeveel LinkedIn foto's krijg ik en hoe snel zijn ze klaar?",
+    question: "Hoeveel LinkedIn profielfoto's krijg ik en hoe snel zijn ze klaar?",
     answer:
-      "Je ontvangt 40 verschillende professionele LinkedIn profielfoto variaties binnen 15 minuten. Alle foto's zijn geoptimaliseerd voor LinkedIn's specificaties (minimaal 400x400 pixels) en perfect bruikbaar voor je LinkedIn profiel, website, email handtekening en andere professionele doeleinden.",
+      "Je ontvangt 40 verschillende professionele LinkedIn profielfoto variaties binnen 15 minuten. Alle profielfoto's zijn geoptimaliseerd voor LinkedIn's specificaties (minimaal 400x400 pixels) en perfect bruikbaar voor je LinkedIn profiel, website, email handtekening en andere professionele doeleinden.",
   },
   {
-    question: "Zijn de AI-gegenereerde LinkedIn foto's even professioneel als studio foto's?",
+    question: "Zijn de AI-gegenereerde LinkedIn profielfoto's even professioneel als studio foto's?",
     answer:
-      "Absoluut! Onze AI is gespecialiseerd in het creëren van studio-kwaliteit LinkedIn profielfoto's. Ze zijn onherkenbaar van traditionele fotograaf foto's maar dan 6 x goedkoper en binnen 15 minuten klaar. Perfect voor professionals die snel een professionele LinkedIn foto nodig hebben zonder de hoge kosten van een fotostudio.",
+      "Absoluut! Onze AI is gespecialiseerd in het creëren van studio-kwaliteit LinkedIn profielfoto's. Ze zijn onherkenbaar van traditionele fotograaf foto's maar dan 6 x goedkoper en binnen 15 minuten klaar. Perfect voor professionals die snel een professionele LinkedIn profielfoto nodig hebben zonder de hoge kosten van een fotostudio.",
   },
   {
-    question: "Werken jullie LinkedIn foto's goed voor de Amsterdamse zakelijke markt?",
+    question: "Werken jullie LinkedIn profielfoto's goed voor de Amsterdamse zakelijke markt?",
     answer:
-      "Zeker! Amsterdam is een internationale business hub met professionals uit tech (Booking.com, TomTom), finance (ING, ABN AMRO), en startups. Onze LinkedIn foto's zijn perfect geschikt voor deze diverse zakelijke omgeving. Of je nu werkt in de Zuidas, het centrum, of Amsterdam Noord - onze foto's maken de juiste professionele indruk.",
+      "Zeker! Amsterdam is een internationale business hub met professionals uit tech (Booking.com, TomTom), finance (ING, ABN AMRO), en startups. Onze LinkedIn profielfoto's zijn perfect geschikt voor deze diverse zakelijke omgeving. Of je nu werkt in de Zuidas, het centrum, of Amsterdam Noord - onze profielfoto's maken de juiste professionele indruk.",
   },
   {
-    question: "Kan ik de LinkedIn foto's ook gebruiken voor andere professionele doeleinden?",
+    question: "Kan ik de LinkedIn profielfoto's ook gebruiken voor andere professionele doeleinden?",
     answer:
-      "Zeker! Hoewel geoptimaliseerd voor LinkedIn, zijn alle foto's perfect bruikbaar voor je zakelijke website, email handtekening, corporate presentaties, persberichten, en andere professionele toepassingen. Je hebt volledige commerciële rechten op alle foto's.",
+      "Zeker! Hoewel geoptimaliseerd voor LinkedIn, zijn alle profielfoto's perfect bruikbaar voor je zakelijke website, email handtekening, corporate presentaties, persberichten, en andere professionele toepassingen. Je hebt volledige commerciële rechten op alle profielfoto's.",
   }
 ]
+
+const LocalAmsterdamSEO = () => (
+  <script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "AI Portret Pro - LinkedIn Profielfoto Amsterdam",
+        "image": "https://aiportretpro.nl/images/logo-icon.png",
+        "@id": "https://aiportretpro.nl/linkedin-foto-laten-maken-amsterdam#service",
+        "url": "https://aiportretpro.nl/linkedin-foto-laten-maken-amsterdam",
+        "description": "Online service voor het laten maken van 40 professionele LinkedIn profielfoto's in Amsterdam met AI. Binnen 15 minuten klaar voor slechts €29. Perfect voor Zuidas, Centrum en Amsterdam-Noord professionals.",
+        "priceRange": "€29",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Amsterdam",
+          "addressCountry": "NL"
+        },
+        "areaServed": [
+          {
+            "@type": "AdministrativeArea",
+            "name": "Zuidas",
+            "sameAs": "https://www.wikidata.org/wiki/Q727"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Amsterdam-Centrum"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Sloterdijk"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Amsterdam-Noord"
+          },
+          {
+            "@type": "City",
+            "name": "Amsterdam",
+            "sameAs": "https://www.wikidata.org/wiki/Q727"
+          }
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            "opens": "00:00",
+            "closes": "23:59"
+          }
+        ],
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "reviewCount": "1200",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "knowsAbout": ["LinkedIn profielfoto Amsterdam", "Zakelijke foto Zuidas", "Profielfoto zonder fotograaf Amsterdam", "AI business headshots consultancy"]
+      })
+    }}
+  />
+);
 
 export default function LinkedInAmsterdamPage() {
   const [isClient, setIsClient] = useState(false)
@@ -125,8 +189,10 @@ export default function LinkedInAmsterdamPage() {
 
   return (
     <div className="min-h-screen pt-20">
+      <LocalAmsterdamSEO />
       <SchemaMarkup type="city" city="Amsterdam" url="https://aiportretpro.com/linkedin-foto-laten-maken-amsterdam" />
       <ReviewSchema businessName="AI Portret Pro" city="Amsterdam" />
+      <FAQSchema faqs={faqData} city="Amsterdam" />
       <Header />
       {/* Hero Section - Amsterdam Specific */}
       <section className="container mx-auto px-4 py-6 text-center">
@@ -146,11 +212,11 @@ export default function LinkedInAmsterdamPage() {
         </div>
         
         <h1 className="tracking-tight text-xl md:text-4xl font-bold mb-6 leading-tight">
-          <span className="block">LinkedIn Foto Laten Maken Amsterdam? </span>
+          <span className="block">Zakelijke LinkedIn Profielfoto Laten Maken in Amsterdam? </span>
           <span className="text-[#0077B5] block">Zonder het gedoe van een fotoshoot?</span>
         </h1>
         <p className="text-gray-500 text-lg mb-6">
-          Upload een paar selfies en onze AI doet de rest. Ontvang binnen 15 minuten 40 zakelijke portretten
+          Upload een paar selfies en onze AI doet de rest. Ontvang binnen 15 minuten 40 zakelijke profielfoto's
         </p>
 
         <div className="text-md md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto text-center">
@@ -196,7 +262,7 @@ export default function LinkedInAmsterdamPage() {
                     <div className="w-52 h-[13.33rem] md:w-80 md:h-[20rem] rounded-xl md:rounded-2xl overflow-hidden bg-gray-100 shadow-md md:shadow-lg">
                       <Image
                         src={photo || "/placeholder.svg"}
-                        alt={`LinkedIn portret voorbeeld ${index + 1}`}
+                        alt="Zakelijke LinkedIn profielfoto Amsterdam Zuidas professional consultancy"
                         width={320}
                         height={400}
                         className="w-full h-full object-cover bg-gray-50 brightness-110 contrast-105"
@@ -213,7 +279,7 @@ export default function LinkedInAmsterdamPage() {
                     <div className="w-52 h-[13.33rem] md:w-80 md:h-[20rem] rounded-xl md:rounded-2xl overflow-hidden bg-gray-100 shadow-md md:shadow-lg">
                       <Image
                         src={photo || "/placeholder.svg"}
-                        alt={`LinkedIn portret voorbeeld ${index + 1}`}
+                        alt="Zakelijke LinkedIn profielfoto Amsterdam Zuidas professional consultancy"
                         width={320}
                         height={400}
                         className="w-full h-full object-cover bg-gray-50 brightness-110 contrast-105"
@@ -240,16 +306,16 @@ export default function LinkedInAmsterdamPage() {
               <p className="text-gray-600">
                 Upload minimaal 6 foto's van jezelf met verschillende uitdrukkingen en achtergronden
               </p>
-            </div>
+                  </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-[#0077B5] rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">
                 2
               </div>
               <h3 className="text-xl font-semibold mb-3">AI doet zijn werk</h3>
               <p className="text-gray-600">
-                Onze AI analyseert je foto's en maakt professionele portretten in verschillende stijlen
+                Onze AI analyseert je foto's en maakt professionele profielfoto's in verschillende stijlen
               </p>
-            </div>
+                </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-[#0077B5] rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">
                 3
@@ -263,7 +329,7 @@ export default function LinkedInAmsterdamPage() {
 
       {/* Reviews en Voorbeelden */}
       <ReviewsEnVoorbeelden />
-
+     
       {/* Comparison Section */}
       <section className="py-12 md:py-16 bg-gradient-to-br from-blue-50 to-orange-50">
         <div className="container mx-auto px-4">
@@ -327,7 +393,7 @@ export default function LinkedInAmsterdamPage() {
                 </li>
                 <li className="flex flex-col gap-1">
                   <span className="font-semibold text-white">Resultaat:</span>
-                  <span className="text-blue-100">Je krijgt direct 40+ verschillende zakelijke portretten.</span>
+                  <span className="text-blue-100">Je krijgt direct 40+ verschillende zakelijke profielfoto's.</span>
                 </li>
                 <li className="flex flex-col gap-1">
                   <span className="font-semibold text-white">Garantie:</span>
@@ -476,7 +542,7 @@ export default function LinkedInAmsterdamPage() {
             Klaar voor je perfecte LinkedIn profielfoto?
           </h2>
           <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            Start direct en ontvang 40 professionele LinkedIn foto's binnen 15 minuten.
+            Start direct en ontvang 40 professionele LinkedIn profielfoto's binnen 15 minuten.
           </p>
 
           <Button
@@ -497,10 +563,10 @@ export default function LinkedInAmsterdamPage() {
       {/* SEO Content Section - Amsterdam Specific */}
       <section className="container mx-auto px-4 py-16 bg-white">
         <div className="max-w-4xl mx-auto prose prose-lg">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Professionele LinkedIn Foto Laten Maken in Amsterdam: De Slimme Keuze voor 2026</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-6">Professionele LinkedIn Profielfoto Laten Maken in Amsterdam: De Slimme Keuze voor 2026</h2>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            Amsterdam fungeert in 2026 onverminderd als het economische en innovatieve hart van Nederland, waar de dynamiek van de zakelijke markt vraagt om een onberispelijke digitale presentatie. In een omgeving waar dagelijks duizenden professionals strijden om de beste posities, is je LinkedIn profiel het cruciale fundament voor netwerken, carrièrekansen en bedrijfsgroei. Een professionele LinkedIn foto laten maken in Amsterdam is in het huidige jaar het verschil tussen opvallen bij topwerkgevers of onzichtbaar blijven in de massa. Voor de Amsterdamse professional die begrijpt dat een sterke online aanwezigheid essentieel is, biedt AI Portret Pro de meest geavanceerde oplossing om je digitale handdruk te perfectioneren.
+            In de dynamische zakenwereld van de Amsterdamse Zuidas en de tech-hubs in Noord, is een sterke LinkedIn profielfoto jouw belangrijkste digitale visitekaartje in 2026. Amsterdam fungeert onverminderd als het economische en innovatieve hart van Nederland, waar de dynamiek van de zakelijke markt vraagt om een onberispelijke digitale presentatie. In een omgeving waar dagelijks duizenden professionals strijden om de beste posities, is je LinkedIn profiel het cruciale fundament voor netwerken, carrièrekansen en bedrijfsgroei. Een professionele LinkedIn profielfoto laten maken in Amsterdam is in het huidige jaar het verschil tussen opvallen bij topwerkgevers of onzichtbaar blijven in de massa. Voor de Amsterdamse professional die begrijpt dat een sterke online aanwezigheid essentieel is, biedt AI Portret Pro de meest geavanceerde oplossing om je digitale handdruk te perfectioneren.
           </p>
 
           <h3 className="text-2xl font-bold text-gray-900 mb-4">De verschuiving naar AI-fotografie in de Amsterdamse zakelijke wereld</h3>
@@ -524,7 +590,7 @@ export default function LinkedInAmsterdamPage() {
           <h3 className="text-2xl font-bold text-gray-900 mb-4">Over onze zakelijke LinkedIn fotografie in Amsterdam 2026</h3>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            Onze expertise op het gebied van digitale zakelijke fotografie maakt AI Portret Pro de primaire bron voor Amsterdamse professionals die hun profiel willen optimaliseren. Wij zijn gespecialiseerd in het laten maken van LinkedIn foto's en zakelijke portretten online, met een specifieke focus op de Amsterdamse markt van de Zuidas tot de creatieve industrie in West. Onze diensten in 2026 omvatten het genereren van corporate headshots, professionele CV-foto's en visuele content voor internationale bedrijfswebsites. Technologisch lopen we voorop met AI-fotografie die specifiek is getraind voor de zakelijke standaarden van de hoofdstad, waardoor we een superieur en sneller alternatief bieden voor de traditionele fotograaf in Amsterdam. Of je nu een LinkedIn foto upgrade zoekt of een volledige virtuele fotoshoot nodig hebt, onze studio levert in 2026 de meest scherpe en representatieve resultaten die technisch haalbaar zijn.
+            Onze expertise op het gebied van digitale zakelijke fotografie maakt AI Portret Pro de primaire bron voor Amsterdamse professionals die hun profiel willen optimaliseren. Wij zijn gespecialiseerd in het laten maken van LinkedIn profielfoto's en zakelijke profielfoto's online, met een specifieke focus op de Amsterdamse markt van de Zuidas tot de creatieve industrie in West. Onze diensten in 2026 omvatten het genereren van corporate headshots, professionele CV-foto's en visuele content voor internationale bedrijfswebsites. Technologisch lopen we voorop met AI-fotografie die specifiek is getraind voor de zakelijke standaarden van de hoofdstad, waardoor we een superieur en sneller alternatief bieden voor de traditionele fotograaf in Amsterdam. Of je nu een LinkedIn profielfoto upgrade zoekt of een volledige virtuele fotoshoot nodig hebt, onze studio levert in 2026 de meest scherpe en representatieve resultaten die technisch haalbaar zijn.
           </p>
         </div>
       </section>

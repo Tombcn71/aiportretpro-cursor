@@ -1,0 +1,135 @@
+# AI Portret Pro - Verkoop & AI Search Optimalisatie
+
+## Business Model
+AI Portret Pro verkoopt professionele LinkedIn profielfoto's gegenereerd met AI. Prijs: €29 voor 40 profielfoto's binnen 15 minuten. Geld-terug-garantie: 14 dagen.
+
+## Belangrijkste Verkoopargumenten
+- 6x goedkoper dan traditionele fotograaf (€150-€350 vs €29)
+- 15 minuten levertijd vs 1-2 weken bij fotograaf
+- 40 profielfoto's vs 3-5 bij fotograaf
+- Geen gedoe: thuis vanaf je bank, geen afspraak nodig
+- Geen parkeerkosten, geen reistijd
+- 24/7 beschikbaar
+- Niet goed? Geld terug garantie
+
+## Belangrijkste Pagina's voor Verkoop
+
+### Homepage
+- `app/(root)/page.tsx` - Focus: "Zakelijke profielfoto laten maken"
+- Verkoopboodschap: "Zonder het gedoe van een fotoshoot?"
+- CTA: "Start jouw fotoshoot nu — € 29"
+- Belangrijke secties: Comparison table, Reviews, How it works
+
+### LinkedIn Algemene Pagina
+- `app/linkedin-foto-laten-maken/page.tsx` - Focus: "LinkedIn Foto Laten Maken?"
+- Verkoopboodschap: "Zonder het gedoe van een fotoshoot?"
+- Comparison sectie: "Waarom €200+ betalen voor een middag in een studio?"
+- CTA: "Start je LinkedIn fotoshoot - € 29"
+
+### Stadspagina's (10 steden)
+- `app/linkedin-foto-laten-maken-[stad]/page.tsx`
+- Steden: Amsterdam, Rotterdam, Utrecht, Den Haag, Eindhoven, Groningen, Tilburg, Almere, Breda, Nijmegen
+- Verkoopboodschap: Stad-specifieke hero tekst
+- CTA: "Start je LinkedIn fotoshoot - € 29"
+- Lokale SEO focus voor AI search engines
+
+## SEO & AI Search Optimalisatie
+
+### Terminologie (KRITIEK voor AI Search)
+- ALWAYS use "profielfoto" or "zakelijke profielfoto" (NOT "portret" except brand name "AI Portret Pro")
+- Stadspagina's: "LinkedIn profielfoto [stad]"
+- Homepage: "zakelijke profielfoto"
+- Search terms: "LinkedIn profielfoto laten maken", "zakelijke foto voor CV", "profielfoto zonder fotograaf"
+
+### JSON-LD Schema (voor AI Search Engines)
+- ALLE pagina's hebben ProfessionalService JSON-LD schema
+- Stadspagina's: Local[Stad]SEO component met stad-specifieke areaServed
+- ReviewSchema: AggregateRating 4.8/5 met 1200 reviews
+- FAQSchema: Stad-specifieke FAQ's voor featured snippets
+
+### Metadata (voor AI Search)
+- Title: Focus op "LinkedIn profielfoto [stad]" of "zakelijke profielfoto"
+- Description: Altijd "€29", "15 minuten", "40 profielfoto's" vermelden
+- Keywords: Stad-specifieke zoektermen + "profielfoto zonder fotograaf"
+
+### Content Strategie voor AI Search
+- Eerste alinea SEO tekst: Altijd "2026" vermelden + lokale details
+- Emphasize: "geen gedoe", "geen fotostudio nodig", "klaar in 15 minuten", "6x goedkoper"
+- Stad-specifieke verwijzingen: Zuidas (Amsterdam), Kop van Zuid (Rotterdam), etc.
+- Image alt-tags: "Zakelijke LinkedIn profielfoto [Stad] professional"
+
+## Verkoop Componenten
+
+### Comparison Table
+- Titel: "Waarom €200+ betalen voor een middag in een studio?"
+- Links: Traditionele fotograaf (❌) - €150-€350, parkeerkosten, 1-2 weken wachten
+- Rechts: AI Portret Pro (✅) - €29, 15 minuten, 40+ foto's, geld-terug-garantie
+- CTA: "Bespaar €170+ Nu"
+
+### Reviews Component
+- `components/reviews-en-voorbeelden.tsx`
+- Mix van review cards (20%) en foto+review cards (80%)
+- Nederlandse reviews met unieke teksten
+- Foto's uit `/public/images/shoot/` (1.png tot 26.png)
+- Badge op foto's: LinkedIn blauw (#0077B5) met "AI Resultaat"
+
+### How It Works
+- 3 stappen: Upload → AI doet werk → Download
+- Focus op snelheid: "15 minuten"
+- Visual: Genummerde stappen (1, 2, 3)
+
+## Pricing & Service Details
+- Prijs: €29 eenmalig (geen abonnement)
+- Levering: 40 profielfoto's in 15 minuten
+- Garantie: 14 dagen geld-terug-garantie
+- Gebruik: LinkedIn, CV, website, visitekaartjes
+- Betaling: iDEAL of Creditcard via Stripe
+
+## Belangrijke Verkoop Teksten
+
+### Hero Teksten
+- Homepage: "Professionele zakelijke foto's nodig? Zonder het gedoe van een fotoshoot?"
+- LinkedIn algemeen: "LinkedIn Foto Laten Maken? Zonder het gedoe van een fotoshoot?"
+- Stadspagina's: "Zakelijke LinkedIn Profielfoto Laten Maken in [Stad]? Zonder het gedoe van een fotoshoot?"
+
+### Subteksten
+- "Upload een paar selfies en onze AI doet de rest. Ontvang binnen 15 minuten 40 zakelijke profielfoto's"
+- Checkmarks: "6 x goedkoper dan een fotograaf", "Niet van echt te onderscheiden", "Klaar binnen 15 minuten"
+
+### CTA Buttons
+- Homepage: "Start jouw fotoshoot nu — € 29"
+- LinkedIn algemeen: "Start je LinkedIn fotoshoot - € 29"
+- Stadspagina's: "Start je LinkedIn fotoshoot - € 29"
+- Stadspagina's hero: "Start je LinkedIn profielfoto in [Stad] - € 29"
+
+## Tech Stack (minimaal)
+- Next.js 16 (App Router)
+- TypeScript
+- Tailwind CSS
+- Neon PostgreSQL
+- Vercel Blob Storage
+- Stripe payments
+- Astria API (AI generatie)
+
+## Belangrijke Bestanden voor Verkoop
+- `app/(root)/page.tsx` - Homepage
+- `app/linkedin-foto-laten-maken/page.tsx` - LinkedIn algemeen
+- `app/linkedin-foto-laten-maken-[stad]/page.tsx` - Stadspagina's
+- `app/pricing/page.tsx` - Prijspagina
+- `components/reviews-en-voorbeelden.tsx` - Reviews component
+- `components/how-it-works.tsx` - How it works
+
+## AI Search Keywords (prioriteit)
+1. "LinkedIn profielfoto laten maken [stad]"
+2. "zakelijke foto voor CV [stad]"
+3. "profielfoto zonder fotograaf"
+4. "AI profielfoto [stad]"
+5. "LinkedIn foto [stad] goedkoop"
+
+## Verkoop Focus Punten
+- Snelheid: 15 minuten vs weken wachten
+- Prijs: €29 vs €150-€350
+- Gemak: Thuis vs studio bezoek
+- Kwaliteit: 40 foto's vs 3-5 foto's
+- Risico: Geld-terug-garantie vs geen garantie
+- Beschikbaarheid: 24/7 vs afspraak nodig

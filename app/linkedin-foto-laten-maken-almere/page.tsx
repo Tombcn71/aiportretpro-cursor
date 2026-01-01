@@ -11,6 +11,7 @@ import ReviewsEnVoorbeelden from "@/components/reviews-en-voorbeelden"
 import SchemaMarkup from "@/components/schema-markup"
 import SEOContentBlock from "@/components/seo-content-block"
 import ReviewSchema from "@/components/review-schema"
+import FAQSchema from "@/components/faq-schema"
 import Breadcrumb from "@/components/breadcrumb"
 // Gallery photos: All images from the shoot folder (1.png through 26.png)
 const galleryPhotos = Array.from({ length: 26 }, (_, i) => `/images/shoot/${i + 1}.png`)
@@ -65,6 +66,57 @@ const faqData = [
       "Zeker! Hoewel geoptimaliseerd voor LinkedIn, zijn alle foto's perfect bruikbaar voor je zakelijke website, email handtekening, corporate presentaties, persberichten, en andere professionele toepassingen. Je hebt volledige commerciële rechten op alle foto's.",
   }
 ]
+
+const LocalAlmereSEO = () => (
+  <script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "AI Portret Pro - LinkedIn Profielfoto Almere",
+        "image": "https://aiportretpro.nl/images/logo-icon.png",
+        "@id": "https://aiportretpro.nl/linkedin-foto-laten-maken-almere#service",
+        "url": "https://aiportretpro.nl/linkedin-foto-laten-maken-almere",
+        "description": "Online service voor het laten maken van 40 professionele LinkedIn profielfoto's in Almere met AI. Binnen 15 minuten klaar voor slechts €29. Perfect voor Flevoland professionals.",
+        "priceRange": "€29",
+        "address": { "@type": "PostalAddress", "addressLocality": "Almere", "addressCountry": "NL" },
+        "areaServed": [
+          { "@type": "AdministrativeArea", "name": "Almere Stad" },
+          { "@type": "AdministrativeArea", "name": "Almere Haven" },
+          { "@type": "AdministrativeArea", "name": "Almere Poort" },
+          { "@type": "AdministrativeArea", "name": "Almere Buiten" },
+          {
+            "@type": "City",
+            "name": "Almere",
+            "sameAs": "https://www.wikidata.org/wiki/Q992"
+          }
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            "opens": "00:00",
+            "closes": "23:59"
+          }
+        ],
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "reviewCount": "1200",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "knowsAbout": [
+          "LinkedIn profielfoto laten maken Almere", 
+          "Zakelijke foto voor CV Almere", 
+          "Professionele profielfoto zonder fotograaf",
+          "AI business headshots Flevoland"
+        ]
+      })
+    }}
+  />
+);
 
 export default function LinkedInAlmerePage() {
   const [isClient, setIsClient] = useState(false)
@@ -125,7 +177,9 @@ export default function LinkedInAlmerePage() {
 
   return (
     <div className="min-h-screen pt-20">
+      <LocalAlmereSEO />
       <ReviewSchema businessName="AI Portret Pro" city="Almere" />
+      <FAQSchema faqs={faqData} city="Almere" />
             <SchemaMarkup type="city" city="Almere" url="https://aiportretpro.com/linkedin-foto-laten-maken-almere" />
       <Header />
       {/* Hero Section - Almere Specific */}
@@ -146,12 +200,12 @@ export default function LinkedInAlmerePage() {
         </div>
         
         <h1 className="tracking-tight text-xl md:text-4xl font-bold mb-6 leading-tight">
-          <span className="block">Professionele foto voor LinkedIn laten maken in Almere? </span>
+          <span className="block">Professionele LinkedIn profielfoto laten maken in Almere? </span>
           <span className="text-[#0077B5] block">Zonder het gedoe van een fotoshoot?</span>
         </h1>
         <p className="text-gray-500 text-lg mb-6">
-          Upload een paar selfies en onze AI doet de rest. Ontvang binnen 15 minuten 40 zakelijke portretten
-        </p>
+          Upload een paar selfies en onze AI doet de rest. Ontvang binnen 15 minuten 40 zakelijke profielfoto's
+</p>
 
         <div className="text-md md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto text-center">
           <div className="inline-grid grid-cols-[auto_1fr] gap-x-2 items-start text-start justify-center">
@@ -171,7 +225,7 @@ export default function LinkedInAlmerePage() {
         >
           <Link href="/pricing">
             <LinkedinIcon className="mr-2 h-5 md:h-6 w-5 md:w-6" />
-            Start je LinkedIn fotoshoot almere - € 29 <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
+            Start je LinkedIn fotoshoot - € 29 <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
           </Link>
         </Button>
 
@@ -196,7 +250,7 @@ export default function LinkedInAlmerePage() {
                     <div className="w-52 h-[13.33rem] md:w-80 md:h-[20rem] rounded-xl md:rounded-2xl overflow-hidden bg-gray-100 shadow-md md:shadow-lg">
                       <Image
                         src={photo || "/placeholder.svg"}
-                        alt={`LinkedIn portret voorbeeld ${index + 1}`}
+                        alt="Zakelijke LinkedIn profielfoto Almere professional zonder fotograaf"
                         width={320}
                         height={400}
                         className="w-full h-full object-cover bg-gray-50 brightness-110 contrast-105"
@@ -213,7 +267,7 @@ export default function LinkedInAlmerePage() {
                     <div className="w-52 h-[13.33rem] md:w-80 md:h-[20rem] rounded-xl md:rounded-2xl overflow-hidden bg-gray-100 shadow-md md:shadow-lg">
                       <Image
                         src={photo || "/placeholder.svg"}
-                        alt={`LinkedIn portret voorbeeld ${index + 1}`}
+                        alt="Zakelijke LinkedIn profielfoto Almere professional zonder fotograaf"
                         width={320}
                         height={400}
                         className="w-full h-full object-cover bg-gray-50 brightness-110 contrast-105"
@@ -240,16 +294,16 @@ export default function LinkedInAlmerePage() {
               <p className="text-gray-600">
                 Upload minimaal 6 foto's van jezelf met verschillende uitdrukkingen en achtergronden
               </p>
-            </div>
+                  </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-[#0077B5] rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">
                 2
               </div>
               <h3 className="text-xl font-semibold mb-3">AI doet zijn werk</h3>
               <p className="text-gray-600">
-                Onze AI analyseert je foto's en maakt professionele portretten in verschillende stijlen
+                Onze AI analyseert je foto's en maakt professionele profielfoto's in verschillende stijlen
               </p>
-            </div>
+                </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-[#0077B5] rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">
                 3
@@ -263,7 +317,7 @@ export default function LinkedInAlmerePage() {
 
       {/* Reviews en Voorbeelden */}
       <ReviewsEnVoorbeelden />
-
+     
       {/* Comparison Section */}
       <section className="py-12 md:py-16 bg-gradient-to-br from-blue-50 to-orange-50">
         <div className="container mx-auto px-4">
@@ -327,7 +381,7 @@ export default function LinkedInAlmerePage() {
                 </li>
                 <li className="flex flex-col gap-1">
                   <span className="font-semibold text-white">Resultaat:</span>
-                  <span className="text-blue-100">Je krijgt direct 40+ verschillende zakelijke portretten.</span>
+                  <span className="text-blue-100">Je krijgt direct 40+ verschillende zakelijke profielfoto's.</span>
                 </li>
                 <li className="flex flex-col gap-1">
                   <span className="font-semibold text-white">Garantie:</span>
@@ -497,34 +551,34 @@ export default function LinkedInAlmerePage() {
       {/* SEO Content Section - Almere Specific */}
       <section className="container mx-auto px-4 py-16 bg-white">
         <div className="max-w-4xl mx-auto prose prose-lg">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Professionele LinkedIn Foto Laten Maken in Almere: De Moderne Keuze voor 2026</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-6">Professionele LinkedIn Profielfoto Laten Maken in Almere: Geen Fotostudio Nodig in 2026</h2>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            Almere verstevigt in 2026 zijn positie als de snelst groeiende en meest moderne zakelijke hub van Nederland. Als een stad die gebouwd is op innovatie en vooruitgang, trekt Almere dagelijks duizenden ambitieuze professionals aan die bouwen aan een dynamische carrière. In deze vooruitstrevende omgeving is je digitale aanwezigheid op LinkedIn cruciaal. Een professionele LinkedIn foto laten maken in Almere is in 2026 de slimste manier om je expertise en moderne mentaliteit te tonen. Je profielfoto is je digitale handdruk in een stad waar netwerken en technologische adoptie de standaard zijn voor zakelijk succes.
+            Almere verstevigt in 2026 zijn positie als de snelst groeiende en meest moderne zakelijke hub van Nederland. Of je nu werkt in Almere Stad, Almere Poort, Almere Haven of een van de andere wijken: je LinkedIn profielfoto is je digitale handdruk. In deze vooruitstrevende omgeving waar innovatie en technologie centraal staan, is een professionele LinkedIn profielfoto laten maken in Almere de slimste manier om je expertise te tonen. Geen dure fotostudio nodig, geen gedoe met afspraken plannen, en binnen 15 minuten klaar.
           </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Innovatieve en efficiënte oplossing voor de Almeerse professional</h3>
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Waarom professionals in Almere Stad, Poort en Haven kiezen voor AI profielfoto's</h3>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            Met ruim 85.000 LinkedIn-gebruikers in Almere is de behoefte aan een sterke visuele presentatie groter dan ooit. Almeerders zijn tech-savvy en waarderen oplossingen die tijd en geld besparen. In 2026 kiezen professionals in Flevoland daarom massaal voor de efficiëntie van AI-fotografie. Waar een traditionele fotograaf in de regio voorheen tussen de honderdvijfenvijftig en honderdvijfentachtig euro rekende, biedt AI Portret Pro een modern alternatief dat volledig online werkt. Voor het vaste tarief van negenentwintig euro ontvang je 40 professionele portretten zonder dat je een afspraak hoeft te plannen of de polder uit moet reizen voor een studiosessie in Amsterdam of Utrecht.
+            Met ruim 85.000 LinkedIn-gebruikers in Almere is de behoefte aan een sterke visuele presentatie groter dan ooit. Almeerders zijn tech-savvy en waarderen oplossingen die tijd en geld besparen. In 2026 kiezen professionals in Almere Stad, Almere Poort en Almere Haven massaal voor de efficiëntie van AI-fotografie. Waar een traditionele fotograaf in de regio voorheen tussen de €155 en €185 rekende, biedt AI Portret Pro een modern alternatief dat volledig online werkt. Voor slechts €29 ontvang je 40 professionele profielfoto's zonder dat je een afspraak hoeft te plannen of de polder uit moet reizen voor een studiosessie. Geen fotostudio nodig, gewoon vanuit huis of je werkplek in Almere.
           </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Direct een pakket van 40 professionele foto's na een snelle upload</h3>
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Binnen 15 minuten 40 profielfoto's klaar: perfect voor Almere's snelle levensstijl</h3>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            Het proces in 2026 is volledig afgestemd op de snelle levensstijl van Almere. Of je nu in Almere Centrum, Haven of Poort woont: je regelt je nieuwe zakelijke portfolio gewoon vanuit huis. Door simpelweg een paar bestaande foto's of selfies te uploaden vanaf je smartphone of laptop, krijgt onze AI-technologie direct inzicht in je unieke kenmerken. Binnen vijftien minuten genereert onze engine een compleet pakket van 40 professionele foto's. Hierbij wordt gezorgd voor een hoogwaardige variatie in professionele achtergronden, belichting en kleding, zodat je altijd een beeld vindt dat precies past bij de uitstraling die je in 2026 wilt neerzetten op je LinkedIn-profiel of CV.
+            Het proces in 2026 is volledig afgestemd op de snelle levensstijl van Almere. Of je nu in Almere Stad werkt, in Almere Poort woont, of in Almere Haven gevestigd bent: je regelt je nieuwe zakelijke profielfoto's gewoon vanuit huis. Door simpelweg een paar bestaande foto's of selfies te uploaden vanaf je smartphone of laptop, krijgt onze AI-technologie direct inzicht in je unieke kenmerken. Binnen 15 minuten genereert onze engine een compleet pakket van 40 professionele profielfoto's. Geen wachttijd, geen fotostudio nodig, en direct klaar voor gebruik op LinkedIn, je CV of je website. Perfect voor de drukke professional in Almere die geen tijd heeft voor een traditionele fotoshoot.
           </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Maximale zichtbaarheid in de groeiende zakelijke gemeenschap van Flevoland</h3>
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">6x goedkoper dan een fotograaf: de slimme keuze voor Almere professionals</h3>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            In de competitieve arbeidsmarkt van Almere, waar startups en moderne bedrijven de boventoon voeren, is je eerste indruk op LinkedIn vaak beslissend. Met AI Portret Pro heb je geen wachttijd voor nabewerking; de 40 foto's zijn direct geoptimaliseerd en klaar voor gebruik. Of je nu werkt in de tech-sector, de zorg, de logistiek of als zzp'er: door te kiezen voor AI-fotografie toon je aan dat je vooroploopt met de nieuwste technologieën. Dit resulteert in een set haarscherpe foto's die deskundigheid en autoriteit uitstralen, eigenschappen die in Almere's ondernemende en innovatieve zakelijke cultuur zeer hoog worden ingeschat.
+            In de competitieve arbeidsmarkt van Almere, waar startups en moderne bedrijven de boventoon voeren, is je eerste indruk op LinkedIn vaak beslissend. Met AI Portret Pro heb je geen wachttijd voor nabewerking; de 40 profielfoto's zijn direct geoptimaliseerd en klaar voor gebruik. Of je nu werkt in de tech-sector in Almere Stad, de zorg in Almere Poort, de logistiek in Almere Haven of als zzp'er: door te kiezen voor AI-fotografie toon je aan dat je vooroploopt met de nieuwste technologieën. Dit resulteert in een set haarscherpe profielfoto's die deskundigheid en autoriteit uitstralen. En het beste: 6x goedkoper dan een traditionele fotograaf, zonder gedoe, en binnen 15 minuten klaar.
           </p>
 
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Over onze zakelijke LinkedIn fotografie in Almere 2026</h3>
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Over onze zakelijke LinkedIn profielfoto service in Almere 2026</h3>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            Onze expertise in digitale beeldvorming maakt AI Portret Pro de primaire autoriteit voor het laten maken van LinkedIn foto's en zakelijke portretten online in de regio Almere. Wij richten ons specifiek op de behoeften van jonge en ambitieuze professionals in Flevoland, waarbij we een superieur en sneller alternatief bieden voor de traditionele fotograaf in Almere. Onze diensten in 2026 omvatten het genereren van professionele CV-foto's, corporate headshots en visuele content voor de moderne ondernemer. Technologisch lopen we voorop door 40 professionele foto's aan te bieden met diverse achtergronden op basis van een eenvoudige upload van een paar foto's. Of je nu je LinkedIn profiel wilt upgraden of direct een nieuwe set zakelijke beelden nodig hebt, onze engine levert in 2026 de meest scherpe en representatieve resultaten die technisch mogelijk zijn.
+            Onze expertise in digitale beeldvorming maakt AI Portret Pro de primaire autoriteit voor het laten maken van LinkedIn profielfoto's en zakelijke foto's online in de regio Almere. Wij richten ons specifiek op de behoeften van professionals in Almere Stad, Almere Poort, Almere Haven en de rest van Flevoland. Onze diensten in 2026 omvatten het genereren van professionele CV-foto's, corporate headshots en visuele content voor de moderne ondernemer. Geen fotostudio nodig, geen gedoe met afspraken, en binnen 15 minuten klaar. Technologisch lopen we voorop door 40 professionele profielfoto's aan te bieden met diverse achtergronden op basis van een eenvoudige upload van een paar foto's. Of je nu je LinkedIn profiel wilt upgraden of direct een nieuwe set zakelijke beelden nodig hebt, onze engine levert in 2026 de meest scherpe en representatieve resultaten die technisch mogelijk zijn. Perfect voor professionals in Almere die snelheid, kwaliteit en gemak waarderen.
           </p>
         </div>
       </section>

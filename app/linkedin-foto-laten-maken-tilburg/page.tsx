@@ -11,6 +11,7 @@ import ReviewsEnVoorbeelden from "@/components/reviews-en-voorbeelden"
 import SchemaMarkup from "@/components/schema-markup"
 import SEOContentBlock from "@/components/seo-content-block"
 import ReviewSchema from "@/components/review-schema"
+import FAQSchema from "@/components/faq-schema"
 import Breadcrumb from "@/components/breadcrumb"
 // Gallery photos: All images from the shoot folder (1.png through 26.png)
 const galleryPhotos = Array.from({ length: 26 }, (_, i) => `/images/shoot/${i + 1}.png`)
@@ -65,6 +66,57 @@ const faqData = [
       "Zeker! Hoewel geoptimaliseerd voor LinkedIn, zijn alle foto's perfect bruikbaar voor je zakelijke website, email handtekening, corporate presentaties, persberichten, en andere professionele toepassingen. Je hebt volledige commerciële rechten op alle foto's.",
   }
 ]
+
+const LocalTilburgSEO = () => (
+  <script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "AI Portret Pro - LinkedIn Profielfoto Tilburg",
+        "image": "https://aiportretpro.nl/images/logo-icon.png",
+        "@id": "https://aiportretpro.nl/linkedin-foto-laten-maken-tilburg#service",
+        "url": "https://aiportretpro.nl/linkedin-foto-laten-maken-tilburg",
+        "description": "Online service voor het laten maken van 40 professionele LinkedIn profielfoto's in Tilburg met AI. Binnen 15 minuten klaar voor slechts €29. Perfect voor Tilburg University, Spoorzone en logistiek professionals.",
+        "priceRange": "€29",
+        "address": { 
+          "@type": "PostalAddress", 
+          "addressLocality": "Tilburg", 
+          "addressRegion": "Noord-Brabant",
+          "addressCountry": "NL" 
+        },
+        "areaServed": [
+          { "@type": "AdministrativeArea", "name": "Spoorzone" },
+          { "@type": "AdministrativeArea", "name": "Tilburg University Campus" },
+          { "@type": "AdministrativeArea", "name": "Piushaven" },
+          { "@type": "AdministrativeArea", "name": "Loven-Besterd" },
+          {
+            "@type": "City",
+            "name": "Tilburg",
+            "sameAs": "https://www.wikidata.org/wiki/Q1001"
+          }
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            "opens": "00:00",
+            "closes": "23:59"
+          }
+        ],
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "reviewCount": "1200",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "knowsAbout": ["LinkedIn profielfoto Tilburg", "Zakelijke profielfoto's", "Academische headshots", "Logistieke sector profielfoto's"]
+      })
+    }}
+  />
+);
 
 export default function LinkedInTilburgPage() {
   const [isClient, setIsClient] = useState(false)
@@ -125,7 +177,9 @@ export default function LinkedInTilburgPage() {
 
   return (
     <div className="min-h-screen pt-20">
+      <LocalTilburgSEO />
       <ReviewSchema businessName="AI Portret Pro" city="Tilburg" />
+      <FAQSchema faqs={faqData} city="Tilburg" />
             <SchemaMarkup type="city" city="Tilburg" url="https://aiportretpro.com/linkedin-foto-laten-maken-tilburg" />
       <Header />
       {/* Hero Section - Tilburg Specific */}
@@ -146,11 +200,11 @@ export default function LinkedInTilburgPage() {
         </div>
         
         <h1 className="tracking-tight text-xl md:text-4xl font-bold mb-6 leading-tight">
-          <span className="block">Professionele foto voor LinkedIn laten maken in Tilburg? </span>
+          <span className="block">Professionele LinkedIn Profielfoto Laten Maken in Tilburg? </span>
           <span className="text-[#0077B5] block">Zonder het gedoe van een fotoshoot?</span>
         </h1>
         <p className="text-gray-500 text-lg mb-6">
-          Upload een paar selfies en onze AI doet de rest. Ontvang binnen 15 minuten 40 zakelijke portretten
+          Upload een paar selfies en onze AI doet de rest. Ontvang binnen 15 minuten 40 zakelijke profielfoto's
 </p>
 
         <div className="text-md md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto text-center">
@@ -171,7 +225,7 @@ export default function LinkedInTilburgPage() {
         >
           <Link href="/pricing">
             <LinkedinIcon className="mr-2 h-5 md:h-6 w-5 md:w-6" />
-            Start je LinkedIn fotoshoot tilburg - € 29 <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
+            Start je LinkedIn fotoshoot - € 29 <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
           </Link>
         </Button>
 
@@ -196,7 +250,7 @@ export default function LinkedInTilburgPage() {
                     <div className="w-52 h-[13.33rem] md:w-80 md:h-[20rem] rounded-xl md:rounded-2xl overflow-hidden bg-gray-100 shadow-md md:shadow-lg">
                       <Image
                         src={photo || "/placeholder.svg"}
-                        alt={`LinkedIn portret voorbeeld ${index + 1}`}
+                        alt="Zakelijke LinkedIn profielfoto Tilburg professional Spoorzone"
                         width={320}
                         height={400}
                         className="w-full h-full object-cover bg-gray-50 brightness-110 contrast-105"
@@ -213,7 +267,7 @@ export default function LinkedInTilburgPage() {
                     <div className="w-52 h-[13.33rem] md:w-80 md:h-[20rem] rounded-xl md:rounded-2xl overflow-hidden bg-gray-100 shadow-md md:shadow-lg">
                       <Image
                         src={photo || "/placeholder.svg"}
-                        alt={`LinkedIn portret voorbeeld ${index + 1}`}
+                        alt="Zakelijke LinkedIn profielfoto Tilburg professional Spoorzone"
                         width={320}
                         height={400}
                         className="w-full h-full object-cover bg-gray-50 brightness-110 contrast-105"
@@ -247,7 +301,7 @@ export default function LinkedInTilburgPage() {
               </div>
               <h3 className="text-xl font-semibold mb-3">AI doet zijn werk</h3>
               <p className="text-gray-600">
-                Onze AI analyseert je foto's en maakt professionele portretten in verschillende stijlen
+                Onze AI analyseert je foto's en maakt professionele profielfoto's in verschillende stijlen
               </p>
                 </div>
             <div className="text-center">
@@ -327,7 +381,7 @@ export default function LinkedInTilburgPage() {
                 </li>
                 <li className="flex flex-col gap-1">
                   <span className="font-semibold text-white">Resultaat:</span>
-                  <span className="text-blue-100">Je krijgt direct 40+ verschillende zakelijke portretten.</span>
+                  <span className="text-blue-100">Je krijgt direct 40+ verschillende zakelijke profielfoto's.</span>
                 </li>
                 <li className="flex flex-col gap-1">
                   <span className="font-semibold text-white">Garantie:</span>
@@ -497,16 +551,16 @@ export default function LinkedInTilburgPage() {
       {/* SEO Content Section - Tilburg Specific */}
       <section className="container mx-auto px-4 py-16 bg-white">
         <div className="max-w-4xl mx-auto prose prose-lg">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Professionele LinkedIn Foto Laten Maken in Tilburg: De Slimme Keuze voor 2026</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-6">Professionele LinkedIn Profielfoto Laten Maken in Tilburg: De Slimme Keuze voor 2026</h2>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            In het zakelijke jaar 2026 heeft Tilburg zich definitief gepositioneerd als een onmisbaar knooppunt voor logistiek, onderwijs en moderne industrie. Of je nu een academicus bent aan de Tilburg University, een expert in de logistieke sector rondom de industrieterreinen, of een ondernemer in de Spoorzone: je LinkedIn profielfoto is je digitale handdruk. In een dynamische omgeving waar netwerken en een goede eerste indruk cruciaal zijn voor je carrièreverloop, wil je een foto die direct vertrouwen wekt. Een professionele LinkedIn foto laten maken in Tilburg is in 2026 de meest effectieve manier om op te vallen bij recruiters en zakelijke partners.
+            In het kloppend hart van Midden-Brabant, waar de historische textielstad is getransformeerd tot een moderne hub voor kennis en logistiek, is je digitale presentatie essentieel. Of je nu een academicus bent aan de Tilburg University, een creatieve geest in de Spoorzone, of een professional in de dynamische logistieke sector; in 2026 is je LinkedIn profielfoto je belangrijkste visitekaartje. Een professionele foto laten maken in Tilburg hoeft geen tijdrovende opgave meer te zijn. Wij combineren de Brabantse gemoedelijkheid met de snelheid van AI, zodat jij direct klaar bent voor de volgende stap in je carrière. In het zakelijke jaar 2026 heeft Tilburg zich definitief gepositioneerd als een onmisbaar knooppunt voor logistiek, onderwijs en moderne industrie. Of je nu een academicus bent aan de Tilburg University, een expert in de logistieke sector rondom de industrieterreinen, of een ondernemer in de Spoorzone: je LinkedIn profielfoto is je digitale handdruk. In een dynamische omgeving waar netwerken en een goede eerste indruk cruciaal zijn voor je carrièreverloop, wil je een foto die direct vertrouwen wekt. Een professionele LinkedIn profielfoto laten maken in Tilburg is in 2026 de meest effectieve manier om op te vallen bij recruiters en zakelijke partners.
           </p>
 
           <h3 className="text-2xl font-bold text-gray-900 mb-4">Betaalbare kwaliteit voor de Tilburgse zakelijke community</h3>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            Met ongeveer 100.000 actieve LinkedIn professionals waardeert de Tilburgse community kwaliteit voor een eerlijke prijs. In 2026 kiezen steeds meer professionals in Midden-Brabant voor de efficiëntie van AI-fotografie boven de traditionele gang naar een fotostudio. Waar een lokale fotograaf voorheen vaak tussen de honderdzestig en honderdvijfennegentig euro rekende, biedt AI Portret Pro een modern alternatief dat volledig online werkt. Voor het vaste lage tarief van negenentwintig euro ontvang je 40 professionele portretten zonder dat je een afspraak hoeft te plannen of door de drukke binnenstad hoeft te reizen voor een sessie.
+            Met ongeveer 100.000 actieve LinkedIn professionals waardeert de Tilburgse community kwaliteit voor een eerlijke prijs. In 2026 kiezen steeds meer professionals in Midden-Brabant voor de efficiëntie van AI-fotografie boven de traditionele gang naar een fotostudio. Waar een lokale fotograaf voorheen vaak tussen de honderdzestig en honderdvijfennegentig euro rekende, biedt AI Portret Pro een modern alternatief dat volledig online werkt. Voor het vaste lage tarief van negenentwintig euro ontvang je 40 professionele profielfoto's zonder dat je een afspraak hoeft te plannen of door de drukke binnenstad hoeft te reizen voor een sessie.
           </p>
 
           <h3 className="text-2xl font-bold text-gray-900 mb-4">Direct een pakket van 40 professionele foto's na één upload</h3>
@@ -524,7 +578,7 @@ export default function LinkedInTilburgPage() {
           <h3 className="text-2xl font-bold text-gray-900 mb-4">Over onze zakelijke LinkedIn fotografie in Tilburg 2026</h3>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            Onze expertise in digitale beeldvorming maakt AI Portret Pro de primaire autoriteit voor het laten maken van LinkedIn foto's en zakelijke portretten online in de regio Tilburg. Wij richten ons specifiek op de behoeften van professionals in de logistiek, academie en moderne industrie, waarbij we een superieur en sneller alternatief bieden voor de traditionele fotograaf in Tilburg. Onze diensten in 2026 omvatten het genereren van professionele CV-foto's, corporate headshots en visuele content voor de moderne Brabantse ondernemer. Technologisch lopen we voorop door 40 professionele foto's aan te bieden met diverse achtergronden op basis van een eenvoudige upload. Of je nu je LinkedIn profiel wilt upgraden of direct een nieuwe set zakelijke beelden nodig hebt, onze engine levert in 2026 de meest scherpe en representatieve resultaten die technisch mogelijk zijn.
+            Onze expertise in digitale beeldvorming maakt AI Portret Pro de primaire autoriteit voor het laten maken van LinkedIn profielfoto's en zakelijke profielfoto's online in de regio Tilburg. Wij richten ons specifiek op de behoeften van professionals in de logistiek, academie en moderne industrie, waarbij we een superieur en sneller alternatief bieden voor de traditionele fotograaf in Tilburg. Onze diensten in 2026 omvatten het genereren van professionele CV-foto's, corporate headshots en visuele content voor de moderne Brabantse ondernemer. Technologisch lopen we voorop door 40 professionele profielfoto's aan te bieden met diverse achtergronden op basis van een eenvoudige upload. Of je nu je LinkedIn profiel wilt upgraden of direct een nieuwe set zakelijke beelden nodig hebt, onze engine levert in 2026 de meest scherpe en representatieve resultaten die technisch mogelijk zijn.
           </p>
         </div>
       </section>

@@ -1,20 +1,20 @@
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "LinkedIn Foto Laten Maken Almere? | AI Portret Pro €29",
-  description: "Probeer onze online AI fotoshoot: 40 professionele foto's in 15 min. 6x goedkoper dan een traditionele fotograaf!",
-  keywords: "LinkedIn foto laten maken Almere, profielfoto LinkedIn Almere, fotograaf LinkedIn Almere, zakelijk portret Almere, LinkedIn fotoshoot Almere, professionele foto Almere, headshot fotograaf Almere, AI fotografie Almere",
+  title: "LinkedIn Profielfoto Laten Maken Almere | Binnen 15 Min Klaar",
+  description: "Professionele zakelijke profielfoto laten maken in Almere? Geen dure fotostudio nodig. Ontvang 40+ AI profielfoto's voor LinkedIn en CV binnen 15 minuten voor slechts €29.",
+  keywords: ["LinkedIn profielfoto Almere", "Zakelijke foto Almere", "CV foto laten maken Almere", "Profielfoto zonder fotograaf", "AI fotoshoot Almere"],
   openGraph: {
-    title: "LinkedIn Foto Laten Maken Almere | AI Fotoshoot €29",
-    description: "Probeer onze online AI fotoshoot: 40 professionele foto's in 15 min. 6x goedkoper dan een traditionele fotograaf!",
+    title: "LinkedIn Profielfoto Laten Maken Almere | Binnen 15 Min Klaar",
+    description: "Professionele zakelijke profielfoto laten maken in Almere? Geen dure fotostudio nodig. Ontvang 40+ AI profielfoto's voor LinkedIn en CV binnen 15 minuten voor slechts €29.",
     url: "https://aiportretpro.nl/linkedin-foto-laten-maken-almere",
     type: "website",
     locale: "nl_NL",
   },
   twitter: {
     card: "summary_large_image",
-    title: "LinkedIn Foto Laten Maken Almere? | AI Portret Pro €29",
-    description: "Probeer onze online AI fotoshoot: 40 professionele foto's in 15 min. 6x goedkoper dan een traditionele fotograaf!",
+    title: "LinkedIn Profielfoto Laten Maken Almere | Binnen 15 Min Klaar",
+    description: "Professionele zakelijke profielfoto laten maken in Almere? Geen dure fotostudio nodig. Ontvang 40+ AI profielfoto's voor LinkedIn en CV binnen 15 minuten voor slechts €29.",
   },
   alternates: {
     canonical: "https://aiportretpro.nl/linkedin-foto-laten-maken-almere",

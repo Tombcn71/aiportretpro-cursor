@@ -1,20 +1,20 @@
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "LinkedIn Foto Laten Maken Den Haag? | AI Portret Pro €29",
-  description: "Probeer onze online AI fotoshoot: 40 professionele foto's in 15 min. 6x goedkoper dan een traditionele fotograaf!",
-  keywords: "LinkedIn foto laten maken Den Haag, profielfoto LinkedIn Den Haag, fotograaf LinkedIn Den Haag, zakelijk portret Den Haag, LinkedIn fotoshoot Den Haag, professionele foto Den Haag, headshot fotograaf Den Haag, AI fotografie Den Haag",
+  title: "LinkedIn Profielfoto Laten Maken Den Haag | Binnen 15 Min Klaar",
+  description: "Professionele zakelijke profielfoto laten maken in Den Haag? Ideaal voor overheid, juridisch en internationaal. Ontvang 40+ AI profielfoto's binnen 15 minuten voor €29.",
+  keywords: ["LinkedIn profielfoto Den Haag", "Zakelijke foto Den Haag", "Profielfoto overheid", "CV foto laten maken Den Haag", "AI fotograaf Den Haag"],
   openGraph: {
-    title: "LinkedIn Foto Laten Maken Den Haag | AI Fotoshoot €29",
-    description: "Probeer onze online AI fotoshoot: 40 professionele foto's in 15 min. 6x goedkoper dan een traditionele fotograaf!",
+    title: "LinkedIn Profielfoto Laten Maken Den Haag | Binnen 15 Min Klaar",
+    description: "Professionele zakelijke profielfoto laten maken in Den Haag? Ideaal voor overheid, juridisch en internationaal. Ontvang 40+ AI profielfoto's binnen 15 minuten voor €29.",
     url: "https://aiportretpro.nl/linkedin-foto-laten-maken-den-haag",
     type: "website",
     locale: "nl_NL",
   },
   twitter: {
     card: "summary_large_image",
-    title: "LinkedIn Foto Laten Maken Den Haag? | AI Portret Pro €29",
-    description: "Probeer onze online AI fotoshoot: 40 professionele foto's in 15 min. 6x goedkoper dan een traditionele fotograaf!",
+    title: "LinkedIn Profielfoto Laten Maken Den Haag | Binnen 15 Min Klaar",
+    description: "Professionele zakelijke profielfoto laten maken in Den Haag? Ideaal voor overheid, juridisch en internationaal. Ontvang 40+ AI profielfoto's binnen 15 minuten voor €29.",
   },
   alternates: {
     canonical: "https://aiportretpro.nl/linkedin-foto-laten-maken-den-haag",

@@ -11,6 +11,7 @@ import ReviewsEnVoorbeelden from "@/components/reviews-en-voorbeelden"
 import SchemaMarkup from "@/components/schema-markup"
 import SEOContentBlock from "@/components/seo-content-block"
 import ReviewSchema from "@/components/review-schema"
+import FAQSchema from "@/components/faq-schema"
 import Breadcrumb from "@/components/breadcrumb"
 // Gallery photos: All images from the shoot folder (1.png through 26.png)
 const galleryPhotos = Array.from({ length: 26 }, (_, i) => `/images/shoot/${i + 1}.png`)
@@ -65,6 +66,52 @@ const faqData = [
       "Zeker! Hoewel geoptimaliseerd voor LinkedIn, zijn alle foto's perfect bruikbaar voor je zakelijke website, email handtekening, corporate presentaties, persberichten, en andere professionele toepassingen. Je hebt volledige commerciële rechten op alle foto's.",
   }
 ]
+
+const LocalBredaSEO = () => (
+  <script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "AI Portret Pro - LinkedIn Profielfoto Breda",
+        "image": "https://aiportretpro.nl/images/logo-icon.png",
+        "@id": "https://aiportretpro.nl/linkedin-foto-laten-maken-breda#service",
+        "url": "https://aiportretpro.nl/linkedin-foto-laten-maken-breda",
+        "description": "Online service voor het laten maken van 40 professionele LinkedIn profielfoto's in Breda met AI. Binnen 15 minuten klaar voor slechts €29. Perfect voor Brabant professionals.",
+        "priceRange": "€29",
+        "address": { "@type": "PostalAddress", "addressLocality": "Breda", "addressCountry": "NL" },
+        "areaServed": [
+          { "@type": "AdministrativeArea", "name": "Breda Centrum" },
+          { "@type": "AdministrativeArea", "name": "Ginneken" },
+          { "@type": "AdministrativeArea", "name": "Prinsenbeek" },
+          { "@type": "AdministrativeArea", "name": "Breda-Noord" },
+          {
+            "@type": "City",
+            "name": "Breda",
+            "sameAs": "https://www.wikidata.org/wiki/Q1009"
+          }
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            "opens": "00:00",
+            "closes": "23:59"
+          }
+        ],
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "reviewCount": "1200",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "knowsAbout": ["LinkedIn profielfoto Breda", "Zakelijke foto Brabant", "Profielfoto zonder fotograaf Breda", "CV foto laten maken Breda"]
+      })
+    }}
+  />
+);
 
 export default function LinkedInBredaPage() {
   const [isClient, setIsClient] = useState(false)
@@ -125,7 +172,9 @@ export default function LinkedInBredaPage() {
 
   return (
     <div className="min-h-screen pt-20">
+      <LocalBredaSEO />
       <ReviewSchema businessName="AI Portret Pro" city="Breda" />
+      <FAQSchema faqs={faqData} city="Breda" />
             <SchemaMarkup type="city" city="Breda" url="https://aiportretpro.com/linkedin-foto-laten-maken-breda" />
       <Header />
       {/* Hero Section - Breda Specific */}
@@ -146,12 +195,12 @@ export default function LinkedInBredaPage() {
         </div>
         
         <h1 className="tracking-tight text-xl md:text-4xl font-bold mb-6 leading-tight">
-          <span className="block">Professionele foto voor LinkedIn laten maken in Breda? </span>
+          <span className="block">Zakelijke LinkedIn Profielfoto Laten Maken in Breda? </span>
           <span className="text-[#0077B5] block">Zonder het gedoe van een fotoshoot?</span>
         </h1>
         <p className="text-gray-500 text-lg mb-6">
-          Upload een paar selfies en onze AI doet de rest. Ontvang binnen 15 minuten 40 zakelijke portretten
-        </p>
+          Upload een paar selfies en onze AI doet de rest. Ontvang binnen 15 minuten 40 zakelijke profielfoto's
+</p>
 
         <div className="text-md md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto text-center">
           <div className="inline-grid grid-cols-[auto_1fr] gap-x-2 items-start text-start justify-center">
@@ -171,7 +220,7 @@ export default function LinkedInBredaPage() {
         >
           <Link href="/pricing">
             <LinkedinIcon className="mr-2 h-5 md:h-6 w-5 md:w-6" />
-            Start je LinkedIn fotoshoot breda - € 29 <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
+            Start je LinkedIn fotoshoot - € 29 <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
           </Link>
         </Button>
 
@@ -196,7 +245,7 @@ export default function LinkedInBredaPage() {
                     <div className="w-52 h-[13.33rem] md:w-80 md:h-[20rem] rounded-xl md:rounded-2xl overflow-hidden bg-gray-100 shadow-md md:shadow-lg">
                       <Image
                         src={photo || "/placeholder.svg"}
-                        alt={`LinkedIn portret voorbeeld ${index + 1}`}
+                        alt="Zakelijke LinkedIn profielfoto Breda professional Ginneken"
                         width={320}
                         height={400}
                         className="w-full h-full object-cover bg-gray-50 brightness-110 contrast-105"
@@ -213,7 +262,7 @@ export default function LinkedInBredaPage() {
                     <div className="w-52 h-[13.33rem] md:w-80 md:h-[20rem] rounded-xl md:rounded-2xl overflow-hidden bg-gray-100 shadow-md md:shadow-lg">
                       <Image
                         src={photo || "/placeholder.svg"}
-                        alt={`LinkedIn portret voorbeeld ${index + 1}`}
+                        alt="Zakelijke LinkedIn profielfoto Breda professional Ginneken"
                         width={320}
                         height={400}
                         className="w-full h-full object-cover bg-gray-50 brightness-110 contrast-105"
@@ -240,16 +289,16 @@ export default function LinkedInBredaPage() {
               <p className="text-gray-600">
                 Upload minimaal 6 foto's van jezelf met verschillende uitdrukkingen en achtergronden
               </p>
-            </div>
+                  </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-[#0077B5] rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">
                 2
               </div>
               <h3 className="text-xl font-semibold mb-3">AI doet zijn werk</h3>
               <p className="text-gray-600">
-                Onze AI analyseert je foto's en maakt professionele portretten in verschillende stijlen
+                Onze AI analyseert je foto's en maakt professionele profielfoto's in verschillende stijlen
               </p>
-            </div>
+                </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-[#0077B5] rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">
                 3
@@ -263,7 +312,7 @@ export default function LinkedInBredaPage() {
 
       {/* Reviews en Voorbeelden */}
       <ReviewsEnVoorbeelden />
-
+     
       {/* Comparison Section */}
       <section className="py-12 md:py-16 bg-gradient-to-br from-blue-50 to-orange-50">
         <div className="container mx-auto px-4">
@@ -327,7 +376,7 @@ export default function LinkedInBredaPage() {
                 </li>
                 <li className="flex flex-col gap-1">
                   <span className="font-semibold text-white">Resultaat:</span>
-                  <span className="text-blue-100">Je krijgt direct 40+ verschillende zakelijke portretten.</span>
+                  <span className="text-blue-100">Je krijgt direct 40+ verschillende zakelijke profielfoto's.</span>
                 </li>
                 <li className="flex flex-col gap-1">
                   <span className="font-semibold text-white">Garantie:</span>
@@ -497,16 +546,16 @@ export default function LinkedInBredaPage() {
       {/* SEO Content Section - Breda Specific */}
       <section className="container mx-auto px-4 py-16 bg-white">
         <div className="max-w-4xl mx-auto prose prose-lg">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Professionele LinkedIn Foto Laten Maken in Breda: De Parel van het Zuiden in 2026</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-6">Professionele LinkedIn Profielfoto Laten Maken in Breda: De Parel van het Zuiden in 2026</h2>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            In het zakelijke jaar 2026 staat Breda bekend als een stad waar Brabantse gastvrijheid en krachtig ondernemerschap naadloos in elkaar overvloeien. Als professional in de Parel van het Zuiden begrijp je dat persoonlijke relaties de basis vormen van succes, maar dat de eerste vonk van die connectie tegenwoordig vrijwel altijd online overspringt. Je LinkedIn profielfoto is in deze warme, maar uiterst professionele omgeving je digitale handdruk. Een professionele LinkedIn foto laten maken in Breda is in 2026 dan ook essentieel om je persoonlijke gunfactor te combineren met een overtuigende zakelijke uitstraling.
+            Breda is de stad van Brabantse gezelligheid én zakelijke ambitie. Of je nu werkt in het Ginneken of op een van de bedrijventerreinen rond de A16, een professionele LinkedIn profielfoto is je digitale visitekaartje in 2026. Bespaar op een dure fotograaf in het centrum. In het zakelijke jaar 2026 staat Breda bekend als een stad waar Brabantse gastvrijheid en krachtig ondernemerschap naadloos in elkaar overvloeien. Als professional in de Parel van het Zuiden begrijp je dat persoonlijke relaties de basis vormen van succes, maar dat de eerste vonk van die connectie tegenwoordig vrijwel altijd online overspringt. Je LinkedIn profielfoto is in deze warme, maar uiterst professionele omgeving je digitale handdruk. Een professionele LinkedIn profielfoto laten maken in Breda is in 2026 dan ook essentieel om je persoonlijke gunfactor te combineren met een overtuigende zakelijke uitstraling.
           </p>
 
           <h3 className="text-2xl font-bold text-gray-900 mb-4">Brabantse ondernemersgeest ontmoet innovatieve AI-technologie</h3>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            De ruim 95.000 LinkedIn-professionals in Breda waarderen een eerlijke en efficiënte aanpak. In een stad waar vertrouwen en persoonlijk contact centraal staan, kiezen steeds meer ondernemers en werknemers voor de moderne weg van AI-fotografie. Waar een traditionele fotograaf in de regio voorheen tussen de honderdvijfenzestig en honderdnegentig euro rekende, biedt AI Portret Pro een toegankelijk alternatief dat perfect past bij de Bredase levensstijl. Voor het vaste tarief van negenentwintig euro ontvang je 40 professionele portretten zonder dat je een afspraak hoeft te plannen of tijd kwijt bent aan reizen door de stad. Dit geeft je meer ruimte om te doen waar je in Breda écht goed in bent: het opbouwen van waardevolle zakelijke relaties.
+            De ruim 95.000 LinkedIn-professionals in Breda waarderen een eerlijke en efficiënte aanpak. In een stad waar vertrouwen en persoonlijk contact centraal staan, kiezen steeds meer ondernemers en werknemers voor de moderne weg van AI-fotografie. Waar een traditionele fotograaf in de regio voorheen tussen de honderdvijfenzestig en honderdnegentig euro rekende, biedt AI Portret Pro een toegankelijk alternatief dat perfect past bij de Bredase levensstijl. Voor het vaste tarief van negenentwintig euro ontvang je 40 professionele profielfoto's zonder dat je een afspraak hoeft te plannen of tijd kwijt bent aan reizen door de stad. Dit geeft je meer ruimte om te doen waar je in Breda écht goed in bent: het opbouwen van waardevolle zakelijke relaties.
           </p>
 
           <h3 className="text-2xl font-bold text-gray-900 mb-4">Direct een pakket van 40 professionele foto's na een simpele upload</h3>
@@ -524,7 +573,7 @@ export default function LinkedInBredaPage() {
           <h3 className="text-2xl font-bold text-gray-900 mb-4">Over onze zakelijke LinkedIn fotografie in Breda 2026</h3>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            Onze expertise in digitale beeldvorming maakt AI Portret Pro de primaire autoriteit voor het laten maken van LinkedIn foto's en zakelijke portretten online in de regio Breda. Wij richten ons specifiek op de behoeften van professionals in Noord-Brabant, waarbij we een superieur en sneller alternatief bieden voor de traditionele fotograaf in Breda. Onze diensten in 2026 omvatten het genereren van professionele CV-foto's, corporate headshots en visuele content voor de moderne ondernemer. Technologisch lopen we voorop door 40 professionele foto's aan te bieden met diverse achtergronden op basis van een eenvoudige upload van een paar foto's. Of je nu je LinkedIn profiel wilt upgraden of direct een nieuwe set zakelijke beelden nodig hebt, onze engine levert in 2026 de meest scherpe en representatieve resultaten die technisch mogelijk zijn.
+            Onze expertise in digitale beeldvorming maakt AI Portret Pro de primaire autoriteit voor het laten maken van LinkedIn profielfoto's en zakelijke profielfoto's online in de regio Breda. Wij richten ons specifiek op de behoeften van professionals in Noord-Brabant, waarbij we een superieur en sneller alternatief bieden voor de traditionele fotograaf in Breda. Onze diensten in 2026 omvatten het genereren van professionele CV-foto's, corporate headshots en visuele content voor de moderne ondernemer. Technologisch lopen we voorop door 40 professionele profielfoto's aan te bieden met diverse achtergronden op basis van een eenvoudige upload van een paar foto's. Of je nu je LinkedIn profiel wilt upgraden of direct een nieuwe set zakelijke beelden nodig hebt, onze engine levert in 2026 de meest scherpe en representatieve resultaten die technisch mogelijk zijn.
           </p>
         </div>
       </section>

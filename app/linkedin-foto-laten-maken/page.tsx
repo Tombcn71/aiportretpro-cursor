@@ -8,6 +8,9 @@ import { ArrowRight, X, ChevronDown, ChevronUp, Shield, Check, LinkedinIcon } fr
 import Header from "@/components/header"
 import { Facebook, Instagram } from "lucide-react"
 import ReviewsEnVoorbeelden from "@/components/reviews-en-voorbeelden"
+import ReviewSchema from "@/components/review-schema"
+import FAQSchema from "@/components/faq-schema"
+import SchemaMarkup from "@/components/schema-markup"
 
 // Gallery photos: All images from the shoot folder (1.png through 26.png)
 const galleryPhotos = Array.from({ length: 26 }, (_, i) => `/images/shoot/${i + 1}.png`)
@@ -124,6 +127,100 @@ export default function LinkedInProfielFotoPage() {
 
   return (
     <div className="min-h-screen pt-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            "name": "AI Portret Pro - LinkedIn Profielfoto Laten Maken",
+            "image": "https://aiportretpro.nl/images/logo-icon.png",
+            "@id": "https://aiportretpro.nl/linkedin-foto-laten-maken#service",
+            "url": "https://aiportretpro.nl/linkedin-foto-laten-maken",
+            "description": "Online service voor het laten maken van 40 professionele LinkedIn profielfoto's met AI. Binnen 15 minuten klaar voor slechts €29. Perfect voor je LinkedIn profiel.",
+            "priceRange": "€29",
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "NL"
+            },
+            "areaServed": [
+              {
+                "@type": "Country",
+                "name": "Nederland",
+                "sameAs": "https://www.wikidata.org/wiki/Q55"
+              },
+              {
+                "@type": "City",
+                "name": "Amsterdam",
+                "sameAs": "https://www.wikidata.org/wiki/Q727"
+              },
+              {
+                "@type": "City",
+                "name": "Rotterdam",
+                "sameAs": "https://www.wikidata.org/wiki/Q34370"
+              },
+              {
+                "@type": "City",
+                "name": "Den Haag",
+                "sameAs": "https://www.wikidata.org/wiki/Q36600"
+              },
+              {
+                "@type": "City",
+                "name": "Utrecht",
+                "sameAs": "https://www.wikidata.org/wiki/Q803"
+              },
+              {
+                "@type": "City",
+                "name": "Eindhoven",
+                "sameAs": "https://www.wikidata.org/wiki/Q983"
+              },
+              {
+                "@type": "City",
+                "name": "Groningen",
+                "sameAs": "https://www.wikidata.org/wiki/Q749"
+              },
+              {
+                "@type": "City",
+                "name": "Tilburg",
+                "sameAs": "https://www.wikidata.org/wiki/Q1001"
+              },
+              {
+                "@type": "City",
+                "name": "Almere",
+                "sameAs": "https://www.wikidata.org/wiki/Q992"
+              },
+              {
+                "@type": "City",
+                "name": "Breda",
+                "sameAs": "https://www.wikidata.org/wiki/Q1009"
+              },
+              {
+                "@type": "City",
+                "name": "Nijmegen",
+                "sameAs": "https://www.wikidata.org/wiki/Q47887"
+              }
+            ],
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+                "opens": "00:00",
+                "closes": "23:59"
+              }
+            ],
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.8",
+              "reviewCount": "1200",
+              "bestRating": "5",
+              "worstRating": "1"
+            }
+          })
+        }}
+      />
+      <SchemaMarkup type="city" city="LinkedIn" url="https://aiportretpro.nl/linkedin-foto-laten-maken" />
+      <ReviewSchema businessName="AI Portret Pro" />
+      <FAQSchema faqs={faqData} />
       <Header />
 
       {/* Hero Section - LinkedIn Optimized */}
@@ -149,7 +246,7 @@ export default function LinkedInProfielFotoPage() {
         </h1>
         <p className="text-gray-500 text-lg mb-6">
           Upload een paar selfies en onze AI doet de rest. Ontvang binnen 15 minuten 40 zakelijke portretten
-        </p>
+</p>
 
         <div className="text-md md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto text-center">
           <div className="inline-grid grid-cols-[auto_1fr] gap-x-2 items-start text-start justify-center">
@@ -262,97 +359,92 @@ export default function LinkedInProfielFotoPage() {
       {/* Reviews en Voorbeelden */}
       <ReviewsEnVoorbeelden />
 
-      {/* Resultaten Sectie */}
-      <section id="voorbeelden" className="py-12 md:py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-12">
-            Bekijk de resultaten van AI Portret Pro
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {(isMobile ? galleryPhotos.slice(-6) : galleryPhotos.slice(0, 12)).map((photo, index) => (
-              <div
-                key={index}
-                className="relative aspect-[3/4] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
-                onClick={() => openLightbox(photo)}
-              >
-                <Image src={photo || "/placeholder.svg"} alt={`Voorbeeld ${index + 1}`} fill className="object-cover" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* AI vs Traditional Comparison */}
+      {/* Comparison Section */}
       <section className="py-16 bg-gradient-to-r from-[#0077B5]/5 to-blue-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
-              AI fotografie vs. traditionele fotograaf
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+              Waarom €200+ betalen voor een middag in een studio?
             </h2>
-            <p className="text-lg text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-              Waarom je hierna niet meer naar een fotostudio hoeft te gaan
-            </p>
 
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 gap-8 mb-8">
               {/* Traditional Photography */}
-              <div className="bg-white p-8 rounded-lg border border-gray-200">
-                <h3 className="text-2xl font-semibold mb-6 text-gray-800">Traditionele Fotograaf</h3>
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                    <span className="text-gray-600">€180+ per sessie</span>
+              <div className="bg-white p-8 rounded-lg border-2 border-red-200">
+                <div className="flex items-center gap-2 mb-6">
+                  <span className="text-3xl">❌</span>
+                  <h3 className="text-2xl font-semibold text-gray-800">De traditionele fotograaf</h3>
+                </div>
+                <div className="space-y-5">
+                  <div>
+                    <p className="font-semibold text-gray-800 mb-1">Prijs:</p>
+                    <p className="text-gray-600">Vaak tussen de €150 en €350. Exclusief parkeerkosten in het centrum (€ 5,- per uur).</p>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                    <span className="text-gray-600">Halve dag kwijt + reistijd</span>
+                  <div>
+                    <p className="font-semibold text-gray-800 mb-1">Tijd:</p>
+                    <p className="text-gray-600">Afspraak plannen, reistijd en een uur poseren.</p>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                    <span className="text-gray-600">5-10 foto's maximum</span>
+                  <div>
+                    <p className="font-semibold text-gray-800 mb-1">Geduld:</p>
+                    <p className="text-gray-600">1 tot 2 weken wachten op de nabewerking.</p>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                    <span className="text-gray-600">Wachten op afspraak</span>
+                  <div>
+                    <p className="font-semibold text-gray-800 mb-1">Resultaat:</p>
+                    <p className="text-gray-600">Slechts 3 tot 5 foto's inbegrepen (bijbetalen voor meer).</p>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                    <span className="text-gray-600">Stress voor de camera</span>
+                  <div>
+                    <p className="font-semibold text-gray-800 mb-1">Risico:</p>
+                    <p className="text-gray-600">Niet tevreden? Jammer, je betaalt de fotograaf voor zijn tijd.</p>
                   </div>
                 </div>
               </div>
 
               {/* AI Photography */}
               <div className="bg-[#0077B5] p-8 rounded-lg text-white relative overflow-hidden">
-                <div className="absolute top-4 right-4 bg-yellow-400 text-black px-3 py-1 rounded-full text-sm font-semibold">
-                  POPULAIR
+                <div className="absolute top-4 right-4 bg-yellow-400 text-black px-3 py-1 rounded-full text-xs font-semibold uppercase">
+                  DE SLIMME KEUZE
                 </div>
-                <h3 className="text-2xl font-semibold mb-6">AI Portret Pro</h3>
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                    <span>Slechts €29 totaal</span>
+                <div className="flex items-center gap-2 mb-6">
+                  <span className="text-3xl">✅</span>
+                  <h3 className="text-2xl font-semibold">AI Portret Pro</h3>
+                </div>
+                <p className="text-blue-100 mb-6 text-sm">(De slimme keuze)</p>
+                <div className="space-y-5">
+                  <div>
+                    <p className="font-semibold mb-1">Prijs:</p>
+                    <p className="text-blue-100">Eenmalig €29 (geen verborgen kosten).</p>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                    <span>15 minuten resultaat</span>
+                  <div>
+                    <p className="font-semibold mb-1">Gemak:</p>
+                    <p className="text-blue-100">Direct beginnen vanaf je eigen bank, geen afspraak nodig.</p>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                    <span>40 professionele variaties</span>
+                  <div>
+                    <p className="font-semibold mb-1">Snelheid:</p>
+                    <p className="text-blue-100">Binnen 15 minuten alle foto's in je dashboard.</p>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                    <span>Direct beschikbaar 24/7</span>
+                  <div>
+                    <p className="font-semibold mb-1">Resultaat:</p>
+                    <p className="text-blue-100">Je krijgt direct 40+ verschillende zakelijke profielfoto's.</p>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                    <span>Gewoon thuis op je bank</span>
+                  <div>
+                    <p className="font-semibold mb-1">Garantie:</p>
+                    <p className="text-blue-100">Niet goed? Geld terug. Zo simpel is het.</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            
+            <div className="text-center">
+              <p className="text-xl font-semibold text-gray-800 mb-6">Bespaar €170+</p>
+              <Button
+                asChild
+                size="lg"
+                className="bg-[#FF8C00] hover:bg-[#FFA500] text-white px-8 py-6 text-lg"
+              >
+                <Link href="/pricing">
+                  Nu <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>

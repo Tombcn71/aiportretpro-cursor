@@ -11,6 +11,7 @@ import ReviewsEnVoorbeelden from "@/components/reviews-en-voorbeelden"
 import SchemaMarkup from "@/components/schema-markup"
 import SEOContentBlock from "@/components/seo-content-block"
 import ReviewSchema from "@/components/review-schema"
+import FAQSchema from "@/components/faq-schema"
 import Breadcrumb from "@/components/breadcrumb"
 // Gallery photos: All images from the shoot folder (1.png through 26.png)
 const galleryPhotos = Array.from({ length: 26 }, (_, i) => `/images/shoot/${i + 1}.png`)
@@ -65,6 +66,63 @@ const faqData = [
       "Zeker! Hoewel geoptimaliseerd voor LinkedIn, zijn alle foto's perfect bruikbaar voor je zakelijke website, email handtekening, corporate presentaties, persberichten, en andere professionele toepassingen. Je hebt volledige commerciële rechten op alle foto's.",
   }
 ]
+
+const LocalUtrechtSEO = () => (
+  <script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "AI Portret Pro - LinkedIn Profielfoto Utrecht",
+        "image": "https://aiportretpro.nl/images/logo-icon.png",
+        "@id": "https://aiportretpro.nl/linkedin-foto-laten-maken-utrecht#service",
+        "url": "https://aiportretpro.nl/linkedin-foto-laten-maken-utrecht",
+        "description": "Online service voor het laten maken van 40 professionele LinkedIn profielfoto's in Utrecht met AI. Binnen 15 minuten klaar voor slechts €29. Perfect voor Science Park, Papendorp en consultancy professionals.",
+        "priceRange": "€29",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Utrecht",
+          "addressCountry": "NL"
+        },
+        "areaServed": [
+          { "@type": "AdministrativeArea", "name": "Utrecht Science Park" },
+          { "@type": "AdministrativeArea", "name": "Papendorp" },
+          { "@type": "AdministrativeArea", "name": "Rijnsweerd" },
+          { "@type": "AdministrativeArea", "name": "Leidsche Rijn Centrum" },
+          { "@type": "AdministrativeArea", "name": "Binnenstad Utrecht" },
+          {
+            "@type": "City",
+            "name": "Utrecht",
+            "sameAs": "https://www.wikidata.org/wiki/Q803"
+          }
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            "opens": "00:00",
+            "closes": "23:59"
+          }
+        ],
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "reviewCount": "1200",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "knowsAbout": [
+          "LinkedIn profielfoto laten maken Utrecht",
+          "Zakelijke profielfoto's voor consultancy",
+          "Medische profielfoto's Science Park",
+          "Corporate headshots Papendorp",
+          "Profielfoto zonder fotograaf"
+        ]
+      })
+    }}
+  />
+);
 
 export default function LinkedInUtrechtPage() {
   const [isClient, setIsClient] = useState(false)
@@ -125,7 +183,9 @@ export default function LinkedInUtrechtPage() {
 
   return (
     <div className="min-h-screen pt-20">
+      <LocalUtrechtSEO />
       <ReviewSchema businessName="AI Portret Pro" city="Utrecht" />
+      <FAQSchema faqs={faqData} city="Utrecht" />
             <SchemaMarkup type="city" city="Utrecht" url="https://aiportretpro.com/linkedin-foto-laten-maken-utrecht" />
       <Header />
       {/* Hero Section - Utrecht Specific */}
@@ -146,11 +206,11 @@ export default function LinkedInUtrechtPage() {
         </div>
         
         <h1 className="tracking-tight text-xl md:text-4xl font-bold mb-6 leading-tight">
-          <span className="block">LinkedIn Foto Laten Maken Utrecht? </span>
+          <span className="block">Professionele LinkedIn Foto Laten Maken in Utrecht? </span>
           <span className="text-[#0077B5] block">Zonder het gedoe van een fotoshoot?</span>
         </h1>
         <p className="text-gray-500 text-lg mb-6">
-          Upload een paar selfies en onze AI doet de rest. Ontvang binnen 15 minuten 40 zakelijke portretten
+          Upload een paar selfies en onze AI doet de rest. Ontvang binnen 15 minuten 40 zakelijke profielfoto's
         </p>
 
         <div className="text-md md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto text-center">
@@ -196,7 +256,7 @@ export default function LinkedInUtrechtPage() {
                     <div className="w-52 h-[13.33rem] md:w-80 md:h-[20rem] rounded-xl md:rounded-2xl overflow-hidden bg-gray-100 shadow-md md:shadow-lg">
                       <Image
                         src={photo || "/placeholder.svg"}
-                        alt={`LinkedIn portret voorbeeld ${index + 1}`}
+                        alt="Zakelijk LinkedIn portret Utrecht professional consultancy en healthcare"
                         width={320}
                         height={400}
                         className="w-full h-full object-cover bg-gray-50 brightness-110 contrast-105"
@@ -213,7 +273,7 @@ export default function LinkedInUtrechtPage() {
                     <div className="w-52 h-[13.33rem] md:w-80 md:h-[20rem] rounded-xl md:rounded-2xl overflow-hidden bg-gray-100 shadow-md md:shadow-lg">
                       <Image
                         src={photo || "/placeholder.svg"}
-                        alt={`LinkedIn portret voorbeeld ${index + 1}`}
+                        alt="Zakelijk LinkedIn portret Utrecht professional consultancy en healthcare"
                         width={320}
                         height={400}
                         className="w-full h-full object-cover bg-gray-50 brightness-110 contrast-105"
@@ -240,16 +300,16 @@ export default function LinkedInUtrechtPage() {
               <p className="text-gray-600">
                 Upload minimaal 6 foto's van jezelf met verschillende uitdrukkingen en achtergronden
               </p>
-            </div>
+                  </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-[#0077B5] rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">
                 2
               </div>
               <h3 className="text-xl font-semibold mb-3">AI doet zijn werk</h3>
               <p className="text-gray-600">
-                Onze AI analyseert je foto's en maakt professionele portretten in verschillende stijlen
+                Onze AI analyseert je foto's en maakt professionele profielfoto's in verschillende stijlen
               </p>
-            </div>
+                </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-[#0077B5] rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">
                 3
@@ -263,7 +323,7 @@ export default function LinkedInUtrechtPage() {
 
       {/* Reviews en Voorbeelden */}
       <ReviewsEnVoorbeelden />
-
+     
       {/* Comparison Section */}
       <section className="py-12 md:py-16 bg-gradient-to-br from-blue-50 to-orange-50">
         <div className="container mx-auto px-4">
@@ -327,7 +387,7 @@ export default function LinkedInUtrechtPage() {
                 </li>
                 <li className="flex flex-col gap-1">
                   <span className="font-semibold text-white">Resultaat:</span>
-                  <span className="text-blue-100">Je krijgt direct 40+ verschillende zakelijke portretten.</span>
+                  <span className="text-blue-100">Je krijgt direct 40+ verschillende zakelijke profielfoto's.</span>
                 </li>
                 <li className="flex flex-col gap-1">
                   <span className="font-semibold text-white">Garantie:</span>
@@ -500,7 +560,7 @@ export default function LinkedInUtrechtPage() {
           <h2 className="text-3xl font-bold text-gray-900 mb-6">Professionele LinkedIn Foto Laten Maken in Utrecht: De Slimme Keuze voor 2026</h2>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            Utrecht vormt in 2026 meer dan ooit het kloppende hart van de Nederlandse zakelijke wereld. Als centraal knooppunt voor consultancy, media en financiële dienstverlening is de stad de plek waar dagelijks duizenden professionals bouwen aan hun netwerk en carrière. In deze dynamische omgeving is je digitale aanwezigheid je belangrijkste troef. Een professionele LinkedIn foto laten maken in Utrecht is in 2026 dan ook essentieel voor iedereen die serieus genomen wil worden door werkgevers en opdrachtgevers. Je profielfoto is je digitale handdruk in een stad waar connectiviteit en toegankelijkheid de standaard zijn.
+            In het kloppende hart van de Nederlandse zakelijke wereld, van de moderne kantoren in Papendorp tot de innovatieve labs op het Utrecht Science Park, is je digitale aanwezigheid je belangrijkste troef. In 2026 is een professionele LinkedIn foto laten maken in Utrecht essentieel om op te vallen in de consultancy, zorg en financiële sector. Onze AI-technologie biedt de snelheid die Utrechtse professionals verwachten: geen parkeergedoe bij de Jaarbeurs of tijdverlies in de binnenstad, maar direct 40 hoogwaardige profielfoto's vanuit je eigen kantoor of huis. Utrecht vormt in 2026 meer dan ooit het kloppende hart van de Nederlandse zakelijke wereld. Als centraal knooppunt voor consultancy, media en financiële dienstverlening is de stad de plek waar dagelijks duizenden professionals bouwen aan hun netwerk en carrière. In deze dynamische omgeving is je digitale aanwezigheid je belangrijkste troef. Een professionele LinkedIn profielfoto laten maken in Utrecht is in 2026 dan ook essentieel voor iedereen die serieus genomen wil worden door werkgevers en opdrachtgevers. Je profielfoto is je digitale handdruk in een stad waar connectiviteit en toegankelijkheid de standaard zijn.
           </p>
 
           <h3 className="text-2xl font-bold text-gray-900 mb-4">De efficiënte oplossing voor professionals in het hart van Nederland</h3>
@@ -512,7 +572,7 @@ export default function LinkedInUtrechtPage() {
           <h3 className="text-2xl font-bold text-gray-900 mb-4">Veertig verschillende stijlen en achtergronden uit één upload</h3>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            Het proces is in 2026 volledig gericht op gemak en variatie. Door minimaal zes bestaande foto's of selfies te uploaden vanaf je computer of telefoon, krijgt onze technologie direct inzicht in je unieke kenmerken. In plaats van urenlang te poseren in een studio, genereert onze engine binnen vijftien minuten een compleet pakket van veertig professionele portretten. Hierbij wordt gevarieerd in kleding, belichting en professionele achtergronden. Of je nu op zoek bent naar een formele uitstraling voor de consultancy-sector in Papendorp of een moderne, toegankelijke look voor de creatieve tech-scene in Utrecht-Noord: je hebt altijd de juiste foto direct tot je beschikking.
+            Het proces is in 2026 volledig gericht op gemak en variatie. Door minimaal zes bestaande foto's of selfies te uploaden vanaf je computer of telefoon, krijgt onze technologie direct inzicht in je unieke kenmerken. In plaats van urenlang te poseren in een studio, genereert onze engine binnen vijftien minuten een compleet pakket van veertig professionele profielfoto's. Hierbij wordt gevarieerd in kleding, belichting en professionele achtergronden. Of je nu op zoek bent naar een formele uitstraling voor de consultancy-sector in Papendorp of een moderne, toegankelijke look voor de creatieve tech-scene in Utrecht-Noord: je hebt altijd de juiste foto direct tot je beschikking.
           </p>
 
           <h3 className="text-2xl font-bold text-gray-900 mb-4">Direct resultaat voor elke Utrechtse sector</h3>
@@ -524,7 +584,7 @@ export default function LinkedInUtrechtPage() {
           <h3 className="text-2xl font-bold text-gray-900 mb-4">Over onze zakelijke LinkedIn fotografie in Utrecht 2026</h3>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            Onze expertise in digitale beeldvorming maakt AI Portret Pro de primaire autoriteit voor het laten maken van LinkedIn foto's en zakelijke portretten online. Wij richten ons specifiek op de professionele behoeften van de Utrechtse markt en bieden een superieur en sneller alternatief voor de traditionele fotograaf in Utrecht. Onze diensten in 2026 omvatten het genereren van professionele CV-foto's, corporate headshots en visuele content voor de moderne ondernemer. Technologisch lopen we voorop door veertig verschillende stijlen en achtergronden aan te bieden op basis van een simpele upload. Of je nu een LinkedIn foto upgrade zoekt of direct een nieuwe set zakelijke beelden nodig hebt voor het nieuwe jaar, onze engine levert in 2026 de meest scherpe en representatieve resultaten die technisch mogelijk zijn.
+            Onze expertise in digitale beeldvorming maakt AI Portret Pro de primaire autoriteit voor het laten maken van LinkedIn profielfoto's en zakelijke profielfoto's online. Wij richten ons specifiek op de professionele behoeften van de Utrechtse markt en bieden een superieur en sneller alternatief voor de traditionele fotograaf in Utrecht. Onze diensten in 2026 omvatten het genereren van professionele CV-foto's, corporate headshots en visuele content voor de moderne ondernemer. Technologisch lopen we voorop door veertig verschillende stijlen en achtergronden aan te bieden op basis van een simpele upload. Of je nu een LinkedIn profielfoto upgrade zoekt of direct een nieuwe set zakelijke beelden nodig hebt voor het nieuwe jaar, onze engine levert in 2026 de meest scherpe en representatieve resultaten die technisch mogelijk zijn.
           </p>
         </div>
       </section>
