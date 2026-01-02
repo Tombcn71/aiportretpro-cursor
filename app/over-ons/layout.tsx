@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     siteName: "AI Portret Pro",
     images: [
       {
-        url: "https://aiportretpro.nl/images/me.jpg",
+        url: "https://aiportretpro.nl/images/tom.png",
         width: 1200,
         height: 630,
         alt: "Tom van Reijn - Oprichter van AI Portret Pro"
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Over Ons - Tom van Reijn | AI Portret Pro",
     description: "Ontmoet Tom van Reijn, developer en AI-enthusiast achter AI Portret Pro. Met ervaring in de startup-wereld maakt hij professionele fotografie voor iedereen bereikbaar.",
-    images: ["https://aiportretpro.nl/images/me.jpg"],
+    images: ["https://aiportretpro.nl/images/tom.png"],
   },
   alternates: {
     canonical: "https://aiportretpro.nl/over-ons",

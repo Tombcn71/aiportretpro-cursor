@@ -6,7 +6,7 @@ import Header from "@/components/header"
 
 export default function OverOnsPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <div className="min-h-screen bg-white">
       <Header />
       
       <main className="pt-20">
@@ -18,7 +18,7 @@ export default function OverOnsPage() {
               <div className="space-y-8">
                 <div>
                   <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                    Hoi, ik ben <span className="text-blue-600">Tom van Reijn</span>
+                    Hoi, ik ben <span className="text-[#0077B5]">Tom van Reijn</span>
                   </h1>
                   <p className="text-xl text-gray-600 leading-relaxed">
                     AI-enthusiast, developer en startup-ondernemer met een missie: 
@@ -28,8 +28,8 @@ export default function OverOnsPage() {
 
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
-                    <div className="bg-purple-100 p-3 rounded-full">
-                      <Lightbulb className="h-6 w-6 text-purple-600" />
+                    <div className="bg-[#0077B5]/10 p-3 rounded-full">
+                      <Lightbulb className="h-6 w-6 text-[#0077B5]" />
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-gray-900 mb-2">AI-technologie pionier</h3>
@@ -41,8 +41,8 @@ export default function OverOnsPage() {
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div className="bg-blue-100 p-3 rounded-full">
-                      <Rocket className="h-6 w-6 text-blue-600" />
+                    <div className="bg-[#0077B5]/10 p-3 rounded-full">
+                      <Rocket className="h-6 w-6 text-[#0077B5]" />
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-gray-900 mb-2">Ervaring in de startup scene</h3>
@@ -54,8 +54,8 @@ export default function OverOnsPage() {
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div className="bg-green-100 p-3 rounded-full">
-                      <Heart className="h-6 w-6 text-green-600" />
+                    <div className="bg-[#0077B5]/10 p-3 rounded-full">
+                      <Heart className="h-6 w-6 text-[#0077B5]" />
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-gray-900 mb-2">Passie voor toegankelijkheid</h3>
@@ -71,10 +71,10 @@ export default function OverOnsPage() {
               {/* Photo */}
               <div className="relative flex justify-center">
                 <div className="relative w-48 h-48 lg:w-56 lg:h-56">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full transform rotate-6"></div>
-                  <div className="relative bg-white p-3 rounded-full shadow-2xl">
+                  <div className="absolute inset-0 bg-[#0077B5] rounded-full transform rotate-6 opacity-20"></div>
+                  <div className="relative bg-white p-3 rounded-full shadow-lg border-2 border-[#0077B5]/20">
                     <Image
-                      src="/images/me.jpg"
+                      src="/images/tom.png"
                       alt="Tom van Reijn - Oprichter van AI Portret Pro"
                       width={224}
                       height={224}
@@ -94,7 +94,7 @@ export default function OverOnsPage() {
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
               Mijn Missie
             </h2>
-            <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-8 md:p-12 rounded-3xl">
+            <div className="bg-[#0077B5]/5 border-l-4 border-[#0077B5] p-8 md:p-12 rounded-lg">
               <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
                 "Traditionele fotoshoots zijn duur, tijdrovend en vaak intimiderend. 
                 Met AI Portret Pro democratiseer ik professionele fotografie."
@@ -112,16 +112,16 @@ export default function OverOnsPage() {
         <section className="py-16 bg-gray-50">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid md:grid-cols-3 gap-8 text-center">
-              <div className="bg-white p-8 rounded-2xl shadow-lg">
-                <div className="text-4xl font-bold text-blue-600 mb-2">24/7</div>
+              <div className="bg-white p-8 rounded-lg shadow-md border border-gray-200">
+                <div className="text-4xl font-bold text-[#0077B5] mb-2">24/7</div>
                 <div className="text-gray-600">Beschikbaar online</div>
               </div>
-              <div className="bg-white p-8 rounded-2xl shadow-lg">
-                <div className="text-4xl font-bold text-purple-600 mb-2">6x</div>
+              <div className="bg-white p-8 rounded-lg shadow-md border border-gray-200">
+                <div className="text-4xl font-bold text-[#0077B5] mb-2">6x</div>
                 <div className="text-gray-600">Goedkoper dan traditioneel</div>
               </div>
-              <div className="bg-white p-8 rounded-2xl shadow-lg">
-                <div className="text-4xl font-bold text-green-600 mb-2">15 min</div>
+              <div className="bg-white p-8 rounded-lg shadow-md border border-gray-200">
+                <div className="text-4xl font-bold text-[#0077B5] mb-2">15 min</div>
                 <div className="text-gray-600">Van training tot resultaat</div>
               </div>
             </div>
@@ -129,16 +129,16 @@ export default function OverOnsPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 bg-gradient-to-r from-blue-600 to-purple-600">
+        <section className="py-16 bg-[#0077B5]">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
               Klaar om jouw professionele foto's te maken?
             </h2>
-            <p className="text-xl text-blue-100 mb-8">
+            <p className="text-xl text-white/90 mb-8">
               Sluit je aan bij duizenden tevreden klanten en ervaar zelf hoe makkelijk het is!
             </p>
-            <Link href="/pricing">
-              <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 text-lg px-8 py-4">
+            <Link href="/login?callbackUrl=/payment">
+              <Button size="lg" className="bg-white text-[#0077B5] hover:bg-gray-100 text-lg px-8 py-4">
                 Begin nu voor €29
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>

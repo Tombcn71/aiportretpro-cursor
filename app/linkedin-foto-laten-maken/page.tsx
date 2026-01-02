@@ -801,6 +801,9 @@ export default function LinkedInProfielFotoPage() {
                 <Link href="/contact" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
                   Contact
                 </Link>
+                <Link href="/over-ons" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
+                  Over Ons
+                </Link>
                 <Link href="/" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
                   Homepage
                 </Link>

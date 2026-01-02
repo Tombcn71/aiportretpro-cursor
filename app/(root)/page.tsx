@@ -565,6 +565,9 @@ export default function HomePage() {
                 <Link href="/contact" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
                   Contact
                 </Link>
+                <Link href="/over-ons" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
+                  Over Ons
+                </Link>
                 <Link href="/linkedin-foto-laten-maken" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
                   LinkedIn Foto's
                 </Link>
