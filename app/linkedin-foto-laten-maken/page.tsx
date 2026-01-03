@@ -242,7 +242,7 @@ export default function LinkedInProfielFotoPage() {
         </div>
         
         <h1 className="tracking-tight text-xl md:text-4xl font-bold mb-6 leading-tight">
-          <span className="block">LinkedIn Foto Laten Maken?</span>
+          <span className="block">Professionele LinkedIn profielfoto laten maken?</span>
           <span className="text-[#0077B5] block">Zonder het gedoe van een fotoshoot?</span>
         </h1>
         <p className="text-gray-500 text-lg mb-6">
