@@ -21,7 +21,7 @@ export default function LoginPage() {
   const [showEmailForm, setShowEmailForm] = useState(isDirectLogin || hasCallbackUrl) // Show form immediately if direct login or CTA
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const [isSignUp, setIsSignUp] = useState(!isDirectLogin && !hasCallbackUrl) // If direct login or CTA, start in login mode
+  const [isSignUp, setIsSignUp] = useState(!isDirectLogin) // If direct login, start in login mode. Otherwise signup (including CTA)
   const [error, setError] = useState("")
   const [isProcessingSignup, setIsProcessingSignup] = useState(false) // Prevent useEffect redirect during signup
 
