@@ -134,7 +134,6 @@ export default function PricingPage() {
                 <span className="text-xl md:text-4xl font-bold text-[#0077B5]">€ 29</span>
                 <span className="text-gray-600 ml-2 text-sm md:text-base">eenmalig</span>
               </div>
-              <p className="text-gray-600 mt-1 md:mt-2 text-sm md:text-base">Geen abonnement</p>
             </CardHeader>
 
             <CardContent className="space-y-3 md:space-y-6 px-3 md:px-6 pb-4 md:pb-8">
