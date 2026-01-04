@@ -231,9 +231,9 @@ export default function HomePage() {
           </div>
         </div>
         
-        <h1 className="tracking-tight text-xl md:text-4xl font-bold mb-6 leading-tight">
-          <span className="block">Professionele zakelijke foto's nodig?</span>
-          <span className="text-[#0077B5] block">Zonder het gedoe van een fotoshoot?</span>
+        <h1 className="tracking-tight text-3xl md:text-4xl font-bold mb-6 leading-tight">
+          <span className="block">Professionele zakelijke foto's,</span>
+          <span className="block text-[#0077B5]">zonder gedoe van een fotoshoot</span>
         </h1>
         <p className="hidden md:block text-base md:text-xl mb-6 text-gray-700 font-normal">Upload een paar selfies en onze AI doet de rest. Ontvang binnen 15 minuten 40 professionele foto's</p>
 
