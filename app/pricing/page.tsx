@@ -57,9 +57,9 @@ export default function PricingPage() {
         if (response.ok) {
           const data = await response.json()
           if (data.credits > 0) {
-            // User already has credits, redirect to wizard
+            // User already has credits, redirect to wizard immediately
             console.log("User already has credits, redirecting to wizard")
-            router.replace("/wizard/project-name")
+            window.location.href = "/wizard/project-name"
             return
           }
         }
@@ -129,8 +129,8 @@ export default function PricingPage() {
     "Niet goed? Geld terug",
   ]
 
-  // Show loading while checking session
-  if (status === "loading") {
+  // Show loading while checking session or credits
+  if (status === "loading" || (status === "authenticated" && session && !creditsChecked)) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
