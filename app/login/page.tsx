@@ -13,14 +13,15 @@ export default function LoginPage() {
   const router = useRouter()
   const searchParams = useSearchParams()
   
-  // Check if user came from login button (header) - go directly to login form
+  // Check if user came from login button (header) or CTA - go directly to login form
   const isDirectLogin = searchParams.get("mode") === "login"
+  const hasCallbackUrl = searchParams.get("callbackUrl") !== null
   
   const [loading, setLoading] = useState(false)
-  const [showEmailForm, setShowEmailForm] = useState(isDirectLogin) // Show form immediately if direct login
+  const [showEmailForm, setShowEmailForm] = useState(isDirectLogin || hasCallbackUrl) // Show form immediately if direct login or CTA
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const [isSignUp, setIsSignUp] = useState(!isDirectLogin) // If direct login, start in login mode
+  const [isSignUp, setIsSignUp] = useState(!isDirectLogin && !hasCallbackUrl) // If direct login or CTA, start in login mode
   const [error, setError] = useState("")
   const [isProcessingSignup, setIsProcessingSignup] = useState(false) // Prevent useEffect redirect during signup
 
@@ -210,8 +211,14 @@ export default function LoginPage() {
               <span className="text-lg text-gray-900">AIPortretPro</span>
             </div>
             
-            {/* Main title - Show on buttons screen or login mode only */}
-            {!showEmailForm ? (
+            {/* Main title - Show "Bijna bij de kassa" for CTA, "Welkom terug" only for direct login */}
+            {hasCallbackUrl ? (
+              <CardTitle className="text-xl md:text-2xl text-gray-900 mb-3 font-normal pl-0">
+                Bijna bij de kassa
+                <br />
+                <span className="text-gray-700">Log in om je bestelling af te ronden.</span>
+              </CardTitle>
+            ) : !showEmailForm ? (
               <CardTitle className="text-xl md:text-2xl text-gray-900 mb-3 font-normal pl-0">
                 Bijna bij de kassa
                 <br />
