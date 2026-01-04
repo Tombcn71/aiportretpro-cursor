@@ -137,24 +137,47 @@ export default function LoginPage() {
   }
 
   // If user is already authenticated, redirect them
+  // But don't redirect if user just signed up (let the signup handler do it)
   useEffect(() => {
-    if (status === "authenticated" && session) {
-      // If user came from CTA button (callbackUrl=/payment), go to dashboard instead of pricing
-      // This way logged in users can see their photos and start new projects
-      const callbackUrl = searchParams.get("callbackUrl")
-      let redirectUrl = "/dashboard"
-      
-      // Only redirect to pricing if explicitly requested (not from CTA)
-      if (callbackUrl && callbackUrl !== "/payment") {
-        redirectUrl = callbackUrl
+    if (status === "authenticated" && session && !isProcessingSignup) {
+      // Check if user has credits - if not, they're new and should go to pricing
+      const checkCreditsAndRedirect = async () => {
+        try {
+          const response = await fetch("/api/credits/balance")
+          if (response.ok) {
+            const data = await response.json()
+            const callbackUrl = searchParams.get("callbackUrl")
+            
+            // If user has no credits, they're new - send to pricing
+            if (data.credits === 0) {
+              const redirectUrl = callbackUrl === "/payment" ? "/pricing" : (callbackUrl || "/pricing")
+              console.log("New user (no credits), redirecting to:", redirectUrl)
+              router.push(redirectUrl)
+              return
+            }
+            
+            // Existing user with credits - go to dashboard (unless explicit callbackUrl)
+            let redirectUrl = "/dashboard"
+            if (callbackUrl && callbackUrl !== "/payment") {
+              redirectUrl = callbackUrl
+            }
+            console.log("Existing user (has credits), redirecting to:", redirectUrl)
+            router.push(redirectUrl)
+          }
+        } catch (error) {
+          console.error("Error checking credits:", error)
+          // On error, default to pricing for safety
+          const callbackUrl = searchParams.get("callbackUrl")
+          const redirectUrl = callbackUrl === "/payment" ? "/pricing" : (callbackUrl || "/pricing")
+          router.push(redirectUrl)
+        }
       }
       
-      console.log("Already authenticated, redirecting to:", redirectUrl)
-      router.push(redirectUrl)
+      checkCreditsAndRedirect()
     }
     // Return undefined (no cleanup function needed)
     return undefined
-  }, [status, session, router, searchParams])
+  }, [status, session, router, searchParams, isProcessingSignup])
 
   // Show loading while checking authentication
   if (status === "loading") {
