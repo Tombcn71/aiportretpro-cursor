@@ -199,7 +199,7 @@ export function Header() {
             ) : (
               <Button
                 onClick={handleSignIn}
-                className="w-full bg-[#0077B5] hover:bg-[#005885] text-white py-2 text-lg"
+                className="w-full bg-[#0077B5] hover:bg-[#005885] text-white py-2 text-lg border-t pt-4"
               >
                 Inloggen
               </Button>
