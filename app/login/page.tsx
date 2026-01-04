@@ -29,12 +29,11 @@ export default function LoginPage() {
     setError("")
     try {
       // Check if this is a homepage CTA login or has callbackUrl
-      // If callbackUrl is /payment, redirect to /pricing instead
+      // If callbackUrl is /payment (from CTA), go to dashboard for logged in users
       const isHomepageCTA = searchParams.get("source") === "homepage"
       let callbackUrl = searchParams.get("callbackUrl") || (isHomepageCTA ? "/pricing" : "/dashboard")
-      if (callbackUrl === "/payment") {
-        callbackUrl = "/pricing"
-      }
+      // Note: Google sign in will handle the redirect after authentication
+      // If user is already logged in, the useEffect will redirect to dashboard
       
       await signIn("google", { callbackUrl })
     } catch (error) {
@@ -121,9 +120,10 @@ export default function LoginPage() {
         if (result?.error) {
           setError("Ongeldige email of wachtwoord")
         } else if (result?.ok) {
-          // After LOGIN: if callbackUrl is /payment, go to /pricing instead
+          // After LOGIN: if callbackUrl is /payment (from CTA), go to dashboard instead
+          // This way logged in users can see their photos and start new projects
           const callbackUrl = searchParams.get("callbackUrl")
-          const redirectUrl = callbackUrl === "/payment" ? "/pricing" : (callbackUrl || "/dashboard")
+          const redirectUrl = callbackUrl === "/payment" ? "/dashboard" : (callbackUrl || "/dashboard")
           console.log("✅ Login successful, redirecting to:", redirectUrl)
           router.push(redirectUrl)
         }
@@ -139,14 +139,16 @@ export default function LoginPage() {
   // If user is already authenticated, redirect them
   useEffect(() => {
     if (status === "authenticated" && session) {
-      // Check for callbackUrl first (from pricing page), then source, then default to dashboard
-      // If callbackUrl is /payment, redirect to /pricing instead
+      // If user came from CTA button (callbackUrl=/payment), go to dashboard instead of pricing
+      // This way logged in users can see their photos and start new projects
       const callbackUrl = searchParams.get("callbackUrl")
-      const isHomepageCTA = searchParams.get("source") === "homepage"
-      let redirectUrl = callbackUrl || (isHomepageCTA ? "/pricing" : "/dashboard")
-      if (redirectUrl === "/payment") {
-        redirectUrl = "/pricing"
+      let redirectUrl = "/dashboard"
+      
+      // Only redirect to pricing if explicitly requested (not from CTA)
+      if (callbackUrl && callbackUrl !== "/payment") {
+        redirectUrl = callbackUrl
       }
+      
       console.log("Already authenticated, redirecting to:", redirectUrl)
       router.push(redirectUrl)
     }
