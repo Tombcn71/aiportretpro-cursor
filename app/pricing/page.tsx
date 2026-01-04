@@ -119,7 +119,7 @@ export default function PricingPage() {
         <ProgressIndicator currentStep={2} />
         <div className="text-center mb-3 md:mb-8 max-w-3xl mx-auto">
           <h1 className="text-base md:text-3xl lg:text-4xl font-bold text-gray-900 mb-1 md:mb-4 leading-tight">
-            Jouw pakket
+            Kies jouw pakket
           </h1>
           <p className="text-xs md:text-base lg:text-lg text-gray-600 leading-relaxed mb-3 md:mb-0">
             Eenmalig, geen abonnement, geld terug garantie
