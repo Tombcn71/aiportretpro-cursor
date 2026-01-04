@@ -15,33 +15,12 @@ export default function PricingPage() {
   const [loading, setLoading] = useState(false)
   const [projectData, setProjectData] = useState<any>(null)
   const [hasExistingProject, setHasExistingProject] = useState(false)
+  const [creditsChecked, setCreditsChecked] = useState(false)
   const router = useRouter()
 
   // Track pricing page view and check if user already has credits
   useEffect(() => {
     trackViewContent("Pricing Page", "29")
-    
-    // Check if user already has credits - if so, redirect to wizard
-    const checkCredits = async () => {
-      if (status === "authenticated" && session) {
-        try {
-          const response = await fetch("/api/credits/balance")
-          if (response.ok) {
-            const data = await response.json()
-            if (data.credits > 0) {
-              // User already has credits, redirect to wizard
-              console.log("User already has credits, redirecting to wizard")
-              router.push("/wizard/project-name")
-              return
-            }
-          }
-        } catch (error) {
-          console.error("Error checking credits:", error)
-        }
-      }
-    }
-    
-    checkCredits()
     
     // Get project data from localStorage
     const pendingProject = localStorage.getItem("pendingProject")
@@ -63,7 +42,35 @@ export default function PricingPage() {
     
     // Return undefined (no cleanup function needed)
     return undefined
-  }, [router, status, session])
+  }, [])
+
+  // Check if user already has credits - separate effect to prevent loops
+  useEffect(() => {
+    if (creditsChecked || status !== "authenticated" || !session) {
+      return
+    }
+
+    const checkCredits = async () => {
+      setCreditsChecked(true)
+      try {
+        const response = await fetch("/api/credits/balance")
+        if (response.ok) {
+          const data = await response.json()
+          if (data.credits > 0) {
+            // User already has credits, redirect to wizard
+            console.log("User already has credits, redirecting to wizard")
+            router.replace("/wizard/project-name")
+            return
+          }
+        }
+      } catch (error) {
+        console.error("Error checking credits:", error)
+        setCreditsChecked(false) // Reset on error so it can retry
+      }
+    }
+    
+    checkCredits()
+  }, [status, session, creditsChecked, router])
 
   const handlePlanSelect = () => {
     // Track checkout initiation
