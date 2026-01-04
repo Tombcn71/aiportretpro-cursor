@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Check, Star } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { trackViewContent, trackInitiateCheckout } from "@/lib/facebook-pixel"
+import { ProgressIndicator } from "@/components/progress-indicator"
 
 export default function PricingPage() {
   const { data: session, status } = useSession()
@@ -16,9 +17,31 @@ export default function PricingPage() {
   const [hasExistingProject, setHasExistingProject] = useState(false)
   const router = useRouter()
 
-  // Track pricing page view
+  // Track pricing page view and check if user already has credits
   useEffect(() => {
     trackViewContent("Pricing Page", "29")
+    
+    // Check if user already has credits - if so, redirect to wizard
+    const checkCredits = async () => {
+      if (status === "authenticated" && session) {
+        try {
+          const response = await fetch("/api/credits/balance")
+          if (response.ok) {
+            const data = await response.json()
+            if (data.credits > 0) {
+              // User already has credits, redirect to wizard
+              console.log("User already has credits, redirecting to wizard")
+              router.push("/wizard/project-name")
+              return
+            }
+          }
+        } catch (error) {
+          console.error("Error checking credits:", error)
+        }
+      }
+    }
+    
+    checkCredits()
     
     // Get project data from localStorage
     const pendingProject = localStorage.getItem("pendingProject")
@@ -40,7 +63,7 @@ export default function PricingPage() {
     
     // Return undefined (no cleanup function needed)
     return undefined
-  }, [router])
+  }, [router, status, session])
 
   const handlePlanSelect = () => {
     // Track checkout initiation
@@ -115,6 +138,7 @@ export default function PricingPage() {
     <div className="min-h-screen pt-20">
       <Header />
       <div className="container mx-auto px-4 py-6 md:py-20">
+        <ProgressIndicator currentStep={2} />
         <div className="text-center mb-3 md:mb-8 max-w-3xl mx-auto">
           <h1 className="text-base md:text-3xl lg:text-4xl font-bold text-gray-900 mb-1 md:mb-4 leading-tight">
             Professionele fotoshoot: 6x goedkoper dan bij een fotograaf

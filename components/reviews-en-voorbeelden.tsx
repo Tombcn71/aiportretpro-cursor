@@ -9,7 +9,28 @@ const galleryPhotos = Array.from({ length: 26 }, (_, i) => `/images/shoot/${i + 
 
 // Voorbeeld reviews - 20 met foto, 10 zonder foto, goed gemengd
 // Foto indices: man-vrouw-man-vrouw patroon (0=man, 1=vrouw, 2=man, 3=vrouw, etc.)
+// Eerste 8 reviews: Begint met Anna en Shanti (2 vrouwen) op mobile, dan Tom, Ruben, Mike, Iris, Mark en Emma
 const reviews = [
+  {
+    type: "voorbeeld" as const,
+    name: "Anna de Wit",
+    role: "Project Manager",
+    location: "Breda",
+    review: "Verrassend hoe goed de kwaliteit is. Ik had eerlijk gezegd lagere verwachtingen, maar de belichting en scherpte zijn prima in orde. Snelle service ook.",
+    rating: 5,
+    photoIndex: 5, // Vrouw (foto 6.png)
+    avatarInitials: "AW",
+  },
+  {
+    type: "voorbeeld" as const,
+    name: "Shanti Smit",
+    role: "Event Manager",
+    location: "Rotterdam",
+    review: "Goede prijs-kwaliteitverhouding. Ik had m'n foto's snel binnen en ze zien er professioneel uit. Ideaal voor een snelle update van mijn profiel.",
+    rating: 5,
+    photoIndex: 15, // Vrouw (foto 16.png)
+    avatarInitials: "SS",
+  },
   {
     type: "voorbeeld" as const,
     name: "Tom van der Berg",
@@ -22,12 +43,49 @@ const reviews = [
   },
   {
     type: "review" as const,
+    name: "Ruben van Dijk",
+    role: "Software Engineer",
+    location: "Amsterdam",
+    review: "Geen zin in een fotograaf, dus dit geprobeerd. De foto's passen goed bij mijn huidige profiel en de levering was supersnel. Gewoon goed.",
+    rating: 5,
+    avatarInitials: "RV",
+  },
+  {
+    type: "review" as const,
+    name: "Iris de Nooyer",
+    role: "Business Analyst",
+    location: "Groningen",
+    review: "Handig systeem. Je uploadt een paar foto's en de AI doet de rest. De uitstraling is zakelijk en degelijk. Precies wat ik zocht voor mijn nieuwe rol.",
+    rating: 5,
+    avatarInitials: "IN",
+  },
+  {
+    type: "voorbeeld" as const,
+    name: "Mike van den Berg",
+    role: "Operations Manager",
+    location: "Eindhoven",
+    review: "Snel, simpel en goedkoop. Binnen een kwartier was alles klaar. De kwaliteit is bovengemiddeld goed voor AI-begrippen.",
+    rating: 5,
+    photoIndex: 10, // Man (foto 11.png)
+    avatarInitials: "MB",
+  },
+  {
+    type: "review" as const,
     name: "Mark Hovenkamp",
     role: "IT Consultant",
     location: "Rotterdam",
     review: "Prima oplossing voor als je geen zin hebt in het gedoe van een fotoshoot. De kwaliteit is gewoon goed genoeg voor m'n website en visitekaartjes, en het scheelt behoorlijk in de portemonnee.",
     rating: 5,
     avatarInitials: "MH",
+  },
+  {
+    type: "review" as const,
+    name: "Emma de Jager",
+    role: "HR Manager",
+    location: "Eindhoven",
+    review: "Blij mee. De foto's zien er verzorgd uit en de prijs is fair. Een stuk efficiënter dan een middag bij een fotograaf.",
+    rating: 5,
+    avatarInitials: "EJ",
   },
   {
     type: "voorbeeld" as const,
@@ -77,25 +135,6 @@ const reviews = [
     rating: 5,
     photoIndex: 4, // Man (foto 5.png)
     avatarInitials: "JV",
-  },
-  {
-    type: "review" as const,
-    name: "Ruben van Dijk",
-    role: "Software Engineer",
-    location: "Amsterdam",
-    review: "Geen zin in een fotograaf, dus dit geprobeerd. De foto's passen goed bij mijn huidige profiel en de levering was supersnel. Gewoon goed.",
-    rating: 5,
-    avatarInitials: "RV",
-  },
-  {
-    type: "voorbeeld" as const,
-    name: "Anna de Wit",
-    role: "Project Manager",
-    location: "Breda",
-    review: "Verrassend hoe goed de kwaliteit is. Ik had eerlijk gezegd lagere verwachtingen, maar de belichting en scherpte zijn prima in orde. Snelle service ook.",
-    rating: 5,
-    photoIndex: 5, // Vrouw (foto 6.png)
-    avatarInitials: "AW",
   },
   {
     type: "voorbeeld" as const,
@@ -157,25 +196,6 @@ const reviews = [
   },
   {
     type: "voorbeeld" as const,
-    name: "Mike van den Berg",
-    role: "Operations Manager",
-    location: "Eindhoven",
-    review: "Snel, simpel en goedkoop. Binnen een kwartier was alles klaar. De kwaliteit is bovengemiddeld goed voor AI-begrippen.",
-    rating: 5,
-    photoIndex: 10, // Man (foto 11.png)
-    avatarInitials: "MB",
-  },
-  {
-    type: "review" as const,
-    name: "Iris de Nooyer",
-    role: "Business Analyst",
-    location: "Groningen",
-    review: "Handig systeem. Je uploadt een paar foto's en de AI doet de rest. De uitstraling is zakelijk en degelijk. Precies wat ik zocht voor mijn nieuwe rol.",
-    rating: 5,
-    avatarInitials: "IN",
-  },
-  {
-    type: "voorbeeld" as const,
     name: "Femke van der Laan",
     role: "Marketing Specialist",
     location: "Amsterdam",
@@ -231,16 +251,6 @@ const reviews = [
     review: "Geen poespas, gewoon doen wat het belooft. De foto's zijn scherp en bruikbaar voor zakelijke uitingen. Absoluut de moeite waard.",
     rating: 5,
     avatarInitials: "SA",
-  },
-  {
-    type: "voorbeeld" as const,
-    name: "Shanti Smit",
-    role: "Event Manager",
-    location: "Rotterdam",
-    review: "Goede prijs-kwaliteitverhouding. Ik had m'n foto's snel binnen en ze zien er professioneel uit. Ideaal voor een snelle update van mijn profiel.",
-    rating: 5,
-    photoIndex: 15, // Vrouw (foto 16.png)
-    avatarInitials: "SS",
   },
   {
     type: "voorbeeld" as const,
@@ -308,6 +318,7 @@ interface ReviewsEnVoorbeeldenProps {
 
 export default function ReviewsEnVoorbeelden({ title = "Reviews en Voorbeelden" }: ReviewsEnVoorbeeldenProps) {
   const [lightboxImage, setLightboxImage] = useState<string | null>(null)
+  const [showAllReviews, setShowAllReviews] = useState(false)
 
   const openLightbox = (imageSrc: string) => {
     setLightboxImage(imageSrc)
@@ -316,6 +327,16 @@ export default function ReviewsEnVoorbeelden({ title = "Reviews en Voorbeelden" 
   const closeLightbox = () => {
     setLightboxImage(null)
   }
+
+  // Mobile: eerste 6 reviews zoals ze zijn (Anna, Shanti, Tom, Ruben, Iris, Mike)
+  const displayedReviewsMobile = showAllReviews ? reviews : reviews.slice(0, 6)
+  
+  // Desktop: originele volgorde (Tom, Mark, Sophie, David, Emma, Lisa, Jeroen, Ruben, Anna, Pieter, Laura, Jayden, Bas, Kevin, Sanne, Mike, Iris, ...)
+  // Huidige indices: Tom(2), Mark(6), Sophie(8), David(9), Emma(7), Lisa(11), Jeroen(12), Ruben(3), Anna(0), Pieter(13), Laura(14), Jayden(15), Bas(16), Kevin(17), Sanne(18), Mike(5), Iris(4)
+  const originalDesktopOrder = [2, 6, 8, 9, 7, 11, 12, 3, 0, 13, 14, 15, 16, 17, 18, 5, 4]
+  const displayedReviewsDesktop = showAllReviews 
+    ? reviews 
+    : originalDesktopOrder.map(idx => reviews[idx]).filter(Boolean)
 
   return (
     <section className="py-12 md:py-16 bg-white">
@@ -343,14 +364,15 @@ export default function ReviewsEnVoorbeelden({ title = "Reviews en Voorbeelden" 
           <p className="text-sm md:text-base text-gray-700">5000+ foto's gemaakt voor 1200+ tevreden klanten</p>
         </div>
         
-        <div className="columns-2 md:columns-4 gap-4 max-w-7xl mx-auto">
-          {reviews.map((review, index) => {
+        {/* First 2 reviews in grid on mobile, then masonry for the rest */}
+        <div className="grid grid-cols-2 md:hidden gap-4 max-w-7xl mx-auto mb-4">
+          {displayedReviewsMobile.slice(0, 2).map((review, index) => {
             if (review.type === "review") {
               // Review card zonder grote foto
               return (
                 <div
                   key={index}
-                  className="bg-gray-50 rounded-lg p-3 shadow-md hover:shadow-lg transition-shadow break-inside-avoid mb-4"
+                  className="bg-gray-50 rounded-lg p-3 shadow-md hover:shadow-lg transition-shadow break-inside-avoid mb-4 min-h-[120px]"
                 >
                   <div className="flex items-start gap-2 mb-2">
                     <div className="w-8 h-8 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xs flex-shrink-0">
@@ -370,7 +392,92 @@ export default function ReviewsEnVoorbeelden({ title = "Reviews en Voorbeelden" 
               return (
                 <div
                   key={index}
-                  className="cursor-pointer group break-inside-avoid mb-4"
+                  className="cursor-pointer group break-inside-avoid"
+                  onClick={() => openLightbox(photoSrc)}
+                >
+                  {/* Card achtergrond - stopt waar review tekst stopt */}
+                  <div className="bg-white rounded-lg p-3 shadow-lg hover:shadow-xl transition-shadow">
+                    {/* Avatar, naam en review - variabele hoogte */}
+                    <div className="mb-2">
+                      <div className="flex items-start gap-2 mb-1">
+                        {/* Avatar - kleine versie van de foto */}
+                        <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0 border-2 border-gray-200">
+                          <Image
+                            src={photoSrc || "/placeholder.svg"}
+                            alt={`Avatar van ${review.name}`}
+                            width={32}
+                            height={32}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        {/* Naam en customer label - alleen voornaam */}
+                        <div className="flex-1 min-w-0">
+                          <div className="font-bold text-gray-900 text-sm truncate">{review.name.split(' ')[0]}</div>
+                          <div className="text-xs text-gray-600">klant AI Portret Pro</div>
+                        </div>
+                      </div>
+                      {/* Review tekst - volledige tekst, bepaalt card hoogte */}
+                      <p className="text-gray-900 text-xs leading-tight">{review.review}</p>
+                    </div>
+                    
+                    {/* Foto met aspect ratio 3:4 - vaste grootte */}
+                    <div className="relative aspect-[3/4] bg-gray-100 rounded-lg overflow-hidden mt-2">
+                      <Image
+                        src={photoSrc || "/placeholder.svg"}
+                        alt={`Voorbeeld van ${review.name}`}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 50vw, 25vw"
+                      />
+                      {/* Badge rechtsboven op foto */}
+                      <div className="absolute top-1 right-1 md:top-2 md:right-2 z-10">
+                        <div className="bg-[#0077B5] text-white text-[10px] md:text-xs font-bold px-1.5 py-0.5 md:px-2 md:py-1 rounded">
+                          AI Resultaat
+                        </div>
+                      </div>
+                      {/* Hover overlay */}
+                      <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
+                        <span className="text-white font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center px-4 text-xs">
+                          Klik om te vergroten
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )
+            }
+          })}
+        </div>
+
+        {/* All reviews in masonry layout on desktop with old order */}
+        <div className="hidden md:block columns-4 gap-4 max-w-7xl mx-auto [column-fill:balance]">
+          {displayedReviewsDesktop.map((review, index) => {
+            if (review.type === "review") {
+              // Review card zonder grote foto
+              return (
+                <div
+                  key={index}
+                  className="bg-gray-50 rounded-lg p-3 shadow-md hover:shadow-lg transition-shadow break-inside-avoid mb-4 min-h-[120px]"
+                >
+                  <div className="flex items-start gap-2 mb-2">
+                    <div className="w-8 h-8 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xs flex-shrink-0">
+                      {review.avatarInitials}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="font-bold text-gray-900 text-sm truncate">{review.name}</div>
+                      <div className="text-xs text-gray-600">{review.role}, {review.location}</div>
+                    </div>
+                  </div>
+                  <p className="text-gray-900 text-xs leading-tight">{review.review}</p>
+                </div>
+              )
+            } else {
+              // Voorbeeld card met avatar en review boven foto - variabele card hoogte
+              const photoSrc = galleryPhotos[review.photoIndex % galleryPhotos.length]
+              return (
+                <div
+                  key={index}
+                  className="cursor-pointer group break-inside-avoid"
                   onClick={() => openLightbox(photoSrc)}
                 >
                   {/* Card achtergrond - stopt waar review tekst stopt */}
@@ -426,6 +533,103 @@ export default function ReviewsEnVoorbeelden({ title = "Reviews en Voorbeelden" 
             }
           })}
         </div>
+
+        {/* Rest of reviews in masonry layout on mobile only */}
+        <div className="md:hidden columns-2 gap-4 max-w-7xl mx-auto [column-fill:balance]">
+          {displayedReviewsMobile.slice(2).map((review, index) => {
+            if (review.type === "review") {
+              // Review card zonder grote foto
+              return (
+                <div
+                  key={`mobile-${index}`}
+                  className="bg-gray-50 rounded-lg p-3 shadow-md hover:shadow-lg transition-shadow break-inside-avoid mb-4 min-h-[120px]"
+                >
+                  <div className="flex items-start gap-2 mb-2">
+                    <div className="w-8 h-8 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xs flex-shrink-0">
+                      {review.avatarInitials}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="font-bold text-gray-900 text-sm truncate">{review.name}</div>
+                      <div className="text-xs text-gray-600">{review.role}, {review.location}</div>
+                    </div>
+                  </div>
+                  <p className="text-gray-900 text-xs leading-tight">{review.review}</p>
+                </div>
+              )
+            } else {
+              // Voorbeeld card met avatar en review boven foto - variabele card hoogte
+              const photoSrc = galleryPhotos[review.photoIndex % galleryPhotos.length]
+              return (
+                <div
+                  key={`mobile-${index}`}
+                  className="cursor-pointer group break-inside-avoid"
+                  onClick={() => openLightbox(photoSrc)}
+                >
+                  {/* Card achtergrond - stopt waar review tekst stopt */}
+                  <div className="bg-white rounded-lg p-3 shadow-lg hover:shadow-xl transition-shadow">
+                    {/* Avatar, naam en review - variabele hoogte */}
+                    <div className="mb-2">
+                      <div className="flex items-start gap-2 mb-1">
+                        {/* Avatar - kleine versie van de foto */}
+                        <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0 border-2 border-gray-200">
+                          <Image
+                            src={photoSrc || "/placeholder.svg"}
+                            alt={`Avatar van ${review.name}`}
+                            width={32}
+                            height={32}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        {/* Naam en customer label - alleen voornaam */}
+                        <div className="flex-1 min-w-0">
+                          <div className="font-bold text-gray-900 text-sm truncate">{review.name.split(' ')[0]}</div>
+                          <div className="text-xs text-gray-600">klant AI Portret Pro</div>
+                        </div>
+                      </div>
+                      {/* Review tekst - volledige tekst, bepaalt card hoogte */}
+                      <p className="text-gray-900 text-xs leading-tight">{review.review}</p>
+                    </div>
+                    
+                    {/* Foto met aspect ratio 3:4 - vaste grootte */}
+                    <div className="relative aspect-[3/4] bg-gray-100 rounded-lg overflow-hidden mt-2">
+                      <Image
+                        src={photoSrc || "/placeholder.svg"}
+                        alt={`Voorbeeld van ${review.name}`}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 50vw, 25vw"
+                      />
+                      {/* Badge rechtsboven op foto */}
+                      <div className="absolute top-1 right-1 md:top-2 md:right-2 z-10">
+                        <div className="bg-[#0077B5] text-white text-[10px] md:text-xs font-bold px-1.5 py-0.5 md:px-2 md:py-1 rounded">
+                          AI Resultaat
+                        </div>
+                      </div>
+                      {/* Hover overlay */}
+                      <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
+                        <span className="text-white font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center px-4 text-xs">
+                          Klik om te vergroten
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )
+            }
+          })}
+        </div>
+
+        {/* Show More Button */}
+        {!showAllReviews && reviews.length > 6 && (
+          <div className="text-center mt-8">
+            <button
+              onClick={() => setShowAllReviews(true)}
+              className="bg-[#0077B5] hover:bg-[#005885] text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-200"
+            >
+              Bekijk meer reviews
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Lightbox Modal */}

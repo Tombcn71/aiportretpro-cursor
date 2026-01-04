@@ -29,8 +29,12 @@ export default function LoginPage() {
     setError("")
     try {
       // Check if this is a homepage CTA login or has callbackUrl
+      // If callbackUrl is /payment, redirect to /pricing instead
       const isHomepageCTA = searchParams.get("source") === "homepage"
-      const callbackUrl = searchParams.get("callbackUrl") || (isHomepageCTA ? "/pricing" : "/dashboard")
+      let callbackUrl = searchParams.get("callbackUrl") || (isHomepageCTA ? "/pricing" : "/dashboard")
+      if (callbackUrl === "/payment") {
+        callbackUrl = "/pricing"
+      }
       
       await signIn("google", { callbackUrl })
     } catch (error) {
@@ -99,9 +103,9 @@ export default function LoginPage() {
           setIsSignUp(false) // Switch to login mode
         } else if (signInResult?.ok) {
           // After SIGNUP: always go to pricing (new customers need to pay)
-          // Check if there's a callbackUrl (from pricing page redirect)
+          // If callbackUrl is /payment, redirect to /pricing instead
           const callbackUrl = searchParams.get("callbackUrl")
-          const redirectUrl = callbackUrl || "/pricing"
+          const redirectUrl = callbackUrl === "/payment" ? "/pricing" : (callbackUrl || "/pricing")
           console.log("✅ Signup + Sign in successful, redirecting to:", redirectUrl)
           router.push(redirectUrl)
           return
@@ -117,9 +121,9 @@ export default function LoginPage() {
         if (result?.error) {
           setError("Ongeldige email of wachtwoord")
         } else if (result?.ok) {
-          // After LOGIN: go to callbackUrl or dashboard (existing customers see their photos)
+          // After LOGIN: if callbackUrl is /payment, go to /pricing instead
           const callbackUrl = searchParams.get("callbackUrl")
-          const redirectUrl = callbackUrl || "/dashboard"
+          const redirectUrl = callbackUrl === "/payment" ? "/pricing" : (callbackUrl || "/dashboard")
           console.log("✅ Login successful, redirecting to:", redirectUrl)
           router.push(redirectUrl)
         }
@@ -136,9 +140,13 @@ export default function LoginPage() {
   useEffect(() => {
     if (status === "authenticated" && session) {
       // Check for callbackUrl first (from pricing page), then source, then default to dashboard
+      // If callbackUrl is /payment, redirect to /pricing instead
       const callbackUrl = searchParams.get("callbackUrl")
       const isHomepageCTA = searchParams.get("source") === "homepage"
-      const redirectUrl = callbackUrl || (isHomepageCTA ? "/pricing" : "/dashboard")
+      let redirectUrl = callbackUrl || (isHomepageCTA ? "/pricing" : "/dashboard")
+      if (redirectUrl === "/payment") {
+        redirectUrl = "/pricing"
+      }
       console.log("Already authenticated, redirecting to:", redirectUrl)
       router.push(redirectUrl)
     }

@@ -201,25 +201,26 @@ export default function LinkedInRotterdamPage() {
             </div>
             <span className="text-sm md:text-base font-semibold text-gray-900">4.6/5</span>
           </div>
-          <p className="text-sm md:text-base text-gray-700">🎉 Meer dan 1200 professionals geholpen</p>
         </div>
         
         <h1 className="tracking-tight text-xl md:text-4xl font-bold mb-6 leading-tight">
           <span className="block">Professionele LinkedIn Profielfoto Laten Maken in Rotterdam? </span>
           <span className="text-[#0077B5] block">Zonder het gedoe van een fotoshoot?</span>
         </h1>
-        <p className="text-gray-500 text-lg mb-6">
+        <p className="hidden md:block text-gray-500 text-lg md:text-xl mb-6">
           Upload een paar selfies en onze AI doet de rest. Ontvang binnen 15 minuten 40 professionele foto's
-</p>
+        </p>
 
         <div className="text-md md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto text-center">
           <div className="inline-grid grid-cols-[auto_1fr] gap-x-2 items-start text-start justify-center">
-            <span className="text-center">✅</span>
-            <span>6 x goedkoper dan een fotograaf</span>
-            <span className="text-center">✅</span>
+            <span className="text-center text-xl md:text-2xl">🏷️</span>
+            <span>6x goedkoper dan een fotograaf</span>
+            <span className="text-center text-xl md:text-2xl">✨</span>
             <span>Niet van echt te onderscheiden</span>
-            <span className="text-center">✅</span>
+            <span className="text-center text-xl md:text-2xl">⏱️</span>
             <span>Klaar binnen 15 minuten</span>
+            <span className="text-center text-xl md:text-2xl">🤝</span>
+            <span>+1200 professionals geholpen</span>
           </div>
         </div>
 

@@ -6,6 +6,8 @@ import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Check, Loader2 } from "lucide-react"
+import { ProgressIndicator } from "@/components/progress-indicator"
+import { Header } from "@/components/header"
 
 export default function PaymentPage() {
   const { data: session, status } = useSession()
@@ -98,10 +100,14 @@ export default function PaymentPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="text-center">
-        <Loader2 className="h-8 w-8 animate-spin mx-auto mb-4" />
-        <p>Bezig met starten van betaling...</p>
+    <div className="min-h-screen pt-20 bg-gray-50">
+      <Header />
+      <div className="container mx-auto px-4 py-6 md:py-20">
+        <ProgressIndicator currentStep={3} />
+        <div className="text-center">
+          <Loader2 className="h-8 w-8 animate-spin mx-auto mb-4" />
+          <p>Bezig met starten van betaling...</p>
+        </div>
       </div>
     </div>
   )
