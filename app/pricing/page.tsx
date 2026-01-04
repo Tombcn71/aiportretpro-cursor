@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useSession } from "next-auth/react"
 import { Header } from "@/components/header"
 import { Button } from "@/components/ui/button"
@@ -17,6 +17,7 @@ export default function PricingPage() {
   const [hasExistingProject, setHasExistingProject] = useState(false)
   const [creditsChecked, setCreditsChecked] = useState(false)
   const router = useRouter()
+  const creditsCheckRef = useRef(false)
 
   // Track pricing page view and check if user already has credits
   useEffect(() => {
@@ -46,12 +47,14 @@ export default function PricingPage() {
 
   // Check if user already has credits - separate effect to prevent loops
   useEffect(() => {
-    if (creditsChecked || status !== "authenticated" || !session) {
+    // Use ref to prevent multiple checks
+    if (creditsCheckRef.current || status !== "authenticated" || !session) {
       return
     }
 
+    creditsCheckRef.current = true
+
     const checkCredits = async () => {
-      setCreditsChecked(true)
       try {
         const response = await fetch("/api/credits/balance")
         if (response.ok) {
@@ -59,18 +62,23 @@ export default function PricingPage() {
           if (data.credits > 0) {
             // User already has credits, redirect to wizard immediately
             console.log("User already has credits, redirecting to wizard")
-            window.location.href = "/wizard/project-name"
+            setCreditsChecked(true)
+            // Use setTimeout to ensure state is set before redirect
+            setTimeout(() => {
+              window.location.replace("/wizard/project-name")
+            }, 100)
             return
           }
         }
+        setCreditsChecked(true)
       } catch (error) {
         console.error("Error checking credits:", error)
-        setCreditsChecked(false) // Reset on error so it can retry
+        setCreditsChecked(true) // Set to true even on error to prevent retry loop
       }
     }
     
     checkCredits()
-  }, [status, session, creditsChecked, router])
+  }, [status, session])
 
   const handlePlanSelect = () => {
     // Track checkout initiation
