@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect } from "react"
 import { useSession } from "next-auth/react"
 import { Header } from "@/components/header"
 import { Button } from "@/components/ui/button"
@@ -15,11 +15,9 @@ export default function PricingPage() {
   const [loading, setLoading] = useState(false)
   const [projectData, setProjectData] = useState<any>(null)
   const [hasExistingProject, setHasExistingProject] = useState(false)
-  const [creditsChecked, setCreditsChecked] = useState(false)
   const router = useRouter()
-  const creditsCheckRef = useRef(false)
 
-  // Track pricing page view and check if user already has credits
+  // Track pricing page view
   useEffect(() => {
     trackViewContent("Pricing Page", "29")
     
@@ -44,41 +42,6 @@ export default function PricingPage() {
     // Return undefined (no cleanup function needed)
     return undefined
   }, [])
-
-  // Check if user already has credits - separate effect to prevent loops
-  useEffect(() => {
-    // Use ref to prevent multiple checks
-    if (creditsCheckRef.current || status !== "authenticated" || !session) {
-      return
-    }
-
-    creditsCheckRef.current = true
-
-    const checkCredits = async () => {
-      try {
-        const response = await fetch("/api/credits/balance")
-        if (response.ok) {
-          const data = await response.json()
-          if (data.credits > 0) {
-            // User already has credits, redirect to wizard immediately
-            console.log("User already has credits, redirecting to wizard")
-            setCreditsChecked(true)
-            // Use setTimeout to ensure state is set before redirect
-            setTimeout(() => {
-              window.location.replace("/wizard/project-name")
-            }, 100)
-            return
-          }
-        }
-        setCreditsChecked(true)
-      } catch (error) {
-        console.error("Error checking credits:", error)
-        setCreditsChecked(true) // Set to true even on error to prevent retry loop
-      }
-    }
-    
-    checkCredits()
-  }, [status, session])
 
   const handlePlanSelect = () => {
     // Track checkout initiation
@@ -137,8 +100,8 @@ export default function PricingPage() {
     "Niet goed? Geld terug",
   ]
 
-  // Show loading while checking session or credits
-  if (status === "loading" || (status === "authenticated" && session && !creditsChecked)) {
+  // Show loading while checking session
+  if (status === "loading") {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
