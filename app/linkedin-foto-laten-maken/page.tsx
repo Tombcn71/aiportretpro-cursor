@@ -242,7 +242,7 @@ export default function LinkedInProfielFotoPage() {
         
         <h1 className="tracking-tight text-3xl md:text-4xl font-bold mb-6 leading-none md:leading-tight">
           <span className="block">Professionele linkedin foto's,</span>
-          <span className="block text-[#0077B5] -mt-1 md:mt-0">zonder gedoe van een fotoshoot</span>
+          <span className="block text-[#0077B5] -mt-2 md:mt-0">zonder gedoe van een fotoshoot</span>
         </h1>
         <p className="hidden md:block text-gray-500 text-lg md:text-xl mb-6">
           Upload een paar selfies en onze AI doet de rest. Ontvang binnen 15 minuten 40 professionele foto's
