@@ -151,7 +151,7 @@ export default function PricingPage() {
                 <Button
                   onClick={handlePlanSelect}
                   disabled={loading}
-                  className="w-full bg-[#0077B5] hover:bg-[#004182] text-white py-2.5 md:py-4 text-sm md:text-lg font-semibold"
+                  className="w-full bg-[#FFA500] hover:bg-[#FF8C00] text-white py-2.5 md:py-4 text-sm md:text-lg font-semibold"
                 >
                   {loading ? "Laden..." : "Betaal Veilig & Start Direct"}
                 </Button>
