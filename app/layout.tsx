@@ -98,11 +98,15 @@ export default function RootLayout({
             h1{font-size:1.25rem;font-weight:700;line-height:1.2;margin:0 0 1.5rem}
             @media(min-width:768px){h1{font-size:2.25rem}}
             .text-\\[\\#0077B5\\]{color:#0077B5}
-            .bg-\\[\\#FF8C00\\]{background-color:#FF8C00}
-            .bg-\\[\\#CC6600\\]{background-color:#CC6600}
-            .hover\\:bg-\\[\\#FFA500\\]:hover{background-color:#FFA500}
-            .hover\\:bg-\\[\\#E67A00\\]:hover{background-color:#E67A00}
-            .text-white{color:#fff}
+            .bg-\\[\\#FF8C00\\]{background-color:#FF8C00!important}
+            .bg-\\[\\#CC6600\\]{background-color:#FF8C00!important}
+            .hover\\:bg-\\[\\#FFA500\\]:hover{background-color:#FFA500!important}
+            .hover\\:bg-\\[\\#E67A00\\]:hover{background-color:#FFA500!important}
+            .text-white{color:#FFFFFF!important}
+            button[class*="bg-\\[\\#FF8C00\\]"],button[class*="bg-\\[\\#CC6600\\]"],a[class*="bg-\\[\\#FF8C00\\]"],a[class*="bg-\\[\\#CC6600\\]"]{background-color:#FF8C00!important;color:#FFFFFF!important}
+            button[class*="bg-\\[\\#FF8C00\\]"]:hover,button[class*="bg-\\[\\#CC6600\\]"]:hover,a[class*="bg-\\[\\#FF8C00\\]"]:hover,a[class*="bg-\\[\\#CC6600\\]"]:hover{background-color:#FFA500!important;color:#FFFFFF!important}
+            [class*="bg-\\[\\#FF8C00\\]"][class*="text-white"],[class*="bg-\\[\\#CC6600\\]"][class*="text-white"]{background-color:#FF8C00!important;color:#FFFFFF!important}
+            [class*="bg-\\[\\#FF8C00\\]"][class*="text-white"]:hover,[class*="bg-\\[\\#CC6600\\]"][class*="text-white"]:hover{background-color:#FFA500!important;color:#FFFFFF!important}
             .carousel-container{width:100%;overflow:hidden;position:relative}
             .carousel-track{display:flex;width:fit-content;animation:carousel 140s linear infinite;content-visibility:auto}
             .carousel-item{flex-shrink:0;margin:0 0.5rem}

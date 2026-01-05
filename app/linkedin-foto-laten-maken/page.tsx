@@ -122,6 +122,21 @@ export default function LinkedInProfielFotoPage() {
 
   return (
     <div className="min-h-screen pt-20">
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          button[class*="bg-[#FF8C00"]], button[class*="bg-[#CC6600"]], a[class*="bg-[#FF8C00"]], a[class*="bg-[#CC6600"]],
+          .bg-\\[\\#FF8C00\\], .bg-\\[\\#CC6600\\] {
+            background-color: #FF8C00 !important;
+            color: #FFFFFF !important;
+          }
+          button[class*="bg-[#FF8C00"]]:hover, button[class*="bg-[#CC6600"]]:hover, 
+          a[class*="bg-[#FF8C00"]]:hover, a[class*="bg-[#CC6600"]]:hover,
+          .bg-\\[\\#FF8C00\\]:hover, .bg-\\[\\#CC6600\\]:hover {
+            background-color: #FFA500 !important;
+            color: #FFFFFF !important;
+          }
+        `
+      }} />
       <main>
       <script
         type="application/ld+json"
@@ -465,7 +480,7 @@ export default function LinkedInProfielFotoPage() {
               <Button
                 asChild
                 size="lg"
-                className="bg-[#CC6600] hover:bg-[#E67A00] text-black px-8 py-6 text-lg"
+                className="bg-[#FF8C00] hover:bg-[#FFA500] text-white px-8 py-6 text-lg"
               >
                 <Link href="/login?callbackUrl=/payment" onClick={() => trackLead()}>
                   Nu <ArrowRight className="ml-2 h-5 w-5" />
@@ -794,7 +809,7 @@ export default function LinkedInProfielFotoPage() {
           </h2>
           <p className="text-xl text-gray-600 mb-8">Verhoog je LinkedIn zichtbaarheid met een krachtige profielfoto</p>
           <Link href="/login?callbackUrl=/payment" onClick={() => trackLead()}>
-            <Button size="lg" className="bg-[#CC6600] hover:bg-[#E67A00] text-white px-8 py-4 text-lg">
+            <Button size="lg" className="bg-[#FF8C00] hover:bg-[#FFA500] text-white px-8 py-4 text-lg">
               Start jouw fotoshoot nu - € 29 <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </Link>
