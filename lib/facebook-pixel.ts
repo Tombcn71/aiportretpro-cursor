@@ -39,12 +39,21 @@ export const trackAddToCart = (value: number, currency = "EUR") => {
   }
 }
 
-export const trackInitiateCheckout = (value: number, currency = "EUR") => {
+export const trackInitiateCheckout = (value: number, currency = "EUR", eventID?: string) => {
   if (typeof window !== "undefined" && window.fbq) {
-    window.fbq("track", "InitiateCheckout", {
+    const parameters: any = {
       value: value,
       currency: currency,
-    })
+    }
+    
+    if (eventID) {
+      window.fbq("track", "InitiateCheckout", parameters, { eventID: eventID })
+    } else {
+      window.fbq("track", "InitiateCheckout", parameters)
+    }
+    console.log(`📊 Facebook Pixel Event: InitiateCheckout`, parameters, eventID ? { eventID } : {})
+  } else {
+    console.log("❌ Facebook Pixel not loaded")
   }
 }
 
@@ -74,6 +83,15 @@ export const trackCompleteRegistration = () => {
 export const trackLead = () => {
   if (typeof window !== "undefined" && window.fbq) {
     window.fbq("track", "Lead")
+  }
+}
+
+export const trackContact = () => {
+  if (typeof window !== "undefined" && window.fbq) {
+    window.fbq("track", "Contact")
+    console.log("📊 Facebook Pixel Event: Contact")
+  } else {
+    console.log("❌ Facebook Pixel not loaded")
   }
 }
 

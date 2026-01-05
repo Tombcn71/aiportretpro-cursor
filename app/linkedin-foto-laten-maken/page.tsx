@@ -12,6 +12,7 @@ import ReviewSchema from "@/components/review-schema"
 import FAQSchema from "@/components/faq-schema"
 import SchemaMarkup from "@/components/schema-markup"
 import HowItWorks from "@/components/how-it-works"
+import { trackContact } from "@/lib/facebook-pixel"
 
 // Gallery photos: All images from the shoot folder (1.png through 26.png)
 const galleryPhotos = Array.from({ length: 26 }, (_, i) => `/images/shoot/${i + 1}.png`)
@@ -268,7 +269,7 @@ export default function LinkedInProfielFotoPage() {
           size="lg"
           className=" bg-[#FF8C00] hover:bg-[#FFA500] text-white px-6 md:px-10 py-8 md:py-8 text-base md:text-lg mb-3 md:max-w-sm"
         >
-          <Link href="/login?callbackUrl=/payment">
+          <Link href="/login?callbackUrl=/payment" onClick={() => trackContact()}>
             Start jouw fotoshoot nu - € 29 <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
           </Link>
         </Button>
@@ -418,7 +419,7 @@ export default function LinkedInProfielFotoPage() {
                 size="lg"
                 className="bg-[#FF8C00] hover:bg-[#FFA500] text-white px-8 py-6 text-lg"
               >
-                <Link href="/login?callbackUrl=/payment">
+                <Link href="/login?callbackUrl=/payment" onClick={() => trackContact()}>
                   Nu <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
@@ -745,7 +746,7 @@ export default function LinkedInProfielFotoPage() {
           </h2>
           <p className="text-xl text-gray-600 mb-8">Verhoog je LinkedIn zichtbaarheid met een krachtige profielfoto</p>
           {isClient && (
-            <Link href="/login?callbackUrl=/payment">
+            <Link href="/login?callbackUrl=/payment" onClick={() => trackContact()}>
               <Button size="lg" className="bg-[#FFA500] hover:bg-[#FF8C00] text-white px-8 py-4 text-lg">
                 Start jouw fotoshoot nu - € 29 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
@@ -891,7 +892,7 @@ export default function LinkedInProfielFotoPage() {
               size="lg"
               className="w-full bg-[#FF8C00] hover:bg-[#FFA500] text-white px-6 py-8 text-base font-semibold"
             >
-              <Link href="/login?callbackUrl=/payment">
+              <Link href="/login?callbackUrl=/payment" onClick={() => trackContact()}>
                 Start jouw fotoshoot nu - € 29 <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
               </Link>
             </Button>

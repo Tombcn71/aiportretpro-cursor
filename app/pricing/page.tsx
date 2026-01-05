@@ -17,9 +17,20 @@ export default function PricingPage() {
   const [hasExistingProject, setHasExistingProject] = useState(false)
   const router = useRouter()
 
-  // Track pricing page view
+  // Track pricing page view and initiate checkout
   useEffect(() => {
     trackViewContent("Pricing Page", "29")
+    
+    // Track InitiateCheckout event when page loads
+    if (status === "authenticated" && session?.user) {
+      const userId = (session.user as any).id || session.user.email || `guest_${Date.now()}`
+      const eventID = `checkout_${userId}`
+      trackInitiateCheckout(29.00, "EUR", eventID)
+    } else if (status === "unauthenticated") {
+      // Track for unauthenticated users with guest ID
+      const eventID = `checkout_guest_${Date.now()}`
+      trackInitiateCheckout(29.00, "EUR", eventID)
+    }
     
     // Get project data from localStorage
     const pendingProject = localStorage.getItem("pendingProject")
@@ -41,12 +52,9 @@ export default function PricingPage() {
     
     // Return undefined (no cleanup function needed)
     return undefined
-  }, [])
+  }, [status, session])
 
   const handlePlanSelect = () => {
-    // Track checkout initiation
-    trackInitiateCheckout(29)
-
     // Wait for session to load
     if (status === "loading") {
       console.log("Session still loading, please wait...")
