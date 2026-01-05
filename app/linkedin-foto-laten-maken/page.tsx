@@ -284,7 +284,7 @@ export default function LinkedInProfielFotoPage() {
           <button 
             style={{ 
               backgroundColor: '#E67E00',
-              color: '#FFFFFF !important', 
+              color: '#FFFFFF', 
               color: '#FFFFFF',
               padding: '1rem 2.5rem',
               fontSize: '1rem',
@@ -456,7 +456,7 @@ export default function LinkedInProfielFotoPage() {
                 <button 
                   style={{ 
                     backgroundColor: '#E67E00',
-              color: '#FFFFFF !important', 
+              color: '#FFFFFF', 
                     color: '#FFFFFF',
                     padding: '1.5rem 2rem',
                     fontSize: '1.125rem',
@@ -801,7 +801,7 @@ export default function LinkedInProfielFotoPage() {
             <button 
               style={{ 
                 backgroundColor: '#E67E00',
-              color: '#FFFFFF !important', 
+              color: '#FFFFFF', 
                 color: '#FFFFFF',
                 padding: '1rem 2rem',
                 fontSize: '1.125rem',
@@ -959,7 +959,7 @@ export default function LinkedInProfielFotoPage() {
               <button 
                 style={{ 
                   backgroundColor: '#E67E00',
-              color: '#FFFFFF !important', 
+              color: '#FFFFFF', 
                   color: '#FFFFFF',
                   width: '100%',
                   padding: '2rem 1.5rem',
