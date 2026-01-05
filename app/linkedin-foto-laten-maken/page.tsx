@@ -268,7 +268,7 @@ export default function LinkedInProfielFotoPage() {
         <Button
           asChild
           size="lg"
-          className=" bg-[#FF8C00] hover:bg-[#FFA500] text-white px-6 md:px-10 py-8 md:py-8 text-base md:text-lg mb-3 md:max-w-sm"
+          className=" bg-[#E67A00] hover:bg-[#FF8C00] text-white px-6 md:px-10 py-8 md:py-8 text-base md:text-lg mb-3 md:max-w-sm"
         >
           <Link href="/login?callbackUrl=/payment" onClick={() => trackLead()}>
             Start jouw fotoshoot nu - € 29 <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
@@ -302,8 +302,8 @@ export default function LinkedInProfielFotoPage() {
                         className="w-full h-full object-cover bg-gray-50 brightness-110 contrast-105"
                         priority={index === 0}
                         fetchPriority={index === 0 ? "high" : "auto"}
-                        sizes="(max-width: 768px) 208px, 320px"
-                        quality={75}
+                        sizes={index === 0 ? "(max-width: 768px) 40vw, 300px" : "(max-width: 768px) 208px, 320px"}
+                        quality={index === 0 ? 60 : 75}
                         style={{ aspectRatio: "4/5" }}
                       />
                     </div>
@@ -420,7 +420,7 @@ export default function LinkedInProfielFotoPage() {
               <Button
                 asChild
                 size="lg"
-                className="bg-[#FF8C00] hover:bg-[#FFA500] text-white px-8 py-6 text-lg"
+                className="bg-[#E67A00] hover:bg-[#FF8C00] text-white px-8 py-6 text-lg"
               >
                 <Link href="/login?callbackUrl=/payment" onClick={() => trackLead()}>
                   Nu <ArrowRight className="ml-2 h-5 w-5" />
@@ -750,7 +750,7 @@ export default function LinkedInProfielFotoPage() {
           <p className="text-xl text-gray-600 mb-8">Verhoog je LinkedIn zichtbaarheid met een krachtige profielfoto</p>
           {isClient && (
             <Link href="/login?callbackUrl=/payment" onClick={() => trackLead()}>
-              <Button size="lg" className="bg-[#FFA500] hover:bg-[#FF8C00] text-white px-8 py-4 text-lg">
+              <Button size="lg" className="bg-[#E67A00] hover:bg-[#FF8C00] text-white px-8 py-4 text-lg">
                 Start jouw fotoshoot nu - € 29 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
@@ -893,7 +893,7 @@ export default function LinkedInProfielFotoPage() {
             <Button
               asChild
               size="lg"
-              className="w-full bg-[#FF8C00] hover:bg-[#FFA500] text-white px-6 py-8 text-base font-semibold"
+              className="w-full bg-[#E67A00] hover:bg-[#FF8C00] text-white px-6 py-8 text-base font-semibold"
             >
               <Link href="/login?callbackUrl=/payment" onClick={() => trackLead()}>
                 Start jouw fotoshoot nu - € 29 <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />

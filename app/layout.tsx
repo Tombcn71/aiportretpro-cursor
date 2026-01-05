@@ -76,9 +76,6 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://connect.facebook.net" />
         
-        {/* Preload LCP Image */}
-        <link rel="preload" as="image" href="/images/shoot/1.png" fetchPriority="high" />
-        
         {/* Performance Budget */}
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <meta name="theme-color" content="#0077B5" />
