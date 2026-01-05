@@ -78,24 +78,10 @@ const faqData = [
 
 
 export default function LinkedInProfielFotoPage() {
-  const [isClient, setIsClient] = useState(false)
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null)
   const [isVisible, setIsVisible] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
-
-  // Prevent hydration mismatch
-  useEffect(() => {
-    setIsClient(true)
-    // Return undefined (no cleanup function needed)
-    return undefined
-  }, [])
-
-  useEffect(() => {
-    setIsClient(true)
-    // Return undefined (no cleanup function needed)
-    return undefined
-  }, [])
 
   useEffect(() => {
     const toggleVisibility = () => {
@@ -793,13 +779,11 @@ export default function LinkedInProfielFotoPage() {
             Klaar voor je professionele LinkedIn foto?
           </h2>
           <p className="text-xl text-gray-600 mb-8">Verhoog je LinkedIn zichtbaarheid met een krachtige profielfoto</p>
-          {isClient && (
-            <Link href="/login?callbackUrl=/payment" onClick={() => trackLead()}>
-              <Button size="lg" className="bg-[#CC6600] hover:bg-[#E67A00] text-black px-8 py-4 text-lg">
-                Start jouw fotoshoot nu - € 29 <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </Link>
-          )}
+          <Link href="/login?callbackUrl=/payment" onClick={() => trackLead()}>
+            <Button size="lg" className="bg-[#CC6600] hover:bg-[#E67A00] text-black px-8 py-4 text-lg">
+              Start jouw fotoshoot nu - € 29 <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </Link>
         </div>
       </section>
 
