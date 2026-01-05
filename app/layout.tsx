@@ -11,7 +11,10 @@ import GoogleAnalytics from "@/components/google-analytics"
 import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ 
+  subsets: ["latin"],
+  display: "swap"
+})
 
 const CrispWithNoSSR = dynamic(() => import("../components/crisp"))
 
@@ -72,6 +75,9 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://connect.facebook.net" />
+        
+        {/* Preload LCP Image */}
+        <link rel="preload" as="image" href="/images/shoot/1.png" fetchPriority="high" />
         
         {/* Performance Budget */}
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />

@@ -5,7 +5,10 @@ import { Crisp } from "crisp-sdk-web"
 
 class CrispChat extends Component {
   componentDidMount() {
-    Crisp.configure("9bdd6a78-a829-4220-bfe4-5ad9336aca6b")
+    // Delay Crisp chat loading by 4 seconds to improve LCP
+    setTimeout(() => {
+      Crisp.configure("9bdd6a78-a829-4220-bfe4-5ad9336aca6b")
+    }, 4000)
   }
 
   render() {
