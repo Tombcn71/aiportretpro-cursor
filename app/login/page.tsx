@@ -211,18 +211,12 @@ export default function LoginPage() {
               <span className="text-lg text-gray-900">AIPortretPro</span>
             </div>
             
-            {/* Main title - Show "Bijna bij de kassa" for CTA, "Welkom terug" only for direct login */}
-            {hasCallbackUrl ? (
+            {/* Main title */}
+            {hasCallbackUrl || !showEmailForm ? (
               <CardTitle className="text-xl md:text-2xl text-gray-900 mb-3 font-normal pl-0">
-                Bijna bij de kassa
+                Jouw zakelijke fotoshoot begint hier
                 <br />
-                <span className="text-gray-700">Log in om je bestelling af te ronden.</span>
-              </CardTitle>
-            ) : !showEmailForm ? (
-              <CardTitle className="text-xl md:text-2xl text-gray-900 mb-3 font-normal pl-0">
-                Bijna bij de kassa
-                <br />
-                <span className="text-gray-700">Log in om je bestelling af te ronden.</span>
+                <span className="text-gray-700">Maak een account aan om je foto's te genereren.</span>
               </CardTitle>
             ) : !isSignUp ? (
               <CardTitle className="text-xl md:text-2xl text-gray-900 mb-3 font-normal pl-0">
@@ -230,7 +224,13 @@ export default function LoginPage() {
                 <br />
                 <span className="text-[#0077B5]">Log in om verder te gaan.</span>
               </CardTitle>
-            ) : null}
+            ) : (
+              <CardTitle className="text-xl md:text-2xl text-gray-900 mb-3 font-normal pl-0">
+                Jouw zakelijke fotoshoot begint hier
+                <br />
+                <span className="text-gray-700">Maak een account aan om je foto's te genereren.</span>
+              </CardTitle>
+            )}
           </CardHeader>
           <CardContent className="space-y-4">
             {!showEmailForm ? (
@@ -271,9 +271,6 @@ export default function LoginPage() {
                   <MailPlus className="h-6 w-6" />
                   <span>Ga door met e-mail</span>
                 </Button>
-                <div className="text-sm text-gray-600 text-center mt-3">
-                  🔒 Veilig betalen met iDEAL <span className="text-green-500">✓</span> 14 dagen geld-terug-garantie
-                </div>
               </>
             ) : (
               <>
@@ -356,7 +353,7 @@ export default function LoginPage() {
                     disabled={loading || !email || !password}
                     className="w-full bg-[#0077B5] hover:bg-[#005885] text-white py-6 text-lg font-semibold"
                   >
-                    {loading ? "Bezig..." : (isSignUp ? "Account aanmaken en doorgaan" : "Inloggen")}
+                    {loading ? "Bezig..." : (isSignUp ? "Account aanmaken" : "Inloggen")}
                   </Button>
                 </form>
 
@@ -369,6 +366,22 @@ export default function LoginPage() {
                   >
                     {isSignUp ? "Heb je al een account? Log hier in" : "Nieuw hier? Maak een account aan"}
                   </Button>
+                </div>
+
+                {/* Trust section */}
+                <div className="mt-6 pt-6 border-t border-gray-200 space-y-3">
+                  <div className="flex items-start gap-3">
+                    <span className="text-green-500 text-lg flex-shrink-0">✅</span>
+                    <p className="text-sm text-gray-600">Nederlands product — Privacy gewaarborgd.</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <span className="text-green-500 text-lg flex-shrink-0">✅</span>
+                    <p className="text-sm text-gray-600">Niet goed, geld terug — 100% tevredenheidsgarantie.</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <span className="text-green-500 text-lg flex-shrink-0">✅</span>
+                    <p className="text-sm text-gray-600">Klaar in 15 minuten — Direct resultaat.</p>
+                  </div>
                 </div>
               </>
             )}
