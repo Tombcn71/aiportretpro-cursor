@@ -284,7 +284,6 @@ export default function LinkedInProfielFotoPage() {
           <button 
             style={{ 
               backgroundColor: '#E67E00',
-              color: '#FFFFFF', 
               color: '#FFFFFF',
               padding: '1rem 2.5rem',
               fontSize: '1rem',
