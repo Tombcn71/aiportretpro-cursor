@@ -298,7 +298,10 @@ export default function LinkedInProfielFotoPage() {
                         width={320}
                         height={400}
                         className="w-full h-full object-cover bg-gray-50 brightness-110 contrast-105"
-                        priority={index < 10}
+                        priority={index < 2}
+                        fetchPriority={index < 2 ? "high" : "auto"}
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        style={{ aspectRatio: "4/5" }}
                       />
                     </div>
                   </div>
@@ -315,6 +318,8 @@ export default function LinkedInProfielFotoPage() {
                         width={320}
                         height={400}
                         className="w-full h-full object-cover bg-gray-50 brightness-110 contrast-105"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        style={{ aspectRatio: "4/5" }}
                       />
                     </div>
                   </div>
@@ -380,27 +385,27 @@ export default function LinkedInProfielFotoPage() {
                   <span className="text-3xl">✅</span>
                   <h3 className="text-2xl font-semibold">AI Portret Pro</h3>
                   </div>
-                <p className="text-blue-100 mb-6 text-sm">(De slimme keuze)</p>
+                <p className="text-white/90 mb-6 text-sm">(De slimme keuze)</p>
                 <div className="space-y-5">
                   <div>
                     <p className="font-semibold mb-1">Prijs:</p>
-                    <p className="text-blue-100">Eenmalig €29 (geen verborgen kosten).</p>
+                    <p className="text-white/90">Eenmalig €29 (geen verborgen kosten).</p>
                   </div>
                   <div>
                     <p className="font-semibold mb-1">Gemak:</p>
-                    <p className="text-blue-100">Direct beginnen vanaf je eigen bank, geen afspraak nodig.</p>
+                    <p className="text-white/90">Direct beginnen vanaf je eigen bank, geen afspraak nodig.</p>
                   </div>
                   <div>
                     <p className="font-semibold mb-1">Snelheid:</p>
-                    <p className="text-blue-100">Binnen 15 minuten alle foto's in je dashboard.</p>
+                    <p className="text-white/90">Binnen 15 minuten alle foto's in je dashboard.</p>
                   </div>
                   <div>
                     <p className="font-semibold mb-1">Resultaat:</p>
-                    <p className="text-blue-100">Je krijgt direct 40+ verschillende zakelijke profielfoto's.</p>
+                    <p className="text-white/90">Je krijgt direct 40+ verschillende zakelijke profielfoto's.</p>
                   </div>
                   <div>
                     <p className="font-semibold mb-1">Garantie:</p>
-                    <p className="text-blue-100">Niet goed? Geld terug. Zo simpel is het.</p>
+                    <p className="text-white/90">Niet goed? Geld terug. Zo simpel is het.</p>
                   </div>
                 </div>
               </div>
