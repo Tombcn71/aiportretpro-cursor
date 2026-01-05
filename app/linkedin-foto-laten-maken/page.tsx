@@ -335,9 +335,8 @@ export default function LinkedInProfielFotoPage() {
                         priority={index === 0}
                         fetchPriority={index === 0 ? "high" : "auto"}
                         loading={index === 0 ? "eager" : "lazy"}
-                        sizes="(max-width: 768px) 208px, 320px"
+                        sizes="(max-width: 768px) 100vw, 400px"
                         quality={75}
-                        unoptimized={index === 0}
                         style={{ aspectRatio: "4/5" }}
                       />
                     </div>
@@ -355,8 +354,9 @@ export default function LinkedInProfielFotoPage() {
                         width={320}
                         height={400}
                         className="w-full h-full object-cover bg-gray-50 brightness-110 contrast-105"
-                        sizes="(max-width: 768px) 208px, 320px"
+                        sizes="(max-width: 768px) 100vw, 400px"
                         quality={75}
+                        loading="lazy"
                         style={{ aspectRatio: "4/5" }}
                       />
                     </div>
