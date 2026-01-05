@@ -283,7 +283,10 @@ export default function LinkedInProfielFotoPage() {
         <div className="relative">
           {/* Static LCP Image - Rendered first without JS, outside carousel */}
           <div className="flex justify-center mb-4 md:hidden">
-            <div className="w-52 h-[13.33rem] lcp-image-container rounded-xl bg-gray-100 shadow-md">
+            <div 
+              className="w-52 h-[13.33rem] lcp-image-container rounded-xl bg-gray-100 shadow-md"
+              style={{ contentVisibility: 'auto', containIntrinsicSize: '208px 260px' }}
+            >
               <div className="w-full h-full overflow-hidden rounded-xl">
                 <Image
                   src={galleryPhotos[0] || "/placeholder.svg"}
@@ -302,7 +305,10 @@ export default function LinkedInProfielFotoPage() {
             </div>
           </div>
           <div className="hidden md:flex justify-center mb-4">
-            <div className="w-80 h-[20rem] lcp-image-container rounded-2xl bg-gray-100 shadow-lg">
+            <div 
+              className="w-80 h-[20rem] lcp-image-container rounded-2xl bg-gray-100 shadow-lg"
+              style={{ contentVisibility: 'auto', containIntrinsicSize: '320px 400px' }}
+            >
               <div className="w-full h-full overflow-hidden rounded-2xl">
                 <Image
                   src={galleryPhotos[0] || "/placeholder.svg"}

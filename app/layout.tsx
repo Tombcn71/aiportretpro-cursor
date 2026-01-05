@@ -83,7 +83,7 @@ export default function RootLayout({
           rel="preload" 
           fetchPriority="high" 
           as="image" 
-          href="/_next/image?url=%2Fimages%2Fshoot%2F1.png&w=384&q=50"
+          href="/_next/image?url=%2Fimages%2Fshoot%2F1.png&w=384&q=75"
         />
         
         {/* Performance Budget */}
