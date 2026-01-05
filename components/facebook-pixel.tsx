@@ -12,10 +12,14 @@ export default function FacebookPixel() {
         script.async = true
         script.src = "https://connect.facebook.net/en_US/fbevents.js"
         script.onload = () => {
-          if (window.fbq) {
-            window.fbq("init", "8110588262372718")
-            window.fbq("track", "PageView")
-            console.log("✅ Facebook Pixel loaded with ID: 8110588262372718")
+          if (typeof window !== "undefined" && typeof window.fbq !== "undefined" && window.fbq) {
+            try {
+              window.fbq("init", "8110588262372718")
+              window.fbq("track", "PageView")
+              console.log("✅ Facebook Pixel loaded with ID: 8110588262372718")
+            } catch (error) {
+              console.log("❌ Facebook Pixel initialization error:", error)
+            }
           }
         }
         document.head.appendChild(script)
