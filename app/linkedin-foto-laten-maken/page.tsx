@@ -12,7 +12,7 @@ import ReviewSchema from "@/components/review-schema"
 import FAQSchema from "@/components/faq-schema"
 import SchemaMarkup from "@/components/schema-markup"
 import HowItWorks from "@/components/how-it-works"
-import { trackContact } from "@/lib/facebook-pixel"
+import { trackLead } from "@/lib/facebook-pixel"
 
 // Gallery photos: All images from the shoot folder (1.png through 26.png)
 const galleryPhotos = Array.from({ length: 26 }, (_, i) => `/images/shoot/${i + 1}.png`)
@@ -129,6 +129,7 @@ export default function LinkedInProfielFotoPage() {
 
   return (
     <div className="min-h-screen pt-20">
+      <main>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -269,7 +270,7 @@ export default function LinkedInProfielFotoPage() {
           size="lg"
           className=" bg-[#FF8C00] hover:bg-[#FFA500] text-white px-6 md:px-10 py-8 md:py-8 text-base md:text-lg mb-3 md:max-w-sm"
         >
-          <Link href="/login?callbackUrl=/payment" onClick={() => trackContact()}>
+          <Link href="/login?callbackUrl=/payment" onClick={() => trackLead()}>
             Start jouw fotoshoot nu - € 29 <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
           </Link>
         </Button>
@@ -299,9 +300,10 @@ export default function LinkedInProfielFotoPage() {
                         width={320}
                         height={400}
                         className="w-full h-full object-cover bg-gray-50 brightness-110 contrast-105"
-                        priority={index < 2}
-                        fetchPriority={index < 2 ? "high" : "auto"}
-                        sizes="(max-width: 768px) 100vw, 33vw"
+                        priority={index === 0}
+                        fetchPriority={index === 0 ? "high" : "auto"}
+                        sizes="(max-width: 768px) 208px, 320px"
+                        quality={75}
                         style={{ aspectRatio: "4/5" }}
                       />
                     </div>
@@ -319,7 +321,8 @@ export default function LinkedInProfielFotoPage() {
                         width={320}
                         height={400}
                         className="w-full h-full object-cover bg-gray-50 brightness-110 contrast-105"
-                        sizes="(max-width: 768px) 100vw, 33vw"
+                        sizes="(max-width: 768px) 208px, 320px"
+                        quality={75}
                         style={{ aspectRatio: "4/5" }}
                       />
                     </div>
@@ -386,27 +389,27 @@ export default function LinkedInProfielFotoPage() {
                   <span className="text-3xl">✅</span>
                   <h3 className="text-2xl font-semibold">AI Portret Pro</h3>
                   </div>
-                <p className="text-white/90 mb-6 text-sm">(De slimme keuze)</p>
+                <p className="text-white mb-6 text-sm">(De slimme keuze)</p>
                 <div className="space-y-5">
                   <div>
                     <p className="font-semibold mb-1">Prijs:</p>
-                    <p className="text-white/90">Eenmalig €29 (geen verborgen kosten).</p>
+                    <p className="text-white">Eenmalig €29 (geen verborgen kosten).</p>
                   </div>
                   <div>
                     <p className="font-semibold mb-1">Gemak:</p>
-                    <p className="text-white/90">Direct beginnen vanaf je eigen bank, geen afspraak nodig.</p>
+                    <p className="text-white">Direct beginnen vanaf je eigen bank, geen afspraak nodig.</p>
                   </div>
                   <div>
                     <p className="font-semibold mb-1">Snelheid:</p>
-                    <p className="text-white/90">Binnen 15 minuten alle foto's in je dashboard.</p>
+                    <p className="text-white">Binnen 15 minuten alle foto's in je dashboard.</p>
                   </div>
                   <div>
                     <p className="font-semibold mb-1">Resultaat:</p>
-                    <p className="text-white/90">Je krijgt direct 40+ verschillende zakelijke profielfoto's.</p>
+                    <p className="text-white">Je krijgt direct 40+ verschillende zakelijke profielfoto's.</p>
                   </div>
                   <div>
                     <p className="font-semibold mb-1">Garantie:</p>
-                    <p className="text-white/90">Niet goed? Geld terug. Zo simpel is het.</p>
+                    <p className="text-white">Niet goed? Geld terug. Zo simpel is het.</p>
                   </div>
                 </div>
               </div>
@@ -419,7 +422,7 @@ export default function LinkedInProfielFotoPage() {
                 size="lg"
                 className="bg-[#FF8C00] hover:bg-[#FFA500] text-white px-8 py-6 text-lg"
               >
-                <Link href="/login?callbackUrl=/payment" onClick={() => trackContact()}>
+                <Link href="/login?callbackUrl=/payment" onClick={() => trackLead()}>
                   Nu <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
@@ -746,7 +749,7 @@ export default function LinkedInProfielFotoPage() {
           </h2>
           <p className="text-xl text-gray-600 mb-8">Verhoog je LinkedIn zichtbaarheid met een krachtige profielfoto</p>
           {isClient && (
-            <Link href="/login?callbackUrl=/payment" onClick={() => trackContact()}>
+            <Link href="/login?callbackUrl=/payment" onClick={() => trackLead()}>
               <Button size="lg" className="bg-[#FFA500] hover:bg-[#FF8C00] text-white px-8 py-4 text-lg">
                 Start jouw fotoshoot nu - € 29 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
@@ -892,7 +895,7 @@ export default function LinkedInProfielFotoPage() {
               size="lg"
               className="w-full bg-[#FF8C00] hover:bg-[#FFA500] text-white px-6 py-8 text-base font-semibold"
             >
-              <Link href="/login?callbackUrl=/payment" onClick={() => trackContact()}>
+              <Link href="/login?callbackUrl=/payment" onClick={() => trackLead()}>
                 Start jouw fotoshoot nu - € 29 <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
               </Link>
             </Button>
@@ -957,6 +960,7 @@ export default function LinkedInProfielFotoPage() {
       }
     }
   `}</style>
+      </main>
     </div>
   )
 }
