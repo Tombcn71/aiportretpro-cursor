@@ -916,20 +916,18 @@ export default function LinkedInProfielFotoPage() {
             <p className="text-center text-md font-bold text-gray-800 mb-2 mt-4">
               Professionele foto's in 15 minuten
             </p>
-            <p className="text-center text-sm text-[#374151] mb-4">
+            <p className="text-center text-sm text-gray-600 mb-4">
               Geen gedoe direct resultaat
             </p>
-            <Link href="/login?callbackUrl=/payment" onClick={() => trackLead()}>
             <Button
-          asChild
-          size="lg"
-          className=" bg-[#FF8C00] hover:bg-[#FFA500] text-white px-6 md:px-10 py-8 md:py-8 text-base md:text-lg mb-3 md:max-w-sm"
-        >
-         <Link href="/login?callbackUrl=/payment" onClick={() => trackContact()}>
-            Start jouw fotoshoot nu - € 29 <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
-          </Link>
-        </Button>
+              asChild
+              size="lg"
+              className="w-full bg-[#FF8C00] hover:bg-[#FFA500] text-white px-6 py-8 text-base font-semibold"
+            >
+              <Link href="/login?callbackUrl=/payment" onClick={() => trackContact()}>
+                Start jouw fotoshoot nu - € 29 <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
               </Link>
+            </Button>
           </div>
         </div>
       )}
