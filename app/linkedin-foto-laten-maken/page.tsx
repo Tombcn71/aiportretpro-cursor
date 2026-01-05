@@ -300,7 +300,7 @@ export default function LinkedInProfielFotoPage() {
           <div className="flex justify-center mb-4 md:hidden">
             <div 
               className="w-52 h-[13.33rem] lcp-image-container rounded-xl bg-gray-100 shadow-md"
-              style={{ contentVisibility: 'auto', containIntrinsicSize: '208px 260px' }}
+              style={{ contentVisibility: 'auto', containIntrinsicSize: '208px 260px', contain: 'layout paint' }}
             >
               <div className="w-full h-full overflow-hidden rounded-xl">
                 <Image
@@ -324,7 +324,7 @@ export default function LinkedInProfielFotoPage() {
           <div className="hidden md:flex justify-center mb-4">
             <div 
               className="w-80 h-[20rem] lcp-image-container rounded-2xl bg-gray-100 shadow-lg"
-              style={{ contentVisibility: 'auto', containIntrinsicSize: '320px 400px' }}
+              style={{ contentVisibility: 'auto', containIntrinsicSize: '320px 400px', contain: 'layout paint' }}
             >
               <div className="w-full h-full overflow-hidden rounded-2xl">
                 <Image
