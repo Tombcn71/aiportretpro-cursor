@@ -77,6 +77,15 @@ export default function RootLayout({
         <link rel="preconnect" href="https://connect.facebook.net" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://connect.facebook.net" />
         
+        {/* Font Preload for LCP optimization - Inter font */}
+        <link
+          rel="preload"
+          href="/_next/static/media/inter-var.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        
         {/* Performance Budget */}
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <meta name="theme-color" content="#0077B5" />

@@ -19,8 +19,8 @@ export const FB_PIXEL_ID = "8110588262372718"
 export const trackEvent = (eventName: string, parameters?: any) => {
   if (typeof window !== "undefined" && typeof window.fbq !== "undefined" && window.fbq) {
     try {
-      window.fbq("track", eventName, parameters)
-      console.log(`📊 Facebook Pixel Event: ${eventName}`, parameters)
+      window.fbq("track", eventName, parameters || {})
+      console.log(`📊 Facebook Pixel Event: ${eventName}`, parameters || {})
     } catch (error) {
       console.log("❌ Facebook Pixel error:", error)
     }
@@ -43,9 +43,9 @@ export const trackViewContent = (contentName: string, contentCategory?: string) 
   if (typeof window !== "undefined" && typeof window.fbq !== "undefined" && window.fbq) {
     try {
       window.fbq("track", "ViewContent", {
-        content_name: contentName,
-        content_category: contentCategory,
-      })
+        content_name: contentName || "",
+        content_category: contentCategory || "",
+      } || {})
     } catch (error) {
       console.log("❌ Facebook Pixel error:", error)
     }
@@ -53,11 +53,15 @@ export const trackViewContent = (contentName: string, contentCategory?: string) 
 }
 
 export const trackAddToCart = (value: number, currency = "EUR") => {
-  if (typeof window !== "undefined" && window.fbq) {
-    window.fbq("track", "AddToCart", {
-      value: value,
-      currency: currency,
-    })
+  if (typeof window !== "undefined" && typeof window.fbq !== "undefined" && window.fbq) {
+    try {
+      window.fbq("track", "AddToCart", {
+        value: value || 0,
+        currency: currency || "EUR",
+      } || {})
+    } catch (error) {
+      console.log("❌ Facebook Pixel error:", error)
+    }
   }
 }
 
@@ -84,19 +88,27 @@ export const trackInitiateCheckout = (value: number, currency = "EUR", eventID?:
 }
 
 export const trackPurchase = (value: number, currency = "EUR") => {
-  if (typeof window !== "undefined" && window.fbq) {
-    window.fbq("track", "Purchase", {
-      value: value,
-      currency: currency,
-    })
+  if (typeof window !== "undefined" && typeof window.fbq !== "undefined" && window.fbq) {
+    try {
+      window.fbq("track", "Purchase", {
+        value: value || 0,
+        currency: currency || "EUR",
+      } || {})
+    } catch (error) {
+      console.log("❌ Facebook Pixel error:", error)
+    }
   }
 }
 
 export const trackSignUp = (method?: string) => {
-  if (typeof window !== "undefined" && window.fbq) {
-    window.fbq("track", "CompleteRegistration", {
-      method: method || "google",
-    })
+  if (typeof window !== "undefined" && typeof window.fbq !== "undefined" && window.fbq) {
+    try {
+      window.fbq("track", "CompleteRegistration", {
+        method: method || "google",
+      } || {})
+    } catch (error) {
+      console.log("❌ Facebook Pixel error:", error)
+    }
   }
 }
 
@@ -131,20 +143,32 @@ export const trackContact = () => {
 
 // Custom events for your app
 export const trackPhotoUpload = () => {
-  if (typeof window !== "undefined" && window.fbq) {
-    window.fbq("trackCustom", "PhotoUpload")
+  if (typeof window !== "undefined" && typeof window.fbq !== "undefined" && window.fbq) {
+    try {
+      window.fbq("trackCustom", "PhotoUpload", {})
+    } catch (error) {
+      console.log("❌ Facebook Pixel error:", error)
+    }
   }
 }
 
 export const trackGenerationComplete = () => {
-  if (typeof window !== "undefined" && window.fbq) {
-    window.fbq("trackCustom", "GenerationComplete")
+  if (typeof window !== "undefined" && typeof window.fbq !== "undefined" && window.fbq) {
+    try {
+      window.fbq("trackCustom", "GenerationComplete", {})
+    } catch (error) {
+      console.log("❌ Facebook Pixel error:", error)
+    }
   }
 }
 
 export const trackHeadshotDownload = () => {
-  if (typeof window !== "undefined" && window.fbq) {
-    window.fbq("trackCustom", "HeadshotDownload")
+  if (typeof window !== "undefined" && typeof window.fbq !== "undefined" && window.fbq) {
+    try {
+      window.fbq("trackCustom", "HeadshotDownload", {})
+    } catch (error) {
+      console.log("❌ Facebook Pixel error:", error)
+    }
   }
 }
 
