@@ -317,10 +317,10 @@ export default function LinkedInProfielFotoPage() {
       </section>
 
       {/* Photo Carousel - FIXED: Smooth continuous scrolling */}
-      <section className="w-full overflow-hidden mb-8 md:mb-12 bg-gradient-to-r from-blue-50 via-white to-blue-50" style={{ contain: 'layout paint' }}>
+      <section className="w-full overflow-hidden mb-0 bg-gradient-to-r from-blue-50 via-white to-blue-50" style={{ contain: 'layout paint' }}>
         <div className="relative" style={{ contentVisibility: 'auto' }}>
           {/* Carousel for all images */}
-          <div className="carousel-container aspect-[4/5]">
+          <div className="carousel-container">
             <div className="carousel-track">
               {galleryPhotos.map((photo, index) => (
                 <div key={`carousel-${index}`} className="carousel-item">
