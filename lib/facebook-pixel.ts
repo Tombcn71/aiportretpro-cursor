@@ -7,6 +7,13 @@ declare global {
   }
 }
 
+// Initialize fbq queue early to prevent "fbq is not defined" errors
+if (typeof window !== "undefined") {
+  window.fbq = window.fbq || function(...args: any[]) {
+    (window.fbq.q = window.fbq.q || []).push(args)
+  }
+}
+
 export const FB_PIXEL_ID = "8110588262372718"
 
 export const trackEvent = (eventName: string, parameters?: any) => {

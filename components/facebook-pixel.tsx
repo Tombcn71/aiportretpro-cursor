@@ -5,9 +5,16 @@ import { useEffect } from "react"
 
 export default function FacebookPixel() {
   useEffect(() => {
+    // Initialize fbq queue before loading script to prevent "fbq is not defined" errors
+    if (typeof window !== "undefined") {
+      window.fbq = window.fbq || function(...args: any[]) {
+        (window.fbq.q = window.fbq.q || []).push(args)
+      }
+    }
+
     // Defer Facebook Pixel loading until after LCP
     const loadPixel = () => {
-      if (typeof window !== "undefined" && !window.fbq) {
+      if (typeof window !== "undefined" && !window.fbq || (window.fbq && !window.fbq.loaded)) {
         const script = document.createElement("script")
         script.async = true
         script.src = "https://connect.facebook.net/en_US/fbevents.js"

@@ -7,11 +7,18 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, X, ChevronDown, ChevronUp, Shield, Check, LinkedinIcon } from "lucide-react"
 import Header from "@/components/header"
 import { Facebook, Instagram } from "lucide-react"
-import ReviewsEnVoorbeelden from "@/components/reviews-en-voorbeelden"
+import dynamic from "next/dynamic"
 import ReviewSchema from "@/components/review-schema"
 import FAQSchema from "@/components/faq-schema"
 import SchemaMarkup from "@/components/schema-markup"
-import HowItWorks from "@/components/how-it-works"
+
+// Lazy load heavy components to reduce initial bundle size
+const ReviewsEnVoorbeelden = dynamic(() => import("@/components/reviews-en-voorbeelden"), {
+  ssr: false,
+})
+const HowItWorks = dynamic(() => import("@/components/how-it-works"), {
+  ssr: false,
+})
 import { trackLead } from "@/lib/facebook-pixel"
 
 // Gallery photos: All images from the shoot folder (1.png through 26.png)
@@ -395,23 +402,23 @@ export default function LinkedInProfielFotoPage() {
                 <div className="space-y-5">
                   <div>
                     <p className="font-semibold text-gray-800 mb-1">Prijs:</p>
-                    <p className="text-[#111827]">Vaak tussen de €150 en €350. Exclusief parkeerkosten in het centrum (€ 5,- per uur).</p>
+                    <p className="text-[#374151]">Vaak tussen de €150 en €350. Exclusief parkeerkosten in het centrum (€ 5,- per uur).</p>
                   </div>
                   <div>
                     <p className="font-semibold text-gray-800 mb-1">Tijd:</p>
-                    <p className="text-[#111827]">Afspraak plannen, reistijd en een uur poseren.</p>
+                    <p className="text-[#374151]">Afspraak plannen, reistijd en een uur poseren.</p>
                   </div>
                   <div>
                     <p className="font-semibold text-gray-800 mb-1">Geduld:</p>
-                    <p className="text-[#111827]">1 tot 2 weken wachten op de nabewerking.</p>
+                    <p className="text-[#374151]">1 tot 2 weken wachten op de nabewerking.</p>
                   </div>
                   <div>
                     <p className="font-semibold text-gray-800 mb-1">Resultaat:</p>
-                    <p className="text-[#111827]">Slechts 3 tot 5 foto's inbegrepen (bijbetalen voor meer).</p>
+                    <p className="text-[#374151]">Slechts 3 tot 5 foto's inbegrepen (bijbetalen voor meer).</p>
                   </div>
                   <div>
                     <p className="font-semibold text-gray-800 mb-1">Risico:</p>
-                    <p className="text-[#111827]">Niet tevreden? Jammer, je betaalt de fotograaf voor zijn tijd.</p>
+                    <p className="text-[#374151]">Niet tevreden? Jammer, je betaalt de fotograaf voor zijn tijd.</p>
                   </div>
                 </div>
               </div>
@@ -487,7 +494,7 @@ export default function LinkedInProfielFotoPage() {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold mb-2 text-[#0077B5]">ZZP'ers & Ondernemers</h3>
-                    <p className="text-[#111827] mb-3">
+                    <p className="text-[#374151] mb-3">
                       Jij bent je eigen merk. Stop met amateuristische selfies en laat zien dat je serieus bent. 
                       Onze AI creëert foto's die vertrouwen wekken bij potentiële klanten.
                     </p>
@@ -505,7 +512,7 @@ export default function LinkedInProfielFotoPage() {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold mb-2 text-[#0077B5]">Sollicitanten & Carrièrestarters</h3>
-                    <p className="text-[#111827] mb-3">
+                    <p className="text-[#374151] mb-3">
                       Recruiters scrollen door honderden profielen. Een sterke foto zorgt ervoor 
                       dat je opvalt en uitgenodigd wordt voor gesprekken - geen wegkijken meer.
                     </p>
@@ -523,7 +530,7 @@ export default function LinkedInProfielFotoPage() {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold mb-2 text-[#0077B5]">Young Professionals</h3>
-                    <p className="text-[#111827] mb-3">
+                    <p className="text-[#374151] mb-3">
                       Jouw generatie snapt de kracht van social media. Zorg dat senior professionals 
                       je willen connecten - niet wegklikken omdat je foto niet professioneel genoeg is.
                     </p>
@@ -541,7 +548,7 @@ export default function LinkedInProfielFotoPage() {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold mb-2 text-[#0077B5]">Managers & Leidinggevenden</h3>
-                    <p className="text-[#111827] mb-3">
+                    <p className="text-[#374151] mb-3">
                       Jouw leidinggevende positie verdient een foto die autoriteit uitstraalt. 
                       Geen tijd voor fotoshoots? Onze AI begrijpt executive presence.
                     </p>
@@ -693,7 +700,7 @@ export default function LinkedInProfielFotoPage() {
       {/* FAQ Section - LinkedIn Optimized */}
       <section id="faq" className="container mx-auto px-4 py-12 md:py-16 bg-white">
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-4">LinkedIn Profielfoto FAQ</h2>
-        <p className="text-lg text-[#111827] text-center mb-8 md:mb-12 max-w-2xl mx-auto">
+        <p className="text-lg text-[#374151] text-center mb-8 md:mb-12 max-w-2xl mx-auto">
           Alles over professionele LinkedIn foto's en hoe ze je carrière kunnen boosten!
         </p>
         <div className="max-w-3xl mx-auto">
@@ -712,14 +719,14 @@ export default function LinkedInProfielFotoPage() {
                   )}
                 </div>
                 {openFaqIndex === index && (
-                  <div className="mt-4 text-[#111827] text-sm md:text-base leading-relaxed">{faq.answer}</div>
+                  <div className="mt-4 text-[#374151] text-sm md:text-base leading-relaxed">{faq.answer}</div>
                 )}
               </button>
             </div>
           ))}
         </div>
         <div className="text-center mt-8 md:mt-12">
-          <p className="text-[#111827] mb-4 text-sm md:text-base">Nog vragen? We helpen je graag!</p>
+          <p className="text-[#374151] mb-4 text-sm md:text-base">Nog vragen? We helpen je graag!</p>
           <Button
             asChild
             variant="outline"
@@ -739,37 +746,37 @@ export default function LinkedInProfielFotoPage() {
             </h2>
             
             <div className="prose prose-sm md:prose-base max-w-none text-gray-400 md:text-gray-500 leading-relaxed space-y-4 md:space-y-6">
-              <p className="text-sm md:text-base">
+              <p className="text-sm md:text-base text-[#374151]">
               Een professionele LinkedIn foto laten maken is in 2026 de belangrijkste investering in je online aanwezigheid en verdere carrièreverloop. Met onze geavanceerde AI-technologie ontvang je 40 LinkedIn-specifieke foto's in slechts vijftien minuten tijd voor het vaste tarief van negenentwintig euro. Al onze beelden zijn volledig geoptimaliseerd volgens de nieuwste LinkedIn-richtlijnen, waardoor je verzekerd bent van een krachtige uitstraling die direct vertrouwen wekt bij het grootste zakelijke netwerk ter wereld.
               </p>
 
               <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">De impact van een hoogwaardige LinkedIn profielfoto</h3>
               
-              <p className="text-sm md:text-base">
+              <p className="text-sm md:text-base text-[#374151]">
               In het huidige zakelijke landschap van 2026 zijn de cijfers onweerlegbaar: profielen met een professionele foto genereren gemiddeld veertien keer meer weergaven en ontvangen zesendertig procent meer berichten van recruiters. Een kwalitatief portret verbetert je netwerkmogelijkheden aanzienlijk en zorgt ervoor dat je direct opvalt tussen de miljoenen andere gebruikers. Of je nu een LinkedIn profielfoto nodig hebt voor een nieuwe carrièrestap, een corporate uitstraling zoekt voor je huidige functie of simpelweg je persoonlijke merk wilt upgraden; onze AI-fotografie biedt de perfecte oplossing zonder de noodzaak voor dure studiosessies of lange wachttijden.
               </p>
 
               <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Professionele richtlijnen vertaald naar AI-perfectie</h3>
               
-              <p className="text-sm md:text-base">
+              <p className="text-sm md:text-base text-[#374151]">
               Onze technologie is getraind op de hoogste standaarden voor zakelijke fotografie. We zorgen automatisch voor de juiste professionele kleding, zoals strak gesneden pakken, blazers of zakelijke overhemden, gecombineerd met een neutrale achtergrond die niet afleidt van je gezicht. De AI optimaliseert de belichting en zorgt voor een vriendelijke, zelfverzekerde glimlach die essentieel is voor een goede eerste indruk. Bovendien worden alle 40 foto's direct geleverd in het ideale vierkante formaat, zodat ze zonder extra bewerking direct geüpload kunnen worden naar je LinkedIn-profiel.
               </p>
 
               <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Hoe werkt het proces in 2026?</h3>
               
-              <p className="text-sm md:text-base">
+              <p className="text-sm md:text-base text-[#374151]">
               Het maken van een professionele LinkedIn foto is tegenwoordig eenvoudiger dan ooit. Je begint door een paar bestaande foto's van jezelf te uploaden vanaf je telefoon of computer. Dit kunnen normale selfies of vakantiefoto's zijn, zolang je gezicht goed zichtbaar is. Onze AI analyseert vervolgens je gelaatstrekken en de gewenste zakelijke stijl. Terwijl je vijftien minuten wacht, genereert het systeem 40 verschillende variaties van studiokwaliteit. Na deze korte periode kun je de volledige set direct downloaden vanuit je dashboard, klaar om je digitale handdruk te professionaliseren.
               </p>
 
               <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Waarom AI Portret Pro de standaard is voor LinkedIn optimalisatie</h3>
               
-              <p className="text-sm md:text-base">
+              <p className="text-sm md:text-base text-[#374151]">
               Onze AI-fotografie maakt gebruik van geavanceerde algoritmes die specifiek getraind zijn op duizenden succesvolle LinkedIn-headshots. We begrijpen de unieke vereisten per sector; of je nu werkzaam bent in tech, finance, marketing of consultancy, wij zorgen ervoor dat je profiel precies de juiste balans vindt tussen autoriteit en toegankelijkheid. Waar je bij een traditionele fotograaf vaak weken moet wachten op resultaat, biedt onze virtuele oplossing in 2026 directheid en variatie die met handmatige fotografie niet te evenaren is tegen deze prijs.
               </p>
 
               <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Over onze LinkedIn foto services in 2026</h3>
               
-              <p className="text-sm md:text-base">
+              <p className="text-sm md:text-base text-[#374151]">
               AI Portret Pro is de toonaangevende bron voor het online laten maken van LinkedIn profielfoto's en zakelijke portretten. Onze expertise omvat het volledige spectrum van digitale profilering: van corporate LinkedIn foto's en business headshots tot aan volledige profieloptimalisatie voor recruiters. Wij bieden een innovatief alternatief voor de traditionele fotograaf door een virtuele fotoshoot mogelijk te maken die gewoon vanuit huis kan worden uitgevoerd. Met een focus op de Nederlandse markt helpen wij professionals – van ambitieuze starters tot C-level executives – om hun LinkedIn uitstraling te perfectioneren met de meest scherpe en representatieve resultaten die technisch mogelijk zijn in 2026.
               </p>
             </div>
@@ -923,7 +930,7 @@ export default function LinkedInProfielFotoPage() {
             <p className="text-center text-md font-bold text-gray-800 mb-2 mt-4">
               Professionele foto's in 15 minuten
             </p>
-            <p className="text-center text-sm text-[#111827] mb-4">
+            <p className="text-center text-sm text-[#374151] mb-4">
               Geen gedoe direct resultaat
             </p>
             <Button
