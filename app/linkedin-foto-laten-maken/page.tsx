@@ -280,16 +280,31 @@ export default function LinkedInProfielFotoPage() {
           </div>
         </div>
 
-        <Button
-          asChild
-          size="lg"
-          className=" bg-[#FF8C00] hover:bg-[#FFA500] text-white px-6 md:px-10 py-8 md:py-8 text-base md:text-lg mb-3 md:max-w-sm"
-          style={{ backgroundColor: '#FF8C00', color: '#FFFFFF' }}
-        >
-          <Link href="/login?callbackUrl=/payment" onClick={() => trackLead()} style={{ backgroundColor: '#FF8C00', color: '#FFFFFF' }}>
-            Start jouw fotoshoot nu - € 29 <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
-          </Link>
-        </Button>
+        <Link href="/login?callbackUrl=/payment" onClick={() => trackLead()}>
+          <button 
+            style={{ 
+              backgroundColor: '#FF8C00', 
+              color: '#FFFFFF',
+              padding: '1rem 2.5rem',
+              fontSize: '1rem',
+              fontWeight: '500',
+              borderRadius: '0.5rem',
+              border: 'none',
+              cursor: 'pointer',
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginBottom: '0.75rem',
+              maxWidth: '24rem',
+              width: '100%'
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#FFA500'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#FF8C00'}
+          >
+            <span style={{ color: '#FFFFFF' }}>Start jouw fotoshoot nu - € 29</span>
+            <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" style={{ color: '#FFFFFF' }} />
+          </button>
+        </Link>
 
         {/* Trust Shield */}
         <div className="flex items-center justify-center gap-2 text-[#0077B5] font-medium text-sm mb-8">
@@ -485,16 +500,28 @@ export default function LinkedInProfielFotoPage() {
 
             <div className="text-center">
               <p className="text-xl font-semibold text-gray-800 mb-6">Bespaar €170+</p>
-              <Button
-                asChild
-                size="lg"
-                className="bg-[#FF8C00] hover:bg-[#FFA500] text-white px-8 py-6 text-lg"
-                style={{ backgroundColor: '#FF8C00', color: '#FFFFFF' }}
-              >
-                <Link href="/login?callbackUrl=/payment" onClick={() => trackLead()} style={{ backgroundColor: '#FF8C00', color: '#FFFFFF' }}>
-                  Nu <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
+              <Link href="/login?callbackUrl=/payment" onClick={() => trackLead()}>
+                <button 
+                  style={{ 
+                    backgroundColor: '#FF8C00', 
+                    color: '#FFFFFF',
+                    padding: '1.5rem 2rem',
+                    fontSize: '1.125rem',
+                    fontWeight: '500',
+                    borderRadius: '0.5rem',
+                    border: 'none',
+                    cursor: 'pointer',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#FFA500'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#FF8C00'}
+                >
+                  <span style={{ color: '#FFFFFF' }}>Nu</span>
+                  <ArrowRight className="ml-2 h-5 w-5" style={{ color: '#FFFFFF' }} />
+                </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -818,9 +845,26 @@ export default function LinkedInProfielFotoPage() {
           </h2>
           <p className="text-xl text-gray-600 mb-8">Verhoog je LinkedIn zichtbaarheid met een krachtige profielfoto</p>
           <Link href="/login?callbackUrl=/payment" onClick={() => trackLead()}>
-            <Button size="lg" className="bg-[#FF8C00] hover:bg-[#FFA500] text-white px-8 py-4 text-lg" style={{ backgroundColor: '#FF8C00', color: '#FFFFFF' }}>
-              Start jouw fotoshoot nu - € 29 <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+            <button 
+              style={{ 
+                backgroundColor: '#FF8C00', 
+                color: '#FFFFFF',
+                padding: '1rem 2rem',
+                fontSize: '1.125rem',
+                fontWeight: '500',
+                borderRadius: '0.5rem',
+                border: 'none',
+                cursor: 'pointer',
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#FFA500'}
+              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#FF8C00'}
+            >
+              <span style={{ color: '#FFFFFF' }}>Start jouw fotoshoot nu - € 29</span>
+              <ArrowRight className="ml-2 h-5 w-5" style={{ color: '#FFFFFF' }} />
+            </button>
           </Link>
         </div>
       </section>
@@ -957,16 +1001,29 @@ export default function LinkedInProfielFotoPage() {
             <p className="text-center text-sm text-[#374151] mb-4">
               Geen gedoe direct resultaat
             </p>
-            <Button
-              asChild
-              size="lg"
-              className="w-full bg-[#FF8C00] hover:bg-[#FFA500] text-white px-6 py-8 text-base font-semibold"
-              style={{ backgroundColor: '#FF8C00', color: '#FFFFFF' }}
-            >
-              <Link href="/login?callbackUrl=/payment" onClick={() => trackLead()} style={{ backgroundColor: '#FF8C00', color: '#FFFFFF' }}>
-                Start jouw fotoshoot nu - € 29 <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
-              </Link>
-            </Button>
+            <Link href="/login?callbackUrl=/payment" onClick={() => trackLead()}>
+              <button 
+                style={{ 
+                  backgroundColor: '#FF8C00', 
+                  color: '#FFFFFF',
+                  width: '100%',
+                  padding: '2rem 1.5rem',
+                  fontSize: '1rem',
+                  fontWeight: '600',
+                  borderRadius: '0.5rem',
+                  border: 'none',
+                  cursor: 'pointer',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#FFA500'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#FF8C00'}
+              >
+                <span style={{ color: '#FFFFFF' }}>Start jouw fotoshoot nu - € 29</span>
+                <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" style={{ color: '#FFFFFF' }} />
+              </button>
+            </Link>
           </div>
         </div>
       )}
