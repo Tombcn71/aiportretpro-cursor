@@ -91,8 +91,9 @@ export default function RootLayout({
             .bg-\\[\\#FF8C00\\]{background-color:#FF8C00}
             .hover\\:bg-\\[\\#FFA500\\]:hover{background-color:#FFA500}
             .carousel-container{width:100%;overflow:hidden;position:relative}
-            .carousel-track{display:flex;width:fit-content;animation:carousel 140s linear infinite}
+            .carousel-track{display:flex;width:fit-content;animation:carousel 140s linear infinite;content-visibility:auto}
             .carousel-item{flex-shrink:0;margin:0 0.5rem}
+            .lcp-image-container{aspect-ratio:4/5}
             @keyframes carousel{0%{transform:translateX(calc(-100%/2))}100%{transform:translateX(0)}}
             .pt-20{padding-top:5rem}
             .text-center{text-align:center}

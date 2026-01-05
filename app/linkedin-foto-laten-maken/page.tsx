@@ -268,7 +268,7 @@ export default function LinkedInProfielFotoPage() {
         <Button
           asChild
           size="lg"
-          className=" bg-[#CC6600] hover:bg-[#E67A00] text-white px-6 md:px-10 py-8 md:py-8 text-base md:text-lg mb-3 md:max-w-sm"
+          className=" bg-[#CC6600] hover:bg-[#E67A00] text-black px-6 md:px-10 py-8 md:py-8 text-base md:text-lg mb-3 md:max-w-sm"
         >
           <Link href="/login?callbackUrl=/payment" onClick={() => trackLead()}>
             Start jouw fotoshoot nu - € 29 <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
@@ -279,7 +279,7 @@ export default function LinkedInProfielFotoPage() {
         <div className="flex items-center justify-center gap-2 text-[#0077B5] font-medium text-sm mb-8">
           <div className="relative">
             <Shield className="h-5 w-5 fill-current text-[#0077B5]" />
-            <Check className="h-3 w-3 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" strokeWidth={3} />
+            <Check className="h-3 w-3 text-black absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" strokeWidth={3} />
           </div>
           <span>14-DAGEN GELD TERUG GARANTIE</span>
         </div>
@@ -290,7 +290,7 @@ export default function LinkedInProfielFotoPage() {
         <div className="relative">
           {/* Static LCP Image - Rendered first without JS, outside carousel */}
           <div className="flex justify-center mb-4 md:hidden">
-            <div className="w-52 h-[13.33rem] rounded-xl overflow-hidden bg-gray-100 shadow-md">
+            <div className="w-52 lcp-image-container rounded-xl overflow-hidden bg-gray-100 shadow-md">
               <Image
                 src={galleryPhotos[0] || "/placeholder.svg"}
                 alt="LinkedIn portret voorbeeld 1"
@@ -301,12 +301,11 @@ export default function LinkedInProfielFotoPage() {
                 fetchPriority="high"
                 sizes="(max-width: 768px) 40vw, 300px"
                 quality={50}
-                style={{ aspectRatio: "4/5" }}
               />
             </div>
           </div>
           <div className="hidden md:flex justify-center mb-4">
-            <div className="w-80 h-[20rem] rounded-2xl overflow-hidden bg-gray-100 shadow-lg">
+            <div className="w-80 lcp-image-container rounded-2xl overflow-hidden bg-gray-100 shadow-lg">
               <Image
                 src={galleryPhotos[0] || "/placeholder.svg"}
                 alt="LinkedIn portret voorbeeld 1"
@@ -317,7 +316,6 @@ export default function LinkedInProfielFotoPage() {
                 fetchPriority="high"
                 sizes="(max-width: 768px) 40vw, 300px"
                 quality={50}
-                style={{ aspectRatio: "4/5" }}
               />
             </div>
           </div>
@@ -415,7 +413,7 @@ export default function LinkedInProfielFotoPage() {
               </div>
 
               {/* AI Photography */}
-              <div className="bg-[#0077B5] p-8 rounded-lg text-white relative overflow-hidden">
+              <div className="bg-[#0077B5] p-8 rounded-lg text-black relative overflow-hidden">
                 <div className="absolute top-4 right-4 bg-yellow-400 text-black px-3 py-1 rounded-full text-xs font-semibold uppercase">
                   DE SLIMME KEUZE
                 </div>
@@ -423,27 +421,27 @@ export default function LinkedInProfielFotoPage() {
                   <span className="text-3xl">✅</span>
                   <h3 className="text-2xl font-semibold">AI Portret Pro</h3>
                   </div>
-                <p className="text-white mb-6 text-sm">(De slimme keuze)</p>
+                <p className="text-black mb-6 text-sm">(De slimme keuze)</p>
                 <div className="space-y-5">
                   <div>
                     <p className="font-semibold mb-1">Prijs:</p>
-                    <p className="text-white">Eenmalig €29 (geen verborgen kosten).</p>
+                    <p className="text-black">Eenmalig €29 (geen verborgen kosten).</p>
                   </div>
                   <div>
                     <p className="font-semibold mb-1">Gemak:</p>
-                    <p className="text-white">Direct beginnen vanaf je eigen bank, geen afspraak nodig.</p>
+                    <p className="text-black">Direct beginnen vanaf je eigen bank, geen afspraak nodig.</p>
                   </div>
                   <div>
                     <p className="font-semibold mb-1">Snelheid:</p>
-                    <p className="text-white">Binnen 15 minuten alle foto's in je dashboard.</p>
+                    <p className="text-black">Binnen 15 minuten alle foto's in je dashboard.</p>
                   </div>
                   <div>
                     <p className="font-semibold mb-1">Resultaat:</p>
-                    <p className="text-white">Je krijgt direct 40+ verschillende zakelijke profielfoto's.</p>
+                    <p className="text-black">Je krijgt direct 40+ verschillende zakelijke profielfoto's.</p>
                   </div>
                   <div>
                     <p className="font-semibold mb-1">Garantie:</p>
-                    <p className="text-white">Niet goed? Geld terug. Zo simpel is het.</p>
+                    <p className="text-black">Niet goed? Geld terug. Zo simpel is het.</p>
                   </div>
                 </div>
               </div>
@@ -454,7 +452,7 @@ export default function LinkedInProfielFotoPage() {
               <Button
                 asChild
                 size="lg"
-                className="bg-[#CC6600] hover:bg-[#E67A00] text-white px-8 py-6 text-lg"
+                className="bg-[#CC6600] hover:bg-[#E67A00] text-black px-8 py-6 text-lg"
               >
                 <Link href="/login?callbackUrl=/payment" onClick={() => trackLead()}>
                   Nu <ArrowRight className="ml-2 h-5 w-5" />
@@ -481,7 +479,7 @@ export default function LinkedInProfielFotoPage() {
               <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
                 <div className="flex items-start gap-4">
                   <div className="bg-[#0077B5] p-3 rounded-lg flex-shrink-0">
-                    <span className="text-white text-xl">🚀</span>
+                    <span className="text-black text-xl">🚀</span>
                   </div>
                   <div>
                     <h3 className="text-xl font-bold mb-2 text-[#0077B5]">ZZP'ers & Ondernemers</h3>
@@ -499,7 +497,7 @@ export default function LinkedInProfielFotoPage() {
               <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
                 <div className="flex items-start gap-4">
                   <div className="bg-[#0077B5] p-3 rounded-lg flex-shrink-0">
-                    <span className="text-white text-xl">🎯</span>
+                    <span className="text-black text-xl">🎯</span>
                   </div>
                   <div>
                     <h3 className="text-xl font-bold mb-2 text-[#0077B5]">Sollicitanten & Carrièrestarters</h3>
@@ -517,7 +515,7 @@ export default function LinkedInProfielFotoPage() {
               <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
                 <div className="flex items-start gap-4">
                   <div className="bg-[#0077B5] p-3 rounded-lg flex-shrink-0">
-                    <span className="text-white text-xl">⚡</span>
+                    <span className="text-black text-xl">⚡</span>
                   </div>
                   <div>
                     <h3 className="text-xl font-bold mb-2 text-[#0077B5]">Young Professionals</h3>
@@ -535,7 +533,7 @@ export default function LinkedInProfielFotoPage() {
               <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
                 <div className="flex items-start gap-4">
                   <div className="bg-[#0077B5] p-3 rounded-lg flex-shrink-0">
-                    <span className="text-white text-xl">👑</span>
+                    <span className="text-black text-xl">👑</span>
                   </div>
                   <div>
                     <h3 className="text-xl font-bold mb-2 text-[#0077B5]">Managers & Leidinggevenden</h3>
@@ -721,7 +719,7 @@ export default function LinkedInProfielFotoPage() {
           <Button
             asChild
             variant="outline"
-            className="border-[#0077B5] text-[#0077B5] hover:bg-[#0077B5] hover:text-white bg-transparent"
+            className="border-[#0077B5] text-[#0077B5] hover:bg-[#0077B5] hover:text-black bg-transparent"
           >
             <Link href="/contact">Neem Contact Op</Link>
           </Button>
@@ -784,7 +782,7 @@ export default function LinkedInProfielFotoPage() {
           <p className="text-xl text-gray-600 mb-8">Verhoog je LinkedIn zichtbaarheid met een krachtige profielfoto</p>
           {isClient && (
             <Link href="/login?callbackUrl=/payment" onClick={() => trackLead()}>
-              <Button size="lg" className="bg-[#CC6600] hover:bg-[#E67A00] text-white px-8 py-4 text-lg">
+              <Button size="lg" className="bg-[#CC6600] hover:bg-[#E67A00] text-black px-8 py-4 text-lg">
                 Start jouw fotoshoot nu - € 29 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
@@ -801,7 +799,7 @@ export default function LinkedInProfielFotoPage() {
           <div className="relative max-w-4xl max-h-full">
             <button
               onClick={closeLightbox}
-              className="absolute -top-8 md:-top-12 right-0 text-white hover:text-gray-300 transition-colors"
+              className="absolute -top-8 md:-top-12 right-0 text-black hover:text-gray-300 transition-colors"
             >
               <X className="h-6 w-6 md:h-8 md:w-8" />
             </button>
@@ -817,7 +815,7 @@ export default function LinkedInProfielFotoPage() {
       )}
 
       {/* Footer */}
-      <footer className="bg-black text-white py-8 px-6">
+      <footer className="bg-black text-black py-8 px-6">
         <div className="container mx-auto">
           <div className="flex flex-col lg:flex-row lg:justify-between space-y-8 lg:space-y-0">
             {/* Logo and Company Info */}
@@ -830,7 +828,7 @@ export default function LinkedInProfielFotoPage() {
                   height={30}
                   className="rounded-lg"
                 />
-                <h3 className="text-xl font-bold text-white">AI Portret Pro</h3>
+                <h3 className="text-xl font-bold text-black">AI Portret Pro</h3>
               </div>
               <p className="text-gray-300 text-sm leading-relaxed max-w-xs">
                 Professionele AI LinkedIn portretten in minuten.
@@ -839,21 +837,21 @@ export default function LinkedInProfielFotoPage() {
 
             {/* Navigation Links */}
             <div className="flex flex-col space-y-4">
-              <h4 className="text-white font-semibold text-sm uppercase tracking-wide">Navigatie</h4>
+              <h4 className="text-black font-semibold text-sm uppercase tracking-wide">Navigatie</h4>
               <div className="flex flex-col space-y-2">
-                <Link href="/pricing" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
+                <Link href="/pricing" className="text-gray-300 hover:text-black transition-colors duration-200 text-sm">
                   Prijzen
                 </Link>
-                <Link href="/contact" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
+                <Link href="/contact" className="text-gray-300 hover:text-black transition-colors duration-200 text-sm">
                   Contact
                 </Link>
-                <Link href="/over-ons" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
+                <Link href="/over-ons" className="text-gray-300 hover:text-black transition-colors duration-200 text-sm">
                   Over Ons
                 </Link>
-                <Link href="/" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
+                <Link href="/" className="text-gray-300 hover:text-black transition-colors duration-200 text-sm">
                   Homepage
                 </Link>
-                <Link href="/fotografen" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
+                <Link href="/fotografen" className="text-gray-300 hover:text-black transition-colors duration-200 text-sm">
                   Lokale Fotografen
                 </Link>
               </div>
@@ -861,12 +859,12 @@ export default function LinkedInProfielFotoPage() {
 
             {/* Legal Links */}
             <div className="flex flex-col space-y-4">
-              <h4 className="text-white font-semibold text-sm uppercase tracking-wide">Juridisch</h4>
+              <h4 className="text-black font-semibold text-sm uppercase tracking-wide">Juridisch</h4>
               <div className="flex flex-col space-y-2">
-                <Link href="/privacy" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
+                <Link href="/privacy" className="text-gray-300 hover:text-black transition-colors duration-200 text-sm">
                   Privacy Policy
                 </Link>
-                <Link href="/terms" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
+                <Link href="/terms" className="text-gray-300 hover:text-black transition-colors duration-200 text-sm">
                   Terms
                 </Link>
               </div>
@@ -874,13 +872,13 @@ export default function LinkedInProfielFotoPage() {
 
             {/* Social Media */}
             <div className="flex flex-col space-y-4">
-              <h4 className="text-white font-semibold text-sm uppercase tracking-wide">Volg Ons</h4>
+              <h4 className="text-black font-semibold text-sm uppercase tracking-wide">Volg Ons</h4>
               <div className="flex space-x-4">
                 <Link
                   href="https://linkedin.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-white transition-colors duration-200"
+                  className="text-gray-300 hover:text-black transition-colors duration-200"
                   aria-label="LinkedIn"
                 >
                   <LinkedinIcon size={20} />
@@ -889,7 +887,7 @@ export default function LinkedInProfielFotoPage() {
                   href="https://www.facebook.com/profile.php?id=61578343760041"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-white transition-colors duration-200"
+                  className="text-gray-300 hover:text-black transition-colors duration-200"
                   aria-label="Facebook"
                 >
                   <Facebook size={20} />
@@ -898,7 +896,7 @@ export default function LinkedInProfielFotoPage() {
                   href="https://www.instagram.com/aiportretpro.nl"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-white transition-colors duration-200"
+                  className="text-gray-300 hover:text-black transition-colors duration-200"
                   aria-label="Instagram"
                 >
                   <Instagram size={20} />
@@ -927,7 +925,7 @@ export default function LinkedInProfielFotoPage() {
             <Button
               asChild
               size="lg"
-              className="w-full bg-[#CC6600] hover:bg-[#E67A00] text-white px-6 py-8 text-base font-semibold"
+              className="w-full bg-[#CC6600] hover:bg-[#E67A00] text-black px-6 py-8 text-base font-semibold"
             >
               <Link href="/login?callbackUrl=/payment" onClick={() => trackLead()}>
                 Start jouw fotoshoot nu - € 29 <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
