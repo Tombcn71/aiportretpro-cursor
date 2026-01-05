@@ -33,7 +33,7 @@ export default function FacebookPixel() {
           script.async = true
           script.src = "https://connect.facebook.net/en_US/fbevents.js"
           script.onload = () => {
-            if (typeof window !== "undefined" && window !== null && typeof window.fbq !== "undefined" && window.fbq) {
+            if (typeof window !== "undefined" && window !== null && typeof window.fbq === "function") {
               try {
                 const pixelId = "8110588262372718"
                 if (pixelId && typeof pixelId === "string") {
