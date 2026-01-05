@@ -18,7 +18,7 @@ export default function LoginPage() {
   const hasCallbackUrl = searchParams.get("callbackUrl") !== null
   
   const [loading, setLoading] = useState(false)
-  const [showEmailForm, setShowEmailForm] = useState(isDirectLogin || hasCallbackUrl) // Show form immediately if direct login or CTA
+  const [showEmailForm, setShowEmailForm] = useState(isDirectLogin) // Only show form immediately for direct login, not for CTA
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [isSignUp, setIsSignUp] = useState(!isDirectLogin) // If direct login, start in login mode. Otherwise signup (including CTA)
@@ -195,9 +195,9 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-      <div className="absolute inset-0 flex items-center justify-center px-4">
-        <Card className="max-w-md w-full">
+    <div className="min-h-screen bg-gray-50">
+      <div className="container mx-auto px-4 py-8 md:py-12">
+        <Card className="max-w-md mx-auto w-full">
           <CardHeader className="text-left">
             {/* Logo with text */}
             <div className="flex items-center space-x-3 mb-6">
@@ -212,30 +212,27 @@ export default function LoginPage() {
             </div>
             
             {/* Main title */}
-            {hasCallbackUrl || !showEmailForm ? (
-              <CardTitle className="text-xl md:text-2xl text-gray-900 mb-3 font-normal pl-0">
-                Jouw zakelijke fotoshoot begint hier
-                <br />
-                <span className="text-gray-700">Maak een account aan om je foto's te genereren.</span>
-              </CardTitle>
-            ) : !isSignUp ? (
-              <CardTitle className="text-xl md:text-2xl text-gray-900 mb-3 font-normal pl-0">
-                Welkom terug!
-                <br />
-                <span className="text-[#0077B5]">Log in om verder te gaan.</span>
-              </CardTitle>
-            ) : (
-              <CardTitle className="text-xl md:text-2xl text-gray-900 mb-3 font-normal pl-0">
-                Jouw zakelijke fotoshoot begint hier
-                <br />
-                <span className="text-gray-700">Maak een account aan om je foto's te genereren.</span>
-              </CardTitle>
-            )}
+            <CardTitle className="text-xl md:text-2xl text-gray-900 mb-3 font-normal pl-0">
+              Professionele zakelijke foto's, <span className="text-[#0077B5]">zonder gedoe van een fotoshoot</span>
+            </CardTitle>
+            <p className="text-sm md:text-base text-gray-600 mb-6">
+              Creëer een account of log in om verder te gaan.
+            </p>
           </CardHeader>
           <CardContent className="space-y-4">
             {!showEmailForm ? (
               <>
                 {/* Main choice buttons */}
+                <Button
+                  onClick={() => setShowEmailForm(true)}
+                  disabled={loading}
+                  variant="outline"
+                  className="w-full border-2 border-[#0077B5] text-[#0077B5] hover:bg-[#0077B5] hover:text-white flex items-center justify-center space-x-3 py-6 text-lg font-semibold"
+                >
+                  <MailPlus className="h-6 w-6" />
+                  <span>Ga door met e-mail</span>
+                </Button>
+
                 <Button
                   onClick={handleGoogleSignIn}
                   disabled={loading}
@@ -262,15 +259,21 @@ export default function LoginPage() {
                   <span>Ga door met Google</span>
                 </Button>
 
-                <Button
-                  onClick={() => setShowEmailForm(true)}
-                  disabled={loading}
-                  variant="outline"
-                  className="w-full border-2 border-[#0077B5] text-[#0077B5] hover:bg-[#0077B5] hover:text-white flex items-center justify-center space-x-3 py-6 text-lg font-semibold"
-                >
-                  <MailPlus className="h-6 w-6" />
-                  <span>Ga door met e-mail</span>
-                </Button>
+                {/* Value props - Show when email form is closed */}
+                <div className="mt-6 pt-4 pb-4 px-4 bg-slate-50 rounded-lg border border-slate-200 space-y-2.5">
+                  <div className="flex items-start gap-2.5">
+                    <span className="text-green-600 text-sm flex-shrink-0">✅</span>
+                    <p className="text-xs text-slate-600">40+ foto's in 15 minuten</p>
+                  </div>
+                  <div className="flex items-start gap-2.5">
+                    <span className="text-green-600 text-sm flex-shrink-0">✅</span>
+                    <p className="text-xs text-slate-600">14 dagen geld terug garantie</p>
+                  </div>
+                  <div className="flex items-start gap-2.5">
+                    <span className="text-green-600 text-sm flex-shrink-0">✅</span>
+                    <p className="text-xs text-slate-600">Geen fotostudio nodig</p>
+                  </div>
+                </div>
               </>
             ) : (
               <>
@@ -368,19 +371,19 @@ export default function LoginPage() {
                   </Button>
                 </div>
 
-                {/* Trust section */}
-                <div className="mt-6 pt-6 border-t border-gray-200 space-y-3">
-                  <div className="flex items-start gap-3">
-                    <span className="text-green-500 text-lg flex-shrink-0">✅</span>
-                    <p className="text-sm text-gray-600">Nederlands product — Privacy gewaarborgd.</p>
+                {/* Value props */}
+                <div className="mt-6 pt-4 pb-4 px-4 bg-slate-50 rounded-lg border border-slate-200 space-y-2.5">
+                  <div className="flex items-start gap-2.5">
+                    <span className="text-green-600 text-sm flex-shrink-0">✅</span>
+                    <p className="text-xs text-slate-600">40+ foto's in 15 minuten</p>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <span className="text-green-500 text-lg flex-shrink-0">✅</span>
-                    <p className="text-sm text-gray-600">Niet goed, geld terug — 100% tevredenheidsgarantie.</p>
+                  <div className="flex items-start gap-2.5">
+                    <span className="text-green-600 text-sm flex-shrink-0">✅</span>
+                    <p className="text-xs text-slate-600">14 dagen geld terug garantie</p>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <span className="text-green-500 text-lg flex-shrink-0">✅</span>
-                    <p className="text-sm text-gray-600">Klaar in 15 minuten — Direct resultaat.</p>
+                  <div className="flex items-start gap-2.5">
+                    <span className="text-green-600 text-sm flex-shrink-0">✅</span>
+                    <p className="text-xs text-slate-600">Geen fotostudio nodig</p>
                   </div>
                 </div>
               </>
