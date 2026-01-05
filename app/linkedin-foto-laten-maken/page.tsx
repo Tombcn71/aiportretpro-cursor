@@ -317,7 +317,7 @@ export default function LinkedInProfielFotoPage() {
       </section>
 
       {/* Photo Carousel - FIXED: Smooth continuous scrolling */}
-      <section className="w-full overflow-hidden mb-16 md:mb-24 bg-gradient-to-r from-blue-50 via-white to-blue-50" style={{ contain: 'layout paint' }}>
+      <section className="w-full overflow-hidden mb-8 md:mb-12 bg-gradient-to-r from-blue-50 via-white to-blue-50" style={{ contain: 'layout paint' }}>
         <div className="relative" style={{ contentVisibility: 'auto' }}>
           {/* Carousel for all images */}
           <div className="carousel-container aspect-[4/5]">
@@ -369,8 +369,7 @@ export default function LinkedInProfielFotoPage() {
       </section>
 
       {/* How It Works */}
-      {/* How It Works */}
- <HowItWorks />
+      <HowItWorks />
 
       {/* Reviews en Voorbeelden */}
       <ReviewsEnVoorbeelden />
@@ -455,7 +454,6 @@ export default function LinkedInProfielFotoPage() {
                 <button 
                   style={{ 
                     backgroundColor: '#E67E00',
-              color: '#FFFFFF', 
                     color: '#FFFFFF',
                     padding: '1.5rem 2rem',
                     fontSize: '1.125rem',
@@ -800,7 +798,6 @@ export default function LinkedInProfielFotoPage() {
             <button 
               style={{ 
                 backgroundColor: '#E67E00',
-              color: '#FFFFFF', 
                 color: '#FFFFFF',
                 padding: '1rem 2rem',
                 fontSize: '1.125rem',
@@ -958,7 +955,6 @@ export default function LinkedInProfielFotoPage() {
               <button 
                 style={{ 
                   backgroundColor: '#E67E00',
-              color: '#FFFFFF', 
                   color: '#FFFFFF',
                   width: '100%',
                   padding: '2rem 1.5rem',
