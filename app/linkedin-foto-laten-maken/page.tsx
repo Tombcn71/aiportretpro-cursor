@@ -279,7 +279,7 @@ export default function LinkedInProfielFotoPage() {
       </section>
 
       {/* Photo Carousel - FIXED: Smooth continuous scrolling */}
-      <section className="w-full overflow-hidden mb-16 md:mb-24 bg-gradient-to-r from-blue-50 via-white to-blue-50">
+      <section className="w-full overflow-hidden mb-16 md:mb-24 bg-gradient-to-r from-blue-50 via-white to-blue-50" style={{ contain: 'layout paint' }}>
         <div className="relative">
           {/* Static LCP Image - Rendered first without JS, outside carousel */}
           <div className="flex justify-center mb-4 md:hidden">
@@ -297,9 +297,11 @@ export default function LinkedInProfielFotoPage() {
                   priority={true}
                   fetchPriority="high"
                   loading="eager"
+                  decoding="sync"
                   sizes="(max-width: 768px) 100vw, 50vw"
                   quality={50}
                   unoptimized={true}
+                  style={{ width: '208px', height: '260px' }}
                 />
               </div>
             </div>
@@ -319,9 +321,11 @@ export default function LinkedInProfielFotoPage() {
                   priority={true}
                   fetchPriority="high"
                   loading="eager"
+                  decoding="sync"
                   sizes="(max-width: 768px) 100vw, 50vw"
                   quality={50}
                   unoptimized={true}
+                  style={{ width: '320px', height: '400px' }}
                 />
               </div>
             </div>
