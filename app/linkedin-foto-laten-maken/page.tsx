@@ -261,7 +261,7 @@ export default function LinkedInProfielFotoPage() {
         <Button
           asChild
           size="lg"
-          className=" bg-[#CC6600] hover:bg-[#E67A00] text-white px-6 md:px-10 py-8 md:py-8 text-base md:text-lg mb-3 md:max-w-sm"
+          className=" bg-[#CC6600] hover:bg-[#E67A00] text-black px-6 md:px-10 py-8 md:py-8 text-base md:text-lg mb-3 md:max-w-sm"
         >
           <Link href="/login?callbackUrl=/payment" onClick={() => trackLead()}>
             Start jouw fotoshoot nu - € 29 <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
@@ -926,7 +926,7 @@ export default function LinkedInProfielFotoPage() {
             <Button
               asChild
               size="lg"
-              className="w-full bg-[#CC6600] hover:bg-[#E67A00] text-white px-6 py-8 text-base font-semibold"
+              className="w-full bg-[#CC6600] hover:bg-[#E67A00] text-black px-6 py-8 text-base font-semibold"
             >
               <Link href="/login?callbackUrl=/payment" onClick={() => trackLead()}>
                 Start jouw fotoshoot nu - € 29 <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
