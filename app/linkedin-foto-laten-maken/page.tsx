@@ -127,7 +127,7 @@ export default function LinkedInProfielFotoPage() {
           button[class*="bg-[#FF8C00"]], button[class*="bg-[#CC6600"]], a[class*="bg-[#FF8C00"]], a[class*="bg-[#CC6600"]],
           .bg-\\[\\#FF8C00\\], .bg-\\[\\#CC6600\\], button.bg-\\[\\#FF8C00\\], button.bg-\\[\\#CC6600\\],
           a.bg-\\[\\#FF8C00\\], a.bg-\\[\\#CC6600\\] {
-            background-color: #D35400 !important;
+            background-color: #E67E00 !important;
             color: #FFFFFF !important;
           }
           button[class*="bg-[#FF8C00"]]:hover, button[class*="bg-[#CC6600"]]:hover, 
@@ -139,7 +139,7 @@ export default function LinkedInProfielFotoPage() {
             color: #FFFFFF !important;
           }
           [style*="background-color: #D35400"], [style*="backgroundColor: '#D35400'"], [style*="background-color: #E67E00"], [style*="backgroundColor: '#E67E00'"], [style*="background-color: #FF8C00"], [style*="backgroundColor: '#FF8C00'"] {
-            background-color: #D35400 !important;
+            background-color: #E67E00 !important;
             color: #FFFFFF !important;
           }
         `
@@ -283,7 +283,7 @@ export default function LinkedInProfielFotoPage() {
         <Link href="/login?callbackUrl=/payment" onClick={() => trackLead()}>
           <button 
             style={{ 
-              backgroundColor: '#D35400',
+              backgroundColor: '#E67E00',
               color: '#FFFFFF',
               padding: '1rem 2.5rem',
               fontSize: '1rem',
@@ -299,7 +299,7 @@ export default function LinkedInProfielFotoPage() {
               width: '100%'
             }}
             onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#FF9500'}
-            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#D35400'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#E67E00'}
           >
             <span style={{ color: '#FFFFFF' }}>Start jouw fotoshoot nu - € 29</span>
             <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" style={{ color: '#FFFFFF' }} />
@@ -453,7 +453,7 @@ export default function LinkedInProfielFotoPage() {
               <Link href="/login?callbackUrl=/payment" onClick={() => trackLead()}>
                 <button 
                   style={{ 
-                    backgroundColor: '#D35400',
+                    backgroundColor: '#E67E00',
                     color: '#FFFFFF',
                     padding: '1.5rem 2rem',
                     fontSize: '1.125rem',
@@ -466,7 +466,7 @@ export default function LinkedInProfielFotoPage() {
                     justifyContent: 'center'
                   }}
                   onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#FF9500'}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#D35400'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#E67E00'}
                 >
                   <span style={{ color: '#FFFFFF' }}>Nu</span>
                   <ArrowRight className="ml-2 h-5 w-5" style={{ color: '#FFFFFF' }} />
@@ -797,7 +797,7 @@ export default function LinkedInProfielFotoPage() {
           <Link href="/login?callbackUrl=/payment" onClick={() => trackLead()}>
             <button 
               style={{ 
-                backgroundColor: '#D35400',
+                backgroundColor: '#E67E00',
                 color: '#FFFFFF',
                 padding: '1rem 2rem',
                 fontSize: '1.125rem',
@@ -810,7 +810,7 @@ export default function LinkedInProfielFotoPage() {
                 justifyContent: 'center'
               }}
               onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#FF9500'}
-              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#D35400'}
+              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#E67E00'}
             >
               <span style={{ color: '#FFFFFF' }}>Start jouw fotoshoot nu - € 29</span>
               <ArrowRight className="ml-2 h-5 w-5" style={{ color: '#FFFFFF' }} />
@@ -954,7 +954,7 @@ export default function LinkedInProfielFotoPage() {
             <Link href="/login?callbackUrl=/payment" onClick={() => trackLead()}>
               <button 
                 style={{ 
-                  backgroundColor: '#D35400',
+                  backgroundColor: '#E67E00',
                   color: '#FFFFFF',
                   width: '100%',
                   padding: '2rem 1.5rem',
@@ -968,7 +968,7 @@ export default function LinkedInProfielFotoPage() {
                   justifyContent: 'center'
                 }}
                 onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#FF9500'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#D35400'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#E67E00'}
               >
                 <span style={{ color: '#FFFFFF' }}>Start jouw fotoshoot nu - € 29</span>
                 <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" style={{ color: '#FFFFFF' }} />
