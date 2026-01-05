@@ -288,10 +288,11 @@ export default function HomePage() {
                         width={320}
                         height={400}
                         className="w-full h-full object-cover bg-gray-50 brightness-110 contrast-105"
-                        priority={index < 3}
-                        loading={index < 3 ? "eager" : "lazy"}
-                        quality={75}
-                        sizes="(max-width: 768px) 208px, 320px"
+                        priority={index === 0}
+                        fetchPriority={index === 0 ? "high" : "auto"}
+                        loading={index === 0 ? "eager" : "lazy"}
+                        quality={index === 0 ? 50 : 75}
+                        sizes={index === 0 ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 208px, 320px"}
                       />
                     </div>
                   </div>
