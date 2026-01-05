@@ -319,56 +319,7 @@ export default function LinkedInProfielFotoPage() {
       {/* Photo Carousel - FIXED: Smooth continuous scrolling */}
       <section className="w-full overflow-hidden mb-16 md:mb-24 bg-gradient-to-r from-blue-50 via-white to-blue-50" style={{ contain: 'layout paint' }}>
         <div className="relative" style={{ contentVisibility: 'auto' }}>
-          {/* Static LCP Image - Rendered first without JS, outside carousel */}
-          <div className="flex justify-center mb-4 md:hidden">
-            <div 
-              className="w-52 h-[13.33rem] lcp-image-container rounded-xl bg-gray-100 shadow-md"
-              style={{ contentVisibility: 'auto', containIntrinsicSize: '208px 260px', contain: 'layout paint' }}
-            >
-              <div className="w-full h-full overflow-hidden rounded-xl">
-                <Image
-                  src={galleryPhotos[0] || "/placeholder.svg"}
-                  alt="LinkedIn portret voorbeeld 1"
-                  width={320}
-                  height={400}
-                  className="w-full h-full object-cover bg-gray-50 brightness-110 contrast-105"
-                  priority={true}
-                  fetchPriority="high"
-                  loading="eager"
-                  decoding="sync"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  quality={50}
-                  unoptimized={true}
-                  style={{ width: '208px', height: '260px' }}
-                />
-              </div>
-            </div>
-          </div>
-          <div className="hidden md:flex justify-center mb-4">
-            <div 
-              className="w-80 h-[20rem] lcp-image-container rounded-2xl bg-gray-100 shadow-lg"
-              style={{ contentVisibility: 'auto', containIntrinsicSize: '320px 400px', contain: 'layout paint' }}
-            >
-              <div className="w-full h-full overflow-hidden rounded-2xl">
-                <Image
-                  src={galleryPhotos[0] || "/placeholder.svg"}
-                  alt="LinkedIn portret voorbeeld 1"
-                  width={320}
-                  height={400}
-                  className="w-full h-full object-cover bg-gray-50 brightness-110 contrast-105"
-                  priority={true}
-                  fetchPriority="high"
-                  loading="eager"
-                  decoding="sync"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  quality={50}
-                  unoptimized={true}
-                  style={{ width: '320px', height: '400px' }}
-                />
-              </div>
-            </div>
-          </div>
-          {/* Carousel for remaining images */}
+          {/* Carousel for all images */}
           <div className="carousel-container">
             <div className="carousel-track">
               {galleryPhotos.map((photo, index) => (
@@ -381,12 +332,12 @@ export default function LinkedInProfielFotoPage() {
                         width={320}
                         height={400}
                         className="w-full h-full object-cover bg-gray-50 brightness-110 contrast-105"
-                        priority={index < 2}
-                        fetchPriority={index < 2 ? "high" : "auto"}
-                        loading={index < 2 ? "eager" : "lazy"}
+                        priority={index === 0}
+                        fetchPriority={index === 0 ? "high" : "auto"}
+                        loading={index === 0 ? "eager" : "lazy"}
                         sizes="(max-width: 768px) 208px, 320px"
                         quality={75}
-                        unoptimized={index < 2}
+                        unoptimized={index === 0}
                         style={{ aspectRatio: "4/5" }}
                       />
                     </div>
