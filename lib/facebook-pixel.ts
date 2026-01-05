@@ -8,9 +8,20 @@ declare global {
 }
 
 // Initialize fbq queue early to prevent "fbq is not defined" errors
-if (typeof window !== "undefined") {
-  window.fbq = window.fbq || function(...args: any[]) {
-    (window.fbq.q = window.fbq.q || []).push(args)
+if (typeof window !== "undefined" && window !== null) {
+  if (!window.fbq) {
+    window.fbq = function(...args: any[]) {
+      if (!window.fbq.q) {
+        window.fbq.q = []
+      }
+      if (Array.isArray(window.fbq.q)) {
+        window.fbq.q.push(args)
+      }
+    }
+  }
+  // Ensure q property exists
+  if (!window.fbq.q || !Array.isArray(window.fbq.q)) {
+    window.fbq.q = []
   }
 }
 

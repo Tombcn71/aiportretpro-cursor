@@ -6,30 +6,53 @@ import { useEffect } from "react"
 export default function FacebookPixel() {
   useEffect(() => {
     // Initialize fbq queue before loading script to prevent "fbq is not defined" errors
-    if (typeof window !== "undefined") {
-      window.fbq = window.fbq || function(...args: any[]) {
-        (window.fbq.q = window.fbq.q || []).push(args)
+    if (typeof window !== "undefined" && window !== null) {
+      if (!window.fbq) {
+        window.fbq = function(...args: any[]) {
+          if (!window.fbq || !window.fbq.q) {
+            if (window.fbq) {
+              window.fbq.q = []
+            }
+          }
+          if (window.fbq && window.fbq.q && Array.isArray(window.fbq.q)) {
+            window.fbq.q.push(args)
+          }
+        }
+      }
+      // Ensure q property exists
+      if (!window.fbq.q || !Array.isArray(window.fbq.q)) {
+        window.fbq.q = []
       }
     }
 
     // Defer Facebook Pixel loading until after LCP
     const loadPixel = () => {
-      if (typeof window !== "undefined" && !window.fbq || (window.fbq && !window.fbq.loaded)) {
-        const script = document.createElement("script")
-        script.async = true
-        script.src = "https://connect.facebook.net/en_US/fbevents.js"
-        script.onload = () => {
-          if (typeof window !== "undefined" && typeof window.fbq !== "undefined" && window.fbq) {
-            try {
-              window.fbq("init", "8110588262372718")
-              window.fbq("track", "PageView")
-              console.log("✅ Facebook Pixel loaded with ID: 8110588262372718")
-            } catch (error) {
-              console.log("❌ Facebook Pixel initialization error:", error)
+      if (typeof window !== "undefined" && window !== null && typeof document !== "undefined" && document !== null) {
+        if (!window.fbq || (window.fbq && !window.fbq.loaded)) {
+          const script = document.createElement("script")
+          script.async = true
+          script.src = "https://connect.facebook.net/en_US/fbevents.js"
+          script.onload = () => {
+            if (typeof window !== "undefined" && window !== null && typeof window.fbq !== "undefined" && window.fbq) {
+              try {
+                const pixelId = "8110588262372718"
+                if (pixelId && typeof pixelId === "string") {
+                  window.fbq("init", pixelId)
+                  window.fbq("track", "PageView", {})
+                  console.log("✅ Facebook Pixel loaded with ID: " + pixelId)
+                }
+              } catch (error) {
+                console.log("❌ Facebook Pixel initialization error:", error)
+              }
             }
           }
+          script.onerror = () => {
+            console.log("❌ Facebook Pixel script failed to load")
+          }
+          if (document.head) {
+            document.head.appendChild(script)
+          }
         }
-        document.head.appendChild(script)
       }
     }
 
