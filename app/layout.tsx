@@ -77,6 +77,15 @@ export default function RootLayout({
         <link rel="preconnect" href="https://connect.facebook.net" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://connect.facebook.net" />
         
+        {/* LCP Image Preload for LinkedIn page - Eliminates 830ms resource load delay */}
+        {/* Preload the optimized Next.js image URL matching the Image component */}
+        <link 
+          rel="preload" 
+          fetchPriority="high" 
+          as="image" 
+          href="/_next/image?url=%2Fimages%2Fshoot%2F1.png&w=384&q=50"
+        />
+        
         {/* Performance Budget */}
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <meta name="theme-color" content="#0077B5" />
