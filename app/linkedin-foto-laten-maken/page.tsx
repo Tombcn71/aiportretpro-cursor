@@ -282,21 +282,16 @@ export default function LinkedInProfielFotoPage() {
 
         <Link href="/login?callbackUrl=/payment" onClick={() => trackLead()}>
           <button 
+            className="px-6 md:px-10 py-8 md:py-8 text-base md:text-lg mb-3 md:max-w-sm"
             style={{ 
               backgroundColor: '#E67E00',
               color: '#FFFFFF',
-              padding: '1rem 2.5rem',
-              fontSize: '1rem',
-              fontWeight: '500',
               borderRadius: '0.5rem',
               border: 'none',
               cursor: 'pointer',
               display: 'inline-flex',
               alignItems: 'center',
-              justifyContent: 'center',
-              marginBottom: '0.75rem',
-              maxWidth: '24rem',
-              width: '100%'
+              justifyContent: 'center'
             }}
             onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#FF9500'}
             onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#E67E00'}
@@ -452,12 +447,10 @@ export default function LinkedInProfielFotoPage() {
               <p className="text-xl font-semibold text-gray-800 mb-6">Bespaar €170+</p>
               <Link href="/login?callbackUrl=/payment" onClick={() => trackLead()}>
                 <button 
+                  className="px-8 py-6 text-lg"
                   style={{ 
                     backgroundColor: '#E67E00',
                     color: '#FFFFFF',
-                    padding: '1.5rem 2rem',
-                    fontSize: '1.125rem',
-                    fontWeight: '500',
                     borderRadius: '0.5rem',
                     border: 'none',
                     cursor: 'pointer',
@@ -796,12 +789,10 @@ export default function LinkedInProfielFotoPage() {
           <p className="text-xl text-gray-600 mb-8">Verhoog je LinkedIn zichtbaarheid met een krachtige profielfoto</p>
           <Link href="/login?callbackUrl=/payment" onClick={() => trackLead()}>
             <button 
+              className="px-8 py-4 text-lg"
               style={{ 
                 backgroundColor: '#E67E00',
                 color: '#FFFFFF',
-                padding: '1rem 2rem',
-                fontSize: '1.125rem',
-                fontWeight: '500',
                 borderRadius: '0.5rem',
                 border: 'none',
                 cursor: 'pointer',
@@ -953,13 +944,10 @@ export default function LinkedInProfielFotoPage() {
             </p>
             <Link href="/login?callbackUrl=/payment" onClick={() => trackLead()}>
               <button 
+                className="w-full px-6 py-8 text-base font-semibold"
                 style={{ 
                   backgroundColor: '#E67E00',
                   color: '#FFFFFF',
-                  width: '100%',
-                  padding: '2rem 1.5rem',
-                  fontSize: '1rem',
-                  fontWeight: '600',
                   borderRadius: '0.5rem',
                   border: 'none',
                   cursor: 'pointer',
