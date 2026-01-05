@@ -99,7 +99,10 @@ export default function RootLayout({
             @media(min-width:768px){h1{font-size:2.25rem}}
             .text-\\[\\#0077B5\\]{color:#0077B5}
             .bg-\\[\\#FF8C00\\]{background-color:#FF8C00}
+            .bg-\\[\\#CC6600\\]{background-color:#CC6600}
             .hover\\:bg-\\[\\#FFA500\\]:hover{background-color:#FFA500}
+            .hover\\:bg-\\[\\#E67A00\\]:hover{background-color:#E67A00}
+            .text-white{color:#fff}
             .carousel-container{width:100%;overflow:hidden;position:relative}
             .carousel-track{display:flex;width:fit-content;animation:carousel 140s linear infinite;content-visibility:auto}
             .carousel-item{flex-shrink:0;margin:0 0.5rem}

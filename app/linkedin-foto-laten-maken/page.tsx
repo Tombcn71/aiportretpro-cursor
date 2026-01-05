@@ -280,7 +280,7 @@ export default function LinkedInProfielFotoPage() {
 
       {/* Photo Carousel - FIXED: Smooth continuous scrolling */}
       <section className="w-full overflow-hidden mb-16 md:mb-24 bg-gradient-to-r from-blue-50 via-white to-blue-50" style={{ contain: 'layout paint' }}>
-        <div className="relative">
+        <div className="relative" style={{ contentVisibility: 'auto' }}>
           {/* Static LCP Image - Rendered first without JS, outside carousel */}
           <div className="flex justify-center mb-4 md:hidden">
             <div 
