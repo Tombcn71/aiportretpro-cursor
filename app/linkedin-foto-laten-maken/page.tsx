@@ -125,14 +125,21 @@ export default function LinkedInProfielFotoPage() {
       <style dangerouslySetInnerHTML={{
         __html: `
           button[class*="bg-[#FF8C00"]], button[class*="bg-[#CC6600"]], a[class*="bg-[#FF8C00"]], a[class*="bg-[#CC6600"]],
-          .bg-\\[\\#FF8C00\\], .bg-\\[\\#CC6600\\] {
+          .bg-\\[\\#FF8C00\\], .bg-\\[\\#CC6600\\], button.bg-\\[\\#FF8C00\\], button.bg-\\[\\#CC6600\\],
+          a.bg-\\[\\#FF8C00\\], a.bg-\\[\\#CC6600\\] {
             background-color: #FF8C00 !important;
             color: #FFFFFF !important;
           }
           button[class*="bg-[#FF8C00"]]:hover, button[class*="bg-[#CC6600"]]:hover, 
           a[class*="bg-[#FF8C00"]]:hover, a[class*="bg-[#CC6600"]]:hover,
-          .bg-\\[\\#FF8C00\\]:hover, .bg-\\[\\#CC6600\\]:hover {
+          .bg-\\[\\#FF8C00\\]:hover, .bg-\\[\\#CC6600\\]:hover,
+          button.bg-\\[\\#FF8C00\\]:hover, button.bg-\\[\\#CC6600\\]:hover,
+          a.bg-\\[\\#FF8C00\\]:hover, a.bg-\\[\\#CC6600\\]:hover {
             background-color: #FFA500 !important;
+            color: #FFFFFF !important;
+          }
+          [style*="background-color: #FF8C00"], [style*="backgroundColor: '#FF8C00'"] {
+            background-color: #FF8C00 !important;
             color: #FFFFFF !important;
           }
         `
@@ -277,8 +284,9 @@ export default function LinkedInProfielFotoPage() {
           asChild
           size="lg"
           className=" bg-[#FF8C00] hover:bg-[#FFA500] text-white px-6 md:px-10 py-8 md:py-8 text-base md:text-lg mb-3 md:max-w-sm"
+          style={{ backgroundColor: '#FF8C00', color: '#FFFFFF' }}
         >
-          <Link href="/login?callbackUrl=/payment" onClick={() => trackLead()}>
+          <Link href="/login?callbackUrl=/payment" onClick={() => trackLead()} style={{ backgroundColor: '#FF8C00', color: '#FFFFFF' }}>
             Start jouw fotoshoot nu - € 29 <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
           </Link>
         </Button>
@@ -481,8 +489,9 @@ export default function LinkedInProfielFotoPage() {
                 asChild
                 size="lg"
                 className="bg-[#FF8C00] hover:bg-[#FFA500] text-white px-8 py-6 text-lg"
+                style={{ backgroundColor: '#FF8C00', color: '#FFFFFF' }}
               >
-                <Link href="/login?callbackUrl=/payment" onClick={() => trackLead()}>
+                <Link href="/login?callbackUrl=/payment" onClick={() => trackLead()} style={{ backgroundColor: '#FF8C00', color: '#FFFFFF' }}>
                   Nu <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
@@ -809,7 +818,7 @@ export default function LinkedInProfielFotoPage() {
           </h2>
           <p className="text-xl text-gray-600 mb-8">Verhoog je LinkedIn zichtbaarheid met een krachtige profielfoto</p>
           <Link href="/login?callbackUrl=/payment" onClick={() => trackLead()}>
-            <Button size="lg" className="bg-[#FF8C00] hover:bg-[#FFA500] text-white px-8 py-4 text-lg">
+            <Button size="lg" className="bg-[#FF8C00] hover:bg-[#FFA500] text-white px-8 py-4 text-lg" style={{ backgroundColor: '#FF8C00', color: '#FFFFFF' }}>
               Start jouw fotoshoot nu - € 29 <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </Link>
@@ -952,8 +961,9 @@ export default function LinkedInProfielFotoPage() {
               asChild
               size="lg"
               className="w-full bg-[#FF8C00] hover:bg-[#FFA500] text-white px-6 py-8 text-base font-semibold"
+              style={{ backgroundColor: '#FF8C00', color: '#FFFFFF' }}
             >
-              <Link href="/login?callbackUrl=/payment" onClick={() => trackLead()}>
+              <Link href="/login?callbackUrl=/payment" onClick={() => trackLead()} style={{ backgroundColor: '#FF8C00', color: '#FFFFFF' }}>
                 Start jouw fotoshoot nu - € 29 <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
               </Link>
             </Button>
