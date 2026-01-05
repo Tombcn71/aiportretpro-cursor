@@ -296,6 +296,7 @@ export default function LinkedInProfielFotoPage() {
                   loading="eager"
                   sizes="(max-width: 768px) 100vw, 50vw"
                   quality={50}
+                  unoptimized={true}
                 />
               </div>
             </div>
@@ -314,6 +315,7 @@ export default function LinkedInProfielFotoPage() {
                   loading="eager"
                   sizes="(max-width: 768px) 100vw, 50vw"
                   quality={50}
+                  unoptimized={true}
                 />
               </div>
             </div>
@@ -331,10 +333,12 @@ export default function LinkedInProfielFotoPage() {
                         width={320}
                         height={400}
                         className="w-full h-full object-cover bg-gray-50 brightness-110 contrast-105"
-                        priority={false}
-                        fetchPriority="auto"
+                        priority={index < 2}
+                        fetchPriority={index < 2 ? "high" : "auto"}
+                        loading={index < 2 ? "eager" : "lazy"}
                         sizes="(max-width: 768px) 208px, 320px"
                         quality={75}
+                        unoptimized={index < 2}
                         style={{ aspectRatio: "4/5" }}
                       />
                     </div>
