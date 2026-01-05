@@ -138,7 +138,7 @@ export default function LinkedInProfielFotoPage() {
             background-color: #FF9500 !important;
             color: #FFFFFF !important;
           }
-          [style*="background-color: #D35400"], [style*="backgroundColor: '#D35400'"], [style*="background-color: #E67E00"], [style*="backgroundColor: '#E67E00'"], [style*="background-color: #FF8C00"], [style*="backgroundColor: '#FF8C00'"] {
+          [style*="background-color: #E67E00"], [style*="backgroundColor: '#E67E00'"], [style*="background-color: #FF8C00"], [style*="backgroundColor: '#FF8C00'"] {
             background-color: #E67E00 !important;
             color: #FFFFFF !important;
           }
@@ -304,7 +304,7 @@ export default function LinkedInProfielFotoPage() {
             <span style={{ color: '#FFFFFF' }}>Start jouw fotoshoot nu - € 29</span>
             <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" style={{ color: '#FFFFFF' }} />
           </button>
-        </Link>
+          </Link>
 
         {/* Trust Shield */}
         <div className="flex items-center justify-center gap-2 text-[#0077B5] font-medium text-sm mb-8">
@@ -369,7 +369,7 @@ export default function LinkedInProfielFotoPage() {
       </section>
 
       {/* How It Works */}
-      <HowItWorks />
+ <HowItWorks />
 
       {/* Reviews en Voorbeelden */}
       <ReviewsEnVoorbeelden />
@@ -815,7 +815,7 @@ export default function LinkedInProfielFotoPage() {
               <span style={{ color: '#FFFFFF' }}>Start jouw fotoshoot nu - € 29</span>
               <ArrowRight className="ml-2 h-5 w-5" style={{ color: '#FFFFFF' }} />
             </button>
-          </Link>
+            </Link>
         </div>
       </section>
 
@@ -973,7 +973,7 @@ export default function LinkedInProfielFotoPage() {
                 <span style={{ color: '#FFFFFF' }}>Start jouw fotoshoot nu - € 29</span>
                 <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" style={{ color: '#FFFFFF' }} />
               </button>
-            </Link>
+              </Link>
           </div>
         </div>
       )}
