@@ -113,6 +113,26 @@ export default function RootLayout({
             .items-start{align-items:flex-start}
             .text-start{text-align:start}
             .justify-center{justify-content:center}
+            .w-full{width:100%}
+            .h-full{height:100%}
+            .object-cover{object-fit:cover}
+            .bg-gray-50{background-color:#f9fafb}
+            .brightness-110{filter:brightness(1.1)}
+            .contrast-105{filter:contrast(1.05)}
+            .w-52{width:13rem}
+            .h-\\[13\\.33rem\\]{height:13.33rem}
+            @media(min-width:768px){.md\\:w-80{width:20rem}.md\\:h-\\[20rem\\]{height:20rem}}
+            .rounded-xl{border-radius:0.75rem}
+            @media(min-width:768px){.md\\:rounded-2xl{border-radius:1rem}}
+            .overflow-hidden{overflow:hidden}
+            .bg-gray-100{background-color:#f3f4f6}
+            .shadow-md{box-shadow:0 4px 6px -1px rgba(0,0,0,0.1),0 2px 4px -1px rgba(0,0,0,0.06)}
+            @media(min-width:768px){.md\\:shadow-lg{box-shadow:0 10px 15px -3px rgba(0,0,0,0.1),0 4px 6px -2px rgba(0,0,0,0.05)}}
+            .relative{position:relative}
+            .flex{display:flex}
+            .justify-center{justify-content:center}
+            .mb-4{margin-bottom:1rem}
+            @media(min-width:768px){.md\\:hidden{display:none}.md\\:flex{display:flex}}
           `
         }} />
       </head>
