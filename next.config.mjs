@@ -18,19 +18,6 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
-  // Disable legacy polyfills for modern browsers only
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      // Remove polyfills for modern browsers
-      config.resolve.fallback = {
-        ...config.resolve.fallback,
-        fs: false,
-        net: false,
-        tls: false,
-      }
-    }
-    return config
-  },
   async redirects() {
     return [
       {
