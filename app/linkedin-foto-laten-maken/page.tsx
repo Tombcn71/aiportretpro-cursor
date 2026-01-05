@@ -307,7 +307,7 @@ export default function LinkedInProfielFotoPage() {
                   className="w-full h-full object-cover bg-gray-50 brightness-110 contrast-105"
                   priority={true}
                   fetchPriority="high"
-                  sizes="(max-width: 768px) 40vw, 300px"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   quality={50}
                 />
               </div>
@@ -324,7 +324,7 @@ export default function LinkedInProfielFotoPage() {
                   className="w-full h-full object-cover bg-gray-50 brightness-110 contrast-105"
                   priority={true}
                   fetchPriority="high"
-                  sizes="(max-width: 768px) 40vw, 300px"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   quality={50}
                 />
               </div>
