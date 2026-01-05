@@ -52,24 +52,6 @@ const nextConfig = {
             value: 'max-age=31536000; includeSubDomains; preload',
           },
           {
-            key: 'Content-Security-Policy',
-            value: [
-              "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://connect.facebook.net https://www.googletagmanager.com https://www.google-analytics.com https://vercel.live https://client.crisp.chat",
-              "script-src-elem 'self' https://connect.facebook.net https://www.googletagmanager.com https://www.google-analytics.com https://vercel.live https://client.crisp.chat",
-              "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-              "font-src 'self' https://fonts.gstatic.com data:",
-              "img-src 'self' data: https: blob:",
-              "connect-src 'self' https://connect.facebook.net https://www.google-analytics.com https://vercel.live https://*.vercel.app wss://*.vercel.app https://client.crisp.chat https://storage.crisp.chat wss://client.relay.crisp.chat",
-              "frame-src 'self' https://www.facebook.com",
-              "object-src 'none'",
-              "base-uri 'self'",
-              "form-action 'self'",
-              "frame-ancestors 'none'",
-              "upgrade-insecure-requests",
-            ].join('; '),
-          },
-          {
             key: 'X-Content-Type-Options',
             value: 'nosniff',
           },
@@ -84,14 +66,6 @@ const nextConfig = {
           {
             key: 'Referrer-Policy',
             value: 'strict-origin-when-cross-origin',
-          },
-          {
-            key: 'Cross-Origin-Opener-Policy',
-            value: 'same-origin',
-          },
-          {
-            key: 'Cross-Origin-Embedder-Policy',
-            value: 'credentialless',
           },
         ],
       },

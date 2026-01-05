@@ -8,7 +8,7 @@ export default function FacebookPixel() {
       {/* Initialize fbq queue before loading script to prevent "fbq is not defined" errors */}
       <Script
         id="fbq-init"
-        strategy="lazyOnload"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
             !function(f,b,e,v,n,t,s)
