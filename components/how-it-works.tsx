@@ -2,7 +2,7 @@
 
 export default function HowItWorks() {
   return (
-    <section className="pt-4 pb-16 md:pt-8 md:pb-24 bg-white">
+    <section className="pt-12 pb-16 md:pt-16 md:pb-24 bg-white">
       <div className="container mx-auto px-4">
         <h2 className="text-2xl md:text-4xl font-bold text-center mb-4">Hoe het werkt</h2>
         <p className="text-lg text-gray-600 text-center mb-12 max-w-2xl mx-auto">
