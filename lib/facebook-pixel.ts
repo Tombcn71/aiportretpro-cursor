@@ -1,6 +1,9 @@
 declare global {
   interface Window {
     fbq: any
+    dataLayer?: any[]
+    gtag?: (...args: any[]) => void
+    requestIdleCallback?: (callback: () => void, options?: { timeout?: number }) => number
   }
 }
 
