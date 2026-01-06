@@ -293,6 +293,7 @@ export default function HomePage() {
                           priority={true}
                           fetchPriority="high"
                           loading="eager"
+                          decoding="sync"
                           className="w-full h-full object-cover bg-gray-50 brightness-110 contrast-105"
                           sizes="(max-width: 768px) 208px, 320px"
                         />
