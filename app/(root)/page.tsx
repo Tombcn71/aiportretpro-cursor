@@ -207,7 +207,7 @@ export default function HomePage() {
 
       <main id="main-content" role="main">
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-6 text-center">
+      <section className="container mx-auto px-4 pt-20 pb-6 text-center">
         {/* Stars and Trust Badge */}
         <div className="flex flex-col items-center gap-2 mb-6">
           <div className="flex items-center gap-2">
