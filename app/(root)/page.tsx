@@ -289,13 +289,13 @@ export default function HomePage() {
                           alt="AI profielfoto voorbeeld 1"
                           width={320}
                           height={400}
-                          className="w-full h-full object-cover bg-gray-50 lcp-image-filter"
                           priority={true}
                           loading="eager"
                           fetchPriority="high"
                           decoding="sync"
                           sizes="(max-width: 768px) 100vw, 320px"
                           quality={75}
+                          className="w-full h-full object-cover bg-gray-50 lcp-image-filter"
                           style={{ 
                             contentVisibility: "auto", 
                             containIntrinsicSize: "320px 400px",
