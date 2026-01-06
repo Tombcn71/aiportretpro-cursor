@@ -242,7 +242,7 @@ export default function HomePage() {
         <p className="hidden md:block text-base md:text-xl mb-6 text-[#374151] font-normal">Upload een paar selfies en onze AI doet de rest. Ontvang binnen 15 minuten 40 professionele foto's</p>
 
         <div className="text-md md:text-lg text-[#374151] mb-8 max-w-2xl mx-auto text-center">
-          <div className="inline-grid grid-cols-[auto_1fr] gap-x-2 items-start text-start justify-center">
+          <div className="inline-grid grid-cols-[auto_1fr] gap-x-2 items-start text-start justify-center" style={{ minHeight: '120px', containIntrinsicSize: '120px' }}>
             <span className="text-center text-xl md:text-2xl">🏷️</span>
             <span>6x goedkoper dan een fotograaf</span>
             <span className="text-center text-xl md:text-2xl">✨</span>
