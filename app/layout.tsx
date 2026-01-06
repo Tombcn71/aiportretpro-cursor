@@ -146,6 +146,37 @@ export default function RootLayout({
             .justify-center{justify-content:center}
             .mb-4{margin-bottom:1rem}
             @media(min-width:768px){.md\\:hidden{display:none}.md\\:flex{display:flex}}
+            .mx-auto{margin-left:auto;margin-right:auto}
+            .text-3xl{font-size:1.875rem;line-height:2.25rem}
+            @media(min-width:768px){.md\\:text-4xl{font-size:2.25rem;line-height:2.5rem}}
+            .text-\\[\\#374151\\]{color:#374151}
+            .fill-yellow-400{fill:#facc15}
+            .fill-gray-300{fill:#d1d5db}
+            .gap-1{gap:0.25rem}
+            .gap-2{gap:0.5rem}
+            .max-w-2xl{max-width:42rem}
+            .bg-gradient-to-r{background-image:linear-gradient(to right,var(--tw-gradient-stops))}
+            .from-blue-50{--tw-gradient-from:#eff6ff;--tw-gradient-to:rgba(239,246,255,0);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}
+            .via-white{--tw-gradient-to:rgba(255,255,255,0);--tw-gradient-stops:var(--tw-gradient-from),rgba(255,255,255,0.5),var(--tw-gradient-to)}
+            .to-blue-50{--tw-gradient-to:#eff6ff}
+            .mb-8{margin-bottom:2rem}
+            .mb-16{margin-bottom:4rem}
+            @media(min-width:768px){.md\\:mb-24{margin-bottom:6rem}}
+            .text-sm{font-size:0.875rem;line-height:1.25rem}
+            @media(min-width:768px){.md\\:text-base{font-size:1rem;line-height:1.5rem}}
+            .font-semibold{font-weight:600}
+            .text-gray-900{color:#111827}
+            .font-medium{font-weight:500}
+            .text-xl{font-size:1.25rem;line-height:1.75rem}
+            @media(min-width:768px){.md\\:text-2xl{font-size:1.5rem;line-height:2rem}}
+            .font-normal{font-weight:400}
+            .text-base{font-size:1rem;line-height:1.5rem}
+            @media(min-width:768px){.md\\:text-lg{font-size:1.125rem;line-height:1.75rem}}
+            .px-6{padding-left:1.5rem;padding-right:1.5rem}
+            @media(min-width:768px){.md\\:px-10{padding-left:2.5rem;padding-right:2.5rem}}
+            .py-8{padding-top:2rem;padding-bottom:2rem}
+            .mb-3{margin-bottom:0.75rem}
+            @media(min-width:768px){.md\\:max-w-sm{max-width:24rem}}
           `
         }} />
       </head>
