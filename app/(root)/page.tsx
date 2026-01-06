@@ -296,7 +296,12 @@ export default function HomePage() {
                           decoding="sync"
                           sizes="(max-width: 768px) 100vw, 320px"
                           quality={75}
-                          style={{ contentVisibility: "auto", containIntrinsicSize: "320px 400px" }}
+                          style={{ 
+                            contentVisibility: "auto", 
+                            containIntrinsicSize: "320px 400px",
+                            opacity: 1,
+                            transform: "none"
+                          }}
                         />
                       ) : (
                         <Image
