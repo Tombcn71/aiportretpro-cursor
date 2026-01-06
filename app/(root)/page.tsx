@@ -290,8 +290,8 @@ export default function HomePage() {
                           width={320}
                           height={400}
                           priority={true}
-                          loading="eager"
                           fetchPriority="high"
+                          loading="eager"
                           decoding="sync"
                           sizes="(max-width: 768px) 100vw, 320px"
                           quality={75}
