@@ -73,9 +73,10 @@ export default function RootLayout({
         {/* LCP Image Preload - Must be at top of head for maximum performance */}
         <link 
           rel="preload" 
-          as="image" 
-          href="/_next/image?url=%2Fimages%2Fshoot%2F1.png&w=1080&q=75" 
           fetchPriority="high" 
+          as="image" 
+          href="/images/shoot/1.png" 
+          type="image/png" 
         />
         
         {/* Performance & SEO Resource Hints */}
