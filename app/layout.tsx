@@ -70,21 +70,21 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         
+        {/* LCP Image Preload - Must be at top of head for maximum performance */}
+        <link 
+          rel="preload" 
+          as="image" 
+          href="https://www.aiportretpro.nl/_next/image?url=%2Fimages%2Fshoot%2F1.png&w=1080&q=75" 
+          fetchPriority="high" 
+        />
+        
         {/* Performance & SEO Resource Hints */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://connect.facebook.net" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://connect.facebook.net" />
-        
-        {/* LCP Image Preload for LinkedIn page - Eliminates 830ms resource load delay */}
-        {/* Preload the optimized Next.js image URL matching the Image component */}
-        <link 
-          rel="preload" 
-          fetchPriority="high" 
-          as="image" 
-          href="/_next/image?url=%2Fimages%2Fshoot%2F1.png&w=384&q=75"
-        />
         
         {/* Performance Budget */}
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -94,6 +94,7 @@ export default function RootLayout({
         <style dangerouslySetInnerHTML={{
           __html: `
             body{margin:0;font-family:Inter,sans-serif;line-height:1.6}
+            header{background-color:#fff;box-shadow:0 1px 3px 0 rgba(0,0,0,0.1);border-bottom:1px solid #e5e7eb;position:fixed;top:0;left:0;right:0;z-index:50}
             .container{max-width:1200px;margin:0 auto;padding:0 1rem}
             h1{font-size:1.25rem;font-weight:700;line-height:1.2;margin:0 0 1.5rem}
             @media(min-width:768px){h1{font-size:2.25rem}}
@@ -101,15 +102,16 @@ export default function RootLayout({
             .bg-\\[\\#FF8C00\\]{background-color:#FF8C00!important}
             .bg-\\[\\#CC6600\\]{background-color:#FF8C00!important}
             .hover\\:bg-\\[\\#FFA500\\]:hover{background-color:#FFA500!important}
-            .hover\\:bg-\\[\\#E67A00\\]:hover{background-color:#FFA500!important}
             .text-white{color:#FFFFFF!important}
             button[class*="bg-\\[\\#FF8C00\\]"],button[class*="bg-\\[\\#CC6600\\]"],a[class*="bg-\\[\\#FF8C00\\]"],a[class*="bg-\\[\\#CC6600\\]"]{background-color:#FF8C00!important;color:#FFFFFF!important}
             button[class*="bg-\\[\\#FF8C00\\]"]:hover,button[class*="bg-\\[\\#CC6600\\]"]:hover,a[class*="bg-\\[\\#FF8C00\\]"]:hover,a[class*="bg-\\[\\#CC6600\\]"]:hover{background-color:#FFA500!important;color:#FFFFFF!important}
             [class*="bg-\\[\\#FF8C00\\]"][class*="text-white"],[class*="bg-\\[\\#CC6600\\]"][class*="text-white"]{background-color:#FF8C00!important;color:#FFFFFF!important}
             [class*="bg-\\[\\#FF8C00\\]"][class*="text-white"]:hover,[class*="bg-\\[\\#CC6600\\]"][class*="text-white"]:hover{background-color:#FFA500!important;color:#FFFFFF!important}
-            .carousel-container{width:100%;overflow:hidden;position:relative}
-            .carousel-track{display:flex;width:fit-content;animation:carousel 140s linear infinite;content-visibility:auto}
+            .carousel-container{width:100%;overflow:hidden;position:relative;min-height:400px}
+            .carousel-track{display:flex;width:fit-content;animation:carousel 200s linear infinite;content-visibility:auto;min-height:400px}
             .carousel-item{flex-shrink:0;margin:0 0.5rem}
+            .carousel-item:first-child{display:block!important;opacity:1!important;visibility:visible!important}
+            .carousel-item>div>div{aspect-ratio:4/5}
             .lcp-image-container{aspect-ratio:4/5}
             @keyframes carousel{0%{transform:translateX(calc(-100%/2))}100%{transform:translateX(0)}}
             .pt-20{padding-top:5rem}

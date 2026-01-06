@@ -108,7 +108,7 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen pt-20">
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -205,6 +205,7 @@ export default function HomePage() {
       <FAQSchema faqs={faqData} />
       <Header />
 
+      <main id="main-content" role="main">
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-6 text-center">
         {/* Stars and Trust Badge */}
@@ -238,9 +239,9 @@ export default function HomePage() {
             <span className="inline md:block text-[#0077B5]">zonder gedoe van een fotoshoot</span>
           </div>
         </h1>
-        <p className="hidden md:block text-base md:text-xl mb-6 text-gray-700 font-normal">Upload een paar selfies en onze AI doet de rest. Ontvang binnen 15 minuten 40 professionele foto's</p>
+        <p className="hidden md:block text-base md:text-xl mb-6 text-[#374151] font-normal">Upload een paar selfies en onze AI doet de rest. Ontvang binnen 15 minuten 40 professionele foto's</p>
 
-        <div className="text-md md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto text-center">
+        <div className="text-md md:text-lg text-[#374151] mb-8 max-w-2xl mx-auto text-center">
           <div className="inline-grid grid-cols-[auto_1fr] gap-x-2 items-start text-start justify-center">
             <span className="text-center text-xl md:text-2xl">🏷️</span>
             <span>6x goedkoper dan een fotograaf</span>
@@ -274,26 +275,40 @@ export default function HomePage() {
       </section>
 
       {/* Photo Carousel - FIXED: Smooth continuous scrolling */}
-      <section className="w-full overflow-hidden mb-16 md:mb-24 bg-gradient-to-r from-blue-50 via-white to-blue-50">
+      <section className="w-full overflow-hidden mb-16 md:mb-24 bg-gradient-to-r from-blue-50 via-white to-blue-50" style={{ minHeight: '400px' }}>
         <div className="relative">
           <div className="carousel-container">
             <div className="carousel-track">
               {galleryPhotos.map((photo, index) => (
                 <div key={`carousel-${index}`} className="carousel-item">
                   <div className="relative">
-                    <div className="w-52 h-[13.33rem] md:w-80 md:h-[20rem] rounded-xl md:rounded-2xl overflow-hidden bg-gray-100 shadow-md md:shadow-lg">
-                      <Image
-                        src={photo || "/placeholder.svg"}
-                        alt={`AI profielfoto voorbeeld ${index + 1}`}
-                        width={320}
-                        height={400}
-                        className="w-full h-full object-cover bg-gray-50 brightness-110 contrast-105"
-                        priority={index === 0}
-                        fetchPriority={index === 0 ? "high" : "auto"}
-                        loading={index === 0 ? "eager" : "lazy"}
-                        quality={index === 0 ? 50 : 75}
-                        sizes={index === 0 ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 208px, 320px"}
-                      />
+                    <div className="w-52 h-[13.33rem] md:w-80 md:h-[20rem] rounded-xl md:rounded-2xl overflow-hidden bg-gray-100 shadow-md md:shadow-lg" style={{ aspectRatio: "4/5" }}>
+                      {index === 0 ? (
+                        <Image
+                          src={photo || "/placeholder.svg"}
+                          alt="AI profielfoto voorbeeld 1"
+                          width={320}
+                          height={400}
+                          className="w-full h-full object-cover bg-gray-50 brightness-110 contrast-105"
+                          priority={true}
+                          loading="eager"
+                          fetchPriority="high"
+                          decoding="sync"
+                          unoptimized={true}
+                          style={{ contentVisibility: "auto", containIntrinsicSize: "320px 400px" }}
+                        />
+                      ) : (
+                        <Image
+                          src={photo || "/placeholder.svg"}
+                          alt={`AI profielfoto voorbeeld ${index + 1}`}
+                          width={320}
+                          height={400}
+                          className="w-full h-full object-cover bg-gray-50 brightness-110 contrast-105"
+                          loading="lazy"
+                          quality={75}
+                          sizes="(max-width: 768px) 208px, 320px"
+                        />
+                      )}
                     </div>
                   </div>
                 </div>
@@ -344,23 +359,23 @@ export default function HomePage() {
               <ul className="space-y-4">
                 <li className="flex flex-col gap-1">
                   <span className="font-semibold text-gray-900">Prijs:</span>
-                  <span className="text-gray-600">Vaak tussen de €150 en €350.</span>
+                  <span className="text-[#374151]">Vaak tussen de €150 en €350.</span>
                 </li>
                 <li className="flex flex-col gap-1">
                   <span className="font-semibold text-gray-900">Tijd:</span>
-                  <span className="text-gray-600">Afspraak plannen, reistijd en een uur poseren.</span>
+                  <span className="text-[#374151]">Afspraak plannen, reistijd en een uur poseren.</span>
                 </li>
                 <li className="flex flex-col gap-1">
                   <span className="font-semibold text-gray-900">Geduld:</span>
-                  <span className="text-gray-600">1 tot 2 weken wachten op de nabewerking.</span>
+                  <span className="text-[#374151]">1 tot 2 weken wachten op de nabewerking.</span>
                 </li>
                 <li className="flex flex-col gap-1">
                   <span className="font-semibold text-gray-900">Resultaat:</span>
-                  <span className="text-gray-600">Slechts 3 tot 5 foto's inbegrepen (bijbetalen voor meer).</span>
+                  <span className="text-[#374151]">Slechts 3 tot 5 foto's inbegrepen (bijbetalen voor meer).</span>
                 </li>
                 <li className="flex flex-col gap-1">
                   <span className="font-semibold text-gray-900">Risico:</span>
-                  <span className="text-gray-600">Niet tevreden? Jammer, je betaalt de fotograaf voor zijn tijd.</span>
+                  <span className="text-[#374151]">Niet tevreden? Jammer, je betaalt de fotograaf voor zijn tijd.</span>
                 </li>
               </ul>
             </div>
@@ -413,7 +428,7 @@ export default function HomePage() {
       {/* FAQ Section */}
       <section id="faq" className="container mx-auto px-4 py-12 md:py-16 bg-gray-50">
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-4">Veelgestelde Vragen</h2>
-        <p className="text-lg text-gray-600 text-center mb-8 md:mb-12 max-w-2xl mx-auto">
+        <p className="text-lg text-[#374151] text-center mb-8 md:mb-12 max-w-2xl mx-auto">
           Alles wat je moet weten voor je begint.
         </p>
         <div className="max-w-3xl mx-auto">
@@ -432,14 +447,14 @@ export default function HomePage() {
                   )}
                 </div>
                 {openFaqIndex === index && (
-                  <div className="mt-4 text-gray-600 text-sm md:text-base leading-relaxed">{faq.answer}</div>
+                  <div className="mt-4 text-[#374151] text-sm md:text-base leading-relaxed">{faq.answer}</div>
                 )}
               </button>
             </div>
           ))}
         </div>
         <div className="text-center mt-8 md:mt-12">
-          <p className="text-gray-600 mb-4 text-sm md:text-base">Nog vragen? We helpen je graag!</p>
+          <p className="text-[#374151] mb-4 text-sm md:text-base">Nog vragen? We helpen je graag!</p>
           <Button
             asChild
             variant="outline"
@@ -454,40 +469,40 @@ export default function HomePage() {
       <section className="py-12 md:py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-lg md:text-2xl font-semibold text-gray-500 mb-6 text-center">
+            <h2 className="text-lg md:text-2xl font-semibold text-[#374151] mb-6 text-center">
               Professionele Zakelijke Profielfoto's Laten Maken Online – De Slimme Keuze voor Professionals in 2026
             </h2>
             
-            <div className="prose prose-sm md:prose-base max-w-none text-gray-400 md:text-gray-500 leading-relaxed space-y-4 md:space-y-6">
+            <div className="prose prose-sm md:prose-base max-w-none text-[#374151] leading-relaxed space-y-4 md:space-y-6">
               <p className="text-sm md:text-base">
                 In de snel veranderende zakelijke wereld van 2026 is je digitale eerste indruk belangrijker dan ooit. Wie vandaag de dag professionele zakelijke profielfoto's wil laten maken, hoeft niet langer te rekenen op de hoge kosten of het tijdrovende proces van een traditionele fotostudio. Dankzij onze revolutionaire AI-technologie van de nieuwste generatie ontvang je nu veertig professionele profielfoto's in slechts vijftien minuten tijd voor het vaste tarief van negenentwintig euro. Dit maakt onze service de meest efficiënte keuze voor iedereen die een krachtige indruk wil maken op LinkedIn, een CV, de bedrijfswebsite of digitale visitekaartjes.
               </p>
 
-              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">De voordelen van AI LinkedIn profielfoto's in het nieuwe jaar</h3>
+              <h3 className="text-base md:text-lg font-semibold text-[#374151] mt-6 mb-4">De voordelen van AI LinkedIn profielfoto's in het nieuwe jaar</h3>
               
               <p className="text-sm md:text-base">
                 Het jaar 2026 markeert een definitieve omslag in de manier waarop we naar professionele fotografie kijken. Onze service is meer dan zes keer goedkoper dan traditionele fotoshoots, zonder dat dit ten koste gaat van de kwaliteit. Je hebt geen afspraak meer nodig en hoeft niet door de stad te reizen voor een sessie; je start het proces simpelweg direct vanuit huis of vanaf je werkplek. Met de keuze uit veertig verschillende poses en achtergronden ben je verzekerd van een gevarieerd pakket dat perfect aansluit bij jouw specifieke sector. Bovendien bieden wij volledige zekerheid met onze veertien dagen geld-terug-garantie, omdat wij overtuigd zijn van de professionele kwaliteit die onze 2026-engine levert.
               </p>
 
-              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Een veelzijdige oplossing voor elke zakelijke behoefte</h3>
+              <h3 className="text-base md:text-lg font-semibold text-[#374151] mt-6 mb-4">Een veelzijdige oplossing voor elke zakelijke behoefte</h3>
               
               <p className="text-sm md:text-base">
                 Onze AI-fotografie is ontworpen om te voldoen aan elk denkbaar professioneel doel. Of je nu op zoek bent naar LinkedIn profielfoto's die direct opvallen bij recruiters, representatieve foto's voor een overtuigend CV of beelden voor een complete bedrijfswebsite, onze technologie levert resultaten die onmogelijk te onderscheiden zijn van echte studiofotografie. Ook voor e-mail handtekeningen, moderne visitekaartjes en zakelijke social media profielen biedt onze service in 2026 de perfecte uitkomst. Geen gedoe meer met dure studiokosten of lange wachttijden op de nabewerking door een fotograaf; je krijgt direct de uitstraling die bij je carrière past.
               </p>
 
-              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Hoe het proces in 2026 werkt</h3>
+              <h3 className="text-base md:text-lg font-semibold text-[#374151] mt-6 mb-4">Hoe het proces in 2026 werkt</h3>
               
               <p className="text-sm md:text-base">
                 Het proces is volledig geoptimaliseerd voor snelheid en gebruiksvriendelijkheid. Je begint door vier tot twaalf verschillende foto's van jezelf te uploaden. Vervolgens analyseert onze geavanceerde AI je gelaatstrekken en leert het je unieke kenmerken kennen om een natuurgetrouw resultaat te garanderen. Terwijl de technologie op de achtergrond zijn werk doet, hoef je slechts vijftien minuten te wachten tot je veertig professionele foto's in hoge resolutie kunt downloaden vanuit je persoonlijke dashboard.
               </p>
 
-              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Waarom AI Portret Pro de standaard is voor jouw succes</h3>
+              <h3 className="text-base md:text-lg font-semibold text-[#374151] mt-6 mb-4">Waarom AI Portret Pro de standaard is voor jouw succes</h3>
               
               <p className="text-sm md:text-base">
                 In 2026 combineren wij de nieuwste ontwikkelingen op het gebied van kunstmatige intelligentie met de fijne kneepjes van klassieke LinkedIn profielfoto's. Onze algoritmes zijn getraind op tienduizenden zakelijke headshots, waardoor we de ideale balans vinden tussen een natuurlijke uitstraling en zakelijke autoriteit. Met professionele belichting en moderne achtergronden die aansluiten bij de trends van dit jaar, bieden wij de kwaliteit van een topstudio tegen een fractionele prijs. Sluit je aan bij de duizenden professionals die hun zakelijke uitstraling in 2026 al naar een hoger niveau hebben getild.
               </p>
 
-              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Over onze zakelijke profielfoto's in 2026</h3>
+              <h3 className="text-base md:text-lg font-semibold text-[#374151] mt-6 mb-4">Over onze zakelijke profielfoto's in 2026</h3>
               
               <p className="text-sm md:text-base">
                 Onze expertise strekt zich uit over alle facetten van digitale zakelijke LinkedIn profielfoto's. AI Portret Pro is de primaire bron voor het laten maken van LinkedIn profielfoto's en zakelijke profielfoto's online, met een specifieke focus op de Nederlandse markt. Onze diensten omvatten het genereren van corporate headshots, professionele CV-foto's en visuele content voor moderne bedrijfswebsites. Technologisch lopen we voorop met AI LinkedIn profielfoto's die specifiek zijn getraind voor zakelijke doeleinden, waardoor we een superieur en sneller alternatief bieden voor de traditionele fotograaf. Of je nu zoekt naar een LinkedIn profielfoto upgrade of een volledige online fotoshoot, onze virtuele studio levert in 2026 de meest scherpe en representatieve resultaten die momenteel technisch mogelijk zijn.
@@ -503,10 +518,10 @@ export default function HomePage() {
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Klaar voor je professionele profielfoto's?
           </h2>
-          <p className="text-xl text-gray-600 mb-8">Laat zien wie je bent met een krachtige, professionele foto</p>
+          <p className="text-xl text-[#374151] mb-8">Laat zien wie je bent met een krachtige, professionele foto</p>
           {isClient && (
             <Link href="/login?callbackUrl=/payment" onClick={() => trackContact()}>
-              <Button size="lg" className="bg-[#FFA500] hover:bg-[#FF8C00] text-white px-8 py-4 text-lg">
+              <Button size="lg" className="bg-[#FF8C00] hover:bg-[#FFA500] text-white px-8 py-4 text-lg">
                 Start jouw fotoshoot nu - € 29 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
@@ -537,6 +552,8 @@ export default function HomePage() {
           </div>
         </div>
       )}
+
+      </main>
 
       {/* Footer */}
       <footer className="bg-black text-white py-8 px-6">
@@ -687,7 +704,7 @@ export default function HomePage() {
             <p className="text-center text-md font-bold text-gray-800 mb-2 mt-4">
               Professionele foto's in 15 minuten
             </p>
-            <p className="text-center text-sm text-gray-600 mb-4">
+            <p className="text-center text-sm text-[#374151] mb-4">
               Geen gedoe direct resultaat
             </p>
             <Button
@@ -731,11 +748,18 @@ export default function HomePage() {
       display: flex;
       width: fit-content;
       animation: carousel 200s linear infinite;
+      min-height: 400px;
     }
 
     .carousel-item {
       flex-shrink: 0;
       margin: 0 0.5rem;
+    }
+    
+    .carousel-item:first-child {
+      display: block !important;
+      opacity: 1 !important;
+      visibility: visible !important;
     }
 
     @keyframes carousel {
@@ -761,6 +785,6 @@ export default function HomePage() {
     }
   `}</style>
 
-    </div>
+    </>
   )
 }
