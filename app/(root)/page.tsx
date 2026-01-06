@@ -257,7 +257,8 @@ export default function HomePage() {
         <Button
           asChild
           size="lg"
-          className=" bg-[#FF8C00] hover:bg-[#FFA500] text-white px-6 md:px-10 py-8 md:py-8 text-base md:text-lg mb-3 md:max-w-sm"
+          className="bg-[#FF8C00] hover:bg-[#FFA500] text-white px-6 md:px-10 py-8 md:py-8 text-base md:text-lg mb-3 md:max-w-sm font-black"
+          style={{ textShadow: '0 0 1px white' }}
         >
          <Link href="/login?callbackUrl=/payment" onClick={() => trackContact()} aria-label="Start jouw fotoshoot nu voor negenentwintig euro">
             Start jouw fotoshoot nu - € 29 <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
@@ -387,7 +388,7 @@ export default function HomePage() {
 
             {/* AI Portret Pro */}
             <div className="bg-gradient-to-br from-[#0077B5] to-[#005a8c] rounded-2xl p-6 md:p-8 shadow-2xl border-2 border-[#0077B5] relative overflow-hidden">
-              <div className="absolute top-0 right-0 bg-[#FF8C00] text-white px-4 py-1 text-sm font-bold transform rotate-12 translate-x-4 -translate-y-2" aria-label="De slimme keuze badge">
+              <div className="absolute top-0 right-0 bg-[#FF8C00] text-white px-4 py-1 text-sm font-black transform rotate-12 translate-x-4 -translate-y-2" aria-label="De slimme keuze badge" style={{ textShadow: '0 0 0.5px white' }}>
                 DE SLIMME KEUZE
               </div>
               <div className="text-center mb-6">
@@ -418,7 +419,7 @@ export default function HomePage() {
                 </li>
               </ul>
               <div className="mt-6">
-                <Button asChild size="lg" className="w-full bg-[#FF8C00] hover:bg-[#FFA500] text-white font-bold">
+                <Button asChild size="lg" className="w-full bg-[#FF8C00] hover:bg-[#FFA500] text-white font-black">
                   <Link href="/login?callbackUrl=/payment" onClick={() => trackContact()}>
                     Bespaar €170+ Nu <ArrowRight className="ml-2" />
                   </Link>
@@ -526,7 +527,7 @@ export default function HomePage() {
           <p className="text-xl text-[#374151] mb-8">Laat zien wie je bent met een krachtige, professionele foto</p>
           {isClient && (
             <Link href="/login?callbackUrl=/payment" onClick={() => trackContact()} aria-label="Start jouw fotoshoot nu voor negenentwintig euro">
-              <Button size="lg" className="bg-[#FF8C00] hover:bg-[#FFA500] text-white px-8 py-4 text-lg">
+              <Button size="lg" className="bg-[#FF8C00] hover:bg-[#FFA500] text-white px-8 py-4 text-lg font-black" style={{ textShadow: '0 0 1px white' }}>
                 Start jouw fotoshoot nu - € 29 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
@@ -715,7 +716,8 @@ export default function HomePage() {
             <Button
               asChild
               size="lg"
-              className="w-full bg-[#FF8C00] hover:bg-[#FFA500] text-white px-6 py-8 text-base font-semibold"
+              className="w-full bg-[#FF8C00] hover:bg-[#FFA500] text-white px-6 py-8 text-base font-black"
+              style={{ textShadow: '0 0 1px white' }}
             >
               <Link href="/login?callbackUrl=/payment" onClick={() => trackContact()} aria-label="Start jouw fotoshoot nu voor negenentwintig euro">
                 Start jouw fotoshoot nu - € 29 <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
