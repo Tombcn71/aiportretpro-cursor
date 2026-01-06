@@ -74,7 +74,7 @@ export default function RootLayout({
         <link 
           rel="preload" 
           as="image" 
-          href="https://www.aiportretpro.nl/_next/image?url=%2Fimages%2Fshoot%2F1.png&w=1080&q=75" 
+          href="/_next/image?url=%2Fimages%2Fshoot%2F1.png&w=1080&q=75" 
           fetchPriority="high" 
         />
         
