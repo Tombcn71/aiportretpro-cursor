@@ -285,7 +285,7 @@ export default function HomePage() {
                     <div className="w-52 h-[13.33rem] md:w-80 md:h-[20rem] rounded-xl md:rounded-2xl overflow-hidden bg-gray-100 shadow-md md:shadow-lg" style={{ aspectRatio: "4/5" }}>
                       {index === 0 ? (
                         <Image
-                          src={photo || "/placeholder.svg"}
+                          src="/images/shoot/1.png"
                           alt="AI profielfoto voorbeeld 1"
                           width={320}
                           height={400}
@@ -293,8 +293,7 @@ export default function HomePage() {
                           fetchPriority="high"
                           loading="eager"
                           decoding="sync"
-                          sizes="(max-width: 768px) 100vw, 320px"
-                          quality={75}
+                          sizes="(max-width: 768px) 208px, 320px"
                           className="w-full h-full object-cover bg-gray-50 lcp-image-filter"
                           style={{ 
                             contentVisibility: "auto", 

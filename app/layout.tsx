@@ -70,15 +70,6 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         
-        {/* LCP Image Preload - Must be at top of head for maximum performance */}
-        <link 
-          rel="preload" 
-          fetchPriority="high" 
-          as="image" 
-          href="/images/shoot/1.png" 
-          type="image/png" 
-        />
-        
         {/* Performance & SEO Resource Hints */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
