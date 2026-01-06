@@ -294,7 +294,8 @@ export default function HomePage() {
                           loading="eager"
                           fetchPriority="high"
                           decoding="sync"
-                          unoptimized={true}
+                          sizes="(max-width: 768px) 100vw, 320px"
+                          quality={75}
                           style={{ contentVisibility: "auto", containIntrinsicSize: "320px 400px" }}
                         />
                       ) : (
