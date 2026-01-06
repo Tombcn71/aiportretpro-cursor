@@ -65,13 +65,13 @@ export default function RootLayout({
   return (
     <html lang="nl" suppressHydrationWarning>
       <head>
+        {/* LCP Image Preload - Eliminate 2.6s delay - MUST be at top */}
+        <link rel="preload" as="image" href="/_next/image?url=%2Fimages%2Fshoot%2F1.png&w=1080&q=75" fetchpriority="high" />
+        
         <link rel="icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        
-        {/* LCP Image Preload - Eliminate 2.6s delay */}
-        <link rel="preload" as="image" href="/_next/image?url=%2Fimages%2Fshoot%2F1.png&w=1080&q=75" fetchPriority="high" />
         
         {/* Performance & SEO Resource Hints */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
