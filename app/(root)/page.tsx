@@ -289,7 +289,7 @@ export default function HomePage() {
                           alt="AI profielfoto voorbeeld 1"
                           width={320}
                           height={400}
-                          className="w-full h-full object-cover bg-gray-50 brightness-110 contrast-105"
+                          className="w-full h-full object-cover bg-gray-50 lcp-image-filter"
                           priority={true}
                           loading="eager"
                           fetchPriority="high"

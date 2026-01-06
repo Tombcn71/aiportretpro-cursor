@@ -139,6 +139,7 @@ export default function RootLayout({
             .bg-gray-50{background-color:#f9fafb}
             .brightness-110{filter:brightness(1.1)}
             .contrast-105{filter:contrast(1.05)}
+            .lcp-image-filter{filter:brightness(1.1) contrast(1.05)}
             .w-52{width:13rem}
             .h-\\[13\\.33rem\\]{height:13.33rem}
             @media(min-width:768px){.md\\:w-80{width:20rem}.md\\:h-\\[20rem\\]{height:20rem}}
