@@ -201,7 +201,7 @@ export default function LinkedInDenHaagPage() {
         </div>
         
         <h1 className="tracking-tight text-3xl md:text-4xl font-bold mb-6 leading-tight">
-          <span className="inline md:block">Zakelijke LinkedIn Profielfoto Laten Maken in Den Haag, </span>
+          <span className="inline md:block">Zakelijke linkedin profielfoto laten maken in Den Haag, </span>
           <span className="text-[#0077B5] inline md:block">zonder gedoe van een fotoshoot</span>
         </h1>
         <p className="hidden md:block text-gray-500 text-lg md:text-xl mb-6">

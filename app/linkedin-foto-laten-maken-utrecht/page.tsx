@@ -206,7 +206,7 @@ export default function LinkedInUtrechtPage() {
         </div>
         
         <h1 className="tracking-tight text-3xl md:text-4xl font-bold mb-6 leading-tight">
-          <span className="inline md:block">Professionele LinkedIn Foto Laten Maken in Utrecht, </span>
+          <span className="inline md:block">Professionele linkedin foto laten maken in Utrecht, </span>
           <span className="text-[#0077B5] inline md:block">zonder gedoe van een fotoshoot</span>
         </h1>
         <p className="hidden md:block text-gray-500 text-lg md:text-xl mb-6">
