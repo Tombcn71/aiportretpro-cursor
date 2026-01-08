@@ -209,9 +209,7 @@ export default function LinkedInBredaPage() {
             <span className="text-center text-xl md:text-2xl">✨</span>
             <span>Niet van echt te onderscheiden</span>
             <span className="text-center text-xl md:text-2xl">⏱️</span>
-            <span>Klaar binnen 15 minuten</span>
-            <span className="text-center text-xl md:text-2xl">🤝</span>
-            <span>+1200 professionals geholpen</span>
+            <span>Foto's hebben binnen 15 minuten</span>
           </div>
         </div>
 

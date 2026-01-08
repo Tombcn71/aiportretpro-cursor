@@ -246,11 +246,9 @@ export default function HomePage() {
             <span className="text-center text-xl md:text-2xl">🏷️</span>
             <span>6x goedkoper dan een fotograaf</span>
             <span className="text-center text-xl md:text-2xl">✨</span>
-            <span>Niet van echt te onderscheiden</span>
+            <span>100% online, direct beginnen</span>
             <span className="text-center text-xl md:text-2xl">⏱️</span>
-            <span>Klaar binnen 15 minuten</span>
-            <span className="text-center text-xl md:text-2xl">🤝</span>
-            <span>+1200 professionals geholpen</span>
+            <span>Foto's hebben binnen 15 minuten</span>
           </div>
         </div>
 
