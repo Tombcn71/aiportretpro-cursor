@@ -203,7 +203,7 @@ export default function LinkedInRotterdamPage() {
           </div>
         </div>
         
-        <h1 className="tracking-tight text-xl md:text-4xl font-bold mb-6 leading-tight">
+        <h1 className="tracking-tight text-3xl md:text-4xl font-bold mb-6 leading-tight">
           <span className="block">Professionele LinkedIn Profielfoto Laten Maken in Rotterdam? </span>
           <span className="text-[#0077B5] block">Zonder het gedoe van een fotoshoot?</span>
         </h1>
