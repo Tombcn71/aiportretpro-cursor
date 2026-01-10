@@ -70,6 +70,10 @@ export default function RootLayout({
   return (
     <html lang="nl" suppressHydrationWarning>
       <head>
+        <meta
+          name="facebook-domain-verification"
+          content="arud9d47ubf95kw1blnmzy7i6s4bsh"
+        />
         <link rel="icon" href="/favicon.ico" />
         <link
           rel="icon"
