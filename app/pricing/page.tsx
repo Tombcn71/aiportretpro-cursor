@@ -1,76 +1,85 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { useSession } from "next-auth/react"
-import { Header } from "@/components/header"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Check, Star } from "lucide-react"
-import { useRouter } from "next/navigation"
-import { trackViewContent, trackInitiateCheckout } from "@/lib/facebook-pixel"
-import { ProgressIndicator } from "@/components/progress-indicator"
+import { useState, useEffect } from "react";
+import { useSession } from "next-auth/react";
+import { Header } from "@/components/header";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Check, Star } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { trackViewContent, trackInitiateCheckout } from "@/lib/facebook-pixel";
+import { ProgressIndicator } from "@/components/progress-indicator";
 
 export default function PricingPage() {
-  const { data: session, status } = useSession()
-  const [loading, setLoading] = useState(false)
-  const [projectData, setProjectData] = useState<any>(null)
-  const [hasExistingProject, setHasExistingProject] = useState(false)
-  const router = useRouter()
+  const { data: session, status } = useSession();
+  const [loading, setLoading] = useState(false);
+  const [projectData, setProjectData] = useState<any>(null);
+  const [hasExistingProject, setHasExistingProject] = useState(false);
+  const router = useRouter();
 
   // Track pricing page view and initiate checkout
   useEffect(() => {
-    trackViewContent("Pricing Page", "29")
-    
+    trackViewContent("Pricing Page", "29");
+
     // Track InitiateCheckout event when page loads
     if (status === "authenticated" && session?.user) {
-      const userId = (session.user as any).id || session.user.email || `guest_${Date.now()}`
-      const eventID = `checkout_${userId}`
-      trackInitiateCheckout(29.00, "EUR", eventID)
+      const userId =
+        (session.user as any).id || session.user.email || `guest_${Date.now()}`;
+      const eventID = `checkout_${userId}`;
+      trackInitiateCheckout(29.0, "EUR", eventID);
     } else if (status === "unauthenticated") {
       // Track for unauthenticated users with guest ID
-      const eventID = `checkout_guest_${Date.now()}`
-      trackInitiateCheckout(29.00, "EUR", eventID)
+      const eventID = `checkout_guest_${Date.now()}`;
+      trackInitiateCheckout(29.0, "EUR", eventID);
     }
-    
+
     // Get project data from localStorage
-    const pendingProject = localStorage.getItem("pendingProject")
+    const pendingProject = localStorage.getItem("pendingProject");
     if (pendingProject) {
-      const projectData = JSON.parse(pendingProject)
-      setProjectData(projectData)
-      setHasExistingProject(true)
-      
+      const projectData = JSON.parse(pendingProject);
+      setProjectData(projectData);
+      setHasExistingProject(true);
+
       // If it's a temporary project ID, we'll create the real project after payment
-      if (projectData.projectId && typeof projectData.projectId === "string" && projectData.projectId.startsWith("temp_")) {
-        console.log("Using temporary project ID, will create real project after payment")
+      if (
+        projectData.projectId &&
+        typeof projectData.projectId === "string" &&
+        projectData.projectId.startsWith("temp_")
+      ) {
+        console.log(
+          "Using temporary project ID, will create real project after payment"
+        );
       }
     } else {
       // No pending project - user came directly after login
       // This is fine, they can pay first and then go through the wizard
-      setHasExistingProject(false)
-      console.log("No pending project - user will pay first, then go through wizard")
+      setHasExistingProject(false);
+      console.log(
+        "No pending project - user will pay first, then go through wizard"
+      );
     }
-    
+
     // Return undefined (no cleanup function needed)
-    return undefined
-  }, [status, session])
+    return undefined;
+  }, [status, session]);
 
   const handlePlanSelect = () => {
     // Wait for session to load
     if (status === "loading") {
-      console.log("Session still loading, please wait...")
-      return
+      console.log("Session still loading, please wait...");
+      return;
     }
 
     if (!session) {
       // Redirect to login with callback to payment page
-      router.push(`/login?callbackUrl=/payment`)
-      return
+      router.push(`/login?callbackUrl=/payment`);
+      return;
     }
-    handleCheckout()
-  }
+    handleCheckout();
+  };
 
   const handleCheckout = async () => {
-    setLoading(true)
+    setLoading(true);
 
     try {
       const response = await fetch("/api/stripe/create-checkout", {
@@ -78,26 +87,26 @@ export default function PricingPage() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ 
+        body: JSON.stringify({
           planId: "professional",
-          projectId: projectData?.projectId 
+          projectId: projectData?.projectId,
         }),
-      })
+      });
 
-      const data = await response.json()
+      const data = await response.json();
 
       if (data.url) {
-        window.location.href = data.url
+        window.location.href = data.url;
       } else {
-        alert("Er is een fout opgetreden. Probeer het opnieuw.")
+        alert("Er is een fout opgetreden. Probeer het opnieuw.");
       }
     } catch (error) {
-      console.error("Error:", error)
-      alert("Er is een fout opgetreden. Probeer het opnieuw.")
+      console.error("Error:", error);
+      alert("Er is een fout opgetreden. Probeer het opnieuw.");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const features = [
     "40 Professionele portretfoto's",
@@ -106,7 +115,7 @@ export default function PricingPage() {
     "Klaar binnen 15 minuten",
     "Perfect voor LinkedIn, CV & Website",
     "Niet goed? Geld terug",
-  ]
+  ];
 
   // Show loading while checking session
   if (status === "loading") {
@@ -117,11 +126,12 @@ export default function PricingPage() {
           <p className="text-gray-600">Laden...</p>
         </div>
       </div>
-    )
+    );
   }
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen">
+      {" "}
       <Header />
       <div className="container mx-auto px-4 py-6 md:py-20">
         <ProgressIndicator currentStep={2} />
@@ -137,10 +147,19 @@ export default function PricingPage() {
         <div className="max-w-md mx-auto px-2 md:px-0">
           <Card className="relative border-2 border-[#0077B5] shadow-xl">
             <CardHeader className="text-center pt-4 md:pt-8 px-3 md:px-6">
-              <CardTitle className="text-lg md:text-2xl font-bold">Professional</CardTitle>
-              <div className="mt-2 md:mt-4">
-                <span className="text-xl md:text-4xl font-bold text-[#0077B5]">€ 29</span>
-                <span className="text-gray-600 ml-2 text-sm md:text-base">eenmalig</span>
+              <CardTitle className="text-lg md:text-2xl font-bold">
+                Professional
+              </CardTitle>
+              <div className="mt-2 md:mt-4 flex items-baseline justify-center gap-2">
+                <span className="text-sm md:text-lg text-gray-500 decoration-gray-400 line-through">
+                  € 29
+                </span>
+                <span className="text-xl md:text-3xl font-bold text-[#0077B5]">
+                  € 19,99
+                </span>
+                <span className="text-gray-600 text-xs md:text-sm">
+                  eenmalig
+                </span>
               </div>
             </CardHeader>
 
@@ -149,7 +168,9 @@ export default function PricingPage() {
                 {features.map((feature, index) => (
                   <li key={index} className="flex items-start">
                     <Check className="h-4 w-4 md:h-5 md:w-5 text-green-500 mr-2 md:mr-3 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700 text-sm md:text-base">{feature}</span>
+                    <span className="text-gray-700 text-sm md:text-base">
+                      {feature}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -158,8 +179,7 @@ export default function PricingPage() {
                 <Button
                   onClick={handlePlanSelect}
                   disabled={loading}
-                  className="w-full bg-[#FFA500] hover:bg-[#FF8C00] text-white py-2.5 md:py-4 text-sm md:text-lg font-semibold"
-                >
+                  className="w-full bg-[#FFA500] hover:bg-[#FF8C00] text-white py-2.5 md:py-4 text-sm md:text-lg font-semibold">
                   {loading ? "Laden..." : "Betaal Veilig & Start Direct"}
                 </Button>
                 <p className="text-center text-xs md:text-sm text-gray-600">
@@ -171,5 +191,5 @@ export default function PricingPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }

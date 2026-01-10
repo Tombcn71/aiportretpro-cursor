@@ -16,7 +16,7 @@ export default function PromoBanner() {
           <span className="text-sm sm:text-base font-semibold tracking-wide text-center">
             ⚡ Introductie-actie: Start vandaag je fotoshoot voor slechts{" "}
             <span className="underline decoration-2 underline-offset-4">
-              €19
+              €19,99
             </span>{" "}
             <span className="text-blue-100/80 font-normal line-through ml-1">
               (ipv €29)

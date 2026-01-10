@@ -1,61 +1,63 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { useSession, signIn } from "next-auth/react"
-import { useRouter, useSearchParams } from "next/navigation"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Mail, MailPlus } from "lucide-react"
-import Image from "next/image"
-import { trackSignUp, trackEvent } from "@/lib/facebook-pixel"
+import { useState, useEffect } from "react";
+import { useSession, signIn } from "next-auth/react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Mail, MailPlus } from "lucide-react";
+import Image from "next/image";
+import { trackSignUp, trackEvent } from "@/lib/facebook-pixel";
 
 export default function LoginPage() {
-  const { data: session, status } = useSession()
-  const router = useRouter()
-  const searchParams = useSearchParams()
-  
+  const { data: session, status } = useSession();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
   // Check if user came from login button (header) or CTA - go directly to login form
-  const isDirectLogin = searchParams.get("mode") === "login"
-  const hasCallbackUrl = searchParams.get("callbackUrl") !== null
-  
-  const [loading, setLoading] = useState(false)
-  const [showEmailForm, setShowEmailForm] = useState(isDirectLogin) // Only show form immediately for direct login, not for CTA
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [isSignUp, setIsSignUp] = useState(!isDirectLogin) // If direct login, start in login mode. Otherwise signup (including CTA)
-  const [error, setError] = useState("")
-  const [isProcessingSignup, setIsProcessingSignup] = useState(false) // Prevent useEffect redirect during signup
+  const isDirectLogin = searchParams.get("mode") === "login";
+  const hasCallbackUrl = searchParams.get("callbackUrl") !== null;
+
+  const [loading, setLoading] = useState(false);
+  const [showEmailForm, setShowEmailForm] = useState(isDirectLogin); // Only show form immediately for direct login, not for CTA
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isSignUp, setIsSignUp] = useState(!isDirectLogin); // If direct login, start in login mode. Otherwise signup (including CTA)
+  const [error, setError] = useState("");
+  const [isProcessingSignup, setIsProcessingSignup] = useState(false); // Prevent useEffect redirect during signup
 
   const handleGoogleSignIn = async () => {
-    setLoading(true)
-    setError("")
+    setLoading(true);
+    setError("");
     try {
       // Check if this is a homepage CTA login or has callbackUrl
       // If callbackUrl is /payment (from CTA), go to dashboard for logged in users
-      const isHomepageCTA = searchParams.get("source") === "homepage"
-      let callbackUrl = searchParams.get("callbackUrl") || (isHomepageCTA ? "/pricing" : "/dashboard")
+      const isHomepageCTA = searchParams.get("source") === "homepage";
+      let callbackUrl =
+        searchParams.get("callbackUrl") ||
+        (isHomepageCTA ? "/pricing" : "/dashboard");
       // Track Google sign in attempt
-      trackEvent("GoogleSignIn", {})
-      
+      trackEvent("GoogleSignIn", {});
+
       // Note: Google sign in will handle the redirect after authentication
       // If user is already logged in, the useEffect will redirect to dashboard
-      
-      await signIn("google", { callbackUrl })
+
+      await signIn("google", { callbackUrl });
     } catch (error) {
-      console.error("Login error:", error)
-      setError("Er is een fout opgetreden bij het inloggen met Google")
-      setLoading(false)
+      console.error("Login error:", error);
+      setError("Er is een fout opgetreden bij het inloggen met Google");
+      setLoading(false);
     }
-  }
+  };
 
   const handleEmailContinue = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setLoading(true)
-    setError("")
+    e.preventDefault();
+    setLoading(true);
+    setError("");
 
     try {
       // Get the source parameter to determine where user came from
-      const source = searchParams.get("source") || "header"
+      const source = searchParams.get("source") || "header";
 
       if (isSignUp) {
         // Handle sign up
@@ -63,59 +65,70 @@ export default function LoginPage() {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, password, source }),
-        })
+        });
 
         // If account already exists (409), try to sign in instead
         if (response.status === 409) {
-          console.log("Account already exists, attempting to sign in instead...")
+          console.log(
+            "Account already exists, attempting to sign in instead..."
+          );
           const signInResult = await signIn("credentials", {
             email,
             password,
             redirect: false,
-          })
+          });
 
           if (signInResult?.error) {
-            setError("Dit email adres is al in gebruik. Probeer in te loggen.")
-            setIsSignUp(false) // Switch to login mode
-            return
+            setError("Dit email adres is al in gebruik. Probeer in te loggen.");
+            setIsSignUp(false); // Switch to login mode
+            return;
           } else if (signInResult?.ok) {
-            const isHomepageCTA = searchParams.get("source") === "homepage"
-            const redirectUrl = isHomepageCTA ? "/pricing" : "/dashboard"
-            console.log("✅ Signed in successfully, redirecting to:", redirectUrl)
-            router.push(redirectUrl)
-            return
+            const isHomepageCTA = searchParams.get("source") === "homepage";
+            const redirectUrl = isHomepageCTA ? "/pricing" : "/dashboard";
+            console.log(
+              "✅ Signed in successfully, redirecting to:",
+              redirectUrl
+            );
+            router.push(redirectUrl);
+            return;
           }
         }
 
         if (!response.ok) {
-          const data = await response.json()
-          throw new Error(data.error || "Registratie mislukt")
+          const data = await response.json();
+          throw new Error(data.error || "Registratie mislukt");
         }
 
-        const data = await response.json()
-        
+        const data = await response.json();
+
         // CRITICAL FIX: After successful signup, automatically sign in the user
-        console.log("✅ Signup successful, now signing in...")
+        console.log("✅ Signup successful, now signing in...");
         const signInResult = await signIn("credentials", {
           email,
           password,
           redirect: false,
-        })
+        });
 
         if (signInResult?.error) {
-          setError("Account aangemaakt, maar inloggen mislukt. Probeer handmatig in te loggen.")
-          setIsSignUp(false) // Switch to login mode
+          setError(
+            "Account aangemaakt, maar inloggen mislukt. Probeer handmatig in te loggen."
+          );
+          setIsSignUp(false); // Switch to login mode
         } else if (signInResult?.ok) {
           // Track Facebook Pixel event for signup
-          trackSignUp("email")
-          
+          trackSignUp("email");
+
           // After SIGNUP: always go to pricing (new customers need to pay)
           // If callbackUrl is /payment, redirect to /pricing instead
-          const callbackUrl = searchParams.get("callbackUrl")
-          const redirectUrl = callbackUrl === "/payment" ? "/pricing" : (callbackUrl || "/pricing")
-          console.log("✅ Signup + Sign in successful, redirecting to:", redirectUrl)
-          router.push(redirectUrl)
-          return
+          const callbackUrl = searchParams.get("callbackUrl");
+          const redirectUrl =
+            callbackUrl === "/payment" ? "/pricing" : callbackUrl || "/pricing";
+          console.log(
+            "✅ Signup + Sign in successful, redirecting to:",
+            redirectUrl
+          );
+          router.push(redirectUrl);
+          return;
         }
       } else {
         // Handle sign in
@@ -123,29 +136,34 @@ export default function LoginPage() {
           email,
           password,
           redirect: false,
-        })
+        });
 
         if (result?.error) {
-          setError("Ongeldige email of wachtwoord")
+          setError("Ongeldige email of wachtwoord");
         } else if (result?.ok) {
           // Track Facebook Pixel event for login
-          trackEvent("Login", { method: "email" })
-          
+          trackEvent("Login", { method: "email" });
+
           // After LOGIN: if callbackUrl is /payment (from CTA), go to dashboard instead
           // This way logged in users can see their photos and start new projects
-          const callbackUrl = searchParams.get("callbackUrl")
-          const redirectUrl = callbackUrl === "/payment" ? "/dashboard" : (callbackUrl || "/dashboard")
-          console.log("✅ Login successful, redirecting to:", redirectUrl)
-          router.push(redirectUrl)
+          const callbackUrl = searchParams.get("callbackUrl");
+          const redirectUrl =
+            callbackUrl === "/payment"
+              ? "/dashboard"
+              : callbackUrl || "/dashboard";
+          console.log("✅ Login successful, redirecting to:", redirectUrl);
+          router.push(redirectUrl);
         }
       }
     } catch (error) {
-      console.error("Email auth error:", error)
-      setError(error instanceof Error ? error.message : "Er is een fout opgetreden")
+      console.error("Email auth error:", error);
+      setError(
+        error instanceof Error ? error.message : "Er is een fout opgetreden"
+      );
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   // If user is already authenticated, redirect them
   // But don't redirect if user just signed up (let the signup handler do it)
@@ -154,41 +172,51 @@ export default function LoginPage() {
       // Check if user has credits - if not, they're new and should go to pricing
       const checkCreditsAndRedirect = async () => {
         try {
-          const response = await fetch("/api/credits/balance")
+          const response = await fetch("/api/credits/balance");
           if (response.ok) {
-            const data = await response.json()
-            const callbackUrl = searchParams.get("callbackUrl")
-            
+            const data = await response.json();
+            const callbackUrl = searchParams.get("callbackUrl");
+
             // If user has no credits, they're new - send to pricing
             if (data.credits === 0) {
-              const redirectUrl = callbackUrl === "/payment" ? "/pricing" : (callbackUrl || "/pricing")
-              console.log("New user (no credits), redirecting to:", redirectUrl)
-              router.push(redirectUrl)
-              return
+              const redirectUrl =
+                callbackUrl === "/payment"
+                  ? "/pricing"
+                  : callbackUrl || "/pricing";
+              console.log(
+                "New user (no credits), redirecting to:",
+                redirectUrl
+              );
+              router.push(redirectUrl);
+              return;
             }
-            
+
             // Existing user with credits - go to dashboard (unless explicit callbackUrl)
-            let redirectUrl = "/dashboard"
+            let redirectUrl = "/dashboard";
             if (callbackUrl && callbackUrl !== "/payment") {
-              redirectUrl = callbackUrl
+              redirectUrl = callbackUrl;
             }
-            console.log("Existing user (has credits), redirecting to:", redirectUrl)
-            router.push(redirectUrl)
+            console.log(
+              "Existing user (has credits), redirecting to:",
+              redirectUrl
+            );
+            router.push(redirectUrl);
           }
         } catch (error) {
-          console.error("Error checking credits:", error)
+          console.error("Error checking credits:", error);
           // On error, default to pricing for safety
-          const callbackUrl = searchParams.get("callbackUrl")
-          const redirectUrl = callbackUrl === "/payment" ? "/pricing" : (callbackUrl || "/pricing")
-          router.push(redirectUrl)
+          const callbackUrl = searchParams.get("callbackUrl");
+          const redirectUrl =
+            callbackUrl === "/payment" ? "/pricing" : callbackUrl || "/pricing";
+          router.push(redirectUrl);
         }
-      }
-      
-      checkCreditsAndRedirect()
+      };
+
+      checkCreditsAndRedirect();
     }
     // Return undefined (no cleanup function needed)
-    return undefined
-  }, [status, session, router, searchParams, isProcessingSignup])
+    return undefined;
+  }, [status, session, router, searchParams, isProcessingSignup]);
 
   // Show loading while checking authentication
   if (status === "loading") {
@@ -196,12 +224,12 @@ export default function LoginPage() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#0077B5]"></div>
       </div>
-    )
+    );
   }
 
   // Don't render if already authenticated
   if (status === "authenticated" && session) {
-    return null
+    return null;
   }
 
   return (
@@ -220,13 +248,18 @@ export default function LoginPage() {
               />
               <span className="text-lg text-gray-900">AIPortretPro</span>
             </div>
-            
+
             {/* Main title */}
             <CardTitle className="text-xl md:text-2xl text-gray-900 mb-3 font-normal pl-0">
-              Professionele zakelijke foto's, <span className="text-[#0077B5]">zonder gedoe van een fotoshoot</span>
+              40 zakelijke foto's van studio kwaliteit,{" "}
+              <span className="text-[#0077B5]">
+                zonder gedoe van een fotoshoot
+              </span>
             </CardTitle>
-            <p className="text-sm md:text-base text-gray-600 mb-6">
-              Creëer een account of log in om verder te gaan.
+            <p className="text-sm opacity-80 italic">
+              Je profiteert straks van de actieprijs:{" "}
+              <span className="line-through">€ 29</span>{" "}
+              <span className="font-bold">€ 19,99</span>
             </p>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -237,8 +270,7 @@ export default function LoginPage() {
                   onClick={() => setShowEmailForm(true)}
                   disabled={loading}
                   variant="outline"
-                  className="w-full border-2 border-[#0077B5] text-[#0077B5] hover:bg-[#0077B5] hover:text-white flex items-center justify-center space-x-3 py-6 text-lg font-semibold"
-                >
+                  className="w-full border-2 border-[#0077B5] text-[#0077B5] hover:bg-[#0077B5] hover:text-white flex items-center justify-center space-x-3 py-6 text-lg font-semibold">
                   <MailPlus className="h-6 w-6" />
                   <span>Ga door met e-mail</span>
                 </Button>
@@ -246,8 +278,7 @@ export default function LoginPage() {
                 <Button
                   onClick={handleGoogleSignIn}
                   disabled={loading}
-                  className="w-full bg-[#4285f4] hover:bg-[#3367d6] text-white flex items-center justify-center space-x-3 py-6 text-lg font-semibold"
-                >
+                  className="w-full bg-[#4285f4] hover:bg-[#3367d6] text-white flex items-center justify-center space-x-3 py-6 text-lg font-semibold">
                   <svg className="w-6 h-6" viewBox="0 0 24 24">
                     <path
                       fill="currentColor"
@@ -272,16 +303,28 @@ export default function LoginPage() {
                 {/* Value props - Show when email form is closed */}
                 <div className="mt-6 pt-4 pb-4 px-4 bg-slate-50 rounded-lg border border-slate-200 space-y-2.5">
                   <div className="flex items-start gap-2.5">
-                    <span className="text-green-600 text-sm flex-shrink-0">✅</span>
-                    <p className="text-xs text-slate-600">40+ foto's in 15 minuten</p>
+                    <span className="text-green-600 text-sm flex-shrink-0">
+                      ✅
+                    </span>
+                    <p className="text-xs text-slate-600">
+                      40+ foto's in 15 minuten
+                    </p>
                   </div>
                   <div className="flex items-start gap-2.5">
-                    <span className="text-green-600 text-sm flex-shrink-0">✅</span>
-                    <p className="text-xs text-slate-600">14 dagen geld terug garantie</p>
+                    <span className="text-green-600 text-sm flex-shrink-0">
+                      ✅
+                    </span>
+                    <p className="text-xs text-slate-600">
+                      14 dagen geld terug garantie
+                    </p>
                   </div>
                   <div className="flex items-start gap-2.5">
-                    <span className="text-green-600 text-sm flex-shrink-0">✅</span>
-                    <p className="text-xs text-slate-600">Geen fotostudio nodig</p>
+                    <span className="text-green-600 text-sm flex-shrink-0">
+                      ✅
+                    </span>
+                    <p className="text-xs text-slate-600">
+                      Geen fotostudio nodig
+                    </p>
                   </div>
                 </div>
               </>
@@ -291,8 +334,7 @@ export default function LoginPage() {
                 <Button
                   onClick={handleGoogleSignIn}
                   disabled={loading}
-                  className="w-full bg-[#4285f4] hover:bg-[#3367d6] text-white flex items-center justify-center space-x-3 py-6 text-lg font-semibold mb-4"
-                >
+                  className="w-full bg-[#4285f4] hover:bg-[#3367d6] text-white flex items-center justify-center space-x-3 py-6 text-lg font-semibold mb-4">
                   <svg className="w-6 h-6" viewBox="0 0 24 24">
                     <path
                       fill="currentColor"
@@ -313,11 +355,15 @@ export default function LoginPage() {
                   </svg>
                   <span>Ga door met Google</span>
                 </Button>
-                
+
                 {/* Email form */}
                 <form onSubmit={handleEmailContinue} className="space-y-4">
                   <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium text-gray-700">Email</label>
+                    <label
+                      htmlFor="email"
+                      className="text-sm font-medium text-gray-700">
+                      Email
+                    </label>
                     <input
                       id="email"
                       type="email"
@@ -329,15 +375,18 @@ export default function LoginPage() {
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#0077B5] focus:border-transparent"
                     />
                   </div>
-                  
+
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
-                      <label htmlFor="password" className="text-sm font-medium text-gray-700">Wachtwoord</label>
+                      <label
+                        htmlFor="password"
+                        className="text-sm font-medium text-gray-700">
+                        Wachtwoord
+                      </label>
                       {!isSignUp && (
-                        <a 
-                          href="/forgot-password" 
-                          className="text-xs text-[#0077B5] hover:underline"
-                        >
+                        <a
+                          href="/forgot-password"
+                          className="text-xs text-[#0077B5] hover:underline">
                           Wachtwoord vergeten?
                         </a>
                       )}
@@ -364,9 +413,12 @@ export default function LoginPage() {
                   <Button
                     type="submit"
                     disabled={loading || !email || !password}
-                    className="w-full bg-[#0077B5] hover:bg-[#005885] text-white py-6 text-lg font-semibold"
-                  >
-                    {loading ? "Bezig..." : (isSignUp ? "Account aanmaken" : "Inloggen")}
+                    className="w-full bg-[#0077B5] hover:bg-[#005885] text-white py-6 text-lg font-semibold">
+                    {loading
+                      ? "Bezig..."
+                      : isSignUp
+                      ? "Account aanmaken"
+                      : "Inloggen"}
                   </Button>
                 </form>
 
@@ -375,25 +427,38 @@ export default function LoginPage() {
                     variant="ghost"
                     onClick={() => setIsSignUp(!isSignUp)}
                     className="text-sm text-gray-600 hover:text-[#0077B5]"
-                    disabled={loading}
-                  >
-                    {isSignUp ? "Heb je al een account? Log hier in" : "Nieuw hier? Maak een account aan"}
+                    disabled={loading}>
+                    {isSignUp
+                      ? "Heb je al een account? Log hier in"
+                      : "Nieuw hier? Maak een account aan"}
                   </Button>
                 </div>
 
                 {/* Value props */}
                 <div className="mt-6 pt-4 pb-4 px-4 bg-slate-50 rounded-lg border border-slate-200 space-y-2.5">
                   <div className="flex items-start gap-2.5">
-                    <span className="text-green-600 text-sm flex-shrink-0">✅</span>
-                    <p className="text-xs text-slate-600">40+ foto's in 15 minuten</p>
+                    <span className="text-green-600 text-sm flex-shrink-0">
+                      ✅
+                    </span>
+                    <p className="text-xs text-slate-600">
+                      40+ foto's in 15 minuten
+                    </p>
                   </div>
                   <div className="flex items-start gap-2.5">
-                    <span className="text-green-600 text-sm flex-shrink-0">✅</span>
-                    <p className="text-xs text-slate-600">14 dagen geld terug garantie</p>
+                    <span className="text-green-600 text-sm flex-shrink-0">
+                      ✅
+                    </span>
+                    <p className="text-xs text-slate-600">
+                      14 dagen geld terug garantie
+                    </p>
                   </div>
                   <div className="flex items-start gap-2.5">
-                    <span className="text-green-600 text-sm flex-shrink-0">✅</span>
-                    <p className="text-xs text-slate-600">Geen fotostudio nodig</p>
+                    <span className="text-green-600 text-sm flex-shrink-0">
+                      ✅
+                    </span>
+                    <p className="text-xs text-slate-600">
+                      Geen fotostudio nodig
+                    </p>
                   </div>
                 </div>
               </>
@@ -402,13 +467,17 @@ export default function LoginPage() {
             <div className="text-left">
               <p className="text-xs text-gray-500 mb-4">
                 Door te registreren ga je akkoord met onze{" "}
-                <Button variant="link" className="text-xs text-[#0077B5] p-0 h-auto font-normal underline">
+                <Button
+                  variant="link"
+                  className="text-xs text-[#0077B5] p-0 h-auto font-normal underline">
                   <a href="/terms" target="_blank" rel="noopener noreferrer">
                     Algemene Voorwaarden
                   </a>
-                </Button>
-                {" "}en ons{" "}
-                <Button variant="link" className="text-xs text-[#0077B5] p-0 h-auto font-normal underline">
+                </Button>{" "}
+                en ons{" "}
+                <Button
+                  variant="link"
+                  className="text-xs text-[#0077B5] p-0 h-auto font-normal underline">
                   <a href="/privacy" target="_blank" rel="noopener noreferrer">
                     Privacybeleid
                   </a>
@@ -420,5 +489,5 @@ export default function LoginPage() {
         </Card>
       </div>
     </div>
-  )
+  );
 }
