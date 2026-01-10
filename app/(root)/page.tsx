@@ -87,21 +87,17 @@ export default function HomePage() {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const [isVisible, setIsVisible] = useState(false);
 
-  // Gefixte Pixel tracking (lost de 'lage dekking' melding op)
+  // Prevent hydration mismatch
   useEffect(() => {
     setIsClient(true);
-    if (typeof window !== "undefined" && (window as any).fbq) {
-      (window as any).fbq(
-        "track",
-        "ViewContent",
-        {
-          content_name: "Homepage",
-          value: 19.99,
-          currency: "EUR",
-        },
-        { eventID: "homepage_view" }
-      );
-    }
+    // Return undefined (no cleanup function needed)
+    return undefined;
+  }, []);
+
+  useEffect(() => {
+    setIsClient(true);
+    // Return undefined (no cleanup function needed)
+    return undefined;
   }, []);
 
   useEffect(() => {
