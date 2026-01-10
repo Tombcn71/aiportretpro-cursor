@@ -280,7 +280,7 @@ export default function HomePage() {
               </span>
             </div>
           </h1>
-          <p className="text-lg md:text-xl mb-6 font-medium italic">
+          <p className="text-md md:text-lg mb-6 font-medium italic">
             Upload een paar foto's en AI doet de rest. Direct klaar voor
             LinkedIn.{" "}
           </p>
