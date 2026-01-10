@@ -252,12 +252,10 @@ export default function LoginPage() {
             {/* Main title */}
             <CardTitle className="text-xl md:text-2xl text-gray-900 mb-3 font-normal pl-0">
               40 zakelijke foto's van studio kwaliteit,{" "}
-              <span className="text-[#0077B5]">
-                zonder gedoe van een fotoshoot
-              </span>
+              <span className="text-[#0077B5]">zonder de fotoshoot</span>
             </CardTitle>
             <p className="text-sm opacity-80 italic">
-              Je profiteert straks van de actieprijs:{" "}
+              Je profiteert van de actieprijs:{" "}
               <span className="line-through">€ 29</span>{" "}
               <span className="font-bold">€ 19,99</span>
             </p>
