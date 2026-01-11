@@ -22,7 +22,7 @@ export function Logo({ size = "md" }: LogoProps) {
       {/* De afbeelding van het logo */}
       <div className={`${sizes[size].box} relative flex-shrink-0`}>
         <Image
-          src="/images/Logo.png"
+          src="/images/logo.png"
           alt="AI Portret Pro Logo"
           width={40}
           height={40}
