@@ -573,7 +573,7 @@ export default function HomePage() {
             <div className="flex flex-col space-y-4">
               <div className="flex items-center space-x-3">
                 <Image
-                  src="/images/Logo.png"
+                  src="/images/logo.png"
                   alt="AI Portret Pro logo - LinkedIn foto laten maken"
                   width={30}
                   height={30}
