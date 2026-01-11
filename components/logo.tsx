@@ -1,47 +1,59 @@
-import Link from "next/link"
-import Image from "next/image"
-import { RiCameraAiLine } from "react-icons/ri"
+import Link from "next/link";
+import Image from "next/image";
+import { RiCameraAiLine } from "react-icons/ri";
 
 interface LogoProps {
-  size?: "sm" | "md" | "lg"
-  variant?: "default" | "white" | "dark"
-  showText?: boolean
+  size?: "sm" | "md" | "lg";
+  variant?: "default" | "white" | "dark";
+  showText?: boolean;
 }
 
-export function Logo({ size = "md", variant = "default", showText = true }: LogoProps) {
+export function Logo({
+  size = "md",
+  variant = "default",
+  showText = true,
+}: LogoProps) {
   // Use the original Lightning Logo with your logo.png
-  return <LightningLogo size={size} />
+  return <LightningLogo size={size} />;
 }
 
 // EXACT LinkedIn-style logo zoals in de afbeelding
-export function LinkedInStyleLogo({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
+export function LinkedInStyleLogo({
+  size = "md",
+}: {
+  size?: "sm" | "md" | "lg";
+}) {
   const textSizes = {
     sm: "text-lg",
     md: "text-xl",
     lg: "text-2xl",
-  }
+  };
 
   const boxSizes = {
     sm: "w-5 h-5 text-xs",
     md: "w-6 h-6 text-sm",
     lg: "w-8 h-8 text-base",
-  }
+  };
 
   return (
-    <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
+    <Link
+      href="/"
+      className="flex items-center hover:opacity-80 transition-opacity">
       <div className="flex items-center">
         {/* AI Portrait tekst in LinkedIn blauw */}
-        <span className={`${textSizes[size]} font-bold text-[#0A66C2] tracking-tight`}>AI Portrait</span>
+        <span
+          className={`${textSizes[size]} font-bold text-[#0A66C2] tracking-tight`}>
+          AI Portrait
+        </span>
 
         {/* PRO in blauw vierkant zoals LinkedIn "in" */}
         <div
-          className={`${boxSizes[size]} bg-[#0A66C2] text-white font-bold rounded-sm flex items-center justify-center ml-1 shadow-sm`}
-        >
+          className={`${boxSizes[size]}  bg-blue-900 hover:bg-blue-950 text-white font-bold rounded-sm flex items-center justify-center ml-1 shadow-sm`}>
           PRO
         </div>
       </div>
     </Link>
-  )
+  );
 }
 
 // Main Logo - Using your exact image with closer spacing
@@ -50,29 +62,28 @@ export function LightningLogo({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
     sm: "h-8",
     md: "h-10",
     lg: "h-12",
-  }
+  };
 
   const iconSizes = {
     sm: "w-4 h-4",
     md: "w-5 h-6",
     lg: "w-9 h-9",
-  }
+  };
 
   const textSizes = {
     sm: "text-xs",
     md: "text-xl",
     lg: "text-2xl",
-  }
+  };
 
   return (
     <Link
       href="/"
-      className={`flex items-center space-x-2 hover:opacity-80 transition-opacity ${containerSizes[size]}`}
-    >
+      className={`flex items-center space-x-2 hover:opacity-80 transition-opacity ${containerSizes[size]}`}>
       {/* Your exact logo image */}
       <div className={`${iconSizes[size]} relative flex-shrink-0`}>
         <Image
-          src="/images/logo.png"
+          src="/images/Logo.png"
           alt="AI Portret Pro Logo"
           width={40}
           height={40}
@@ -82,77 +93,94 @@ export function LightningLogo({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
 
       {/* Logo Text - Now in black */}
       <div className="flex flex-col">
-        <span className={`${textSizes[size]}  text-black leading-tight`}>AiPortretPro</span>
+        <span className={`${textSizes[size]}  text-black leading-tight`}>
+          AiPortretPro
+        </span>
         {size === "lg" && (
-          <span className="text-xs text-gray-500 font-medium tracking-wide">PROFESSIONELE HEADSHOTS</span>
+          <span className="text-xs text-gray-500 font-medium tracking-wide">
+            PROFESSIONELE HEADSHOTS
+          </span>
         )}
       </div>
     </Link>
-  )
+  );
 }
 
 // Camera AI Logo in LinkedIn Blue
 export function CameraAiLogo({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
   const containerSizes = {
     sm: "h-8",
-    md: "h-10", 
+    md: "h-10",
     lg: "h-12",
-  }
+  };
 
   const iconSizes = {
     sm: "text-xl",
     md: "text-3xl",
     lg: "text-4xl",
-  }
+  };
 
   const textSizes = {
     sm: "text-sm",
     md: "text-lg",
     lg: "text-xl",
-  }
+  };
 
   return (
     <Link
       href="/"
-      className={`flex items-center space-x-2 hover:opacity-80 transition-opacity ${containerSizes[size]}`}
-    >
+      className={`flex items-center space-x-2 hover:opacity-80 transition-opacity ${containerSizes[size]}`}>
       {/* Camera AI Icon in LinkedIn Blue */}
       <RiCameraAiLine className={`${iconSizes[size]} text-[#0077B5]`} />
 
       {/* Logo Text */}
       <div className="flex flex-col">
-        <span className={`${textSizes[size]} font-normal text-gray-900 leading-tight`}>AiportretPro</span>
+        <span
+          className={`${textSizes[size]} font-normal text-gray-900 leading-tight`}>
+          AiportretPro
+        </span>
         {size === "lg" && (
-          <span className="text-xs text-gray-500 font-medium tracking-wide">PROFESSIONELE HEADSHOTS</span>
+          <span className="text-xs text-gray-500 font-medium tracking-wide">
+            PROFESSIONELE HEADSHOTS
+          </span>
         )}
       </div>
     </Link>
-  )
+  );
 }
 
 // Alternatieve versie - nog meer zoals LinkedIn
-export function ExactLinkedInLogo({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
+export function ExactLinkedInLogo({
+  size = "md",
+}: {
+  size?: "sm" | "md" | "lg";
+}) {
   const containerSizes = {
     sm: "text-lg",
     md: "text-xl",
     lg: "text-2xl",
-  }
+  };
 
   const proBoxSizes = {
     sm: "px-1.5 py-0.5 text-xs",
     md: "px-2 py-1 text-sm",
     lg: "px-2.5 py-1 text-base",
-  }
+  };
 
   return (
-    <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
+    <Link
+      href="/"
+      className="flex items-center hover:opacity-80 transition-opacity">
       <div className={`${containerSizes[size]} font-bold flex items-center`}>
         {/* AIPortrait in black like LinkedIn */}
         <span className="text-black">A Portret</span>
 
         {/* PRO in blue box with proper padding like LinkedIn */}
-        <div className={`${proBoxSizes[size]} bg-[#0077B5] text-white rounded-sm font-bold ml-1`}>PRO</div>
+        <div
+          className={`${proBoxSizes[size]} bg-[#0077B5] text-white rounded-sm font-bold ml-1`}>
+          PRO
+        </div>
       </div>
     </Link>
-  )
+  );
 }

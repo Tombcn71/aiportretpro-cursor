@@ -11,6 +11,8 @@ import {
   ChevronUp,
   Shield,
   Check,
+  Sparkles,
+  Camera,
 } from "lucide-react";
 import Header from "@/components/header";
 import { Facebook, Instagram, Linkedin } from "lucide-react";
@@ -27,26 +29,6 @@ const galleryPhotos = Array.from(
   { length: 26 },
   (_, i) => `/images/shoot/${i + 1}.png`
 );
-
-const companies = [
-  {
-    name: "Microsoft",
-    logo: "/placeholder.svg?height=40&width=120&text=Microsoft",
-  },
-  { name: "Google", logo: "/placeholder.svg?height=40&width=120&text=Google" },
-  { name: "Apple", logo: "/placeholder.svg?height=40&width=120&text=Apple" },
-  { name: "Amazon", logo: "/placeholder.svg?height=40&width=120&text=Amazon" },
-  { name: "Meta", logo: "/placeholder.svg?height=40&width=120&text=Meta" },
-  {
-    name: "Netflix",
-    logo: "/placeholder.svg?height=40&width=120&text=Netflix",
-  },
-  { name: "Tesla", logo: "/placeholder.svg?height=40&width=120&text=Tesla" },
-  {
-    name: "Spotify",
-    logo: "/placeholder.svg?height=40&width=120&text=Spotify",
-  },
-];
 
 const faqData = [
   {
@@ -100,23 +82,22 @@ export default function HomePage() {
     return undefined;
   }, []);
 
+  const [lastScrollY, setLastScrollY] = useState(0);
+
   useEffect(() => {
-    const toggleVisibility = () => {
-      if (window.pageYOffset > 300) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      // Dit is de 'magie': alleen true als je omhoog scrollt
+      const scrollingUp = currentScrollY < lastScrollY && currentScrollY > 400;
+
+      setIsVisible(scrollingUp);
+      setLastScrollY(currentScrollY);
     };
 
-    window.addEventListener("scroll", toggleVisibility);
-
-    return () => window.removeEventListener("scroll", toggleVisibility);
-  }, []);
-
-  const openLightbox = (imageSrc: string) => {
-    setSelectedImage(imageSrc);
-  };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
 
   const closeLightbox = () => {
     setSelectedImage(null);
@@ -234,104 +215,59 @@ export default function HomePage() {
       <Header />
 
       <main id="main-content" role="main">
-        {/* Hero Section */}
-        <section className="container mx-auto px-4 pt-20 pb-6 text-center">
-          {/* Stars and Trust Badge */}
-          <div className="flex flex-col items-center gap-2 mb-6">
-            <div className="flex items-center gap-2">
-              <div className="flex items-center gap-1">
-                {[...Array(4)].map((_, i) => (
-                  <svg
-                    key={i}
-                    className="w-4 h-4 fill-yellow-400"
-                    viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-                {/* Half star */}
-                <div className="relative w-4 h-4">
-                  <svg className="w-4 h-4 fill-gray-300" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                  <div
-                    className="absolute inset-0 overflow-hidden"
-                    style={{ width: "50%" }}>
-                    <svg
-                      className="w-4 h-4 fill-yellow-400"
-                      viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-              <span className="text-sm md:text-base font-semibold text-gray-900">
-                4.6/5
-              </span>
-            </div>
+        {/* Hero Container */}
+        <div className="flex flex-col items-center justify-center pt-12  text-center px-4 w-full antialiased">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 border border-blue-100 rounded-full text-sm font-medium text-blue-800 mb-4">
+            <Sparkles className="w-4 h-4 text-blue-600" />
+            <span>AI Gedreven Fotostudio</span>
           </div>
 
-          <h1 className="tracking-tight text-3xl md:text-4xl font-bold mb-6 leading-tight">
-            <div className="text-center">
-              <span className="inline md:block">
-                40 zakelijke foto’s van studio kwaliteit,{" "}
-              </span>
-              <span className="inline md:block text-[#0077B5]">
-                zonder de fotoshoot
-              </span>
-            </div>
-          </h1>
-          <p className="text-md md:text-lg mb-6 font-medium italic">
-            Upload een paar foto's en AI doet de rest. Direct klaar voor
-            LinkedIn.{" "}
-          </p>
+          {/* Titel en Subtekst als één vloeiend geheel zonder extra witruimte */}
+          <div className="flex flex-col items-center">
+            <p className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900 leading-tight">
+              40 zakelijke foto’s van studio <br />
+              kwaliteit,{" "}
+              <span className="text-blue-900">zonder een fotograaf</span>
+            </p>
 
-          <div className="text-md md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto text-center">
-            <div className="inline-grid grid-cols-[auto_1fr] gap-x-2 items-start text-start justify-center">
-              <span className="text-center text-xl md:text-2xl">🏷️</span>
-              <span>10x goedkoper dan een fotograaf</span>
-              <span className="text-center text-xl md:text-2xl">✨</span>
-              <span>Geen afspraak of reistijd nodig</span>
-              <span className="text-center text-xl md:text-2xl">⏱️</span>
-              <span>Foto's klaar binnen 15 minuten</span>
-            </div>
+            <p className="mt-2 text-base md:text-lg lg:text-xl text-slate-600 leading-relaxed max-w-5xl">
+              Ontvang binnen 15 minuten een volledige zakelijke fotoshoot voor
+              LinkedIn en uw CV, <br />
+              met de kwaliteit van een fotograaf maar zonder de reistijd of hoge
+              kosten.
+            </p>
           </div>
 
-          <Button
-            asChild
-            size="lg"
-            className="bg-[#FF8C00] hover:bg-[#FFA500] text-white px-6 md:px-10 py-8 md:py-8 text-base md:text-lg mb-3 md:max-w-sm "
-            style={{ textShadow: "0 0 1px white" }}>
+          {/* De knop sluit nu ook nauwer aan */}
+          <div className="pt-8">
             <Link
               href="/login?callbackUrl=/payment"
               onClick={() => trackContact()}
-              aria-label="Start nu voor negentien euro negenennegentig">
-              <span className="flex items-center gap-1 md:gap-2">
-                <span>Start nu:</span>
-                <span className="line-through text-xs md:text-sm opacity-80 decoration-1">
+              aria-label="Start jouw fotoshoot nu voor negenentwintig euro">
+              <Button
+                size="lg"
+                className="gap-2 h-14 px-10 bg-blue-900 hover:bg-blue-800 text-white border-none shadow-xl transition-all text-lg font-semibold">
+                <Camera className="w-6 h-6" />
+                Start uw fotoshoot—{" "}
+                <span className="line-through text-xs opacity-80 decoration-1">
                   € 29
                 </span>
-                <span className="text-lg md:text-xl ml-1">€ 19,99</span>
-                <ArrowRight className="ml-1 h-5 w-5 md:h-7 md:w-7" />
-              </span>
+                € 19,99
+              </Button>
             </Link>
-          </Button>
 
-          {/* Trust Shield */}
-          <div className="flex items-center justify-center gap-2 text-[#0077B5] font-medium text-sm mb-8">
-            <div className="relative">
-              <Shield className="h-5 w-5 fill-current text-[#0077B5]" />
-              <Check
-                className="h-3 w-3 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-                strokeWidth={3}
-              />
-            </div>
-            <span>14-DAGEN GELD TERUG GARANTIE</span>
+            <p className="mt-3 text-xs text-slate-600">
+              Geen abonnement • Eenmalige betaling • 14 dagen geld terug
+              garantie
+            </p>
           </div>
-        </section>
-
+        </div>
         {/* Photo Carousel - FIXED: Smooth continuous scrolling */}
+        {/* Verander mb-0 naar mb-8 voor een nette overgang op mobiel */}
+        {/* mt-12 voegt de nodige ruimte toe aan de bovenkant */}
         <section
-          className="w-full overflow-hidden mb-16 md:mb-24 bg-gradient-to-r from-blue-50 via-white to-blue-50"
+          className="w-full overflow-hidden mt-12 mb-8 md:mb-24"
           style={{ minHeight: "400px" }}>
           <div className="relative">
             <div className="carousel-container">
@@ -398,133 +334,12 @@ export default function HomePage() {
         {/* How It Works */}
         <HowItWorks />
 
-        {/* Reviews en Voorbeelden */}
-        <ReviewsEnVoorbeelden />
-
-        <section className="py-12 md:py-16 bg-gradient-to-br from-blue-50 to-orange-50">
-          <div className="container mx-auto px-4">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-12 max-w-3xl mx-auto">
-              Waarom €200+ betalen voor een middag in een studio?
-            </h2>
-
-            <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-              {/* Traditional Photographer */}
-              <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg border-2 border-gray-200">
-                <div className="text-center mb-6">
-                  <div className="text-5xl mb-3">❌</div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    De traditionele fotograaf
-                  </h3>
-                </div>
-                <ul className="space-y-4">
-                  <li className="flex flex-col gap-1">
-                    <span className="font-semibold text-gray-900">Prijs:</span>
-                    <span className="text-[#374151]">
-                      Vaak tussen de €150 en €350.
-                    </span>
-                  </li>
-                  <li className="flex flex-col gap-1">
-                    <span className="font-semibold text-gray-900">Tijd:</span>
-                    <span className="text-[#374151]">
-                      Afspraak plannen, reistijd en een uur poseren.
-                    </span>
-                  </li>
-                  <li className="flex flex-col gap-1">
-                    <span className="font-semibold text-gray-900">Geduld:</span>
-                    <span className="text-[#374151]">
-                      1 tot 2 weken wachten op de nabewerking.
-                    </span>
-                  </li>
-                  <li className="flex flex-col gap-1">
-                    <span className="font-semibold text-gray-900">
-                      Resultaat:
-                    </span>
-                    <span className="text-[#374151]">
-                      Slechts 3 tot 5 foto's inbegrepen (bijbetalen voor meer).
-                    </span>
-                  </li>
-                  <li className="flex flex-col gap-1">
-                    <span className="font-semibold text-gray-900">Risico:</span>
-                    <span className="text-[#374151]">
-                      Niet tevreden? Jammer, je betaalt de fotograaf voor zijn
-                      tijd.
-                    </span>
-                  </li>
-                </ul>
-              </div>
-
-              {/* AI Portret Pro */}
-              <div className="bg-gradient-to-br from-[#0077B5] to-[#005a8c] rounded-2xl p-6 md:p-8 shadow-2xl border-2 border-[#0077B5] relative overflow-hidden">
-                <div
-                  className="absolute top-0 right-0 bg-[#FF8C00] text-white px-4 py-1 text-sm font-black transform rotate-12 translate-x-4 -translate-y-2"
-                  aria-label="De slimme keuze badge"
-                  style={{ textShadow: "0 0 0.5px white" }}>
-                  DE SLIMME KEUZE
-                </div>
-                <div className="text-center mb-6">
-                  <div className="text-5xl mb-3">✅</div>
-                  <h3 className="text-xl font-bold text-white mb-2">
-                    AI Portret Pro
-                  </h3>
-                  <div className="text-sm text-blue-100 mt-1">
-                    (De slimme keuze)
-                  </div>
-                </div>
-                <ul className="space-y-4">
-                  <li className="flex flex-col gap-1">
-                    <span className="font-semibold text-white">Prijs:</span>
-                    <span className="text-blue-100">
-                      Eenmalig €29 (geen verborgen kosten).
-                    </span>
-                  </li>
-                  <li className="flex flex-col gap-1">
-                    <span className="font-semibold text-white">Gemak:</span>
-                    <span className="text-blue-100">
-                      Direct beginnen vanaf je eigen bank, geen afspraak nodig.
-                    </span>
-                  </li>
-                  <li className="flex flex-col gap-1">
-                    <span className="font-semibold text-white">Snelheid:</span>
-                    <span className="text-blue-100">
-                      Binnen 15 minuten alle foto's in je dashboard.
-                    </span>
-                  </li>
-                  <li className="flex flex-col gap-1">
-                    <span className="font-semibold text-white">Resultaat:</span>
-                    <span className="text-blue-100">
-                      Je krijgt direct 40+ verschillende zakelijke
-                      profielfoto's.
-                    </span>
-                  </li>
-                  <li className="flex flex-col gap-1">
-                    <span className="font-semibold text-white">Garantie:</span>
-                    <span className="text-blue-100">
-                      Niet goed? Geld terug. Zo simpel is het.
-                    </span>
-                  </li>
-                </ul>
-                <div className="mt-6">
-                  <Button
-                    asChild
-                    size="lg"
-                    className="w-full bg-[#FF8C00] hover:bg-[#FFA500] text-white font-black">
-                    <Link
-                      href="/login?callbackUrl=/payment"
-                      onClick={() => trackContact()}>
-                      Bespaar €170+ Nu <ArrowRight className="ml-2" />
-                    </Link>
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* FAQ Section */}
         <section
           id="faq"
-          className="container mx-auto px-4 py-12 md:py-16 bg-gray-50">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-4">
+          className="container mx-auto px-6 pt-[120px] pb-[60px] md:py-16 ">
+          {" "}
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mt-4 mb-4">
             Veelgestelde Vragen
           </h2>
           <p className="text-lg text-[#374151] text-center mb-8 md:mb-12 max-w-2xl mx-auto">
@@ -572,10 +387,10 @@ export default function HomePage() {
         <section className="py-12 md:py-16 bg-white">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-lg md:text-2xl font-semibold text-[#374151] mb-6 text-center">
+              <h1 className="text-lg md:text-2xl font-semibold text-[#374151] mb-6 text-center">
                 Professionele Zakelijke Profielfoto's Laten Maken Online – De
                 Slimme Keuze voor Professionals in 2026
-              </h2>
+              </h1>
 
               <div className="prose prose-sm md:prose-base max-w-none text-[#374151] leading-relaxed space-y-4 md:space-y-6">
                 <p className="text-sm md:text-base">
@@ -592,9 +407,9 @@ export default function HomePage() {
                   CV, de bedrijfswebsite of digitale visitekaartjes.
                 </p>
 
-                <h3 className="text-base md:text-lg font-semibold text-[#374151] mt-6 mb-4">
+                <h2 className="text-base md:text-lg font-semibold text-[#374151] mt-6 mb-4">
                   De voordelen van AI LinkedIn profielfoto's in het nieuwe jaar
-                </h3>
+                </h2>
 
                 <p className="text-sm md:text-base">
                   Het jaar 2026 markeert een definitieve omslag in de manier
@@ -693,10 +508,10 @@ export default function HomePage() {
         <section className="py-16 hidden md:block">
           <div className="max-w-4xl mx-auto text-center px-4">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Klaar voor je professionele profielfoto's?
+              Klaar voor uw professionele profielfoto's?
             </h2>
             <p className="text-xl text-[#374151] mb-8">
-              Laat zien wie je bent met een krachtige, professionele foto
+              Laat zien wie u bent met een krachtige, professionele foto
             </p>
             {isClient && (
               <Link
@@ -705,10 +520,9 @@ export default function HomePage() {
                 aria-label="Start jouw fotoshoot nu voor negenentwintig euro">
                 <Button
                   size="lg"
-                  className="bg-[#FF8C00] hover:bg-[#FFA500] text-white px-8 py-4 text-lg font-black"
-                  style={{ textShadow: "0 0 1px white" }}>
-                  Start jouw fotoshoot nu - € 29{" "}
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                  className="gap-2 h-14 px-10 bg-blue-900 hover:bg-blue-950 text-white border-none shadow-xl transition-all text-lg font-semibold">
+                  <Camera className="w-6 h-6" />
+                  Start uw fotoshoot— €29
                 </Button>
               </Link>
             )}
@@ -739,14 +553,14 @@ export default function HomePage() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-black text-white py-8 px-6">
+      <footer className="bg-blue-900 text-white py-8 px-6">
         <div className="container mx-auto">
           <div className="flex flex-col lg:flex-row lg:justify-between space-y-8 lg:space-y-0">
             {/* Logo and Company Info */}
             <div className="flex flex-col space-y-4">
               <div className="flex items-center space-x-3">
                 <Image
-                  src="/images/logo-icon.png"
+                  src="/images/Logo.png"
                   alt="AI Portret Pro logo - LinkedIn foto laten maken"
                   width={30}
                   height={30}
@@ -925,18 +739,12 @@ export default function HomePage() {
 
       {/* Floating CTA Button - Mobile Only */}
       {isVisible && (
-        <div className="fixed bottom-4 left-4 right-4 z-[2147483647] md:hidden">
+        <div className="fixed bottom-4 left-4 right-4 z-[2147483647] md:hidden animate-in fade-in slide-in-from-bottom-4 duration-200">
           <div className="bg-white rounded-lg shadow-lg border border-gray-200 p-3">
-            <p className="text-center text-md font-bold text-gray-800 mb-2 mt-4">
-              Professionele foto's in 15 minuten
-            </p>
-            <p className="text-center text-sm text-[#374151] mb-4">
-              Geen gedoe direct resultaat
-            </p>
             <Button
               asChild
               size="lg"
-              className="w-full bg-[#FF8C00] hover:bg-[#FFA500] text-white px-6 py-8 text-base font-black"
+              className="w-full bg-blue-900 hover:bg-blue-800 text-white px-6 py-8 text-base font-black"
               style={{ textShadow: "0 0 1px white" }}>
               <Link
                 href="/login?callbackUrl=/payment"
@@ -955,7 +763,6 @@ export default function HomePage() {
           </div>
         </div>
       )}
-
       <style jsx>{`
         @keyframes scroll {
           0% {

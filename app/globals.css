@@ -63,29 +63,29 @@
   .linkedin-secondary {
     @apply bg-[#F3F2EF] hover:bg-gray-200 text-[#666666];
   }
-  
+
   /* Carousel Animation Styles */
   .carousel-container {
     width: 100%;
     overflow: hidden;
   }
-  
+
   .carousel-track {
     animation: scroll 30s linear infinite;
     width: calc(100% * 2);
   }
-  
+
   .carousel-item {
     flex-shrink: 0;
     width: 208px;
   }
-  
+
   @media (min-width: 768px) {
     .carousel-item {
       width: 320px;
     }
   }
-  
+
   @keyframes scroll {
     0% {
       transform: translateX(0);
@@ -94,7 +94,7 @@
       transform: translateX(-50%);
     }
   }
-  
+
   /* Pause animation on hover */
   .carousel-container:hover .carousel-track {
     animation-play-state: paused;

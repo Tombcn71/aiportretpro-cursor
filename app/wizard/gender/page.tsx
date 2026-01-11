@@ -67,18 +67,14 @@ export default function GenderPage() {
     <div className="min-h-screen bg-gray-50 p-4">
       <div className="max-w-2xl mx-auto">
         <div className="mb-8">
-          <ProgressBar
-            currentStep={2}
-            totalSteps={3}
-            className="bg-[#0077B5]"
-          />
+          <ProgressBar currentStep={2} totalSteps={3} className="bg-blue-900" />
         </div>
 
         <Card className="w-full">
           <CardHeader className="text-center">
             <CardTitle className="text-2xl">Type fotoshoot?</CardTitle>
             <p className="text-gray-600">
-              Dit helpt om optimale resultaten te genereren
+              Dit helpt om optimale resultaten te behalen
             </p>
           </CardHeader>
           <CardContent className="space-y-6">
@@ -91,13 +87,13 @@ export default function GenderPage() {
                     onClick={() => setSelectedGender(option.id)}
                     className={`p-6 rounded-lg border-2 transition-all text-center ${
                       selectedGender === option.id
-                        ? "border-[#0077B5] bg-blue-50"
+                        ? "border-blue-900 bg-blue-50"
                         : "border-gray-200 hover:border-gray-300"
                     }`}>
                     <IconComponent className="h-8 w-8 text-gray-600 mx-auto mb-2" />
                     <div className="font-medium">{option.label}</div>
                     {selectedGender === option.id && (
-                      <div className="w-4 h-4 bg-[#0077B5] rounded-full mx-auto mt-2"></div>
+                      <div className="w-4 h-4 bg-blue-900 rounded-full mx-auto mt-2"></div>
                     )}
                   </button>
                 );
@@ -106,7 +102,7 @@ export default function GenderPage() {
             <Button
               onClick={handleContinue}
               disabled={!selectedGender}
-              className="bg-[#0077B5] hover:bg-[#004182] text-white px-8">
+              className="bg-blue-900 hover:bg-blue-800 text-white px-8">
               Doorgaan
             </Button>
           </CardContent>

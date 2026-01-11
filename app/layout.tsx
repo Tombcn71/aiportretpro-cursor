@@ -118,8 +118,7 @@ export default function RootLayout({
           name="viewport"
           content="width=device-width, initial-scale=1, viewport-fit=cover"
         />
-        <meta name="theme-color" content="#0077B5" />
-
+        <meta name="theme-color" content="#1e3a8a" />
         {/* Critical CSS - Above the fold styles */}
         <style
           dangerouslySetInnerHTML={{
@@ -220,7 +219,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.className} font-sans antialiased`}>
         <GoogleAnalytics />
         <PromoBanner />
         <ThemeProvider

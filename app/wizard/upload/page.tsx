@@ -1,37 +1,37 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { useState, useCallback, useEffect } from "react"
-import { useRouter } from "next/navigation"
-import { useSession } from "next-auth/react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Upload, X, Camera } from "lucide-react"
-import { Badge } from "@/components/ui/badge"
-import { ProgressBar } from "@/components/ui/progress-bar"
-import Image from "next/image"
+import type React from "react";
+import { useState, useCallback, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Upload, X, Camera } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { ProgressBar } from "@/components/ui/progress-bar";
+import Image from "next/image";
 
 interface WizardData {
-  projectName: string
-  gender: string
+  projectName: string;
+  gender: string;
 }
 
 export default function UploadPage() {
-  const [uploadedPhotos, setUploadedPhotos] = useState<File[]>([])
-  const [uploading, setUploading] = useState(false)
-  const [wizardData, setWizardData] = useState<WizardData | null>(null)
-  const router = useRouter()
-  const { data: session, status } = useSession()
+  const [uploadedPhotos, setUploadedPhotos] = useState<File[]>([]);
+  const [uploading, setUploading] = useState(false);
+  const [wizardData, setWizardData] = useState<WizardData | null>(null);
+  const router = useRouter();
+  const { data: session, status } = useSession();
 
   // Redirect to login if not authenticated
   useEffect(() => {
     if (status === "unauthenticated") {
-      router.push("/login")
+      router.push("/login");
     } else if (status === "authenticated" && session) {
       // User is authenticated, we can proceed
-      console.log("User authenticated:", session.user?.email)
+      console.log("User authenticated:", session.user?.email);
     }
-  }, [status, router, session])
+  }, [status, router, session]);
 
   // Show loading while checking authentication
   if (status === "loading") {
@@ -39,80 +39,80 @@ export default function UploadPage() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#0077B5]"></div>
       </div>
-    )
+    );
   }
 
   // Don't render if not authenticated
   if (status === "unauthenticated") {
-    return null
+    return null;
   }
 
   useEffect(() => {
     // Get wizard data from localStorage
-    const data = JSON.parse(localStorage.getItem("wizardData") || "{}")
+    const data = JSON.parse(localStorage.getItem("wizardData") || "{}");
     if (!data.projectName || !data.gender) {
-      router.push("/wizard/project-name")
-      return
+      router.push("/wizard/project-name");
+      return;
     }
-    setWizardData(data)
-  }, [router])
+    setWizardData(data);
+  }, [router]);
 
   const handleFileSelect = useCallback((files: FileList | null) => {
-    if (!files) return
+    if (!files) return;
     const newFiles = Array.from(files).filter(
-      (file) => file.type.startsWith("image/") && file.size <= 120 * 1024 * 1024,
-    )
-    setUploadedPhotos((prev) => [...prev, ...newFiles].slice(0, 10))
-  }, [])
+      (file) => file.type.startsWith("image/") && file.size <= 120 * 1024 * 1024
+    );
+    setUploadedPhotos((prev) => [...prev, ...newFiles].slice(0, 10));
+  }, []);
 
   const handleDrop = useCallback(
     (e: React.DragEvent) => {
-      e.preventDefault()
-      handleFileSelect(e.dataTransfer.files)
+      e.preventDefault();
+      handleFileSelect(e.dataTransfer.files);
     },
-    [handleFileSelect],
-  )
+    [handleFileSelect]
+  );
 
   const handleDragOver = useCallback((e: React.DragEvent) => {
-    e.preventDefault()
-  }, [])
+    e.preventDefault();
+  }, []);
 
   const removePhoto = (index: number) => {
-    setUploadedPhotos((prev) => prev.filter((_, i) => i !== index))
-  }
+    setUploadedPhotos((prev) => prev.filter((_, i) => i !== index));
+  };
 
   const handleContinue = async () => {
-    if (uploadedPhotos.length < 4 || !wizardData) return
-    setUploading(true)
+    if (uploadedPhotos.length < 4 || !wizardData) return;
+    setUploading(true);
 
     try {
       // Upload photos to Vercel Blob
       const uploadPromises = uploadedPhotos.map(async (photo) => {
-        const formData = new FormData()
-        formData.append("file", photo)
+        const formData = new FormData();
+        formData.append("file", photo);
 
         const response = await fetch("/api/upload", {
           method: "POST",
           body: formData,
-        })
+        });
 
-        const result = await response.json()
+        const result = await response.json();
 
         if (!response.ok) {
-          throw new Error(result.error || result.message || "Upload mislukt")
+          throw new Error(result.error || result.message || "Upload mislukt");
         }
 
         if (!result.url) {
-          throw new Error("Geen URL ontvangen van upload")
+          throw new Error("Geen URL ontvangen van upload");
         }
-        return result.url
-      })
+        return result.url;
+      });
 
-      const uploadedUrls = await Promise.all(uploadPromises)
-      
+      const uploadedUrls = await Promise.all(uploadPromises);
+
       // Check if all uploads succeeded
-      if (uploadedUrls.some(url => !url)) {
-        throw new Error("Sommige foto's konden niet worden geüpload")
+      if (uploadedUrls.some((url) => !url)) {
+        throw new Error("Sommige foto's konden niet worden geüpload");
       }
 
       // Create project with default pack 928 (portetfotos m/v)
@@ -127,83 +127,100 @@ export default function UploadPage() {
           selectedPackId: "928", // Portetfotos m/v pack
           uploadedPhotos: uploadedUrls,
         }),
-      })
+      });
 
-      const result = await response.json().catch(() => ({ message: "Onbekende fout bij het parsen van de response" }))
+      const result = await response.json().catch(() => ({
+        message: "Onbekende fout bij het parsen van de response",
+      }));
 
       if (!response.ok) {
-        throw new Error(result.message || result.error || `Server fout: ${response.status}`)
+        throw new Error(
+          result.message || result.error || `Server fout: ${response.status}`
+        );
       }
 
       if (result.projectId) {
         // Store project data for payment page
-        localStorage.setItem("pendingProject", JSON.stringify({
-          projectId: result.projectId,
-          projectName: wizardData.projectName,
-          gender: wizardData.gender,
-          uploadedPhotos: uploadedUrls,
-        }))
+        localStorage.setItem(
+          "pendingProject",
+          JSON.stringify({
+            projectId: result.projectId,
+            projectName: wizardData.projectName,
+            gender: wizardData.gender,
+            uploadedPhotos: uploadedUrls,
+          })
+        );
         // Clear wizard data
-        localStorage.removeItem("wizardData")
-        router.push(`/generate/${result.projectId}`)
+        localStorage.removeItem("wizardData");
+        router.push(`/generate/${result.projectId}`);
       } else if (result.message) {
         // API returned an error message
-        throw new Error(result.message)
+        throw new Error(result.message);
       } else {
         // Even if Astria API fails, continue to pricing with uploaded photos
-        console.warn("Astria API failed, but continuing to pricing with uploaded photos")
-        localStorage.setItem("pendingProject", JSON.stringify({
-          projectId: "temp_" + Date.now(), // Temporary ID
-          projectName: wizardData.projectName,
-          gender: wizardData.gender,
-          uploadedPhotos: uploadedUrls,
-        }))
-        localStorage.removeItem("wizardData")
-        router.push(`/generate/temp`)
+        console.warn(
+          "Astria API failed, but continuing to pricing with uploaded photos"
+        );
+        localStorage.setItem(
+          "pendingProject",
+          JSON.stringify({
+            projectId: "temp_" + Date.now(), // Temporary ID
+            projectName: wizardData.projectName,
+            gender: wizardData.gender,
+            uploadedPhotos: uploadedUrls,
+          })
+        );
+        localStorage.removeItem("wizardData");
+        router.push(`/generate/temp`);
       }
     } catch (error) {
-      console.error("Upload error details:", error)
-      const errorMessage = error instanceof Error ? error.message : "Er is een fout opgetreden"
-      
+      console.error("Upload error details:", error);
+      const errorMessage =
+        error instanceof Error ? error.message : "Er is een fout opgetreden";
+
       // Show more specific error messages
-      let userMessage = "Er is een fout opgetreden. Probeer het opnieuw."
+      let userMessage = "Er is een fout opgetreden. Probeer het opnieuw.";
       if (errorMessage.includes("credits")) {
-        userMessage = "Je hebt niet genoeg credits. Koop eerst credits om door te gaan."
+        userMessage =
+          "Je hebt niet genoeg credits. Koop eerst credits om door te gaan.";
       } else if (errorMessage.includes("Unauthorized")) {
-        userMessage = "Je bent niet ingelogd. Log opnieuw in en probeer het opnieuw."
+        userMessage =
+          "Je bent niet ingelogd. Log opnieuw in en probeer het opnieuw.";
       } else if (errorMessage.includes("Upload")) {
-        userMessage = "Upload mislukt. Controleer je internetverbinding en probeer het opnieuw."
+        userMessage =
+          "Upload mislukt. Controleer je internetverbinding en probeer het opnieuw.";
       } else if (errorMessage) {
-        userMessage = errorMessage
+        userMessage = errorMessage;
       }
-      
-      alert(userMessage)
+
+      alert(userMessage);
     } finally {
-      setUploading(false)
+      setUploading(false);
     }
-  }
+  };
 
   if (!wizardData) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#0077B5]"></div>
       </div>
-    )
+    );
   }
 
   return (
     <div className="min-h-screen bg-gray-50 p-4">
       <div className="max-w-4xl mx-auto">
         <div className="mb-8">
-          <ProgressBar currentStep={3} totalSteps={3} className="bg-[#0077B5]" />
+          <ProgressBar currentStep={3} totalSteps={3} className="bg-blue-900" />
         </div>
 
         <Card className="mb-8">
           <CardHeader className="text-center">
-            
-
             <CardTitle className="text-2xl">Upload je foto's</CardTitle>
-            <p className="text-gray-600">Upload minimaal 4 foto's van hoge kwaliteit voor het beste resultaat</p>
+            <p className="text-gray-600">
+              Upload minimaal 4 foto's van hoge kwaliteit voor het beste
+              resultaat
+            </p>
           </CardHeader>
         </Card>
 
@@ -214,7 +231,9 @@ export default function UploadPage() {
               <div>
                 <h3 className="text-lg font-semibold">Foto Richtlijnen</h3>
                 <p className="text-gray-600 text-sm">
-                 Foto's met verschillende achtergronden met verschillende kleding. Gezicht naar de camera, vanaf je schouders of je middel. geen hoeden of zonnebrillen.
+                  Foto's met verschillende achtergronden met je gezicht naar de
+                  camera, vanaf je schouders of je middel. geen hoeden of
+                  zonnebrillen.
                 </p>
               </div>
             </div>
@@ -222,17 +241,22 @@ export default function UploadPage() {
             <div
               onDrop={handleDrop}
               onDragOver={handleDragOver}
-              className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-gray-400 transition-colors relative"
-            >
+              className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-gray-400 transition-colors relative">
               <Upload className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-              <Button className="bg-[#0077B5] hover:bg-[#004182] text-white mb-4">
+              <Button className="bg-blue-900 hover:bg-950 text-white mb-4">
                 <Upload className="h-4 w-4 mr-2" />
                 Selecteer Foto's
               </Button>
               <p className="text-gray-600">
-                of <span className="text-[#0077B5] font-medium">sleep en zet neer</span> je foto's hier
+                of{" "}
+                <span className="text-blue-900 font-medium">
+                  sleep en zet neer
+                </span>{" "}
+                je foto's hier
               </p>
-              <p className="text-sm text-gray-500 mt-2">PNG, JPG, HEIC, WEBP tot 120MB</p>
+              <p className="text-sm text-gray-500 mt-2">
+                PNG, JPG, HEIC, WEBP tot 120MB
+              </p>
               <input
                 type="file"
                 multiple
@@ -248,23 +272,30 @@ export default function UploadPage() {
               <h3 className="text-lg font-semibold">Geüploade Foto's</h3>
               <div className="flex items-center space-x-2">
                 <div
-                  className={`w-3 h-3 rounded-full ${uploadedPhotos.length >= 4 ? "bg-green-500" : "bg-gray-300"}`}
-                ></div>
-                <span className="text-sm font-medium">{uploadedPhotos.length} van 10</span>
+                  className={`w-3 h-3 rounded-full ${
+                    uploadedPhotos.length >= 4 ? "bg-green-500" : "bg-gray-300"
+                  }`}></div>
+                <span className="text-sm font-medium">
+                  {uploadedPhotos.length} van 10
+                </span>
               </div>
             </div>
 
             <Card>
               <CardContent className="p-4">
                 {uploadedPhotos.length === 0 ? (
-                  <div className="text-center py-8 text-gray-500">Nog geen foto's geüpload</div>
+                  <div className="text-center py-8 text-gray-500">
+                    Nog geen foto's geüpload
+                  </div>
                 ) : (
                   <div className="grid grid-cols-2 gap-4">
                     {uploadedPhotos.map((photo, index) => (
                       <div key={index} className="relative group">
                         <div className="aspect-square rounded-lg overflow-hidden bg-gray-100">
                           <Image
-                            src={URL.createObjectURL(photo) || "/placeholder.svg"}
+                            src={
+                              URL.createObjectURL(photo) || "/placeholder.svg"
+                            }
                             alt={`Upload ${index + 1}`}
                             fill
                             className="object-cover"
@@ -272,8 +303,7 @@ export default function UploadPage() {
                         </div>
                         <button
                           onClick={() => removePhoto(index)}
-                          className="absolute top-2 right-2 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
-                        >
+                          className="absolute top-2 right-2 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                           <X className="h-4 w-4" />
                         </button>
                       </div>
@@ -287,12 +317,17 @@ export default function UploadPage() {
               <Button
                 onClick={handleContinue}
                 disabled={uploadedPhotos.length < 4 || uploading}
-                className="w-full bg-[#0077B5] hover:bg-[#004182] text-white"
-              >
-                {uploading ? "Portetfotos worden gemaakt..." : "Genereer 40 Professionele Portetfotos"}
+                className="w-full bg-blue-900 hover:bg-blue-800 text-white">
+                {uploading
+                  ? "Portetfotos worden gemaakt..."
+                  : "Genereer 40 Professionele Portetfotos"}
               </Button>
 
-              <Button variant="ghost" onClick={() => router.back()} className="w-full" disabled={uploading}>
+              <Button
+                variant="ghost"
+                onClick={() => router.back()}
+                className="w-full"
+                disabled={uploading}>
                 ← Terug
               </Button>
             </div>
@@ -300,5 +335,5 @@ export default function UploadPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }

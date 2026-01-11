@@ -1,65 +1,65 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { useRouter, useSearchParams } from "next/navigation"
-import { useSession } from "next-auth/react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { ProgressBar } from "@/components/ui/progress-bar"
+import { useState, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useSession } from "next-auth/react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { ProgressBar } from "@/components/ui/progress-bar";
 
 export default function ProjectNamePage() {
-  const [projectName, setProjectName] = useState("")
-  const [checkingPayment, setCheckingPayment] = useState(true)
-  const [hasPaid, setHasPaid] = useState(false)
-  const router = useRouter()
-  const searchParams = useSearchParams()
-  const { data: session, status } = useSession()
+  const [projectName, setProjectName] = useState("");
+  const [checkingPayment, setCheckingPayment] = useState(true);
+  const [hasPaid, setHasPaid] = useState(false);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const { data: session, status } = useSession();
 
   // Check if user has paid
   useEffect(() => {
     const checkPayment = async () => {
       if (status === "authenticated" && session?.user?.email) {
         try {
-          const response = await fetch("/api/auth/check-payment")
-          const data = await response.json()
-          
+          const response = await fetch("/api/auth/check-payment");
+          const data = await response.json();
+
           if (data.hasPaid) {
-            setHasPaid(true)
+            setHasPaid(true);
           } else {
             // User hasn't paid, redirect to pricing
-            router.push("/pricing")
-            return
+            router.push("/pricing");
+            return;
           }
         } catch (error) {
-          console.error("Error checking payment:", error)
-          router.push("/pricing")
-          return
+          console.error("Error checking payment:", error);
+          router.push("/pricing");
+          return;
         }
       }
-      setCheckingPayment(false)
-    }
+      setCheckingPayment(false);
+    };
 
     if (status === "unauthenticated") {
-      router.push("/login")
+      router.push("/login");
     } else if (status === "authenticated") {
-      checkPayment()
+      checkPayment();
     }
-  }, [status, session, router])
+  }, [status, session, router]);
 
   // Handle successful payment
   useEffect(() => {
-    const sessionId = searchParams.get("session_id")
+    const sessionId = searchParams.get("session_id");
     if (sessionId) {
-      console.log("Payment successful, session ID:", sessionId)
+      console.log("Payment successful, session ID:", sessionId);
       // Clear any pending project data since payment was successful
-      localStorage.removeItem("pendingProject")
+      localStorage.removeItem("pendingProject");
       // Set hasPaid to true since they just paid
-      setHasPaid(true)
-      setCheckingPayment(false)
+      setHasPaid(true);
+      setCheckingPayment(false);
     }
-  }, [searchParams])
+  }, [searchParams]);
 
   // Show loading while checking authentication and payment
   if (status === "loading" || checkingPayment) {
@@ -67,12 +67,12 @@ export default function ProjectNamePage() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#0077B5]"></div>
       </div>
-    )
+    );
   }
 
   // Don't render if not authenticated or hasn't paid
   if (status === "unauthenticated" || !hasPaid) {
-    return null
+    return null;
   }
 
   const handleContinue = () => {
@@ -83,11 +83,11 @@ export default function ProjectNamePage() {
           projectName: projectName.trim(),
           selectedPackId: "928", // Portetfotos m/v pack
           step: 1,
-        }),
-      )
-      router.push("/wizard/gender")
+        })
+      );
+      router.push("/wizard/gender");
     }
-  }
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 p-4">
@@ -99,7 +99,10 @@ export default function ProjectNamePage() {
         <Card className="w-full">
           <CardHeader className="text-center">
             <CardTitle className="text-2xl">Geef je project een naam</CardTitle>
-            <p className="text-gray-600">Kies een naam zodat je je portetfotos later makkelijk kunt terugvinden</p>
+            <p className="text-gray-600">
+              Kies een naam zodat je je portetfotos later makkelijk kunt
+              terugvinden
+            </p>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="space-y-2">
@@ -117,12 +120,14 @@ export default function ProjectNamePage() {
               <Button
                 onClick={handleContinue}
                 disabled={!projectName.trim()}
-                className="w-full bg-[#0077B5] hover:bg-[#004182] text-white"
-              >
+                className="w-full bg-blue-900 hover:bg-blue-800 text-white">
                 Doorgaan
               </Button>
 
-              <Button variant="ghost" onClick={() => router.back()} className="w-full">
+              <Button
+                variant="ghost"
+                onClick={() => router.back()}
+                className="w-full">
                 ← Terug
               </Button>
             </div>
@@ -130,5 +135,5 @@ export default function ProjectNamePage() {
         </Card>
       </div>
     </div>
-  )
+  );
 }

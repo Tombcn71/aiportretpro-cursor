@@ -8,7 +8,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check, Star } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { trackViewContent, trackInitiateCheckout } from "@/lib/facebook-pixel";
-import { ProgressIndicator } from "@/components/progress-indicator";
 
 export default function PricingPage() {
   const { data: session, status } = useSession();
@@ -134,10 +133,9 @@ export default function PricingPage() {
       {" "}
       <Header />
       <div className="container mx-auto px-4 py-6 md:py-20">
-        <ProgressIndicator currentStep={2} />
         <div className="text-center mb-3 md:mb-8 max-w-3xl mx-auto">
           <h1 className="text-base md:text-3xl lg:text-4xl font-bold text-gray-900 mb-1 md:mb-4 leading-tight">
-            Kies jouw pakket
+            Kies uw pakket
           </h1>
           <p className="text-xs md:text-base lg:text-lg text-gray-600 leading-relaxed mb-3 md:mb-0">
             Eenmalig, geen abonnement, geld terug garantie
@@ -154,7 +152,7 @@ export default function PricingPage() {
                 <span className="text-sm md:text-lg text-gray-500 decoration-gray-400 line-through">
                   € 29
                 </span>
-                <span className="text-xl md:text-3xl font-bold text-[#0077B5]">
+                <span className="text-xl md:text-3xl font-bold text-blue-900">
                   € 19,99
                 </span>
                 <span className="text-gray-600 text-xs md:text-sm">
@@ -179,7 +177,7 @@ export default function PricingPage() {
                 <Button
                   onClick={handlePlanSelect}
                   disabled={loading}
-                  className="w-full bg-[#FFA500] hover:bg-[#FF8C00] text-white py-2.5 md:py-4 text-sm md:text-lg font-semibold">
+                  className="w-full  bg-blue-900 hover:bg-blue-800 text-white py-2.5 md:py-4 text-sm md:text-lg font-semibold">
                   {loading ? "Laden..." : "Betaal Veilig & Start Direct"}
                 </Button>
                 <p className="text-center text-xs md:text-sm text-gray-600">

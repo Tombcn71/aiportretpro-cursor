@@ -10,11 +10,11 @@ export default function PromoBanner() {
 
   return (
     /* AANPASSING: sticky en top-0 verwijderd, relative toegevoegd */
-    <div className="relative bg-[#0077B5] text-white py-2.5 px-4 shadow-md">
+    <div className="relative bg-blue-900 text-white py-2.5 px-4 shadow-md">
       <div className="max-w-7xl mx-auto flex items-center justify-center relative">
         <div className="flex items-center gap-2">
           <span className="text-sm sm:text-base font-semibold tracking-wide text-center">
-            ⚡ Introductie-actie: Start vandaag je fotoshoot voor slechts{" "}
+            ⚡ Introductie-actie: Start vandaag uw fotoshoot voor slechts{" "}
             <span className="underline decoration-2 underline-offset-4">
               €19,99
             </span>{" "}
