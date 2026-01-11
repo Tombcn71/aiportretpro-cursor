@@ -216,7 +216,7 @@ export default function HomePage() {
 
       <main id="main-content" role="main">
         {/* Hero Container */}
-        <div className="flex flex-col items-center justify-center pt-12  text-center px-4 w-full antialiased">
+        <div className="flex flex-col items-center justify-center pt-12   text-center px-4 w-full antialiased">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 border border-blue-100 rounded-full text-sm font-medium text-blue-800 mb-4">
             <Sparkles className="w-4 h-4 text-blue-600" />
@@ -244,16 +244,19 @@ export default function HomePage() {
             <Link
               href="/login?callbackUrl=/payment"
               onClick={() => trackContact()}
-              aria-label="Start jouw fotoshoot nu voor negenentwintig euro">
+              aria-label="Start jouw fotoshoot nu voor negenentwintig euro"
+              className="w-full max-w-sm md:w-auto">
               <Button
                 size="lg"
-                className="gap-2 h-14 px-10 bg-blue-900 hover:bg-blue-800 text-white border-none shadow-xl transition-all text-lg font-semibold">
-                <Camera className="w-6 h-6" />
-                Start uw fotoshoot—{" "}
-                <span className="line-through text-xs opacity-80 decoration-1">
-                  € 29
+                className="gap-2 h-14 px-10 bg-blue-900 hover:bg-blue-800 text-white border-none shadow-xl transition-all text-base md:text-lg font-semibold w-full md:w-auto">
+                <Camera className="w-5 h-5 md:w-6 md:h-6" />
+                <span className="whitespace-nowrap">
+                  Start uw fotoshoot—{" "}
+                  <span className="line-through text-xs opacity-80 decoration-1">
+                    € 29
+                  </span>
+                  € 19,99
                 </span>
-                € 19,99
               </Button>
             </Link>
 
@@ -266,9 +269,8 @@ export default function HomePage() {
         {/* Photo Carousel - FIXED: Smooth continuous scrolling */}
         {/* Verander mb-0 naar mb-8 voor een nette overgang op mobiel */}
         {/* mt-12 voegt de nodige ruimte toe aan de bovenkant */}
-        <section
-          className="w-full overflow-hidden mt-12 mb-8 md:mb-24"
-          style={{ minHeight: "400px" }}>
+        <section className="w-full overflow-hidden mt-16 mb-0 bg-white leading-none">
+          {" "}
           <div className="relative">
             <div className="carousel-container">
               <div className="carousel-track">
@@ -337,11 +339,10 @@ export default function HomePage() {
         {/* FAQ Section */}
         <section
           id="faq"
-          className="container mx-auto px-6 pt-[120px] pb-[60px] md:py-16 ">
-          {" "}
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mt-4 mb-4">
+          className="container mx-auto px-6 pt-4 pb-[60px] md:py-16">
+          <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mt-4 mb-4">
             Veelgestelde Vragen
-          </h2>
+          </p>
           <p className="text-lg text-[#374151] text-center mb-8 md:mb-12 max-w-2xl mx-auto">
             Alles wat je moet weten voor je begint.
           </p>
@@ -384,16 +385,16 @@ export default function HomePage() {
         </section>
 
         {/* SEO Content Section */}
-        <section className="py-12 md:py-16 bg-white">
+        <section className="py-24 md:py-20">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
-              <h1 className="text-lg md:text-2xl font-semibold text-[#374151] mb-6 text-center">
+              <h1 className="text-xl md:text-3xl font-bold text-gray-900 mb-8 text-center leading-relaxed">
                 Professionele Zakelijke Profielfoto's Laten Maken Online – De
                 Slimme Keuze voor Professionals in 2026
               </h1>
 
-              <div className="prose prose-sm md:prose-base max-w-none text-[#374151] leading-relaxed space-y-4 md:space-y-6">
-                <p className="text-sm md:text-base">
+              <div className="prose prose-sm md:prose-lg max-w-none text-gray-700 space-y-6 md:space-y-8">
+                <p className="text-base md:text-lg leading-relaxed">
                   In de snel veranderende zakelijke wereld van 2026 is je
                   digitale eerste indruk belangrijker dan ooit. Wie vandaag de
                   dag professionele zakelijke profielfoto's wil laten maken,
@@ -407,11 +408,15 @@ export default function HomePage() {
                   CV, de bedrijfswebsite of digitale visitekaartjes.
                 </p>
 
-                <h2 className="text-base md:text-lg font-semibold text-[#374151] mt-6 mb-4">
-                  De voordelen van AI LinkedIn profielfoto's in het nieuwe jaar
+                <h2 className="text-lg md:text-2xl font-bold text-gray-900 mt-10 mb-6">
+                  Waarom kiezen voor AI profielfoto's?
                 </h2>
 
-                <p className="text-sm md:text-base">
+                <h3 className="text-base md:text-xl font-semibold text-gray-800 mt-6 mb-3">
+                  De voordelen van AI LinkedIn profielfoto's in het nieuwe jaar
+                </h3>
+
+                <p className="text-base md:text-lg leading-relaxed">
                   Het jaar 2026 markeert een definitieve omslag in de manier
                   waarop we naar professionele fotografie kijken. Onze service
                   is meer dan zes keer goedkoper dan traditionele fotoshoots,
@@ -426,11 +431,11 @@ export default function HomePage() {
                   professionele kwaliteit die onze 2026-engine levert.
                 </p>
 
-                <h3 className="text-base md:text-lg font-semibold text-[#374151] mt-6 mb-4">
+                <h3 className="text-base md:text-xl font-semibold text-gray-800 mt-6 mb-3">
                   Een veelzijdige oplossing voor elke zakelijke behoefte
                 </h3>
 
-                <p className="text-sm md:text-base">
+                <p className="text-base md:text-lg leading-relaxed">
                   Onze AI-fotografie is ontworpen om te voldoen aan elk denkbaar
                   professioneel doel. Of je nu op zoek bent naar LinkedIn
                   profielfoto's die direct opvallen bij recruiters,
@@ -445,11 +450,15 @@ export default function HomePage() {
                   past.
                 </p>
 
-                <h3 className="text-base md:text-lg font-semibold text-[#374151] mt-6 mb-4">
-                  Hoe het proces in 2026 werkt
+                <h2 className="text-lg md:text-2xl font-bold text-gray-900 mt-10 mb-6">
+                  Hoe werkt AI Portret Pro?
+                </h2>
+
+                <h3 className="text-base md:text-xl font-semibold text-gray-800 mt-6 mb-3">
+                  Het proces in 2026
                 </h3>
 
-                <p className="text-sm md:text-base">
+                <p className="text-base md:text-lg leading-relaxed">
                   Het proces is volledig geoptimaliseerd voor snelheid en
                   gebruiksvriendelijkheid. Je begint door vier tot twaalf
                   verschillende foto's van jezelf te uploaden. Vervolgens
@@ -461,11 +470,11 @@ export default function HomePage() {
                   vanuit je persoonlijke dashboard.
                 </p>
 
-                <h3 className="text-base md:text-lg font-semibold text-[#374151] mt-6 mb-4">
+                <h3 className="text-base md:text-xl font-semibold text-gray-800 mt-6 mb-3">
                   Waarom AI Portret Pro de standaard is voor jouw succes
                 </h3>
 
-                <p className="text-sm md:text-base">
+                <p className="text-base md:text-lg leading-relaxed">
                   In 2026 combineren wij de nieuwste ontwikkelingen op het
                   gebied van kunstmatige intelligentie met de fijne kneepjes van
                   klassieke LinkedIn profielfoto's. Onze algoritmes zijn
@@ -479,11 +488,15 @@ export default function HomePage() {
                   hebben getild.
                 </p>
 
-                <h3 className="text-base md:text-lg font-semibold text-[#374151] mt-6 mb-4">
-                  Over onze zakelijke profielfoto's in 2026
+                <h2 className="text-lg md:text-2xl font-bold text-gray-900 mt-10 mb-6">
+                  Over AI Portret Pro
+                </h2>
+
+                <h3 className="text-base md:text-xl font-semibold text-gray-800 mt-6 mb-3">
+                  Onze zakelijke profielfoto's in 2026
                 </h3>
 
-                <p className="text-sm md:text-base">
+                <p className="text-base md:text-lg leading-relaxed">
                   Onze expertise strekt zich uit over alle facetten van digitale
                   zakelijke LinkedIn profielfoto's. AI Portret Pro is de
                   primaire bron voor het laten maken van LinkedIn profielfoto's
@@ -785,37 +798,20 @@ export default function HomePage() {
           width: 100%;
           overflow: hidden;
           position: relative;
+          line-height: 0;
         }
 
         .carousel-track {
           display: flex;
           width: fit-content;
           animation: carousel 200s linear infinite;
-          min-height: 400px;
+          line-height: 0;
         }
 
         .carousel-item {
           flex-shrink: 0;
           margin: 0 0.5rem;
-        }
-
-        .carousel-item:first-child {
-          display: block !important;
-          opacity: 1 !important;
-          visibility: visible !important;
-        }
-
-        @keyframes carousel {
-          0% {
-            transform: translateX(calc(-100% / 2));
-          }
-          100% {
-            transform: translateX(0);
-          }
-        }
-
-        .carousel-track:hover {
-          animation-play-state: paused;
+          line-height: 0;
         }
 
         @media (max-width: 768px) {
