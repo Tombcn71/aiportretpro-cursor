@@ -267,8 +267,7 @@ export default function HomePage() {
           </div>
         </div>
         {/* Photo Carousel - FIXED: Smooth continuous scrolling */}
-
-        <section className="w-full overflow-hidden mt-12 md:mt-32 pb-0 md:pb-24 bg-white leading-none">
+        <section className="w-full overflow-hidden mt-8 md:mt-12 pb-0 md:pb-16 bg-white leading-none">
           {" "}
           <div className="relative">
             <div className="carousel-container">
