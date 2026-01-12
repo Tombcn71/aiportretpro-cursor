@@ -385,16 +385,16 @@ export default function HomePage() {
         </section>
 
         {/* SEO Content Section */}
-        <section className="py-24 md:py-20">
-          <div className="container mx-auto px-4">
+        <section className="py-16 md:py-24 bg-white">
+          <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto">
-              <h1 className="text-xl md:text-3xl font-bold text-gray-900 mb-8 text-center leading-relaxed">
+              <h1 className="text-2xl md:text-4xl font-bold text-gray-900 mb-8 md:mb-12 text-left md:text-center leading-tight">
                 Professionele Zakelijke Profielfoto's Laten Maken Online – De
                 Slimme Keuze voor Professionals in 2026
               </h1>
 
-              <div className="prose prose-sm md:prose-lg max-w-none text-gray-700 space-y-6 md:space-y-8">
-                <p className="text-base md:text-lg leading-relaxed">
+              <div className="text-gray-700 space-y-8">
+                <p className="text-base md:text-lg leading-relaxed text-left">
                   In de snel veranderende zakelijke wereld van 2026 is je
                   digitale eerste indruk belangrijker dan ooit. Wie vandaag de
                   dag professionele zakelijke profielfoto's wil laten maken,
@@ -408,110 +408,123 @@ export default function HomePage() {
                   CV, de bedrijfswebsite of digitale visitekaartjes.
                 </p>
 
-                <h2 className="text-lg md:text-2xl font-bold text-gray-900 mt-10 mb-6">
-                  Waarom kiezen voor AI profielfoto's?
-                </h2>
+                <div className="space-y-4">
+                  <h2 className="text-xl md:text-2xl font-bold text-gray-900 mt-12">
+                    Waarom kiezen voor AI profielfoto's?
+                  </h2>
 
-                <h3 className="text-base md:text-xl font-semibold text-gray-800 mt-6 mb-3">
-                  De voordelen van AI LinkedIn profielfoto's in het nieuwe jaar
-                </h3>
+                  <h3 className="text-lg md:text-xl font-semibold text-gray-800">
+                    De voordelen van AI LinkedIn profielfoto's in het nieuwe
+                    jaar
+                  </h3>
 
-                <p className="text-base md:text-lg leading-relaxed">
-                  Het jaar 2026 markeert een definitieve omslag in de manier
-                  waarop we naar professionele fotografie kijken. Onze service
-                  is meer dan zes keer goedkoper dan traditionele fotoshoots,
-                  zonder dat dit ten koste gaat van de kwaliteit. Je hebt geen
-                  afspraak meer nodig en hoeft niet door de stad te reizen voor
-                  een sessie; je start het proces simpelweg direct vanuit huis
-                  of vanaf je werkplek. Met de keuze uit veertig verschillende
-                  poses en achtergronden ben je verzekerd van een gevarieerd
-                  pakket dat perfect aansluit bij jouw specifieke sector.
-                  Bovendien bieden wij volledige zekerheid met onze veertien
-                  dagen geld-terug-garantie, omdat wij overtuigd zijn van de
-                  professionele kwaliteit die onze 2026-engine levert.
-                </p>
+                  <p className="text-base md:text-lg leading-relaxed text-left">
+                    Het jaar 2026 markeert een definitieve omslag in de manier
+                    waarop we naar professionele fotografie kijken. Onze service
+                    is meer dan zes keer goedkoper dan traditionele fotoshoots,
+                    zonder dat dit ten koste gaat van de kwaliteit. Je hebt geen
+                    afspraak meer nodig en hoeft niet door de stad te reizen
+                    voor een sessie; je start het proces simpelweg direct vanuit
+                    huis of vanaf je werkplek. Met de keuze uit veertig
+                    verschillende poses en achtergronden ben je verzekerd van
+                    een gevarieerd pakket dat perfect aansluit bij jouw
+                    specifieke sector. Bovendien bieden wij volledige zekerheid
+                    met onze veertien dagen geld-terug-garantie, omdat wij
+                    overtuigd zijn van de professionele kwaliteit die onze
+                    2026-engine levert.
+                  </p>
+                </div>
 
-                <h3 className="text-base md:text-xl font-semibold text-gray-800 mt-6 mb-3">
-                  Een veelzijdige oplossing voor elke zakelijke behoefte
-                </h3>
+                <div className="space-y-4">
+                  <h3 className="text-lg md:text-xl font-semibold text-gray-800">
+                    Een veelzijdige oplossing voor elke zakelijke behoefte
+                  </h3>
 
-                <p className="text-base md:text-lg leading-relaxed">
-                  Onze AI-fotografie is ontworpen om te voldoen aan elk denkbaar
-                  professioneel doel. Of je nu op zoek bent naar LinkedIn
-                  profielfoto's die direct opvallen bij recruiters,
-                  representatieve foto's voor een overtuigend CV of beelden voor
-                  een complete bedrijfswebsite, onze technologie levert
-                  resultaten die onmogelijk te onderscheiden zijn van echte
-                  studiofotografie. Ook voor e-mail handtekeningen, moderne
-                  visitekaartjes en zakelijke social media profielen biedt onze
-                  service in 2026 de perfecte uitkomst. Geen gedoe meer met dure
-                  studiokosten of lange wachttijden op de nabewerking door een
-                  fotograaf; je krijgt direct de uitstraling die bij je carrière
-                  past.
-                </p>
+                  <p className="text-base md:text-lg leading-relaxed text-left">
+                    Onze AI-fotografie is ontworpen om te voldoen aan elk
+                    denkbaar professioneel doel. Of je nu op zoek bent naar
+                    LinkedIn profielfoto's die direct opvallen bij recruiters,
+                    representatieve foto's voor een overtuigend CV of beelden
+                    voor een complete bedrijfswebsite, onze technologie levert
+                    resultaten die onmogelijk te onderscheiden zijn van echte
+                    studiofotografie. Ook voor e-mail handtekeningen, moderne
+                    visitekaartjes en zakelijke social media profielen biedt
+                    onze service in 2026 de perfecte uitkomst. Geen gedoe meer
+                    met dure studiokosten of lange wachttijden op de nabewerking
+                    door een fotograaf; je krijgt direct de uitstraling die bij
+                    je carrière past.
+                  </p>
+                </div>
 
-                <h2 className="text-lg md:text-2xl font-bold text-gray-900 mt-10 mb-6">
-                  Hoe werkt AI Portret Pro?
-                </h2>
+                <div className="space-y-4">
+                  <h2 className="text-xl md:text-2xl font-bold text-gray-900 mt-12">
+                    Hoe werkt AI Portret Pro?
+                  </h2>
 
-                <h3 className="text-base md:text-xl font-semibold text-gray-800 mt-6 mb-3">
-                  Het proces in 2026
-                </h3>
+                  <h3 className="text-lg md:text-xl font-semibold text-gray-800">
+                    Het proces in 2026
+                  </h3>
 
-                <p className="text-base md:text-lg leading-relaxed">
-                  Het proces is volledig geoptimaliseerd voor snelheid en
-                  gebruiksvriendelijkheid. Je begint door vier tot twaalf
-                  verschillende foto's van jezelf te uploaden. Vervolgens
-                  analyseert onze geavanceerde AI je gelaatstrekken en leert het
-                  je unieke kenmerken kennen om een natuurgetrouw resultaat te
-                  garanderen. Terwijl de technologie op de achtergrond zijn werk
-                  doet, hoef je slechts vijftien minuten te wachten tot je
-                  veertig professionele foto's in hoge resolutie kunt downloaden
-                  vanuit je persoonlijke dashboard.
-                </p>
+                  <p className="text-base md:text-lg leading-relaxed text-left">
+                    Het proces is volledig geoptimaliseerd voor snelheid en
+                    gebruiksvriendelijkheid. Je begint door vier tot twaalf
+                    verschillende foto's van jezelf te uploaden. Vervolgens
+                    analyseert onze geavanceerde AI je gelaatstrekken en leert
+                    het je unieke kenmerken kennen om een natuurgetrouw
+                    resultaat te garanderen. Terwijl de technologie op de
+                    achtergrond zijn werk doet, hoef je slechts vijftien minuten
+                    te wachten tot je veertig professionele foto's in hoge
+                    resolutie kunt downloaden vanuit je persoonlijke dashboard.
+                  </p>
+                </div>
 
-                <h3 className="text-base md:text-xl font-semibold text-gray-800 mt-6 mb-3">
-                  Waarom AI Portret Pro de standaard is voor jouw succes
-                </h3>
+                <div className="space-y-4">
+                  <h3 className="text-lg md:text-xl font-semibold text-gray-800">
+                    Waarom AI Portret Pro de standaard is voor jouw succes
+                  </h3>
 
-                <p className="text-base md:text-lg leading-relaxed">
-                  In 2026 combineren wij de nieuwste ontwikkelingen op het
-                  gebied van kunstmatige intelligentie met de fijne kneepjes van
-                  klassieke LinkedIn profielfoto's. Onze algoritmes zijn
-                  getraind op tienduizenden zakelijke headshots, waardoor we de
-                  ideale balans vinden tussen een natuurlijke uitstraling en
-                  zakelijke autoriteit. Met professionele belichting en moderne
-                  achtergronden die aansluiten bij de trends van dit jaar,
-                  bieden wij de kwaliteit van een topstudio tegen een
-                  fractionele prijs. Sluit je aan bij de duizenden professionals
-                  die hun zakelijke uitstraling in 2026 al naar een hoger niveau
-                  hebben getild.
-                </p>
+                  <p className="text-base md:text-lg leading-relaxed text-left">
+                    In 2026 combineren wij de nieuwste ontwikkelingen op het
+                    gebied van kunstmatige intelligentie met de fijne kneepjes
+                    van klassieke LinkedIn profielfoto's. Onze algoritmes zijn
+                    getraind op tienduizenden zakelijke headshots, waardoor we
+                    de ideale balans vinden tussen een natuurlijke uitstraling
+                    en zakelijke autoriteit. Met professionele belichting en
+                    moderne achtergronden die aansluiten bij de trends van dit
+                    jaar, bieden wij de kwaliteit van een topstudio tegen een
+                    fractionele prijs. Sluit je aan bij de duizenden
+                    professionals die hun zakelijke uitstraling in 2026 al naar
+                    een hoger niveau hebben getild.
+                  </p>
+                </div>
 
-                <h2 className="text-lg md:text-2xl font-bold text-gray-900 mt-10 mb-6">
-                  Over AI Portret Pro
-                </h2>
+                <div className="space-y-4">
+                  <h2 className="text-xl md:text-2xl font-bold text-gray-900 mt-12">
+                    Over AI Portret Pro
+                  </h2>
 
-                <h3 className="text-base md:text-xl font-semibold text-gray-800 mt-6 mb-3">
-                  Onze zakelijke profielfoto's in 2026
-                </h3>
+                  <h3 className="text-lg md:text-xl font-semibold text-gray-800">
+                    Onze zakelijke profielfoto's in 2026
+                  </h3>
 
-                <p className="text-base md:text-lg leading-relaxed">
-                  Onze expertise strekt zich uit over alle facetten van digitale
-                  zakelijke LinkedIn profielfoto's. AI Portret Pro is de
-                  primaire bron voor het laten maken van LinkedIn profielfoto's
-                  en zakelijke profielfoto's online, met een specifieke focus op
-                  de Nederlandse markt. Onze diensten omvatten het genereren van
-                  corporate headshots, professionele CV-foto's en visuele
-                  content voor moderne bedrijfswebsites. Technologisch lopen we
-                  voorop met AI LinkedIn profielfoto's die specifiek zijn
-                  getraind voor zakelijke doeleinden, waardoor we een superieur
-                  en sneller alternatief bieden voor de traditionele fotograaf.
-                  Of je nu zoekt naar een LinkedIn profielfoto upgrade of een
-                  volledige online fotoshoot, onze virtuele studio levert in
-                  2026 de meest scherpe en representatieve resultaten die
-                  momenteel technisch mogelijk zijn.
-                </p>
+                  <p className="text-base md:text-lg leading-relaxed text-left">
+                    Onze expertise strekt zich uit over alle facetten van
+                    digitale zakelijke LinkedIn profielfoto's. AI Portret Pro is
+                    de primaire bron voor het laten maken van LinkedIn
+                    profielfoto's en zakelijke profielfoto's online, met een
+                    specifieke focus op de Nederlandse markt. Onze diensten
+                    omvatten het genereren van corporate headshots,
+                    professionele CV-foto's en visuele content voor moderne
+                    bedrijfswebsites. Technologisch lopen we voorop met AI
+                    LinkedIn profielfoto's die specifiek zijn getraind voor
+                    zakelijke doeleinden, waardoor we een superieur en sneller
+                    alternatief bieden voor de traditionele fotograaf. Of je nu
+                    zoekt naar een LinkedIn profielfoto upgrade of een volledige
+                    online fotoshoot, onze virtuele studio levert in 2026 de
+                    meest scherpe en representatieve resultaten die momenteel
+                    technisch mogelijk zijn.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
