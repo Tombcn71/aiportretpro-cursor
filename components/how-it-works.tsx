@@ -17,9 +17,9 @@ export default function HowItWorks() {
             <div className="w-16 h-16 rounded-xl bg-white border border-blue-200 flex items-center justify-center mx-auto shadow-sm">
               <Camera className="w-8 h-8 text-blue-900" />
             </div>
-            <h3 className="text-xl font-semibold">1. Upload 4 foto's</h3>
+            <h3 className="text-xl font-semibold">1. Upload foto's</h3>
             <p className="text-muted-foreground">
-              Upload gewone selfies of casual foto's
+              Upload 4 gewone selfies of casual foto's
             </p>
           </div>
 
