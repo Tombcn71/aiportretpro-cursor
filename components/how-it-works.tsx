@@ -2,7 +2,7 @@ import { Camera, Download, Sparkles, Zap } from "lucide-react";
 
 export default function HowItWorks() {
   return (
-    <section className="px-4 pt-0 pb-16 mb-24 md:mb-32 ">
+    <section className="px-4 pt-0 -mt-14 pb-16 mb-24 md:mb-32  ">
       {" "}
       <div className="max-w-6xl mx-auto">
         <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mt-4 mb-4">
