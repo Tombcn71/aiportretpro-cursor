@@ -237,7 +237,7 @@ export default function LoginPage() {
         <div className="container mx-auto px-4 py-8 md:py-12">
           <Card className="max-w-md mx-auto w-full">
             <CardHeader className="text-left">
-              {/* Logo with text */}
+              {/* Logo en bedrijfsnaam blijven gelijk */}
               <div className="flex items-center space-x-3 mb-6">
                 <Image
                   src="/images/logo.png"
@@ -249,15 +249,25 @@ export default function LoginPage() {
                 <span className="text-lg text-gray-900">AIPortretPro</span>
               </div>
 
-              {/* Main title */}
+              {/* Dynamische Titel op basis van de Mode */}
               <CardTitle className="text-xl md:text-2xl text-gray-900 mb-3 font-normal pl-0">
-                40 zakelijke foto's van studio kwaliteit,{" "}
-                <span className="text-blue-900 ">zonder een fotograaf </span>
+                {isDirectLogin ? (
+                  "Welkom terug!"
+                ) : (
+                  <>
+                    40 zakelijke foto's van studio kwaliteit,{" "}
+                    <span className="text-blue-900">zonder een fotograaf</span>
+                  </>
+                )}
               </CardTitle>
+
+              {/* Dynamische Subtekst */}
               <p className="text-sm opacity-80 italic">
-                Even aanmelden voor toegang tot de app
+                {isDirectLogin
+                  ? "Log in op uw account om verder te gaan"
+                  : "Even aanmelden voor toegang tot de app"}
               </p>
-            </CardHeader>{" "}
+            </CardHeader>
             <CardContent className="space-y-4">
               {!showEmailForm ? (
                 <>
@@ -293,7 +303,11 @@ export default function LoginPage() {
                         d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
                       />
                     </svg>
-                    <span>Registreer met Google</span>
+                    <span>
+                      {isDirectLogin
+                        ? "Inloggen met Google"
+                        : "Registreer met Google"}
+                    </span>{" "}
                   </Button>
 
                   {/* Value props - Show when email form is closed */}
