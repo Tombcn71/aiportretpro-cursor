@@ -240,7 +240,7 @@ export default function LoginPage() {
               {/* Logo with text */}
               <div className="flex items-center space-x-3 mb-6">
                 <Image
-                  src="/images/Logo.png"
+                  src="/images/logo.png"
                   alt="AI Portrait Pro Logo"
                   width={32}
                   height={32}
