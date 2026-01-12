@@ -240,7 +240,7 @@ export default function LoginPage() {
               {/* Logo with text */}
               <div className="flex items-center space-x-3 mb-6">
                 <Image
-                  src="/images/logo.png"
+                  src="/images/Logo.png"
                   alt="AI Portrait Pro Logo"
                   width={32}
                   height={32}
@@ -439,37 +439,29 @@ export default function LoginPage() {
                   </div>
 
                   {/* Value props */}
-                  <div className="mt-6 space-y-2.5">
-                    {/* Check 1 */}
-                    <div className="flex items-center gap-1.5">
-                      <Check
-                        className="w-4 h-4 text-emerald-600 flex-shrink-0"
-                        strokeWidth={3}
-                      />
-                      <p className="text-sm font-medium text-slate-700">
-                        40 foto's in 15 minuten{" "}
+                  <div className="mt-6 pt-4 pb-4 px-4 bg-slate-50 rounded-lg border border-slate-200 space-y-2.5">
+                    <div className="flex items-start gap-2.5">
+                      <span className="text-green-600 text-sm flex-shrink-0">
+                        ✅
+                      </span>
+                      <p className="text-xs text-slate-600">
+                        40+ foto's in 15 minuten
                       </p>
                     </div>
-
-                    {/* Check 2 */}
-                    <div className="flex items-center gap-1.5">
-                      <Check
-                        className="w-4 h-4 text-emerald-600 flex-shrink-0"
-                        strokeWidth={3}
-                      />
-                      <p className="text-sm font-medium text-slate-700">
+                    <div className="flex items-start gap-2.5">
+                      <span className="text-green-600 text-sm flex-shrink-0">
+                        ✅
+                      </span>
+                      <p className="text-xs text-slate-600">
                         14 dagen geld terug garantie
                       </p>
                     </div>
-
-                    {/* Check 3 */}
-                    <div className="flex items-center gap-1.5">
-                      <Check
-                        className="w-4 h-4 text-emerald-600 flex-shrink-0"
-                        strokeWidth={3}
-                      />
-                      <p className="text-sm font-medium text-slate-700">
-                        Direct klaar voor linkedin, website of cv
+                    <div className="flex items-start gap-2.5">
+                      <span className="text-green-600 text-sm flex-shrink-0">
+                        ✅
+                      </span>
+                      <p className="text-xs text-slate-600">
+                        Geen fotostudio nodig
                       </p>
                     </div>
                   </div>

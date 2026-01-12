@@ -267,8 +267,7 @@ export default function HomePage() {
           </div>
         </div>
         {/* Photo Carousel - FIXED: Smooth continuous scrolling */}
-        {/* Verander mb-0 naar mb-8 voor een nette overgang op mobiel */}
-        {/* mt-12 voegt de nodige ruimte toe aan de bovenkant */}
+
         <section className="w-full overflow-hidden mt-16 mb-0 bg-white leading-none">
           {" "}
           <div className="relative">
@@ -339,7 +338,7 @@ export default function HomePage() {
         {/* FAQ Section */}
         <section
           id="faq"
-          className="container mx-auto px-6 pt-4 pb-[60px] md:py-16">
+          className="container mx-auto px-6 pt-4 pb-20 mb-16 md:py-16">
           <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mt-4 mb-4">
             Veelgestelde Vragen
           </p>
@@ -370,17 +369,6 @@ export default function HomePage() {
                 </button>
               </div>
             ))}
-          </div>
-          <div className="text-center mt-8 md:mt-12">
-            <p className="text-[#374151] mb-4 text-sm md:text-base">
-              Nog vragen? We helpen je graag!
-            </p>
-            <Button
-              asChild
-              variant="outline"
-              className="border-[#0077B5] text-[#0077B5] hover:bg-[#0077B5] hover:text-white bg-transparent">
-              <Link href="/contact">Neem Contact Op</Link>
-            </Button>
           </div>
         </section>
 
