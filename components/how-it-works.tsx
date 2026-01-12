@@ -8,7 +8,7 @@ export default function HowItWorks() {
         <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mt-4 mb-4">
           Zo werkt het{" "}
         </p>
-        <p className="text-lg text-[#374151] text-center mb-8 md:mb-12 max-w-2xl mx-auto">
+        <p className="text-lg text-[#374151] text-center mb-10 md:mb-12 max-w-2xl mx-auto">
           Even wat foto's uploaden, dat is alles{" "}
         </p>
 
