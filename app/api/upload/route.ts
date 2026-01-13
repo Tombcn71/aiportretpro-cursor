@@ -1,69 +1,64 @@
-import { type NextRequest, NextResponse } from "next/server"
+import { handleUpload, type HandleUploadBody } from "@vercel/blob/client";
+import { NextResponse } from "next/server";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
 
-export async function POST(request: NextRequest) {
+export async function POST(request: Request): Promise<NextResponse> {
+  const body = (await request.json()) as HandleUploadBody;
+
   try {
-    // Check if Vercel Blob is configured
-    if (!process.env.BLOB_READ_WRITE_TOKEN) {
-      return NextResponse.json(
-        {
-          error: "Blob storage not configured. Please add BLOB_READ_WRITE_TOKEN environment variable.",
-        },
-        { status: 500 },
-      )
-    }
+    const jsonResponse = await handleUpload({
+      body,
+      request,
+      onBeforeGenerateToken: async (pathname: string) => {
+        // Authenticate users before generating the token
+        const session = await getServerSession(authOptions);
 
-    const formData = await request.formData()
-    const file = formData.get("file") as File
+        if (!session?.user) {
+          throw new Error("Not authorized");
+        }
 
-    if (!file) {
-      return NextResponse.json({ error: "No file provided" }, { status: 400 })
-    }
-
-    // Validate file type
-    if (!file.type.startsWith("image/")) {
-      return NextResponse.json({ error: "File must be an image" }, { status: 400 })
-    }
-
-    // Validate file size (120MB limit)
-    if (file.size > 120 * 1024 * 1024) {
-      return NextResponse.json({ error: "File too large. Maximum size is 120MB" }, { status: 400 })
-    }
-
-    // Import Vercel Blob dynamically
-    const { put } = await import("@vercel/blob")
-
-    // Generate a unique filename
-    const timestamp = Date.now()
-    const filename = `${timestamp}-${file.name}`
-
-    const blob = await put(filename, file, {
-      access: "public",
-      token: process.env.BLOB_READ_WRITE_TOKEN,
-    })
-
-    console.log("File uploaded successfully:", blob.url)
-    return NextResponse.json({ url: blob.url })
-  } catch (error) {
-    console.error("Error uploading file:", error)
-
-    // Provide more specific error messages
-    if (error instanceof Error) {
-      if (error.message.includes("No token found")) {
-        return NextResponse.json(
-          {
-            error: "Blob storage not configured properly. Please configure BLOB_READ_WRITE_TOKEN.",
-          },
-          { status: 500 },
-        )
-      }
-    }
-
-    return NextResponse.json(
-      {
-        error: "Upload failed",
-        details: error instanceof Error ? error.message : "Unknown error",
+        return {
+          allowedContentTypes: [
+            "image/jpeg",
+            "image/png",
+            "image/gif",
+            "image/webp",
+            "image/heic",
+          ],
+          maximumSizeInBytes: 120 * 1024 * 1024, // 120MB
+          tokenPayload: JSON.stringify({
+            userId: session.user.email,
+          }),
+        };
       },
-      { status: 500 },
-    )
+      onUploadCompleted: async ({ blob, tokenPayload }) => {
+        // Called when upload is complete
+        console.log("blob upload completed", blob.url);
+
+        try {
+          const payload = JSON.parse(tokenPayload || "{}");
+          console.log("Upload completed for user:", payload.userId);
+
+          // Optional: Save to database if needed
+          // await db.userUploads.create({
+          //   userId: payload.userId,
+          //   blobUrl: blob.url,
+          //   uploadedAt: new Date()
+          // });
+        } catch (error) {
+          console.error("Error in onUploadCompleted:", error);
+          // Don't throw error here since upload already succeeded
+        }
+      },
+    });
+
+    return NextResponse.json(jsonResponse);
+  } catch (error) {
+    console.error("Upload handler error:", error);
+    return NextResponse.json(
+      { error: (error as Error).message },
+      { status: 400 }
+    );
   }
 }

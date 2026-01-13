@@ -4,6 +4,7 @@ import type React from "react";
 import { useState, useCallback, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
+import { upload } from "@vercel/blob/client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Upload, X, Camera } from "lucide-react";
@@ -19,6 +20,7 @@ interface WizardData {
 export default function UploadPage() {
   const [uploadedPhotos, setUploadedPhotos] = useState<File[]>([]);
   const [uploading, setUploading] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState(0);
   const [wizardData, setWizardData] = useState<WizardData | null>(null);
   const router = useRouter();
   const { data: session, status } = useSession();
@@ -28,7 +30,6 @@ export default function UploadPage() {
     if (status === "unauthenticated") {
       router.push("/login");
     } else if (status === "authenticated" && session) {
-      // User is authenticated, we can proceed
       console.log("User authenticated:", session.user?.email);
     }
   }, [status, router, session]);
@@ -84,28 +85,27 @@ export default function UploadPage() {
   const handleContinue = async () => {
     if (uploadedPhotos.length < 4 || !wizardData) return;
     setUploading(true);
+    setUploadProgress(0);
 
     try {
-      // Upload photos to Vercel Blob
-      const uploadPromises = uploadedPhotos.map(async (photo) => {
-        const formData = new FormData();
-        formData.append("file", photo);
+      // Upload photos directly to Vercel Blob via client-side upload
+      const uploadPromises = uploadedPhotos.map(async (photo, index) => {
+        try {
+          const blob = await upload(photo.name, photo, {
+            access: "public",
+            handleUploadUrl: "/api/upload",
+          });
 
-        const response = await fetch("/api/upload", {
-          method: "POST",
-          body: formData,
-        });
+          // Update progress
+          setUploadProgress(
+            Math.round(((index + 1) / uploadedPhotos.length) * 100)
+          );
 
-        const result = await response.json();
-
-        if (!response.ok) {
-          throw new Error(result.error || result.message || "Upload mislukt");
+          return blob.url;
+        } catch (error) {
+          console.error(`Error uploading ${photo.name}:`, error);
+          throw new Error(`Upload mislukt voor ${photo.name}`);
         }
-
-        if (!result.url) {
-          throw new Error("Geen URL ontvangen van upload");
-        }
-        return result.url;
       });
 
       const uploadedUrls = await Promise.all(uploadPromises);
@@ -124,7 +124,7 @@ export default function UploadPage() {
         body: JSON.stringify({
           projectName: wizardData.projectName,
           gender: wizardData.gender,
-          selectedPackId: "928", // Portetfotos m/v pack
+          selectedPackId: "928",
           uploadedPhotos: uploadedUrls,
         }),
       });
@@ -154,17 +154,15 @@ export default function UploadPage() {
         localStorage.removeItem("wizardData");
         router.push(`/generate/${result.projectId}`);
       } else if (result.message) {
-        // API returned an error message
         throw new Error(result.message);
       } else {
-        // Even if Astria API fails, continue to pricing with uploaded photos
         console.warn(
           "Astria API failed, but continuing to pricing with uploaded photos"
         );
         localStorage.setItem(
           "pendingProject",
           JSON.stringify({
-            projectId: "temp_" + Date.now(), // Temporary ID
+            projectId: "temp_" + Date.now(),
             projectName: wizardData.projectName,
             gender: wizardData.gender,
             uploadedPhotos: uploadedUrls,
@@ -178,12 +176,14 @@ export default function UploadPage() {
       const errorMessage =
         error instanceof Error ? error.message : "Er is een fout opgetreden";
 
-      // Show more specific error messages
       let userMessage = "Er is een fout opgetreden. Probeer het opnieuw.";
       if (errorMessage.includes("credits")) {
         userMessage =
           "Je hebt niet genoeg credits. Koop eerst credits om door te gaan.";
-      } else if (errorMessage.includes("Unauthorized")) {
+      } else if (
+        errorMessage.includes("Unauthorized") ||
+        errorMessage.includes("Not authorized")
+      ) {
         userMessage =
           "Je bent niet ingelogd. Log opnieuw in en probeer het opnieuw.";
       } else if (errorMessage.includes("Upload")) {
@@ -196,6 +196,7 @@ export default function UploadPage() {
       alert(userMessage);
     } finally {
       setUploading(false);
+      setUploadProgress(0);
     }
   };
 
@@ -312,6 +313,20 @@ export default function UploadPage() {
                 )}
               </CardContent>
             </Card>
+
+            {uploading && uploadProgress > 0 && (
+              <div className="space-y-2">
+                <div className="flex justify-between text-sm text-gray-600">
+                  <span>Uploaden...</span>
+                  <span>{uploadProgress}%</span>
+                </div>
+                <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div
+                    className="bg-blue-900 h-2 rounded-full transition-all duration-300"
+                    style={{ width: `${uploadProgress}%` }}></div>
+                </div>
+              </div>
+            )}
 
             <div className="space-y-4">
               <Button
