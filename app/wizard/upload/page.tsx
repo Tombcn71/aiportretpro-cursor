@@ -60,8 +60,36 @@ export default function UploadPage() {
 
   const handleFileSelect = useCallback((files: FileList | null) => {
     if (!files) return;
-    const newFiles = Array.from(files).filter(
-      (file) => file.type.startsWith("image/") && file.size <= 120 * 1024 * 1024
+
+    const newFiles = Array.from(files).filter((file) => {
+      // Check if file is an image based on MIME type OR file extension
+      // iOS Safari often sends HEIC files with empty or non-standard MIME types
+      const isImageMimeType = file.type.startsWith("image/");
+      const isImageExtension = /\.(jpg|jpeg|png|gif|webp|heic|heif)$/i.test(
+        file.name
+      );
+      const isValidSize = file.size <= 120 * 1024 * 1024;
+
+      // Accept if either MIME type is correct OR extension is correct
+      const isValidImage = isImageMimeType || isImageExtension;
+
+      if (!isValidImage) {
+        console.log(
+          `❌ Rejected file: ${file.name} (type: ${file.type || "empty"})`
+        );
+      } else {
+        console.log(
+          `✅ Accepted file: ${file.name} (type: ${
+            file.type || "detected from extension"
+          })`
+        );
+      }
+
+      return isValidImage && isValidSize;
+    });
+
+    console.log(
+      `Selected ${newFiles.length} valid images from ${files.length} files`
     );
     setUploadedPhotos((prev) => [...prev, ...newFiles].slice(0, 10));
   }, []);
@@ -91,6 +119,10 @@ export default function UploadPage() {
       // Upload photos directly to Vercel Blob via client-side upload
       const uploadPromises = uploadedPhotos.map(async (photo, index) => {
         try {
+          console.log(
+            `Uploading: ${photo.name} (${photo.type || "no MIME type"})`
+          );
+
           const blob = await upload(photo.name, photo, {
             access: "public",
             handleUploadUrl: "/api/upload",
@@ -101,9 +133,10 @@ export default function UploadPage() {
             Math.round(((index + 1) / uploadedPhotos.length) * 100)
           );
 
+          console.log(`✅ Successfully uploaded: ${photo.name} -> ${blob.url}`);
           return blob.url;
         } catch (error) {
-          console.error(`Error uploading ${photo.name}:`, error);
+          console.error(`❌ Error uploading ${photo.name}:`, error);
           throw new Error(`Upload mislukt voor ${photo.name}`);
         }
       });
@@ -261,7 +294,7 @@ export default function UploadPage() {
               <input
                 type="file"
                 multiple
-                accept="image/*"
+                accept="image/*,.heic,.heif"
                 onChange={(e) => handleFileSelect(e.target.files)}
                 className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
               />
