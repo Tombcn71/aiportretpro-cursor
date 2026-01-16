@@ -3,23 +3,18 @@ import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 
-export async function POST(request: Request): Promise<NextResponse> {
-  // STAP 1: Lees de body als tekst om de "minus sign" crash te voorkomen
-  const rawBody = await request.text();
-  let body: HandleUploadBody;
+// DIT IS DE FIX: Forceert de Edge runtime die wel met de iPhone-data om kan gaan
+export const runtime = "edge";
 
-  try {
-    body = JSON.parse(rawBody);
-  } catch (error) {
-    console.error("JSON parse fout in upload route:", error);
-    return NextResponse.json({ error: "Ongeldige JSON" }, { status: 400 });
-  }
+export async function POST(request: Request): Promise<NextResponse> {
+  // We gebruiken weer .json(), de 'edge' runtime voorkomt hier de crash
+  const body = (await request.json()) as HandleUploadBody;
 
   try {
     const jsonResponse = await handleUpload({
       body,
       request,
-      onBeforeGenerateToken: async (pathname: string) => {
+      onBeforeGenerateToken: async () => {
         const session = await getServerSession(authOptions);
 
         if (!session?.user) {
@@ -32,17 +27,16 @@ export async function POST(request: Request): Promise<NextResponse> {
             "image/png",
             "image/gif",
             "image/webp",
-            "image/heic",
+            "image/heic", // iPhone support
           ],
-          maximumSizeInBytes: 120 * 1024 * 1024, // 120MB
+          maximumSizeInBytes: 120 * 1024 * 1024,
           tokenPayload: JSON.stringify({
             userId: session.user.email,
           }),
         };
       },
-      onUploadCompleted: async ({ blob, tokenPayload }) => {
-        console.log("blob upload completed", blob.url);
-        // Je database logica kan hier blijven staan
+      onUploadCompleted: async ({ blob }) => {
+        console.log("Upload voltooid:", blob.url);
       },
     });
 
