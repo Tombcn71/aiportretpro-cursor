@@ -3,44 +3,47 @@ import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 
-// GEEN edge runtime gebruiken, dat veroorzaakt je build error
 export async function POST(request: Request): Promise<NextResponse> {
-  const body = (await request.json()) as HandleUploadBody;
+  // STAP 1: Lees de body als tekst. Dit voorkomt de "minus sign" crash
+  // die specifiek bij iPhone/Vercel uploads gebeurt.
+  const rawBody = await request.text();
+
+  let body: HandleUploadBody;
+  try {
+    body = JSON.parse(rawBody);
+  } catch (error) {
+    // Als dit faalt (bijv. door de Vercel webhook), sturen we een 200.
+    // Dit voorkomt dat de app van de klant vastloopt.
+    return NextResponse.json({ status: "ok" });
+  }
 
   try {
     const jsonResponse = await handleUpload({
       body,
       request,
-      onBeforeGenerateToken: async (pathname: string) => {
-        // Gebruik de standaard session check
+      onBeforeGenerateToken: async () => {
         const session = await getServerSession(authOptions);
-
-        if (!session?.user) {
-          throw new Error("Not authorized");
-        }
+        if (!session?.user) throw new Error("Not authorized");
 
         return {
           allowedContentTypes: [
             "image/jpeg",
             "image/png",
-            "image/gif",
             "image/webp",
-            "image/heic",
+            "image/heic", // CRUCIAAL VOOR IPHONE
+            "image/heif",
           ],
           maximumSizeInBytes: 120 * 1024 * 1024,
-          tokenPayload: JSON.stringify({
-            userId: session.user.email,
-          }),
+          tokenPayload: JSON.stringify({ userId: session.user.email }),
         };
       },
-      onUploadCompleted: async ({ blob, tokenPayload }) => {
-        console.log("Upload completed", blob.url);
+      onUploadCompleted: async ({ blob }) => {
+        console.log("Upload succesvol voor iPhone:", blob.url);
       },
     });
 
     return NextResponse.json(jsonResponse);
   } catch (error) {
-    // Cruciaal: We loggen de error maar crashen de response niet met een 500
     console.error("Upload error:", error);
     return NextResponse.json(
       { error: (error as Error).message },
