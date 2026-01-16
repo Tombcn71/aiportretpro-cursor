@@ -58,11 +58,19 @@ export default function UploadPage() {
     setWizardData(data);
   }, [router]);
 
+  // AANGEPAST VOOR IPHONE (HEIC SUPPORT)
   const handleFileSelect = useCallback((files: FileList | null) => {
     if (!files) return;
-    const newFiles = Array.from(files).filter(
-      (file) => file.type.startsWith("image/") && file.size <= 120 * 1024 * 1024
-    );
+    const newFiles = Array.from(files).filter((file) => {
+      const isImage = file.type.startsWith("image/");
+      const isHeic =
+        file.name.toLowerCase().endsWith(".heic") ||
+        file.name.toLowerCase().endsWith(".heif");
+      const isSizeOk = file.size <= 120 * 1024 * 1024;
+
+      return (isImage || isHeic) && isSizeOk;
+    });
+
     setUploadedPhotos((prev) => [...prev, ...newFiles].slice(0, 10));
   }, []);
 
@@ -261,7 +269,7 @@ export default function UploadPage() {
               <input
                 type="file"
                 multiple
-                accept="image/*"
+                accept="image/*,.heic,.HEIC,.heif,.HEIF"
                 onChange={(e) => handleFileSelect(e.target.files)}
                 className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
               />
