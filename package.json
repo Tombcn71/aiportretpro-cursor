@@ -43,7 +43,7 @@
     "@sveltejs/kit": "latest",
     "@types/bcryptjs": "^3.0.0",
     "@vercel/analytics": "latest",
-    "@vercel/blob": "latest",
+    "@vercel/blob": "^2.0.0",
     "autoprefixer": "^10.4.20",
     "axios": "latest",
     "bcryptjs": "^3.0.2",
