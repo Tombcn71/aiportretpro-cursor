@@ -4,14 +4,22 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 
 export async function POST(request: Request): Promise<NextResponse> {
-  const body = (await request.json()) as HandleUploadBody;
+  // STAP 1: Lees de body als tekst om de "minus sign" crash te voorkomen
+  const rawBody = await request.text();
+  let body: HandleUploadBody;
+
+  try {
+    body = JSON.parse(rawBody);
+  } catch (error) {
+    console.error("JSON parse fout in upload route:", error);
+    return NextResponse.json({ error: "Ongeldige JSON" }, { status: 400 });
+  }
 
   try {
     const jsonResponse = await handleUpload({
       body,
       request,
       onBeforeGenerateToken: async (pathname: string) => {
-        // Authenticate users before generating the token
         const session = await getServerSession(authOptions);
 
         if (!session?.user) {
@@ -33,23 +41,8 @@ export async function POST(request: Request): Promise<NextResponse> {
         };
       },
       onUploadCompleted: async ({ blob, tokenPayload }) => {
-        // Called when upload is complete
         console.log("blob upload completed", blob.url);
-
-        try {
-          const payload = JSON.parse(tokenPayload || "{}");
-          console.log("Upload completed for user:", payload.userId);
-
-          // Optional: Save to database if needed
-          // await db.userUploads.create({
-          //   userId: payload.userId,
-          //   blobUrl: blob.url,
-          //   uploadedAt: new Date()
-          // });
-        } catch (error) {
-          console.error("Error in onUploadCompleted:", error);
-          // Don't throw error here since upload already succeeded
-        }
+        // Je database logica kan hier blijven staan
       },
     });
 
