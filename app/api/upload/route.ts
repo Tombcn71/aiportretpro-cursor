@@ -47,7 +47,7 @@ export async function POST(request: Request): Promise<NextResponse> {
     console.error("Upload error:", error);
     return NextResponse.json(
       { error: (error as Error).message },
-      { status: 400 }
+      { status: 400 },
     );
   }
 }
