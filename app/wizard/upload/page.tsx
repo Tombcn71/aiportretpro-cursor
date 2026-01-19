@@ -8,7 +8,6 @@ import { upload } from "@vercel/blob/client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Upload, X, Camera } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
 import { ProgressBar } from "@/components/ui/progress-bar";
 import Image from "next/image";
 
@@ -25,31 +24,13 @@ export default function UploadPage() {
   const router = useRouter();
   const { data: session, status } = useSession();
 
-  // Redirect to login if not authenticated
   useEffect(() => {
     if (status === "unauthenticated") {
       router.push("/login");
-    } else if (status === "authenticated" && session) {
-      console.log("User authenticated:", session.user?.email);
     }
-  }, [status, router, session]);
-
-  // Show loading while checking authentication
-  if (status === "loading") {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#0077B5]"></div>
-      </div>
-    );
-  }
-
-  // Don't render if not authenticated
-  if (status === "unauthenticated") {
-    return null;
-  }
+  }, [status, router]);
 
   useEffect(() => {
-    // Get wizard data from localStorage
     const data = JSON.parse(localStorage.getItem("wizardData") || "{}");
     if (!data.projectName || !data.gender) {
       router.push("/wizard/project-name");
@@ -58,7 +39,6 @@ export default function UploadPage() {
     setWizardData(data);
   }, [router]);
 
-  // AANGEPAST VOOR IPHONE (HEIC SUPPORT)
   const handleFileSelect = useCallback((files: FileList | null) => {
     if (!files) return;
     const newFiles = Array.from(files).filter((file) => {
@@ -67,10 +47,8 @@ export default function UploadPage() {
         file.name.toLowerCase().endsWith(".heic") ||
         file.name.toLowerCase().endsWith(".heif");
       const isSizeOk = file.size <= 120 * 1024 * 1024;
-
       return (isImage || isHeic) && isSizeOk;
     });
-
     setUploadedPhotos((prev) => [...prev, ...newFiles].slice(0, 10));
   }, []);
 
@@ -79,7 +57,7 @@ export default function UploadPage() {
       e.preventDefault();
       handleFileSelect(e.dataTransfer.files);
     },
-    [handleFileSelect]
+    [handleFileSelect],
   );
 
   const handleDragOver = useCallback((e: React.DragEvent) => {
@@ -96,39 +74,30 @@ export default function UploadPage() {
     setUploadProgress(0);
 
     try {
-      // Upload photos directly to Vercel Blob via client-side upload
-      const uploadPromises = uploadedPhotos.map(async (photo, index) => {
+      const uploadedUrls: string[] = [];
+
+      // FIX: Upload foto's één voor één om de server en database niet te overbelasten
+      let count = 0;
+      for (const photo of uploadedPhotos) {
         try {
           const blob = await upload(photo.name, photo, {
             access: "public",
             handleUploadUrl: "/api/upload",
           });
-
-          // Update progress
-          setUploadProgress(
-            Math.round(((index + 1) / uploadedPhotos.length) * 100)
-          );
-
-          return blob.url;
+          uploadedUrls.push(blob.url);
+          count++;
+          setUploadProgress(Math.round((count / uploadedPhotos.length) * 100));
         } catch (error) {
-          console.error(`Error uploading ${photo.name}:`, error);
+          console.error(`Upload fout voor ${photo.name}:`, error);
           throw new Error(`Upload mislukt voor ${photo.name}`);
         }
-      });
-
-      const uploadedUrls = await Promise.all(uploadPromises);
-
-      // Check if all uploads succeeded
-      if (uploadedUrls.some((url) => !url)) {
-        throw new Error("Sommige foto's konden niet worden geüpload");
       }
 
-      // Create project with default pack 928 (portetfotos m/v)
-      const response = await fetch("/api/projects/create-with-pack", {
+      // Project pas aanmaken NADAT alle uploads klaar zijn
+      // Gebruik de route create-with-credit zoals in jouw logs
+      const response = await fetch("/api/projects/create-with-credit", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           projectName: wizardData.projectName,
           gender: wizardData.gender,
@@ -138,17 +107,16 @@ export default function UploadPage() {
       });
 
       const result = await response.json().catch(() => ({
-        message: "Onbekende fout bij het parsen van de response",
+        message: "Fout bij verwerken server antwoord",
       }));
 
       if (!response.ok) {
         throw new Error(
-          result.message || result.error || `Server fout: ${response.status}`
+          result.message || result.error || `Server fout: ${response.status}`,
         );
       }
 
       if (result.projectId) {
-        // Store project data for payment page
         localStorage.setItem(
           "pendingProject",
           JSON.stringify({
@@ -156,59 +124,23 @@ export default function UploadPage() {
             projectName: wizardData.projectName,
             gender: wizardData.gender,
             uploadedPhotos: uploadedUrls,
-          })
+          }),
         );
-        // Clear wizard data
         localStorage.removeItem("wizardData");
         router.push(`/generate/${result.projectId}`);
-      } else if (result.message) {
-        throw new Error(result.message);
-      } else {
-        console.warn(
-          "Astria API failed, but continuing to pricing with uploaded photos"
-        );
-        localStorage.setItem(
-          "pendingProject",
-          JSON.stringify({
-            projectId: "temp_" + Date.now(),
-            projectName: wizardData.projectName,
-            gender: wizardData.gender,
-            uploadedPhotos: uploadedUrls,
-          })
-        );
-        localStorage.removeItem("wizardData");
-        router.push(`/generate/temp`);
       }
     } catch (error) {
       console.error("Upload error details:", error);
-      const errorMessage =
-        error instanceof Error ? error.message : "Er is een fout opgetreden";
-
-      let userMessage = "Er is een fout opgetreden. Probeer het opnieuw.";
-      if (errorMessage.includes("credits")) {
-        userMessage =
-          "Je hebt niet genoeg credits. Koop eerst credits om door te gaan.";
-      } else if (
-        errorMessage.includes("Unauthorized") ||
-        errorMessage.includes("Not authorized")
-      ) {
-        userMessage =
-          "Je bent niet ingelogd. Log opnieuw in en probeer het opnieuw.";
-      } else if (errorMessage.includes("Upload")) {
-        userMessage =
-          "Upload mislukt. Controleer je internetverbinding en probeer het opnieuw.";
-      } else if (errorMessage) {
-        userMessage = errorMessage;
-      }
-
-      alert(userMessage);
+      alert(
+        error instanceof Error ? error.message : "Er is een fout opgetreden",
+      );
     } finally {
       setUploading(false);
       setUploadProgress(0);
     }
   };
 
-  if (!wizardData) {
+  if (status === "loading" || !wizardData) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#0077B5]"></div>
@@ -240,8 +172,7 @@ export default function UploadPage() {
               <div>
                 <h3 className="text-lg font-semibold">Foto Richtlijnen</h3>
                 <p className="text-gray-600 text-sm">
-                  Foto's met verschillende achtergronden met je gezicht naar de
-                  camera, vanaf je schouders of je middel. geen hoeden of
+                  Verschillende achtergronden, gezicht naar de camera, geen
                   zonnebrillen.
                 </p>
               </div>
@@ -253,8 +184,7 @@ export default function UploadPage() {
               className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-gray-400 transition-colors relative">
               <Upload className="h-12 w-12 text-gray-400 mx-auto mb-4" />
               <Button className="bg-blue-900 hover:bg-950 text-white mb-4">
-                <Upload className="h-4 w-4 mr-2" />
-                Selecteer Foto's
+                <Upload className="h-4 w-4 mr-2" /> Selecteer Foto's
               </Button>
               <p className="text-gray-600">
                 of{" "}
@@ -262,9 +192,6 @@ export default function UploadPage() {
                   sleep en zet neer
                 </span>{" "}
                 je foto's hier
-              </p>
-              <p className="text-sm text-gray-500 mt-2">
-                PNG, JPG, HEIC, WEBP tot 120MB
               </p>
               <input
                 type="file"
@@ -279,15 +206,9 @@ export default function UploadPage() {
           <div className="space-y-6">
             <div className="flex items-center justify-between">
               <h3 className="text-lg font-semibold">Geüploade Foto's</h3>
-              <div className="flex items-center space-x-2">
-                <div
-                  className={`w-3 h-3 rounded-full ${
-                    uploadedPhotos.length >= 4 ? "bg-green-500" : "bg-gray-300"
-                  }`}></div>
-                <span className="text-sm font-medium">
-                  {uploadedPhotos.length} van 10
-                </span>
-              </div>
+              <span className="text-sm font-medium">
+                {uploadedPhotos.length} van 10
+              </span>
             </div>
 
             <Card>
@@ -302,10 +223,8 @@ export default function UploadPage() {
                       <div key={index} className="relative group">
                         <div className="aspect-square rounded-lg overflow-hidden bg-gray-100">
                           <Image
-                            src={
-                              URL.createObjectURL(photo) || "/placeholder.svg"
-                            }
-                            alt={`Upload ${index + 1}`}
+                            src={URL.createObjectURL(photo)}
+                            alt="Upload"
                             fill
                             className="object-cover"
                           />
@@ -322,7 +241,7 @@ export default function UploadPage() {
               </CardContent>
             </Card>
 
-            {uploading && uploadProgress > 0 && (
+            {uploading && (
               <div className="space-y-2">
                 <div className="flex justify-between text-sm text-gray-600">
                   <span>Uploaden...</span>
@@ -345,7 +264,6 @@ export default function UploadPage() {
                   ? "Portetfotos worden gemaakt..."
                   : "Genereer 40 Professionele Portetfotos"}
               </Button>
-
               <Button
                 variant="ghost"
                 onClick={() => router.back()}
