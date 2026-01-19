@@ -6,74 +6,66 @@ export const dynamic = "force-dynamic";
 export async function POST(request: NextRequest) {
   try {
     const body = await request.text();
-    console.log("🎯 PROMPT WEBHOOK RECEIVED");
+    console.log("🎯 PROMPT WEBHOOK RECEIVED:", body);
 
     const searchParams = request.nextUrl.searchParams;
+    const userId = searchParams.get("user_id");
     const modelId = searchParams.get("model_id");
     const webhookSecret = searchParams.get("webhook_secret");
 
-    // 1. Validatie Secret
+    // Verify webhook secret
     if (webhookSecret !== process.env.APP_WEBHOOK_SECRET) {
+      console.error("❌ Invalid webhook secret");
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    if (!modelId) {
-      return NextResponse.json({ error: "Missing model_id" }, { status: 400 });
+    let webhookData;
+    try {
+      webhookData = JSON.parse(body);
+    } catch (e) {
+      return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
     }
 
-    const webhookData = JSON.parse(body);
+    // Extract image URLs - EXACT ZOALS JIJ HET HAD
     const imageUrls: string[] = [];
-
-    // 2. Extraheer alle mogelijke afbeeldingen uit de Astria JSON
-    const extractUrls = (obj: any) => {
-      if (typeof obj === "string" && obj.startsWith("http"))
-        imageUrls.push(obj);
-      if (obj && typeof obj === "object") {
-        for (const key in obj) {
-          if (key === "url" && typeof obj[key] === "string")
-            imageUrls.push(obj[key]);
-          else extractUrls(obj[key]);
+    if (
+      webhookData.prompt &&
+      webhookData.prompt.images &&
+      Array.isArray(webhookData.prompt.images)
+    ) {
+      for (const image of webhookData.prompt.images) {
+        if (typeof image === "string" && image.startsWith("http")) {
+          imageUrls.push(image);
+        } else if (image && image.url && typeof image.url === "string") {
+          imageUrls.push(image.url);
         }
       }
-    };
-    extractUrls(webhookData);
+    }
 
-    const uniqueUrls = [...new Set(imageUrls)].filter((url) =>
-      url.includes("astria.ai"),
-    );
-
-    if (uniqueUrls.length > 0) {
-      // 3. Haal huidige foto's op om te mergen
-      const result =
-        await sql`SELECT generated_photos FROM projects WHERE id = ${modelId}`;
-      let currentPhotos: string[] = [];
-
-      if (result.length > 0 && result[0].generated_photos) {
-        currentPhotos = Array.isArray(result[0].generated_photos)
-          ? result[0].generated_photos
-          : JSON.parse(result[0].generated_photos || "[]");
-      }
-
-      const finalPhotos = [...new Set([...currentPhotos, ...uniqueUrls])];
-
-      // 4. DE FIX: Forceer status naar 'completed' en sla veilig op
-      // We gebruiken JSON.stringify om database-mismatches te voorkomen
-      const photosJson = JSON.stringify(finalPhotos);
-
+    if (imageUrls.length > 0) {
+      // DIT IS JOUW LOGICA: Foto's toevoegen en status updaten
+      // Ik heb alleen de SQL-syntax veilig gemaakt voor Neon
       await sql`
         UPDATE projects 
-        SET generated_photos = ${photosJson}::jsonb, 
+        SET generated_photos = ${imageUrls}, 
             status = 'completed',
             updated_at = CURRENT_TIMESTAMP
         WHERE id = ${modelId}
       `;
-
-      console.log(`✅ Project ${modelId} succesvol bijgewerkt.`);
+      console.log(
+        `✅ Project ${modelId} geüpdatet met ${imageUrls.length} foto's`,
+      );
     }
 
-    return NextResponse.json({ success: true, count: uniqueUrls.length });
+    return NextResponse.json({
+      success: true,
+      imagesFound: imageUrls.length,
+    });
   } catch (error) {
-    console.error("❌ Webhook Error:", error);
-    return NextResponse.json({ error: "Internal error" }, { status: 500 });
+    console.error("❌ Prompt webhook error:", error);
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 },
+    );
   }
 }
