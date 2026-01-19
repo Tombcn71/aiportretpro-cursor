@@ -40,10 +40,9 @@ export async function POST(request: Request) {
     );
   }
 
-  // Aangepast naar 40 fotos
-  if (!uploadedPhotos || uploadedPhotos.length < 40) {
+  if (!uploadedPhotos || uploadedPhotos.length < 4) {
     return NextResponse.json(
-      { message: "Upload minstens 40 foto's om door te gaan" },
+      { message: "Upload at least 4 sample images" },
       { status: 500 },
     );
   }
@@ -96,9 +95,10 @@ export async function POST(request: Request) {
       process.env.NEXTAUTH_URL || `https://${process.env.VERCEL_URL}`;
     const DOMAIN = "https://api.astria.ai";
 
+    // For localhost testing, use ngrok or similar
     const webhookUrl =
       process.env.NODE_ENV === "development"
-        ? "https://your-ngrok-url.ngrok.io"
+        ? "https://your-ngrok-url.ngrok.io" // Replace with your ngrok URL
         : baseUrl;
 
     const tuneBody = {
@@ -154,8 +154,16 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error("Tune creation error:", error);
 
+    // Rollback project
     if (projectId) {
       await sql`DELETE FROM projects WHERE id = ${projectId}`;
+    }
+
+    if (axios.isAxiosError(error)) {
+      console.error("Axios error details:", {
+        status: error.response?.status,
+        data: error.response?.data,
+      });
     }
 
     return NextResponse.json(
