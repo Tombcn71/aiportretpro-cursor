@@ -101,7 +101,7 @@ export default function UploadPage() {
       }
 
       // Gebruik de route create-with-credit zoals in je logs te zien was
-      const response = await fetch("/api/projects/create-with-credit", {
+      const response = await fetch("/api/projects/create-with-pack", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
