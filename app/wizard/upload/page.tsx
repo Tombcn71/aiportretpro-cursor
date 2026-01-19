@@ -24,12 +24,14 @@ export default function UploadPage() {
   const router = useRouter();
   const { data: session, status } = useSession();
 
+  // Redirect naar login als niet geauthenticeerd
   useEffect(() => {
     if (status === "unauthenticated") {
       router.push("/login");
     }
   }, [status, router]);
 
+  // Wizard data ophalen
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem("wizardData") || "{}");
     if (!data.projectName || !data.gender) {
@@ -39,16 +41,21 @@ export default function UploadPage() {
     setWizardData(data);
   }, [router]);
 
+  // AANGEPAST VOOR IPHONE (HEIC/HEIF SUPPORT)
   const handleFileSelect = useCallback((files: FileList | null) => {
     if (!files) return;
     const newFiles = Array.from(files).filter((file) => {
       const isImage = file.type.startsWith("image/");
       const isHeic =
         file.name.toLowerCase().endsWith(".heic") ||
-        file.name.toLowerCase().endsWith(".heif");
+        file.name.toLowerCase().endsWith(".heif") ||
+        file.type === "image/heic" ||
+        file.type === "image/heif";
       const isSizeOk = file.size <= 120 * 1024 * 1024;
+
       return (isImage || isHeic) && isSizeOk;
     });
+
     setUploadedPhotos((prev) => [...prev, ...newFiles].slice(0, 10));
   }, []);
 
@@ -76,7 +83,7 @@ export default function UploadPage() {
     try {
       const uploadedUrls: string[] = [];
 
-      // FIX: Upload foto's één voor één om de server en database niet te overbelasten
+      // Sequentieel uploaden om de server en database te ontlasten
       let count = 0;
       for (const photo of uploadedPhotos) {
         try {
@@ -93,9 +100,8 @@ export default function UploadPage() {
         }
       }
 
-      // Project pas aanmaken NADAT alle uploads klaar zijn
-      // Gebruik de route create-with-credit zoals in jouw logs
-      const response = await fetch("/api/projects/create-with-pack", {
+      // Gebruik de route create-with-credit zoals in je logs te zien was
+      const response = await fetch("/api/projects/create-with-credit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

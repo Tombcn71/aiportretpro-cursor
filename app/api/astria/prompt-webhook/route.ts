@@ -1,120 +1,79 @@
-import { type NextRequest, NextResponse } from "next/server"
-import { sql } from "@/lib/db"
+import { type NextRequest, NextResponse } from "next/server";
+import { sql } from "@/lib/db";
 
-export const dynamic = "force-dynamic"
+export const dynamic = "force-dynamic";
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.text()
-    console.log("🎯 PROMPT WEBHOOK RECEIVED:", body)
+    const body = await request.text();
+    console.log("🎯 PROMPT WEBHOOK RECEIVED");
 
-    const searchParams = request.nextUrl.searchParams
-    const userId = searchParams.get("user_id")
-    const modelId = searchParams.get("model_id")
-    const webhookSecret = searchParams.get("webhook_secret")
+    const searchParams = request.nextUrl.searchParams;
+    const modelId = searchParams.get("model_id");
+    const webhookSecret = searchParams.get("webhook_secret");
 
-    console.log("📋 Webhook params:", { userId, modelId, webhookSecret })
-
-    // Verify webhook secret
+    // 1. Validatie Secret
     if (webhookSecret !== process.env.APP_WEBHOOK_SECRET) {
-      console.error("❌ Invalid webhook secret")
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    if (!userId || !modelId) {
-      console.error("❌ Missing required parameters")
-      return NextResponse.json({ error: "Missing parameters" }, { status: 400 })
+    if (!modelId) {
+      return NextResponse.json({ error: "Missing model_id" }, { status: 400 });
     }
 
-    let webhookData
-    try {
-      webhookData = JSON.parse(body)
-    } catch (e) {
-      console.error("❌ Invalid JSON in webhook body")
-      return NextResponse.json({ error: "Invalid JSON" }, { status: 400 })
-    }
+    const webhookData = JSON.parse(body);
+    const imageUrls: string[] = [];
 
-    console.log("📦 Parsed webhook data:", JSON.stringify(webhookData, null, 2))
-
-    // Extract image URLs from webhook data - FIX: images are in webhookData.prompt.images
-    const imageUrls: string[] = []
-
-    // Check in the prompt object first (this is where your images are!)
-    if (webhookData.prompt && webhookData.prompt.images && Array.isArray(webhookData.prompt.images)) {
-      for (const image of webhookData.prompt.images) {
-        if (typeof image === "string" && image.startsWith("http")) {
-          imageUrls.push(image)
-        } else if (image && image.url && typeof image.url === "string") {
-          imageUrls.push(image.url)
+    // 2. Extraheer alle mogelijke afbeeldingen uit de Astria JSON
+    const extractUrls = (obj: any) => {
+      if (typeof obj === "string" && obj.startsWith("http"))
+        imageUrls.push(obj);
+      if (obj && typeof obj === "object") {
+        for (const key in obj) {
+          if (key === "url" && typeof obj[key] === "string")
+            imageUrls.push(obj[key]);
+          else extractUrls(obj[key]);
         }
       }
-    }
-    // Fallback: check in root images array
-    else if (webhookData.images && Array.isArray(webhookData.images)) {
-      for (const image of webhookData.images) {
-        if (typeof image === "string" && image.startsWith("http")) {
-          imageUrls.push(image)
-        } else if (image && image.url && typeof image.url === "string") {
-          imageUrls.push(image.url)
-        }
-      }
-    }
+    };
+    extractUrls(webhookData);
 
-    console.log(`📸 Found ${imageUrls.length} images in webhook`)
+    const uniqueUrls = [...new Set(imageUrls)].filter((url) =>
+      url.includes("astria.ai"),
+    );
 
-    if (imageUrls.length > 0) {
-      // Get current photos from database
-      const projectResult = await sql`
-        SELECT generated_photos FROM projects WHERE id = ${modelId}
-      `
+    if (uniqueUrls.length > 0) {
+      // 3. Haal huidige foto's op om te mergen
+      const result =
+        await sql`SELECT generated_photos FROM projects WHERE id = ${modelId}`;
+      let currentPhotos: string[] = [];
 
-      let currentPhotos: string[] = []
-      if (projectResult.length > 0 && projectResult[0].generated_photos) {
-        try {
-          if (typeof projectResult[0].generated_photos === "string") {
-            if (projectResult[0].generated_photos.startsWith("[")) {
-              currentPhotos = JSON.parse(projectResult[0].generated_photos)
-            } else {
-              currentPhotos = [projectResult[0].generated_photos]
-            }
-          } else if (Array.isArray(projectResult[0].generated_photos)) {
-            currentPhotos = projectResult[0].generated_photos
-          }
-        } catch (e) {
-          console.warn("Could not parse existing photos:", e)
-          currentPhotos = []
-        }
+      if (result.length > 0 && result[0].generated_photos) {
+        currentPhotos = Array.isArray(result[0].generated_photos)
+          ? result[0].generated_photos
+          : JSON.parse(result[0].generated_photos || "[]");
       }
 
-      // Combine and deduplicate
-      const allPhotos = [...currentPhotos, ...imageUrls]
-      const uniquePhotos = [...new Set(allPhotos)]
+      const finalPhotos = [...new Set([...currentPhotos, ...uniqueUrls])];
 
-      // FIX: Use PostgreSQL array format, not JSON string
+      // 4. DE FIX: Forceer status naar 'completed' en sla veilig op
+      // We gebruiken JSON.stringify om database-mismatches te voorkomen
+      const photosJson = JSON.stringify(finalPhotos);
+
       await sql`
         UPDATE projects 
-        SET generated_photos = ${uniquePhotos}, 
-            status = CASE 
-              WHEN ${uniquePhotos.length} >= 40 THEN 'completed'
-              ELSE 'processing'
-            END,
+        SET generated_photos = ${photosJson}::jsonb, 
+            status = 'completed',
             updated_at = CURRENT_TIMESTAMP
         WHERE id = ${modelId}
-      `
+      `;
 
-      console.log(`✅ Updated project ${modelId} with ${uniquePhotos.length} total photos`)
-      console.log(`📸 New photos added:`, imageUrls)
-    } else {
-      console.log("⚠️ No images found in webhook - check structure")
+      console.log(`✅ Project ${modelId} succesvol bijgewerkt.`);
     }
 
-    return NextResponse.json({
-      success: true,
-      imagesFound: imageUrls.length,
-      imageUrls: imageUrls,
-    })
+    return NextResponse.json({ success: true, count: uniqueUrls.length });
   } catch (error) {
-    console.error("❌ Prompt webhook error:", error)
-    return NextResponse.json({ error: "Internal server error" }, { status: 500 })
+    console.error("❌ Webhook Error:", error);
+    return NextResponse.json({ error: "Internal error" }, { status: 500 });
   }
 }
