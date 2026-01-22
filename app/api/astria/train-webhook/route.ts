@@ -10,7 +10,6 @@ export async function POST(request: NextRequest) {
 
     const status = tune.trained_at ? "trained" : "training";
 
-    // Update alleen de status, NIET de foto's
     await sql`
       UPDATE projects 
       SET status = ${status === "trained" ? "processing" : "training"},
