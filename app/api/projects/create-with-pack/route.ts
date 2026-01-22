@@ -11,17 +11,14 @@ const appWebhookSecret = process.env.APP_WEBHOOK_SECRET;
 
 export async function POST(request: Request) {
   try {
-    // 1. Payload binnenhalen
     const payload = await request.json();
     const { projectName, gender, selectedPackId, uploadedPhotos } = payload;
 
-    // 2. Auth Check
     const session = await getServerSession(authOptions);
     if (!session?.user?.email) {
       return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
     }
 
-    // 3. Validatie (Config & Input)
     if (!astriaApiKey) {
       console.error("Missing ASTRIA_API_KEY");
       return NextResponse.json(
@@ -30,39 +27,36 @@ export async function POST(request: Request) {
       );
     }
 
-    if (!uploadedPhotos || uploadedPhotos.length < 4) {
-      return NextResponse.json(
-        { message: "Minimaal 4 foto's vereist" },
-        { status: 400 },
-      );
-    }
-
     const user = await getUserByEmail(session.user.email);
     if (!user) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
 
-    // 4. Credit check
     const currentCredits = await CreditManager.getUserCredits(user.id);
     if (currentCredits < 1) {
       return NextResponse.json(
-        { message: "Niet genoeg credits beschikbaar" },
+        { message: "Niet genoeg credits" },
         { status: 402 },
       );
     }
 
-    // 5. Project aanmaken in de Database (Initieel stadium)
-    const result = await sql`
-      INSERT INTO projects (user_id, name, gender, outfits, backgrounds, uploaded_photos, status, credits_used)
-      VALUES (${user.id}, ${projectName}, ${gender}, ${[]}, ${[]}, ${uploadedPhotos}, 'training', 0)
-      RETURNING id
-    `;
-    const projectId = result[0].id;
+    // STAP 5 FIX: We voegen 'outfits' en 'backgrounds' even niet toe aan de INSERT
+    // om syntax-fouten met lege arrays [] te voorkomen. De DB vult deze zelf aan met defaults.
+    let projectId;
+    try {
+      const result = await sql`
+        INSERT INTO projects (user_id, name, gender, uploaded_photos, status, credits_used)
+        VALUES (${user.id}, ${projectName}, ${gender}, ${uploadedPhotos}, 'training', 0)
+        RETURNING id
+      `;
+      projectId = result[0].id;
+    } catch (dbError) {
+      console.error("Database Insert Error:", dbError);
+      return NextResponse.json({ message: "Database error" }, { status: 500 });
+    }
 
-    // 6. Webhook Configuratie
     const baseUrl =
       process.env.NEXTAUTH_URL || `https://${process.env.VERCEL_URL}`;
-    // Gebruik de base URL voor callbacks, tenzij we lokaal testen
     const webhookUrl =
       process.env.NODE_ENV === "development"
         ? "https://your-ngrok.url"
@@ -80,9 +74,8 @@ export async function POST(request: Request) {
       },
     };
 
-    // 7. Astria API Request met timeout-beveiliging
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 25000); // 25 seconden timeout
+    const timeoutId = setTimeout(() => controller.abort(), 25000);
 
     try {
       const astriaResponse = await fetch(
@@ -103,7 +96,6 @@ export async function POST(request: Request) {
       if (!astriaResponse.ok) {
         const errorData = await astriaResponse.json();
         console.error("Astria API error:", errorData);
-        // Ruim het aangemaakte project op bij falen
         await sql`DELETE FROM projects WHERE id = ${projectId}`;
         return NextResponse.json(
           { message: "AI Provider error" },
@@ -113,13 +105,12 @@ export async function POST(request: Request) {
 
       const astriaData = await astriaResponse.json();
 
-      // 8. Update DB en Credit afschrijven (Parallel)
+      // Parallelle afhandeling
       await Promise.all([
         sql`UPDATE projects SET tune_id = ${astriaData.id.toString()} WHERE id = ${projectId}`,
         CreditManager.useCredit(user.id, projectId),
       ]);
 
-      // 9. iPhone-vriendelijke Response
       return new NextResponse(
         JSON.stringify({
           message: "success",
@@ -130,13 +121,12 @@ export async function POST(request: Request) {
           status: 200,
           headers: {
             "Content-Type": "application/json",
-            Connection: "close", // Sluit de verbinding direct af na succes
+            Connection: "close",
           },
         },
       );
     } catch (fetchError: any) {
       clearTimeout(timeoutId);
-      console.error("Fetch or Timeout Error:", fetchError);
       await sql`DELETE FROM projects WHERE id = ${projectId}`;
       return NextResponse.json(
         { message: "Connection to AI provider lost" },
