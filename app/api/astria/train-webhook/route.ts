@@ -4,13 +4,11 @@ import { sql } from "@/lib/db";
 export async function POST(request: NextRequest) {
   try {
     const incomingData = await request.json();
-    const { tune } = incomingData;
     const model_id = new URL(request.url).searchParams.get("model_id");
 
-    if (tune.trained_at) {
-      // Haal ALLES op bij Astria (de 40 foto's)
+    if (incomingData.tune?.trained_at) {
       const response = await fetch(
-        `https://api.astria.ai/tunes/${tune.id}/prompts`,
+        `https://api.astria.ai/tunes/${incomingData.tune.id}/prompts`,
         {
           headers: { Authorization: `Bearer ${process.env.ASTRIA_API_KEY}` },
         },
@@ -18,21 +16,18 @@ export async function POST(request: NextRequest) {
 
       if (response.ok) {
         const promptsData = await response.json();
-        const allPhotos: string[] = [];
-
-        // Loop door alle prompts en verzamel elke image URL
+        const fetchedImages: string[] = [];
         promptsData.forEach((p: any) => {
-          if (p.images)
-            p.images.forEach((img: any) => {
-              if (img.url) allPhotos.push(img.url);
-            });
+          p.images?.forEach((i: any) => {
+            const url = typeof i === "string" ? i : i.url;
+            if (url) fetchedImages.push(url);
+          });
         });
 
-        if (allPhotos.length > 0) {
-          // Forceer de update naar de database
+        if (fetchedImages.length > 0) {
           await sql`
             UPDATE projects 
-            SET generated_photos = ${JSON.stringify(allPhotos)},
+            SET generated_photos = ${JSON.stringify(fetchedImages)},
                 status = 'completed',
                 updated_at = CURRENT_TIMESTAMP
             WHERE id = ${model_id}
@@ -41,7 +36,7 @@ export async function POST(request: NextRequest) {
       }
     }
     return NextResponse.json({ success: true });
-  } catch (error) {
-    return NextResponse.json({ error: "Fail" }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ success: false }, { status: 500 });
   }
 }
