@@ -14,12 +14,11 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    let webhookData = JSON.parse(body);
+    const webhookData = JSON.parse(body);
     const imageUrls: string[] = [];
 
     if (
-      webhookData.prompt &&
-      webhookData.prompt.images &&
+      webhookData.prompt?.images &&
       Array.isArray(webhookData.prompt.images)
     ) {
       for (const image of webhookData.prompt.images) {
@@ -29,31 +28,52 @@ export async function POST(request: NextRequest) {
     }
 
     if (imageUrls.length > 0) {
-      // 1. Haal de foto's op die er al staan
-      const projectResult =
-        await sql`SELECT generated_photos FROM projects WHERE id = ${modelId}`;
-      let currentPhotos: string[] = [];
-
-      if (projectResult.length > 0 && projectResult[0].generated_photos) {
-        const raw = projectResult[0].generated_photos;
-        currentPhotos = Array.isArray(raw) ? raw : JSON.parse(raw || "[]");
-      }
-
-      // 2. VOEG ZE SAMEN (Zodat je van 8 naar 40 gaat)
-      const allPhotos = [...new Set([...currentPhotos, ...imageUrls])];
-
-      // 3. UPDATE (Met de JSON fix zodat je dashboard niet leeg blijft)
+      // Atomische array append met deduplicatie
       await sql`
         UPDATE projects 
-        SET generated_photos = ${JSON.stringify(allPhotos)}, 
-            status = CASE WHEN ${allPhotos.length} >= 40 THEN 'completed' ELSE 'processing' END,
-            updated_at = CURRENT_TIMESTAMP
+        SET 
+          generated_photos = (
+            SELECT array_agg(DISTINCT photo)
+            FROM unnest(
+              COALESCE(generated_photos, ARRAY[]::text[]) || ${imageUrls}::text[]
+            ) AS photo
+          ),
+          updated_at = CURRENT_TIMESTAMP
         WHERE id = ${modelId}
       `;
+
+      // Check totaal aantal foto's
+      const result = await sql`
+        SELECT array_length(generated_photos, 1) as photo_count
+        FROM projects 
+        WHERE id = ${modelId}
+      `;
+
+      const photoCount = result[0]?.photo_count || 0;
+
+      // Update status naar completed als we 40 foto's hebben
+      if (photoCount >= 40) {
+        await sql`
+          UPDATE projects 
+          SET status = 'completed'
+          WHERE id = ${modelId}
+        `;
+      }
+
+      console.log(
+        `✅ Webhook #${Math.ceil(photoCount / 8)}: Added ${imageUrls.length} photos. Total: ${photoCount}/40`,
+      );
+
+      return NextResponse.json({
+        success: true,
+        count: imageUrls.length,
+        total: photoCount,
+      });
     }
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true, count: 0 });
   } catch (error) {
+    console.error("❌ Prompt webhook error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 },
