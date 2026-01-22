@@ -5,12 +5,10 @@ export async function POST(request: NextRequest) {
   try {
     const incomingData = await request.json();
     const { tune } = incomingData;
-    const urlObj = new URL(request.url);
-    const model_id = urlObj.searchParams.get("model_id");
+    const model_id = new URL(request.url).searchParams.get("model_id");
 
-    const status = tune.trained_at ? "trained" : "training";
-
-    if (status === "trained") {
+    if (tune.trained_at) {
+      // Haal ALLES op bij Astria (de 40 foto's)
       const response = await fetch(
         `https://api.astria.ai/tunes/${tune.id}/prompts`,
         {
@@ -20,22 +18,21 @@ export async function POST(request: NextRequest) {
 
       if (response.ok) {
         const promptsData = await response.json();
-        const allImageUrls: string[] = [];
+        const allPhotos: string[] = [];
 
-        // Loop door alle prompts en verzamel alle foto's
-        for (const prompt of promptsData) {
-          if (prompt.images) {
-            prompt.images.forEach((img: any) => {
-              if (img.url) allImageUrls.push(img.url);
+        // Loop door alle prompts en verzamel elke image URL
+        promptsData.forEach((p: any) => {
+          if (p.images)
+            p.images.forEach((img: any) => {
+              if (img.url) allPhotos.push(img.url);
             });
-          }
-        }
+        });
 
-        // Gebruik de unieke lijst om overschrijven te voorkomen
-        if (allImageUrls.length > 0) {
+        if (allPhotos.length > 0) {
+          // Forceer de update naar de database
           await sql`
             UPDATE projects 
-            SET generated_photos = ${allImageUrls},
+            SET generated_photos = ${JSON.stringify(allPhotos)},
                 status = 'completed',
                 updated_at = CURRENT_TIMESTAMP
             WHERE id = ${model_id}
@@ -43,9 +40,8 @@ export async function POST(request: NextRequest) {
         }
       }
     }
-
     return NextResponse.json({ success: true });
   } catch (error) {
-    return NextResponse.json({ error: "Webhook error" }, { status: 500 });
+    return NextResponse.json({ error: "Fail" }, { status: 500 });
   }
 }
