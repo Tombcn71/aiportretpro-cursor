@@ -6,16 +6,11 @@ export const dynamic = "force-dynamic";
 export async function POST(request: NextRequest) {
   try {
     const body = await request.text();
-    console.log("🎯 PROMPT WEBHOOK RECEIVED:", body);
-
     const searchParams = request.nextUrl.searchParams;
-    const userId = searchParams.get("user_id");
     const modelId = searchParams.get("model_id");
     const webhookSecret = searchParams.get("webhook_secret");
 
-    // Verify webhook secret
     if (webhookSecret !== process.env.APP_WEBHOOK_SECRET) {
-      console.error("❌ Invalid webhook secret");
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
@@ -26,7 +21,6 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
     }
 
-    // Extract image URLs - EXACT ZOALS JIJ HET HAD
     const imageUrls: string[] = [];
     if (
       webhookData.prompt &&
@@ -43,18 +37,30 @@ export async function POST(request: NextRequest) {
     }
 
     if (imageUrls.length > 0) {
-      // DIT IS JOUW LOGICA: Foto's toevoegen en status updaten
-      // Ik heb alleen de SQL-syntax veilig gemaakt voor Neon
-      await sql`
-        UPDATE projects 
-        SET generated_photos = ${imageUrls}, 
-            status = 'completed',
-            updated_at = CURRENT_TIMESTAMP
-        WHERE id = ${modelId}
-      `;
-      console.log(
-        `✅ Project ${modelId} geüpdatet met ${imageUrls.length} foto's`,
-      );
+      // --- DE FIX VOOR HET AANTAL ---
+      // We halen eerst het huidige project op om te kijken hoeveel foto's er al zijn
+      const currentProject =
+        await sql`SELECT generated_photos FROM projects WHERE id = ${modelId}`;
+      const existingPhotos = currentProject[0]?.generated_photos || [];
+
+      // Update alleen als we ECHT meer foto's hebben gevonden (bijv. 40 vs 8)
+      // Zo voorkom je dat de train-webhook resultaten (40) worden overschreven door deze (8)
+      if (imageUrls.length >= existingPhotos.length) {
+        await sql`
+          UPDATE projects 
+          SET generated_photos = ${imageUrls}, 
+              status = 'completed',
+              updated_at = CURRENT_TIMESTAMP
+          WHERE id = ${modelId}
+        `;
+        console.log(
+          `✅ Project ${modelId} geüpdatet naar ${imageUrls.length} foto's`,
+        );
+      } else {
+        console.log(
+          `⚠️ Prompt-webhook genegeerd: er staan al ${existingPhotos.length} foto's in DB`,
+        );
+      }
     }
 
     return NextResponse.json({
