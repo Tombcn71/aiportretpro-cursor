@@ -14,61 +14,47 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    let webhookData;
-    try {
-      webhookData = JSON.parse(body);
-    } catch (e) {
-      return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
-    }
-
+    const webhookData = JSON.parse(body);
     const imageUrls: string[] = [];
+
+    // Extraheer foto's uit de prompt-data
     if (
-      webhookData.prompt &&
-      webhookData.prompt.images &&
+      webhookData.prompt?.images &&
       Array.isArray(webhookData.prompt.images)
     ) {
       for (const image of webhookData.prompt.images) {
-        if (typeof image === "string" && image.startsWith("http")) {
-          imageUrls.push(image);
-        } else if (image && image.url && typeof image.url === "string") {
-          imageUrls.push(image.url);
-        }
+        const url = typeof image === "string" ? image : image.url;
+        if (url) imageUrls.push(url);
       }
     }
 
     if (imageUrls.length > 0) {
-      // --- DE FIX VOOR HET AANTAL ---
-      // We halen eerst het huidige project op om te kijken hoeveel foto's er al zijn
-      const currentProject =
+      // 1. Haal de HUIDIGE foto's op uit de database
+      const projectResult =
         await sql`SELECT generated_photos FROM projects WHERE id = ${modelId}`;
-      const existingPhotos = currentProject[0]?.generated_photos || [];
+      let currentPhotos: string[] = [];
 
-      // Update alleen als we ECHT meer foto's hebben gevonden (bijv. 40 vs 8)
-      // Zo voorkom je dat de train-webhook resultaten (40) worden overschreven door deze (8)
-      if (imageUrls.length >= existingPhotos.length) {
-        await sql`
-          UPDATE projects 
-          SET generated_photos = ${imageUrls}, 
-              status = 'completed',
-              updated_at = CURRENT_TIMESTAMP
-          WHERE id = ${modelId}
-        `;
-        console.log(
-          `✅ Project ${modelId} geüpdatet naar ${imageUrls.length} foto's`,
-        );
-      } else {
-        console.log(
-          `⚠️ Prompt-webhook genegeerd: er staan al ${existingPhotos.length} foto's in DB`,
-        );
+      if (projectResult.length > 0 && projectResult[0].generated_photos) {
+        currentPhotos = Array.isArray(projectResult[0].generated_photos)
+          ? projectResult[0].generated_photos
+          : JSON.parse(projectResult[0].generated_photos);
       }
+
+      // 2. Combineer en verwijder dubbelen (Deduplicatie)
+      const uniquePhotos = [...new Set([...currentPhotos, ...imageUrls])];
+
+      // 3. Update met de volledige lijst
+      await sql`
+        UPDATE projects 
+        SET generated_photos = ${uniquePhotos}, 
+            status = CASE WHEN ${uniquePhotos.length} >= 40 THEN 'completed' ELSE 'processing' END,
+            updated_at = CURRENT_TIMESTAMP
+        WHERE id = ${modelId}
+      `;
     }
 
-    return NextResponse.json({
-      success: true,
-      imagesFound: imageUrls.length,
-    });
+    return NextResponse.json({ success: true, count: imageUrls.length });
   } catch (error) {
-    console.error("❌ Prompt webhook error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 },
