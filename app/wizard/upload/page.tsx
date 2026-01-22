@@ -41,10 +41,11 @@ export default function UploadPage() {
     setWizardData(data);
   }, [router]);
 
-  // IPHONE FIX: Ruim object URL's op om geheugenproblemen in Safari te voorkomen
+  // IPHONE FIX: Ruim object URL's op voor geheugenbeheer in Safari
   useEffect(() => {
+    const urls = uploadedPhotos.map((file) => URL.createObjectURL(file));
     return () => {
-      // Dit voorkomt dat Safari crasht bij veel previews
+      urls.forEach((url) => URL.revokeObjectURL(url));
     };
   }, [uploadedPhotos]);
 
@@ -88,14 +89,19 @@ export default function UploadPage() {
 
     try {
       const uploadedUrls: string[] = [];
-
       let count = 0;
+
       for (const photo of uploadedPhotos) {
         try {
-          const blob = await upload(photo.name, photo, {
+          // IPHONE FIX: Veilige naamgeving voor Vercel Blob
+          const extension = photo.name.split(".").pop();
+          const safeFileName = `upload-${Date.now()}-${Math.random().toString(36).substring(7)}.${extension}`;
+
+          const blob = await upload(safeFileName, photo, {
             access: "public",
             handleUploadUrl: "/api/upload",
           });
+
           uploadedUrls.push(blob.url);
           count++;
           setUploadProgress(Math.round((count / uploadedPhotos.length) * 100));
@@ -105,8 +111,8 @@ export default function UploadPage() {
         }
       }
 
-      // SAFARI FIX: Geef de iPhone een kort moment (500ms) om de netwerk-buffer te legen
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      // SAFARI FIX: Rustmoment voor de mobiele netwerk-stack
+      await new Promise((resolve) => setTimeout(resolve, 800));
 
       const response = await fetch("/api/projects/create-with-pack", {
         method: "POST",
@@ -120,11 +126,9 @@ export default function UploadPage() {
           selectedPackId: "928",
           uploadedPhotos: uploadedUrls,
         }),
-        // Cruciaal voor iOS: houdt de request levend zelfs als de UI bevriest
         keepalive: true,
       });
 
-      // Robuustere JSON parsing voor Safari
       const responseText = await response.text();
       let result;
       try {
@@ -247,7 +251,7 @@ export default function UploadPage() {
                         <div className="aspect-square rounded-lg overflow-hidden bg-gray-100">
                           <Image
                             src={URL.createObjectURL(photo)}
-                            alt="Upload"
+                            alt="Preview"
                             fill
                             className="object-cover"
                           />
