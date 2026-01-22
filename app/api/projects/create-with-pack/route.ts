@@ -39,8 +39,7 @@ export async function POST(request: Request) {
       );
     }
 
-    // 2. Project aanmaken in DB
-    // FIX: We gebruiken ARRAY[] syntax voor Postgres om 500 errors op lege arrays te voorkomen
+    // 2. Project aanmaken in DB (Syntax fix voor Postgres lege arrays)
     const result = await sql`
       INSERT INTO projects (user_id, name, gender, outfits, backgrounds, uploaded_photos, status, credits_used)
       VALUES (
@@ -101,13 +100,13 @@ export async function POST(request: Request) {
 
     const astriaData = await astriaResponse.json();
 
-    // 4. Update en Creditgebruik (Parallel)
+    // 4. Update en Creditgebruik
     await Promise.all([
       sql`UPDATE projects SET tune_id = ${astriaData.id.toString()} WHERE id = ${projectId}`,
       CreditManager.useCredit(user.id, projectId),
     ]);
 
-    // 5. IPHONE FIX: Forceer Connection: close voor Safari stabiliteit
+    // 5. IPHONE FIX: Headers behouden voor Safari
     return new NextResponse(
       JSON.stringify({
         message: "success",
