@@ -6,46 +6,57 @@ export const dynamic = "force-dynamic";
 export async function POST(request: NextRequest) {
   try {
     const body = await request.text();
-    const webhookData = JSON.parse(body);
-    const modelId = new URL(request.url).searchParams.get("model_id");
+    const searchParams = request.nextUrl.searchParams;
+    const modelId = searchParams.get("model_id");
+    const webhookSecret = searchParams.get("webhook_secret");
 
-    const newImages: string[] = [];
-    if (webhookData.prompt?.images) {
-      webhookData.prompt.images.forEach((img: any) => {
-        const url = typeof img === "string" ? img : img.url;
-        if (url) newImages.push(url);
-      });
+    if (webhookSecret !== process.env.APP_WEBHOOK_SECRET) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    if (newImages.length > 0) {
-      // Haal huidige foto's op om te voorkomen dat we ze wissen
-      const res =
+    let webhookData = JSON.parse(body);
+    const imageUrls: string[] = [];
+
+    if (
+      webhookData.prompt &&
+      webhookData.prompt.images &&
+      Array.isArray(webhookData.prompt.images)
+    ) {
+      for (const image of webhookData.prompt.images) {
+        const url = typeof image === "string" ? image : image.url;
+        if (url) imageUrls.push(url);
+      }
+    }
+
+    if (imageUrls.length > 0) {
+      // 1. Haal de foto's op die er al staan
+      const projectResult =
         await sql`SELECT generated_photos FROM projects WHERE id = ${modelId}`;
       let currentPhotos: string[] = [];
 
-      if (res.length > 0 && res[0].generated_photos) {
-        const rawData = res[0].generated_photos;
-        currentPhotos = Array.isArray(rawData)
-          ? rawData
-          : JSON.parse(rawData || "[]");
+      if (projectResult.length > 0 && projectResult[0].generated_photos) {
+        const raw = projectResult[0].generated_photos;
+        currentPhotos = Array.isArray(raw) ? raw : JSON.parse(raw || "[]");
       }
 
-      // Voeg samen en maak uniek
-      const combined = [...new Set([...currentPhotos, ...newImages])];
+      // 2. VOEG ZE SAMEN (Zodat je van 8 naar 40 gaat)
+      const allPhotos = [...new Set([...currentPhotos, ...imageUrls])];
 
-      // UPDATE: We slaan het op als een simpele JSON string voor maximale compatibiliteit
+      // 3. UPDATE (Met de JSON fix zodat je dashboard niet leeg blijft)
       await sql`
         UPDATE projects 
-        SET generated_photos = ${JSON.stringify(combined)}, 
-            status = 'completed',
+        SET generated_photos = ${JSON.stringify(allPhotos)}, 
+            status = CASE WHEN ${allPhotos.length} >= 40 THEN 'completed' ELSE 'processing' END,
             updated_at = CURRENT_TIMESTAMP
         WHERE id = ${modelId}
       `;
     }
 
     return NextResponse.json({ success: true });
-  } catch (e) {
-    console.error("Webhook error:", e);
-    return NextResponse.json({ success: false }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 },
+    );
   }
 }
