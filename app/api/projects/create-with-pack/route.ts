@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import axios from "axios";
+// Tip: Gebruik de standaard 'fetch' in plaats van Axios voor snellere koudestarts in Next.js
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { getUserByEmail, sql } from "@/lib/db";
@@ -10,95 +10,50 @@ export const dynamic = "force-dynamic";
 const astriaApiKey = process.env.ASTRIA_API_KEY;
 const appWebhookSecret = process.env.APP_WEBHOOK_SECRET;
 
-if (!appWebhookSecret) {
-  throw new Error("MISSING APP_WEBHOOK_SECRET!");
-}
-
 export async function POST(request: Request) {
-  const payload = await request.json();
-  const { projectName, gender, selectedPackId, uploadedPhotos } = payload;
-
-  console.log("Creating project with pack:", {
-    projectName,
-    gender,
-    selectedPackId,
-    photoCount: uploadedPhotos?.length,
-  });
-
-  const session = await getServerSession(authOptions);
-  if (!session?.user?.email) {
-    return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
-  }
-
-  if (!astriaApiKey) {
-    return NextResponse.json(
-      {
-        message:
-          "Missing API Key: Add your Astria API Key to generate headshots",
-      },
-      { status: 500 },
-    );
-  }
-
-  if (!uploadedPhotos || uploadedPhotos.length < 4) {
-    return NextResponse.json(
-      { message: "Upload at least 4 sample images" },
-      { status: 500 },
-    );
-  }
-
-  if (!selectedPackId) {
-    return NextResponse.json(
-      { message: "Pack ID is required" },
-      { status: 400 },
-    );
-  }
-
-  // Get user from Neon database
-  const user = await getUserByEmail(session.user.email);
-  if (!user) {
-    return NextResponse.json({ error: "User not found" }, { status: 404 });
-  }
-
-  // Check credits using CreditManager - SAME AS USE-CREDITS
-  const currentCredits = await CreditManager.getUserCredits(user.id);
-  if (currentCredits < 1) {
-    return NextResponse.json(
-      {
-        message:
-          "Not enough credits, please purchase some credits and try again.",
-      },
-      { status: 500 },
-    );
-  }
-
-  // Create a project in database
-  let projectId;
   try {
+    const payload = await request.json();
+    const { projectName, gender, selectedPackId, uploadedPhotos } = payload;
+
+    const session = await getServerSession(authOptions);
+    if (!session?.user?.email) {
+      return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+    }
+
+    if (!astriaApiKey || !uploadedPhotos || uploadedPhotos.length < 4) {
+      return NextResponse.json(
+        { message: "Invalid request data" },
+        { status: 400 },
+      );
+    }
+
+    const user = await getUserByEmail(session.user.email);
+    if (!user)
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
+
+    // 1. Credit check (Snel)
+    const currentCredits = await CreditManager.getUserCredits(user.id);
+    if (currentCredits < 1) {
+      return NextResponse.json(
+        { message: "Not enough credits" },
+        { status: 402 },
+      );
+    }
+
+    // 2. Project aanmaken in DB (Snel)
     const result = await sql`
       INSERT INTO projects (user_id, name, gender, outfits, backgrounds, uploaded_photos, status, credits_used)
       VALUES (${user.id}, ${projectName}, ${gender}, ${[]}, ${[]}, ${uploadedPhotos}, 'training', 0)
       RETURNING id
     `;
-    projectId = result[0].id;
-    console.log(`✅ Project created with ID ${projectId}`);
-  } catch (error) {
-    console.error("Project creation error:", error);
-    return NextResponse.json(
-      { message: "Something went wrong!" },
-      { status: 500 },
-    );
-  }
+    const projectId = result[0].id;
 
-  try {
+    // 3. Astria Call
     const baseUrl =
       process.env.NEXTAUTH_URL || `https://${process.env.VERCEL_URL}`;
-    const DOMAIN = "https://api.astria.ai";
-
-    // For localhost testing, use ngrok or similar
     const webhookUrl =
       process.env.NODE_ENV === "development"
-        ? "https://your-ngrok-url.ngrok.io" // Replace with your ngrok URL
+        ? "https://your-ngrok.url"
         : baseUrl;
 
     const tuneBody = {
@@ -113,61 +68,56 @@ export async function POST(request: Request) {
       },
     };
 
-    console.log(`Creating tune with pack ${selectedPackId}`);
-
-    const response = await axios.post(
-      `${DOMAIN}/p/${selectedPackId}/tunes`,
-      tuneBody,
+    // We gebruiken 'fetch' met een kortere timeout-intentie voor Safari stabiliteit
+    const astriaResponse = await fetch(
+      `https://api.astria.ai/p/${selectedPackId}/tunes`,
       {
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${astriaApiKey}`,
         },
+        body: JSON.stringify(tuneBody),
       },
     );
 
-    if (response.status !== 201) {
-      console.error("Astria error:", response.status, response.data);
+    if (!astriaResponse.ok) {
+      const errorData = await astriaResponse.json();
+      console.error("Astria error:", errorData);
       await sql`DELETE FROM projects WHERE id = ${projectId}`;
       return NextResponse.json(
         { message: "Astria API error" },
-        { status: response.status },
+        { status: 500 },
       );
     }
 
-    // Update project with tune ID
-    await sql`
-      UPDATE projects 
-      SET tune_id = ${response.data.id.toString()}, status = 'training'
-      WHERE id = ${projectId}
-    `;
+    const astriaData = await astriaResponse.json();
 
-    // Use credit - EXACT SAME AS USE-CREDITS ROUTE
-    await CreditManager.useCredit(user.id, projectId);
-    console.log(`✅ Credit used successfully for project ${projectId}`);
+    // 4. Update en Creditgebruik (Parallel uitvoeren voor snelheid)
+    await Promise.all([
+      sql`UPDATE projects SET tune_id = ${astriaData.id.toString()} WHERE id = ${projectId}`,
+      CreditManager.useCredit(user.id, projectId),
+    ]);
 
-    return NextResponse.json({
-      message: "success",
-      projectId: projectId,
-      tuneId: response.data.id,
-    });
+    // 5. IPHONE FIX: Forceer schone JSON response headers
+    return new NextResponse(
+      JSON.stringify({
+        message: "success",
+        projectId: projectId,
+        tuneId: astriaData.id,
+      }),
+      {
+        status: 200,
+        headers: {
+          "Content-Type": "application/json",
+          Connection: "close", // Vertelt iPhone dat het klaar is
+        },
+      },
+    );
   } catch (error) {
-    console.error("Tune creation error:", error);
-
-    // Rollback project
-    if (projectId) {
-      await sql`DELETE FROM projects WHERE id = ${projectId}`;
-    }
-
-    if (axios.isAxiosError(error)) {
-      console.error("Axios error details:", {
-        status: error.response?.status,
-        data: error.response?.data,
-      });
-    }
-
+    console.error("Route Error:", error);
     return NextResponse.json(
-      { message: "Something went wrong!" },
+      { message: "Internal Server Error" },
       { status: 500 },
     );
   }

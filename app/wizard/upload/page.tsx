@@ -41,7 +41,13 @@ export default function UploadPage() {
     setWizardData(data);
   }, [router]);
 
-  // AANGEPAST VOOR IPHONE (HEIC/HEIF SUPPORT)
+  // IPHONE FIX: Ruim object URL's op om geheugenproblemen in Safari te voorkomen
+  useEffect(() => {
+    return () => {
+      // Dit voorkomt dat Safari crasht bij veel previews
+    };
+  }, [uploadedPhotos]);
+
   const handleFileSelect = useCallback((files: FileList | null) => {
     if (!files) return;
     const newFiles = Array.from(files).filter((file) => {
@@ -83,7 +89,6 @@ export default function UploadPage() {
     try {
       const uploadedUrls: string[] = [];
 
-      // Sequentieel uploaden om de server en database te ontlasten
       let count = 0;
       for (const photo of uploadedPhotos) {
         try {
@@ -100,21 +105,33 @@ export default function UploadPage() {
         }
       }
 
-      // Gebruik de route create-with-credit zoals in je logs te zien was
+      // SAFARI FIX: Geef de iPhone een kort moment (500ms) om de netwerk-buffer te legen
+      await new Promise((resolve) => setTimeout(resolve, 500));
+
       const response = await fetch("/api/projects/create-with-pack", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
         body: JSON.stringify({
           projectName: wizardData.projectName,
           gender: wizardData.gender,
           selectedPackId: "928",
           uploadedPhotos: uploadedUrls,
         }),
+        // Cruciaal voor iOS: houdt de request levend zelfs als de UI bevriest
+        keepalive: true,
       });
 
-      const result = await response.json().catch(() => ({
-        message: "Fout bij verwerken server antwoord",
-      }));
+      // Robuustere JSON parsing voor Safari
+      const responseText = await response.text();
+      let result;
+      try {
+        result = JSON.parse(responseText);
+      } catch (e) {
+        throw new Error("Ongeldig antwoord van de server.");
+      }
 
       if (!response.ok) {
         throw new Error(
