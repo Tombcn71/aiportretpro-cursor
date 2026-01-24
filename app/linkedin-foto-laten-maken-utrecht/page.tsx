@@ -4,15 +4,13 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, X, ChevronDown, ChevronUp, Shield, Check, LinkedinIcon } from "lucide-react"
+import { ArrowRight, X, ChevronDown, ChevronUp, Shield, Check, LinkedinIcon, Sparkles, Camera } from "lucide-react"
 import Header from "@/components/header"
 import { Facebook, Instagram } from "lucide-react"
-import ReviewsEnVoorbeelden from "@/components/reviews-en-voorbeelden"
 import SchemaMarkup from "@/components/schema-markup"
-import SEOContentBlock from "@/components/seo-content-block"
-import ReviewSchema from "@/components/review-schema"
 import FAQSchema from "@/components/faq-schema"
 import Breadcrumb from "@/components/breadcrumb"
+import { trackContact } from "@/lib/facebook-pixel"
 import HowItWorks from "@/components/how-it-works"
 // Gallery photos: All images from the shoot folder (1.png through 26.png)
 const galleryPhotos = Array.from({ length: 26 }, (_, i) => `/images/shoot/${i + 1}.png`)
@@ -130,7 +128,7 @@ export default function LinkedInUtrechtPage() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null)
   const [isVisible, setIsVisible] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
+  const [lastScrollY, setLastScrollY] = useState(0)
 
   // Prevent hydration mismatch
   useEffect(() => {
@@ -146,33 +144,19 @@ export default function LinkedInUtrechtPage() {
   }, [])
 
   useEffect(() => {
-    const toggleVisibility = () => {
-      if (window.pageYOffset > 300) {
-        setIsVisible(true)
-      } else {
-        setIsVisible(false)
-      }
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY
+
+      // Dit is de 'magie': alleen true als je omhoog scrollt
+      const scrollingUp = currentScrollY < lastScrollY && currentScrollY > 400
+
+      setIsVisible(scrollingUp)
+      setLastScrollY(currentScrollY)
     }
 
-    window.addEventListener("scroll", toggleVisibility)
-
-    return () => window.removeEventListener("scroll", toggleVisibility)
-  }, [])
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
-
-    checkMobile()
-    window.addEventListener("resize", checkMobile)
-
-    return () => window.removeEventListener("resize", checkMobile)
-  }, [])
-
-  const openLightbox = (imageSrc: string) => {
-    setSelectedImage(imageSrc)
-  }
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [lastScrollY])
 
   const closeLightbox = () => {
     setSelectedImage(null)
@@ -183,85 +167,101 @@ export default function LinkedInUtrechtPage() {
   }
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen">
       <LocalUtrechtSEO />
-      <ReviewSchema businessName="AI Portret Pro" city="Utrecht" />
       <FAQSchema faqs={faqData} city="Utrecht" />
             <SchemaMarkup type="city" city="Utrecht" url="https://aiportretpro.com/linkedin-foto-laten-maken-utrecht" />
       <Header />
-      {/* Hero Section - Utrecht Specific */}
-      <section className="container mx-auto px-4 py-6 text-center">
-        {/* Stars and Trust Badge */}
-        <div className="flex flex-col items-center gap-2 mb-6">
-          <div className="flex items-center gap-2">
-            <div className="flex items-center gap-1">
-              {[...Array(5)].map((_, i) => (
-                <svg key={i} className="w-4 h-4 fill-yellow-400" viewBox="0 0 20 20">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                </svg>
-              ))}
-            </div>
-            <span className="text-sm md:text-base font-semibold text-gray-900">4.6/5</span>
-          </div>
-        </div>
-        
-        <h1 className="tracking-tight text-3xl md:text-4xl font-bold mb-6 leading-tight">
-          <span className="inline md:block">Professionele linkedin foto laten maken in Utrecht, </span>
-          <span className="text-[#0077B5] inline md:block">zonder gedoe van een fotoshoot</span>
-        </h1>
-        <p className="hidden md:block text-gray-500 text-lg md:text-xl mb-6">
-          Upload een paar selfies en onze AI doet de rest. Ontvang binnen 15 minuten 40 professionele foto's
-        </p>
 
-        <div className="text-md md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto text-center">
-          <div className="inline-grid grid-cols-[auto_1fr] gap-x-2 items-start text-start justify-center">
-            <span className="text-center text-xl md:text-2xl">🏷️</span>
-            <span>6x goedkoper dan een fotograaf</span>
-            <span className="text-center text-xl md:text-2xl">✨</span>
-            <span>100% online, direct beginnen</span>
-            <span className="text-center text-xl md:text-2xl">⏱️</span>
-            <span>Foto's hebben binnen 15 minuten</span>
-          </div>
+      {/* Hero Container */}
+      <div className="flex flex-col items-center justify-center pt-12 text-center px-4 w-full antialiased">
+        {/* Badge */}
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 border border-blue-100 rounded-full text-sm font-medium text-blue-800 mb-4">
+          <Sparkles className="w-4 h-4 text-blue-600" />
+          <span>AI Fotostudio Utrecht</span>
         </div>
 
-        <Button
-          asChild
-          size="lg"
-          className=" bg-[#FF8C00] hover:bg-[#FFA500] text-white px-6 md:px-10 py-8 md:py-8 text-base md:text-lg mb-3 md:max-w-sm"
-        >
-          <Link href="/login?callbackUrl=/payment">
-            <LinkedinIcon className="mr-2 h-5 md:h-6 w-5 md:w-6" />
-            Start jouw fotoshoot nu - € 29 <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
+        {/* Titel en Subtekst als één vloeiend geheel zonder extra witruimte */}
+        <div className="flex flex-col items-center">
+          <p className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900 leading-tight">
+            40 zakelijke foto's van studio <br />
+            kwaliteit,{" "}
+            <span className="text-blue-900">zonder een fotograaf</span>
+          </p>
+
+          <p className="mt-2 text-base md:text-lg lg:text-xl text-slate-600 leading-relaxed max-w-5xl">
+            Ontvang binnen 15 minuten een volledige zakelijke fotoshoot voor
+            LinkedIn en uw CV, <br />
+            met de kwaliteit van een fotograaf maar zonder de reistijd of hoge
+            kosten.
+          </p>
+        </div>
+
+        {/* De knop sluit nu ook nauwer aan */}
+        <div className="pt-8">
+          <Link
+            href="/login?callbackUrl=/payment"
+            onClick={() => trackContact()}
+            aria-label="Start jouw fotoshoot nu voor negenentwintig euro"
+            className="w-full max-w-sm md:w-auto">
+            <Button
+              size="lg"
+              className="gap-2 h-14 px-10 bg-blue-900 hover:bg-blue-800 text-white border-none shadow-xl transition-all text-base md:text-lg font-semibold w-full md:w-auto">
+              <Camera className="w-5 h-5 md:w-6 md:h-6" />
+              <span className="whitespace-nowrap">
+                Start uw fotoshoot—{" "}
+                <span className="line-through text-xs opacity-80 decoration-1">
+                  € 29
+                </span>
+                € 19,99
+              </span>
+            </Button>
           </Link>
-        </Button>
 
-        {/* Trust Shield */}
-        <div className="flex items-center justify-center gap-2 text-[#0077B5] font-medium text-sm mb-8">
-          <div className="relative">
-            <Shield className="h-5 w-5 fill-current text-[#0077B5]" />
-            <Check className="h-3 w-3 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" strokeWidth={3} />
-          </div>
-          <span>14-DAGEN GELD TERUG GARANTIE</span>
+          <p className="mt-3 text-xs text-slate-600">
+            Geen abonnement • Eenmalige betaling • 14 dagen geld terug
+            garantie
+          </p>
         </div>
-      </section>
+      </div>
 
       {/* Photo Carousel - FIXED: Smooth continuous scrolling */}
-      <section className="w-full overflow-hidden mb-16 md:mb-24 bg-gradient-to-r from-blue-50 via-white to-blue-50">
+      <section className="w-full overflow-hidden mt-8 md:mt-12 pb-0 md:pb-16 bg-white leading-none">
+        {" "}
         <div className="relative">
           <div className="carousel-container">
             <div className="carousel-track">
               {galleryPhotos.map((photo, index) => (
                 <div key={`carousel-${index}`} className="carousel-item">
                   <div className="relative">
-                    <div className="w-52 h-[13.33rem] md:w-80 md:h-[20rem] rounded-xl md:rounded-2xl overflow-hidden bg-gray-100 shadow-md md:shadow-lg">
-                      <Image
-                        src={photo || "/placeholder.svg"}
-                        alt="Zakelijk LinkedIn portret Utrecht professional consultancy en healthcare"
-                        width={320}
-                        height={400}
-                        className="w-full h-full object-cover bg-gray-50 brightness-110 contrast-105"
-                        priority={index < 10}
-                      />
+                    <div
+                      className="w-52 h-[13.33rem] md:w-80 md:h-[20rem] rounded-xl md:rounded-2xl overflow-hidden bg-gray-100 shadow-md md:shadow-lg"
+                      style={{ aspectRatio: "4/5" }}>
+                      {index === 0 ? (
+                        <Image
+                          src="/images/shoot/1.png"
+                          alt="AI profielfoto voorbeeld 1"
+                          width={320}
+                          height={400}
+                          priority={true}
+                          fetchPriority="high"
+                          loading="eager"
+                          decoding="sync"
+                          className="w-full h-full object-cover bg-gray-50 brightness-110 contrast-105"
+                          sizes="(max-width: 768px) 208px, 320px"
+                        />
+                      ) : (
+                        <Image
+                          src={photo || "/placeholder.svg"}
+                          alt={`AI profielfoto voorbeeld ${index + 1}`}
+                          width={320}
+                          height={400}
+                          className="w-full h-full object-cover bg-gray-50 brightness-110 contrast-105"
+                          loading="lazy"
+                          quality={75}
+                          sizes="(max-width: 768px) 208px, 320px"
+                        />
+                      )}
                     </div>
                   </div>
                 </div>
@@ -273,10 +273,13 @@ export default function LinkedInUtrechtPage() {
                     <div className="w-52 h-[13.33rem] md:w-80 md:h-[20rem] rounded-xl md:rounded-2xl overflow-hidden bg-gray-100 shadow-md md:shadow-lg">
                       <Image
                         src={photo || "/placeholder.svg"}
-                        alt="Zakelijk LinkedIn portret Utrecht professional consultancy en healthcare"
+                        alt={`AI profielfoto voorbeeld ${index + 1}`}
                         width={320}
                         height={400}
                         className="w-full h-full object-cover bg-gray-50 brightness-110 contrast-105"
+                        loading="lazy"
+                        quality={75}
+                        sizes="(max-width: 768px) 208px, 320px"
                       />
                     </div>
                   </div>
@@ -288,91 +291,34 @@ export default function LinkedInUtrechtPage() {
       </section>
 
       {/* How It Works */}
-      {/* How It Works */}
  <HowItWorks />
 
-      {/* Reviews en Voorbeelden */}
-      <ReviewsEnVoorbeelden />
-     
-      {/* Comparison Section */}
-      <section className="py-12 md:py-16 bg-gradient-to-br from-blue-50 to-orange-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-12 max-w-3xl mx-auto">
-            Waarom €200+ betalen voor een middag in een studio?
-          </h2>
-
-          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {/* Traditional Photographer */}
-            <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg border-2 border-gray-200">
-              <div className="text-center mb-6">
-                <div className="text-5xl mb-3">❌</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">De traditionele fotograaf</h3>
-              </div>
-              <ul className="space-y-4">
-                <li className="flex flex-col gap-1">
-                  <span className="font-semibold text-gray-900">Prijs:</span>
-                  <span className="text-gray-600">Vaak tussen de €150 en €350.</span>
-                </li>
-                <li className="flex flex-col gap-1">
-                  <span className="font-semibold text-gray-900">Tijd:</span>
-                  <span className="text-gray-600">Afspraak plannen, reistijd en een uur poseren.</span>
-                </li>
-                <li className="flex flex-col gap-1">
-                  <span className="font-semibold text-gray-900">Geduld:</span>
-                  <span className="text-gray-600">1 tot 2 weken wachten op de nabewerking.</span>
-                </li>
-                <li className="flex flex-col gap-1">
-                  <span className="font-semibold text-gray-900">Resultaat:</span>
-                  <span className="text-gray-600">Slechts 3 tot 5 foto's inbegrepen (bijbetalen voor meer).</span>
-                </li>
-                <li className="flex flex-col gap-1">
-                  <span className="font-semibold text-gray-900">Risico:</span>
-                  <span className="text-gray-600">Niet tevreden? Jammer, je betaalt de fotograaf voor zijn tijd.</span>
-                </li>
-              </ul>
+      {/* FAQ Section - LinkedIn Optimized */}
+      <section id="faq" className="container mx-auto px-4 py-12 md:py-16">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-4">Veelgestelde Vragen</h2>
+        <p className="text-lg text-gray-600 text-center mb-8 md:mb-12 max-w-2xl mx-auto">
+          Hier beantwoorden we de meest voorkomende vragen over LinkedIn profielfoto's
+        </p>
+        <div className="max-w-3xl mx-auto">
+          {faqData.map((faq, index) => (
+            <div key={index} className="mb-4">
+              <button
+                onClick={() => toggleFaq(index)}
+                className="w-full bg-white rounded-lg p-4 md:p-6 text-left hover:shadow-md transition-shadow duration-200 border border-gray-200">
+                <div className="flex justify-between items-center">
+                  <h3 className="text-base md:text-lg font-semibold text-gray-900 pr-4">{faq.question}</h3>
+                  {openFaqIndex === index ? (
+                    <ChevronUp className="h-5 w-5 text-[#0077B5] flex-shrink-0" />
+                  ) : (
+                    <ChevronDown className="h-5 w-5 text-[#0077B5] flex-shrink-0" />
+                  )}
+                </div>
+                {openFaqIndex === index && (
+                  <div className="mt-4 text-[#374151] text-sm md:text-base leading-relaxed">{faq.answer}</div>
+                )}
+              </button>
             </div>
-
-            {/* AI Portret Pro */}
-            <div className="bg-gradient-to-br from-[#0077B5] to-[#005a8c] rounded-2xl p-6 md:p-8 shadow-2xl border-2 border-[#0077B5] relative overflow-hidden">
-              <div className="absolute top-0 right-0 bg-[#FF8C00] text-white px-4 py-1 text-sm font-bold transform rotate-12 translate-x-4 -translate-y-2">
-                DE SLIMME KEUZE
-              </div>
-              <div className="text-center mb-6">
-                <div className="text-5xl mb-3">✅</div>
-                <h3 className="text-xl font-bold text-white mb-2">AI Portret Pro</h3>
-                <div className="text-sm text-blue-100 mt-1">(De slimme keuze)</div>
-              </div>
-              <ul className="space-y-4">
-                <li className="flex flex-col gap-1">
-                  <span className="font-semibold text-white">Prijs:</span>
-                  <span className="text-blue-100">Eenmalig €29 (geen verborgen kosten).</span>
-                </li>
-                <li className="flex flex-col gap-1">
-                  <span className="font-semibold text-white">Gemak:</span>
-                  <span className="text-blue-100">Direct beginnen vanaf je eigen bank, geen afspraak nodig.</span>
-                </li>
-                <li className="flex flex-col gap-1">
-                  <span className="font-semibold text-white">Snelheid:</span>
-                  <span className="text-blue-100">Binnen 15 minuten alle foto's in je dashboard.</span>
-                </li>
-                <li className="flex flex-col gap-1">
-                  <span className="font-semibold text-white">Resultaat:</span>
-                  <span className="text-blue-100">Je krijgt direct 40+ verschillende zakelijke profielfoto's.</span>
-                </li>
-                <li className="flex flex-col gap-1">
-                  <span className="font-semibold text-white">Garantie:</span>
-                  <span className="text-blue-100">Niet goed? Geld terug. Zo simpel is het.</span>
-                </li>
-              </ul>
-              <div className="mt-6">
-                <Button asChild size="lg" className="w-full bg-[#FF8C00] hover:bg-[#FFA500] text-white font-bold">
-                  <Link href="/login?callbackUrl=/payment">
-                    Bespaar €170+ Nu <ArrowRight className="ml-2" />
-                  </Link>
-                </Button>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
@@ -467,63 +413,6 @@ export default function LinkedInUtrechtPage() {
         </div>
       </section>
 
-      {/* FAQ Section - LinkedIn Optimized */}
-      <section id="faq" className="container mx-auto px-4 py-12 md:py-16">
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-4">Veelgestelde Vragen</h2>
-        <p className="text-lg text-gray-600 text-center mb-8 md:mb-12 max-w-2xl mx-auto">
-          Hier beantwoorden we de meest voorkomende vragen over LinkedIn profielfoto's
-        </p>
-        <div className="max-w-3xl mx-auto">
-          {faqData.map((faq, index) => (
-            <div key={index} className="mb-4">
-              <button
-                onClick={() => toggleFaq(index)}
-                className="w-full bg-white rounded-lg p-4 md:p-6 text-left hover:shadow-md transition-shadow duration-200 border border-gray-200"
-              >
-                <div className="flex justify-between items-center">
-                  <h3 className="text-base md:text-lg font-semibold text-gray-900 pr-4">{faq.question}</h3>
-                  {openFaqIndex === index ? (
-                    <ChevronUp className="h-5 w-5 text-[#0077B5] flex-shrink-0" />
-                  ) : (
-                    <ChevronDown className="h-5 w-5 text-[#0077B5] flex-shrink-0" />
-                  )}
-                </div>
-              </button>
-              {openFaqIndex === index && (
-                <div className="bg-white border-l-4 border-[#0077B5] p-4 md:p-6 mt-2 rounded-b-lg border-r border-b border-gray-200">
-                  <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Strong CTA Section */}
-      <section className="bg-gradient-to-r from-[#0077B5] to-[#005885] text-white py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Klaar voor je perfecte LinkedIn profielfoto?
-          </h2>
-          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            Start binnen 5 minuten en ontvang 40 professionele LinkedIn foto's binnen 15 minuten.
-          </p>
-
-          <Button
-            asChild
-            size="lg"
-            className="bg-white text-[#0077B5] hover:bg-gray-100 text-lg px-8 py-4 mr-4 mb-4 md:mb-0"
-          >
-            <Link href="/login?callbackUrl=/payment">
-              <LinkedinIcon className="mr-2 h-5 w-5" />
-              Start nu voor €29
-            </Link>
-          </Button>
-
-          <p className="text-sm opacity-75 mt-4">✓ 14-dagen geld terug garantie ✓ Binnen 15 minuten klaar</p>
-        </div>
-      </section>
-
       {/* SEO Content Section - Utrecht Specific */}
       <section className="py-12 md:py-16 bg-white">
         <div className="container mx-auto px-4">
@@ -535,25 +424,25 @@ export default function LinkedInUtrechtPage() {
             In het kloppende hart van de Nederlandse zakelijke wereld, van de moderne kantoren in Papendorp tot de innovatieve labs op het Utrecht Science Park, is je digitale aanwezigheid je belangrijkste troef. In 2026 is een professionele LinkedIn foto laten maken in Utrecht essentieel om op te vallen in de consultancy, zorg en financiële sector. Onze AI-technologie biedt de snelheid die Utrechtse professionals verwachten: geen parkeergedoe bij de Jaarbeurs of tijdverlies in de binnenstad, maar direct 40 hoogwaardige profielfoto's vanuit je eigen kantoor of huis. Utrecht vormt in 2026 meer dan ooit het kloppende hart van de Nederlandse zakelijke wereld. Als centraal knooppunt voor consultancy, media en financiële dienstverlening is de stad de plek waar dagelijks duizenden professionals bouwen aan hun netwerk en carrière. In deze dynamische omgeving is je digitale aanwezigheid je belangrijkste troef. Een professionele LinkedIn profielfoto laten maken in Utrecht is in 2026 dan ook essentieel voor iedereen die serieus genomen wil worden door werkgevers en opdrachtgevers. Je profielfoto is je digitale handdruk in een stad waar connectiviteit en toegankelijkheid de standaard zijn.
               </p>
 
-              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">De efficiënte oplossing voor professionals in het hart van Nederland</h3>
+              <h2 className="text-xl md:text-2xl font-bold text-gray-900 mt-12">De efficiënte oplossing voor professionals in het hart van Nederland</h2>
               
               <p className="text-sm md:text-base">
             Met meer dan 200.000 actieve LinkedIn-gebruikers in de regio Utrecht is de behoefte aan een sterke visuele presentatie groot. Utrechtse professionals waarderen efficiëntie en innovatie, en dat is precies waarom zij in 2026 massaal kiezen voor AI-fotografie. Waar een traditionele fotoshoot in de stad voorheen gepaard ging met hoge kosten tussen de honderdvijfenzeventig en tweehonderdvijfentwintig euro, biedt AI Portret Pro een direct en online alternatief. Je hoeft niet langer rekening te houden met parkeerperikelen rondom Utrecht Centraal of tijdrovende reizen door de drukke binnenstad; je regelt alles simpelweg vanaf je eigen werkplek.
               </p>
 
-              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Veertig verschillende stijlen en achtergronden uit één upload</h3>
+              <h2 className="text-xl md:text-2xl font-bold text-gray-900 mt-12">Veertig verschillende stijlen en achtergronden uit één upload</h2>
               
               <p className="text-sm md:text-base">
             Het proces is in 2026 volledig gericht op gemak en variatie. Door minimaal zes bestaande foto's of selfies te uploaden vanaf je computer of telefoon, krijgt onze technologie direct inzicht in je unieke kenmerken. In plaats van urenlang te poseren in een studio, genereert onze engine binnen vijftien minuten een compleet pakket van veertig professionele profielfoto's. Hierbij wordt gevarieerd in kleding, belichting en professionele achtergronden. Of je nu op zoek bent naar een formele uitstraling voor de consultancy-sector in Papendorp of een moderne, toegankelijke look voor de creatieve tech-scene in Utrecht-Noord: je hebt altijd de juiste foto direct tot je beschikking.
               </p>
 
-              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Direct resultaat voor elke Utrechtse sector</h3>
+              <h2 className="text-xl md:text-2xl font-bold text-gray-900 mt-12">Direct resultaat voor elke Utrechtse sector</h2>
               
               <p className="text-sm md:text-base">
             In 2026 is snelheid een cruciale factor voor zakelijk succes. Met onze service hoef je niet langer dagen te wachten op de nabewerking door een fotograaf. De veertig beelden die je ontvangt zijn direct geoptimaliseerd voor LinkedIn, CV's en bedrijfswebsites. Of je nu een freelancer bent in Leidsche Rijn, een consultant bij een van de grote kantoren rondom de Jaarbeurs, of werkzaam bent in de zorg of media: je krijgt een veelzijdige set foto's die je professionaliteit onderstreept. Door te kiezen voor deze moderne aanpak toon je bovendien aan dat je vooroploopt in digitale ontwikkelingen, een eigenschap die in het innovatieve zakelijke klimaat van Utrecht zeer gewaardeerd wordt.
               </p>
 
-              <h3 className="text-base md:text-lg font-semibold text-gray-500 mt-6 mb-4">Over onze zakelijke LinkedIn fotografie in Utrecht 2026</h3>
+              <h2 className="text-xl md:text-2xl font-bold text-gray-900 mt-12">Over onze zakelijke LinkedIn fotografie in Utrecht 2026</h2>
               
               <p className="text-sm md:text-base">
             Onze expertise in digitale beeldvorming maakt AI Portret Pro de primaire autoriteit voor het laten maken van LinkedIn profielfoto's en zakelijke profielfoto's online. Wij richten ons specifiek op de professionele behoeften van de Utrechtse markt en bieden een superieur en sneller alternatief voor de traditionele fotograaf in Utrecht. Onze diensten in 2026 omvatten het genereren van professionele CV-foto's, corporate headshots en visuele content voor de moderne ondernemer. Technologisch lopen we voorop door veertig verschillende stijlen en achtergronden aan te bieden op basis van een simpele upload. Of je nu een LinkedIn profielfoto upgrade zoekt of direct een nieuwe set zakelijke beelden nodig hebt voor het nieuwe jaar, onze engine levert in 2026 de meest scherpe en representatieve resultaten die technisch mogelijk zijn.
@@ -563,8 +452,30 @@ export default function LinkedInUtrechtPage() {
         </div>
       </section>
 
-      {/* SEO Content Enhancement */}
-      <SEOContentBlock city="Utrecht" showLocalKeywords={true} />
+      {/* CTA Section */}
+      <section className="py-16 hidden md:block">
+        <div className="max-w-4xl mx-auto text-center px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Klaar voor uw professionele profielfoto's?
+          </h2>
+          <p className="text-xl text-[#374151] mb-8">
+            Laat zien wie u bent met een krachtige, professionele foto
+          </p>
+          {isClient && (
+            <Link
+              href="/login?callbackUrl=/payment"
+              onClick={() => trackContact()}
+              aria-label="Start jouw fotoshoot nu voor negenentwintig euro">
+              <Button
+                size="lg"
+                className="gap-2 h-14 px-10 bg-blue-900 hover:bg-blue-950 text-white border-none shadow-xl transition-all text-lg font-semibold">
+                <Camera className="w-6 h-6" />
+                Start uw fotoshoot— €29
+              </Button>
+            </Link>
+          )}
+        </div>
+      </section>
 
       {/* Photo Lightbox */}
       {selectedImage && (
@@ -588,7 +499,7 @@ export default function LinkedInUtrechtPage() {
       )}
 
       {/* Footer */}
-      <footer className="bg-black text-white py-8 px-6">
+      <footer className="bg-blue-900 text-white py-8 px-6">
         <div className="container mx-auto">
           <div className="flex flex-col lg:flex-row lg:justify-between space-y-8 lg:space-y-0">
             {/* Logo and Company Info */}
@@ -678,21 +589,24 @@ export default function LinkedInUtrechtPage() {
 
       {/* Floating CTA Button - Mobile Only */}
       {isVisible && (
-        <div className="fixed bottom-4 left-4 right-4 z-[2147483647] md:hidden">
+        <div className="fixed bottom-4 left-4 right-4 z-[2147483647] md:hidden animate-in fade-in slide-in-from-bottom-4 duration-200">
           <div className="bg-white rounded-lg shadow-lg border border-gray-200 p-3">
-            <p className="text-center text-md font-bold text-gray-800 mb-2 mt-4">
-              Professionele foto's in 15 minuten
-            </p>
-            <p className="text-center text-sm text-gray-600 mb-4">
-              Geen gedoe direct resultaat
-            </p>
             <Button
               asChild
               size="lg"
-              className="w-full bg-[#FF8C00] hover:bg-[#FFA500] text-white px-6 py-8 text-base font-semibold"
-            >
-              <Link href="/login?callbackUrl=/payment">
-                Start jouw fotoshoot nu - € 29 <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
+              className="w-full bg-blue-900 hover:bg-blue-800 text-white px-6 py-8 text-base font-black"
+              style={{ textShadow: "0 0 1px white" }}>
+              <Link
+                href="/login?callbackUrl=/payment"
+                aria-label="Start nu voor negentien euro negenennegentig">
+                <span className="flex items-center justify-center gap-2">
+                  <span>Start nu:</span>
+                  <span className="line-through text-xs opacity-80 decoration-1">
+                    € 29
+                  </span>
+                  <span className="text-lg">€ 19,99</span>
+                  <ArrowRight className="ml-2 h-6 w-6" />
+                </span>
               </Link>
             </Button>
           </div>
