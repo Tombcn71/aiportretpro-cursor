@@ -30,7 +30,7 @@ const ReviewsEnVoorbeelden = dynamic(
 const HowItWorks = dynamic(() => import("@/components/how-it-works"), {
   ssr: false,
 });
-import { trackLead } from "@/lib/facebook-pixel";
+import { trackContact, trackLead } from "@/lib/facebook-pixel";
 
 // Gallery photos: All images from the shoot folder (1.png through 26.png)
 const galleryPhotos = Array.from(
