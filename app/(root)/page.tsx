@@ -19,8 +19,6 @@ import { Facebook, Instagram, Linkedin } from "lucide-react";
 import SchemaMarkup from "@/components/schema-markup";
 import CityNavigation from "@/components/city-navigation";
 import FAQSchema from "@/components/faq-schema";
-import ReviewSchema from "@/components/review-schema";
-import ReviewsEnVoorbeelden from "@/components/reviews-en-voorbeelden";
 import HowItWorks from "@/components/how-it-works";
 import { trackContact } from "@/lib/facebook-pixel";
 
@@ -210,7 +208,6 @@ export default function HomePage() {
         }}
       />
       <SchemaMarkup type="home" />
-      <ReviewSchema businessName="AI Portret Pro" />
       <FAQSchema faqs={faqData} />
       <Header />
 
