@@ -231,7 +231,6 @@ export default function RootLayout({
           disableTransitionOnChange>
           <Providers>
             <Suspense fallback={null}>
-              <CrispWithNoSSR />
               {children}
               <Toaster />
               <FacebookPixel />
