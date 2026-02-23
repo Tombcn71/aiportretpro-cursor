@@ -231,17 +231,16 @@ export default function HomePage() {
               kosten.
             </p>
           </div>
-
-          {/* De knop sluit nu ook nauwer aan */}
-          <div className="pt-8">
+          {/* De knop container */}
+          <div className="pt-8 w-full flex flex-col items-center px-6">
             <Link
               href="/login?callbackUrl=/payment"
               onClick={() => trackContact()}
               aria-label="Start jouw fotoshoot nu voor negenentwintig euro"
-              className="w-full max-w-sm md:w-auto">
+              className="w-full max-w-[340px] md:w-auto">
               <Button
                 size="lg"
-                className="gap-2 h-14 px-10 bg-blue-900 hover:bg-blue-800 text-white border-none shadow-xl transition-all text-base md:text-lg font-semibold w-full md:w-auto">
+                className="gap-2 h-14 w-full bg-blue-900 hover:bg-blue-800 text-white border-none shadow-xl transition-all text-base md:text-lg font-semibold md:px-10">
                 <Camera className="w-5 h-5 md:w-6 md:h-6" />
                 <span className="whitespace-nowrap">
                   Start uw fotoshoot—{" "}
