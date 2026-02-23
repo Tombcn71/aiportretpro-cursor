@@ -8,7 +8,7 @@
 
 - **35+ realistische fotografen** gebaseerd op Nederlandse locaties
 - **Verdeeld over 8 Nederlandse steden** (Amsterdam, Rotterdam, Utrecht, etc.)
-- **Specialisaties**: Zakelijke fotografie, Portretfotografie, Bruiloft, Familie  
+- **Specialisaties**: Zakelijke fotografie, Portretfotografie, Bruiloft, Familie
 - **Contact**: Google Maps links en telefoonnummers voor elke fotograaf
 - **Volledig hardcoded** - direct werkend zonder dependencies
 - **Smart approach**: Google Maps search i.p.v. fictieve websites
@@ -39,12 +39,13 @@
 ## Footer Integration
 
 Link "Lokale Fotografen" toegevoegd aan footer van:
+
 - Hoofdpagina (`/`)
 - LinkedIn pagina's (`/linkedin-foto-laten-maken`, `/linkedin-profielfoto`)
 
 ## Perfect Complement
 
-- **AI service**: Snelle €29 optie
-- **Lokale fotografen**: Traditionele keuze  
+- **AI service**: Snelle €19.99 optie
+- **Lokale fotografen**: Traditionele keuze
 - **Cross-sell**: AI prominently featured op elke fotografen pagina
 - **SEO boost**: Lokale zoekwoorden per stad

@@ -19,13 +19,14 @@ const inter = Inter({
 const CrispWithNoSSR = dynamic(() => import("../components/crisp"));
 
 export const metadata: Metadata = {
-  title: "Professionele zakelijke foto's laten maken? - AI Portret Pro €29",
+  title: "Professionele zakelijke foto's laten maken? - AI Portret Pro €19.99",
   description:
     "Probeer onze online AI fotoshoot: 40 professionele foto's in 15 min. 6x goedkoper dan een traditionele fotograaf!",
   keywords:
     "zakelijke foto's laten maken, professionele foto online, business headshots, corporate fotografie, LinkedIn foto, CV foto, website profielfoto, AI fotografie Nederland",
   openGraph: {
-    title: "Professionele zakelijke foto's laten maken? - AI Portret Pro €29",
+    title:
+      "Professionele zakelijke foto's laten maken? - AI Portret Pro €19.99",
     description:
       "Probeer onze online AI fotoshoot: 40 professionele foto's in 15 min. 6x goedkoper dan een traditionele fotograaf!",
     url: "https://aiportretpro.nl",
@@ -35,7 +36,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Professionele zakelijke foto's laten maken? - AI Portret Pro €29",
+    title:
+      "Professionele zakelijke foto's laten maken? - AI Portret Pro €19.99",
     description:
       "Probeer onze online AI fotoshoot: 40 professionele foto's in 15 min. 6x goedkoper dan een traditionele fotograaf!",
   },

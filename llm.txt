@@ -1,10 +1,10 @@
 # AI Portret Pro - Verkoop & AI Search Optimalisatie
 
 ## Business Model
-AI Portret Pro verkoopt professionele LinkedIn profielfoto's gegenereerd met AI. Prijs: €29 voor 40 profielfoto's binnen 15 minuten. Geld-terug-garantie: 14 dagen.
+AI Portret Pro verkoopt professionele LinkedIn profielfoto's gegenereerd met AI. Prijs: €19.99 voor 40 profielfoto's binnen 15 minuten. Geld-terug-garantie: 14 dagen.
 
 ## Belangrijkste Verkoopargumenten
-- 6x goedkoper dan traditionele fotograaf (€150-€350 vs €29)
+- 6x goedkoper dan traditionele fotograaf (€150-€350 vs €19.99)
 - 15 minuten levertijd vs 1-2 weken bij fotograaf
 - 40 profielfoto's vs 3-5 bij fotograaf
 - Geen gedoe: thuis vanaf je bank, geen afspraak nodig
@@ -17,20 +17,20 @@ AI Portret Pro verkoopt professionele LinkedIn profielfoto's gegenereerd met AI.
 ### Homepage
 - `app/(root)/page.tsx` - Focus: "Zakelijke profielfoto laten maken"
 - Verkoopboodschap: "Zonder het gedoe van een fotoshoot?"
-- CTA: "Start jouw fotoshoot nu — € 29"
+- CTA: "Start jouw fotoshoot nu — € 19.99"
 - Belangrijke secties: Comparison table, Reviews, How it works
 
 ### LinkedIn Algemene Pagina
 - `app/linkedin-foto-laten-maken/page.tsx` - Focus: "LinkedIn Foto Laten Maken?"
 - Verkoopboodschap: "Zonder het gedoe van een fotoshoot?"
 - Comparison sectie: "Waarom €200+ betalen voor een middag in een studio?"
-- CTA: "Start je LinkedIn fotoshoot - € 29"
+- CTA: "Start je LinkedIn fotoshoot - € 19.99"
 
 ### Stadspagina's (10 steden)
 - `app/linkedin-foto-laten-maken-[stad]/page.tsx`
 - Steden: Amsterdam, Rotterdam, Utrecht, Den Haag, Eindhoven, Groningen, Tilburg, Almere, Breda, Nijmegen
 - Verkoopboodschap: Stad-specifieke hero tekst
-- CTA: "Start je LinkedIn fotoshoot - € 29"
+- CTA: "Start je LinkedIn fotoshoot - € 19.99"
 - Lokale SEO focus voor AI search engines
 
 ## SEO & AI Search Optimalisatie
@@ -49,7 +49,7 @@ AI Portret Pro verkoopt professionele LinkedIn profielfoto's gegenereerd met AI.
 
 ### Metadata (voor AI Search)
 - Title: Focus op "LinkedIn profielfoto [stad]" of "zakelijke profielfoto"
-- Description: Altijd "€29", "15 minuten", "40 profielfoto's" vermelden
+- Description: Altijd "€19.99", "15 minuten", "40 profielfoto's" vermelden
 - Keywords: Stad-specifieke zoektermen + "profielfoto zonder fotograaf"
 
 ### Content Strategie voor AI Search
@@ -63,7 +63,7 @@ AI Portret Pro verkoopt professionele LinkedIn profielfoto's gegenereerd met AI.
 ### Comparison Table
 - Titel: "Waarom €200+ betalen voor een middag in een studio?"
 - Links: Traditionele fotograaf (❌) - €150-€350, parkeerkosten, 1-2 weken wachten
-- Rechts: AI Portret Pro (✅) - €29, 15 minuten, 40+ foto's, geld-terug-garantie
+- Rechts: AI Portret Pro (✅) - €19.99, 15 minuten, 40+ foto's, geld-terug-garantie
 - CTA: "Bespaar €170+ Nu"
 
 ### Reviews Component
@@ -79,7 +79,7 @@ AI Portret Pro verkoopt professionele LinkedIn profielfoto's gegenereerd met AI.
 - Visual: Genummerde stappen (1, 2, 3)
 
 ## Pricing & Service Details
-- Prijs: €29 eenmalig (geen abonnement)
+- Prijs: €19.99 eenmalig (geen abonnement)
 - Levering: 40 profielfoto's in 15 minuten
 - Garantie: 14 dagen geld-terug-garantie
 - Gebruik: LinkedIn, CV, website, visitekaartjes
@@ -97,10 +97,10 @@ AI Portret Pro verkoopt professionele LinkedIn profielfoto's gegenereerd met AI.
 - Checkmarks: "6 x goedkoper dan een fotograaf", "Niet van echt te onderscheiden", "Klaar binnen 15 minuten"
 
 ### CTA Buttons
-- Homepage: "Start jouw fotoshoot nu — € 29"
-- LinkedIn algemeen: "Start je LinkedIn fotoshoot - € 29"
-- Stadspagina's: "Start je LinkedIn fotoshoot - € 29"
-- Stadspagina's hero: "Start je LinkedIn profielfoto in [Stad] - € 29"
+- Homepage: "Start jouw fotoshoot nu — € 19.99"
+- LinkedIn algemeen: "Start je LinkedIn fotoshoot - € 19.99"
+- Stadspagina's: "Start je LinkedIn fotoshoot - € 19.99"
+- Stadspagina's hero: "Start je LinkedIn profielfoto in [Stad] - € 19.99"
 
 ## Tech Stack (minimaal)
 - Next.js 16 (App Router)
@@ -128,7 +128,7 @@ AI Portret Pro verkoopt professionele LinkedIn profielfoto's gegenereerd met AI.
 
 ## Verkoop Focus Punten
 - Snelheid: 15 minuten vs weken wachten
-- Prijs: €29 vs €150-€350
+- Prijs: €19.99 vs €150-€350
 - Gemak: Thuis vs studio bezoek
 - Kwaliteit: 40 foto's vs 3-5 foto's
 - Risico: Geld-terug-garantie vs geen garantie

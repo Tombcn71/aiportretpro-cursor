@@ -69,7 +69,7 @@ export default function LoginPage() {
         // If account already exists (409), try to sign in instead
         if (response.status === 409) {
           console.log(
-            "Account already exists, attempting to sign in instead..."
+            "Account already exists, attempting to sign in instead...",
           );
           const signInResult = await signIn("credentials", {
             email,
@@ -86,7 +86,7 @@ export default function LoginPage() {
             const redirectUrl = isHomepageCTA ? "/pricing" : "/dashboard";
             console.log(
               "✅ Signed in successfully, redirecting to:",
-              redirectUrl
+              redirectUrl,
             );
             router.push(redirectUrl);
             return;
@@ -110,7 +110,7 @@ export default function LoginPage() {
 
         if (signInResult?.error) {
           setError(
-            "Account aangemaakt, maar inloggen mislukt. Probeer handmatig in te loggen."
+            "Account aangemaakt, maar inloggen mislukt. Probeer handmatig in te loggen.",
           );
           setIsSignUp(false); // Switch to login mode
         } else if (signInResult?.ok) {
@@ -124,7 +124,7 @@ export default function LoginPage() {
             callbackUrl === "/payment" ? "/pricing" : callbackUrl || "/pricing";
           console.log(
             "✅ Signup + Sign in successful, redirecting to:",
-            redirectUrl
+            redirectUrl,
           );
           router.push(redirectUrl);
           return;
@@ -157,7 +157,7 @@ export default function LoginPage() {
     } catch (error) {
       console.error("Email auth error:", error);
       setError(
-        error instanceof Error ? error.message : "Er is een fout opgetreden"
+        error instanceof Error ? error.message : "Er is een fout opgetreden",
       );
     } finally {
       setLoading(false);
@@ -184,7 +184,7 @@ export default function LoginPage() {
                   : callbackUrl || "/pricing";
               console.log(
                 "New user (no credits), redirecting to:",
-                redirectUrl
+                redirectUrl,
               );
               router.push(redirectUrl);
               return;
@@ -197,7 +197,7 @@ export default function LoginPage() {
             }
             console.log(
               "Existing user (has credits), redirecting to:",
-              redirectUrl
+              redirectUrl,
             );
             router.push(redirectUrl);
           }
@@ -296,7 +296,7 @@ export default function LoginPage() {
                       />
                       <path
                         fill="currentColor"
-                        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.19.99-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
                       />
                       <path
                         fill="currentColor"
@@ -331,7 +331,7 @@ export default function LoginPage() {
                         strokeWidth={3}
                       />
                       <p className="text-sm font-medium text-slate-700">
-                        14 dagen geld terug garantie
+                        perfecte profiel afmetingen
                       </p>
                     </div>
                     <div className="flex items-center gap-1.5">
@@ -359,7 +359,7 @@ export default function LoginPage() {
                       />
                       <path
                         fill="currentColor"
-                        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.19.99-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
                       />
                       <path
                         fill="currentColor"
@@ -438,8 +438,8 @@ export default function LoginPage() {
                       {loading
                         ? "Bezig..."
                         : isSignUp
-                        ? "Account aanmaken"
-                        : "Inloggen"}
+                          ? "Account aanmaken"
+                          : "Inloggen"}
                     </Button>
                   </form>
 

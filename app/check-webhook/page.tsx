@@ -1,33 +1,35 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Badge } from "@/components/ui/badge"
-import { CheckCircle, XCircle, AlertCircle } from "lucide-react"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Badge } from "@/components/ui/badge";
+import { CheckCircle, XCircle, AlertCircle } from "lucide-react";
 
 export default function CheckWebhookPage() {
-  const [tuneId, setTuneId] = useState("2955915")
-  const [webhookInfo, setWebhookInfo] = useState<any>(null)
-  const [loading, setLoading] = useState(false)
+  const [tuneId, setTuneId] = useState("19.9955915");
+  const [webhookInfo, setWebhookInfo] = useState<any>(null);
+  const [loading, setLoading] = useState(false);
 
   const checkWebhook = async () => {
-    setLoading(true)
+    setLoading(true);
     try {
-      const response = await fetch(`/api/astria/check-webhook?tune_id=${tuneId}`)
-      const data = await response.json()
-      setWebhookInfo(data)
+      const response = await fetch(
+        `/api/astria/check-webhook?tune_id=${tuneId}`,
+      );
+      const data = await response.json();
+      setWebhookInfo(data);
     } catch (error) {
-      console.error("Error checking webhook:", error)
-      setWebhookInfo({ error: "Failed to check webhook" })
+      console.error("Error checking webhook:", error);
+      setWebhookInfo({ error: "Failed to check webhook" });
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
-  const correctWebhookUrl = `https://www.aiportretpro.nl/api/astria/prompt-webhook?user_id=1&model_id=${tuneId}&webhook_secret=shadf892yr32548hq23h`
+  const correctWebhookUrl = `https://www.aiportretpro.nl/api/astria/prompt-webhook?user_id=1&model_id=${tuneId}&webhook_secret=shadf892yr32548hq23h`;
 
   return (
     <div className="container mx-auto p-6 max-w-4xl">
@@ -45,7 +47,7 @@ export default function CheckWebhookPage() {
               id="tuneId"
               value={tuneId}
               onChange={(e) => setTuneId(e.target.value)}
-              placeholder="Enter tune ID (e.g., 2955915)"
+              placeholder="Enter tune ID (e.g., 19.9955915)"
               className="mt-1"
             />
           </div>
@@ -56,12 +58,18 @@ export default function CheckWebhookPage() {
 
           <div className="space-y-4">
             <div className="p-4 bg-blue-50 rounded-lg">
-              <h3 className="font-semibold text-blue-900 mb-2">✅ Correct Webhook URL:</h3>
-              <div className="p-3 bg-white rounded border text-sm break-all font-mono">{correctWebhookUrl}</div>
+              <h3 className="font-semibold text-blue-900 mb-2">
+                ✅ Correct Webhook URL:
+              </h3>
+              <div className="p-3 bg-white rounded border text-sm break-all font-mono">
+                {correctWebhookUrl}
+              </div>
             </div>
 
             <div className="p-4 bg-yellow-50 rounded-lg">
-              <h3 className="font-semibold text-yellow-900 mb-3">📋 How to set webhook in Astria:</h3>
+              <h3 className="font-semibold text-yellow-900 mb-3">
+                📋 How to set webhook in Astria:
+              </h3>
               <ol className="list-decimal list-inside space-y-2 text-sm text-yellow-800">
                 <li>
                   Go to{" "}
@@ -69,17 +77,18 @@ export default function CheckWebhookPage() {
                     href="https://www.astria.ai/tunes"
                     target="_blank"
                     className="text-blue-600 underline font-medium"
-                    rel="noreferrer"
-                  >
+                    rel="noreferrer">
                     astria.ai/tunes
                   </a>
                 </li>
                 <li>
-                  Find your tune with ID: <Badge variant="outline">{tuneId}</Badge>
+                  Find your tune with ID:{" "}
+                  <Badge variant="outline">{tuneId}</Badge>
                 </li>
                 <li>Click on the tune to open its details</li>
                 <li>
-                  Look for <strong>"Webhook URL"</strong> or <strong>"Callback URL"</strong> field
+                  Look for <strong>"Webhook URL"</strong> or{" "}
+                  <strong>"Callback URL"</strong> field
                 </li>
                 <li>Copy and paste the correct URL from above</li>
                 <li>Save the changes</li>
@@ -92,17 +101,21 @@ export default function CheckWebhookPage() {
                   <div className="p-4 bg-green-50 rounded-lg">
                     <div className="flex items-center gap-2 mb-2">
                       <CheckCircle className="h-5 w-5 text-green-600" />
-                      <h3 className="font-semibold text-green-900">Tune Found Successfully</h3>
+                      <h3 className="font-semibold text-green-900">
+                        Tune Found Successfully
+                      </h3>
                     </div>
                     <div className="text-sm text-green-800">
                       <p>
                         <strong>Tune ID:</strong> {webhookInfo.tuneId}
                       </p>
                       <p>
-                        <strong>Title:</strong> {webhookInfo.tuneData?.title || "N/A"}
+                        <strong>Title:</strong>{" "}
+                        {webhookInfo.tuneData?.title || "N/A"}
                       </p>
                       <p>
-                        <strong>Status:</strong> {webhookInfo.tuneData?.status || "N/A"}
+                        <strong>Status:</strong>{" "}
+                        {webhookInfo.tuneData?.status || "N/A"}
                       </p>
                     </div>
                   </div>
@@ -126,7 +139,9 @@ export default function CheckWebhookPage() {
             )}
 
             <div className="p-4 bg-purple-50 rounded-lg">
-              <h3 className="font-semibold text-purple-900 mb-2">🔧 Next Steps:</h3>
+              <h3 className="font-semibold text-purple-900 mb-2">
+                🔧 Next Steps:
+              </h3>
               <ul className="list-disc list-inside space-y-1 text-sm text-purple-800">
                 <li>Set the webhook URL in Astria (see instructions above)</li>
                 <li>Test with a small generation (1-2 photos to save costs)</li>
@@ -138,5 +153,5 @@ export default function CheckWebhookPage() {
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }

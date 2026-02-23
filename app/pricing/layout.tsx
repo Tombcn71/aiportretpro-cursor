@@ -1,12 +1,17 @@
-import type { Metadata } from "next"
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Prijzen - Professionele zakelijke foto's voor €29 | AI Portret Pro",
-  description: "Zakelijke fotoshoot voor slechts €29. 6x goedkoper dan traditionele fotografen. 40 professionele AI portretfoto's in 15 minuten. Perfect voor LinkedIn, CV en website.",
-  keywords: "zakelijke fotoshoot prijzen, professionele foto kosten, LinkedIn foto prijs, business headshot nederland, AI fotografie tarief",
+  title:
+    "Prijzen - Professionele zakelijke foto's voor €19.99 | AI Portret Pro",
+  description:
+    "Zakelijke fotoshoot voor slechts €19.99. 6x goedkoper dan traditionele fotografen. 40 professionele AI portretfoto's in 15 minuten. Perfect voor LinkedIn, CV en website.",
+  keywords:
+    "zakelijke fotoshoot prijzen, professionele foto kosten, LinkedIn foto prijs, business headshot nederland, AI fotografie tarief",
   openGraph: {
-    title: "Prijzen - Professionele zakelijke foto's voor €29 | AI Portret Pro",
-    description: "Zakelijke fotoshoot voor slechts €29. 6x goedkoper dan traditionele fotografen. 40 professionele AI portretfoto's in 15 minuten.",
+    title:
+      "Prijzen - Professionele zakelijke foto's voor €19.99 | AI Portret Pro",
+    description:
+      "Zakelijke fotoshoot voor slechts €19.99. 6x goedkoper dan traditionele fotografen. 40 professionele AI portretfoto's in 15 minuten.",
     url: "https://aiportretpro.nl/pricing",
     siteName: "AI Portret Pro",
     type: "website",
@@ -14,8 +19,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Prijzen - Professionele zakelijke foto's voor €29 | AI Portret Pro",
-    description: "Zakelijke fotoshoot voor slechts €29. 6x goedkoper dan traditionele fotografen. 40 professionele AI portretfoto's in 15 minuten.",
+    title:
+      "Prijzen - Professionele zakelijke foto's voor €19.99 | AI Portret Pro",
+    description:
+      "Zakelijke fotoshoot voor slechts €19.99. 6x goedkoper dan traditionele fotografen. 40 professionele AI portretfoto's in 15 minuten.",
   },
   alternates: {
     canonical: "https://aiportretpro.nl/pricing",
@@ -31,12 +38,12 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-}
+};
 
 export default function PricingLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
-  return children
+  return children;
 }

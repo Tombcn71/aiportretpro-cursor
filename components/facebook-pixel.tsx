@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import Script from "next/script"
+import Script from "next/script";
 
 export default function FacebookPixel() {
   return (
@@ -31,9 +31,9 @@ export default function FacebookPixel() {
           height="1"
           width="1"
           style={{ display: "none" }}
-          src="https://www.facebook.com/tr?id=1508299057002595&ev=PageView&noscript=1"
+          src="https://www.facebook.com/tr?id=150819.999057002595&ev=PageView&noscript=1"
         />
       </noscript>
     </>
-  )
+  );
 }

@@ -11,7 +11,7 @@ export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
 // Single plan configuration
 export const PRICING_PLAN = {
   name: "Professional",
-  price: 19.99,
+  price: 14.99,
   photos: 40,
-  priceId: "price_1RrFTnDswbEJWagVnjXYvNwh",
+  priceId: "price_1T3tiJDswbEJWagV8MOnja3i",
 };

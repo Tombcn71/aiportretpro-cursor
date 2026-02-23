@@ -1,12 +1,20 @@
-import type { Metadata } from "next"
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "LinkedIn Profielfoto Laten Maken Eindhoven | Binnen 15 Min Klaar",
-  description: "Professionele zakelijke profielfoto laten maken in Eindhoven? De innovatieve keuze voor tech-professionals. Ontvang 40+ AI profielfoto's voor LinkedIn binnen 15 min voor €29.",
-  keywords: ["LinkedIn profielfoto Eindhoven", "Zakelijke foto Eindhoven", "Profielfoto ASML professional", "Strijp-S fotoshoot", "AI fotograaf Eindhoven"],
+  description:
+    "Professionele zakelijke profielfoto laten maken in Eindhoven? De innovatieve keuze voor tech-professionals. Ontvang 40+ AI profielfoto's voor LinkedIn binnen 15 min voor €19.99.",
+  keywords: [
+    "LinkedIn profielfoto Eindhoven",
+    "Zakelijke foto Eindhoven",
+    "Profielfoto ASML professional",
+    "Strijp-S fotoshoot",
+    "AI fotograaf Eindhoven",
+  ],
   openGraph: {
     title: "LinkedIn Profielfoto Laten Maken Eindhoven | Binnen 15 Min Klaar",
-    description: "Professionele zakelijke profielfoto laten maken in Eindhoven? De innovatieve keuze voor tech-professionals. Ontvang 40+ AI profielfoto's voor LinkedIn binnen 15 min voor €29.",
+    description:
+      "Professionele zakelijke profielfoto laten maken in Eindhoven? De innovatieve keuze voor tech-professionals. Ontvang 40+ AI profielfoto's voor LinkedIn binnen 15 min voor €19.99.",
     url: "https://aiportretpro.nl/linkedin-foto-laten-maken-eindhoven",
     type: "website",
     locale: "nl_NL",
@@ -14,7 +22,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "LinkedIn Profielfoto Laten Maken Eindhoven | Binnen 15 Min Klaar",
-    description: "Professionele zakelijke profielfoto laten maken in Eindhoven? De innovatieve keuze voor tech-professionals. Ontvang 40+ AI profielfoto's voor LinkedIn binnen 15 min voor €29.",
+    description:
+      "Professionele zakelijke profielfoto laten maken in Eindhoven? De innovatieve keuze voor tech-professionals. Ontvang 40+ AI profielfoto's voor LinkedIn binnen 15 min voor €19.99.",
   },
   alternates: {
     canonical: "https://aiportretpro.nl/linkedin-foto-laten-maken-eindhoven",
@@ -30,12 +39,12 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-}
+};
 
 export default function EindhovenLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
-  return children
+  return children;
 }

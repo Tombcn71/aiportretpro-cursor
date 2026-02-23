@@ -18,18 +18,18 @@ export default function PricingPage() {
 
   // Track pricing page view and initiate checkout
   useEffect(() => {
-    trackViewContent("Pricing Page", "29");
+    trackViewContent("Pricing Page", "19.99");
 
     // Track InitiateCheckout event when page loads
     if (status === "authenticated" && session?.user) {
       const userId =
         (session.user as any).id || session.user.email || `guest_${Date.now()}`;
       const eventID = `checkout_${userId}`;
-      trackInitiateCheckout(29.0, "EUR", eventID);
+      trackInitiateCheckout(19.99, "EUR", eventID);
     } else if (status === "unauthenticated") {
       // Track for unauthenticated users with guest ID
       const eventID = `checkout_guest_${Date.now()}`;
-      trackInitiateCheckout(29.0, "EUR", eventID);
+      trackInitiateCheckout(19.99, "EUR", eventID);
     }
 
     // Get project data from localStorage
@@ -46,7 +46,7 @@ export default function PricingPage() {
         projectData.projectId.startsWith("temp_")
       ) {
         console.log(
-          "Using temporary project ID, will create real project after payment"
+          "Using temporary project ID, will create real project after payment",
         );
       }
     } else {
@@ -54,7 +54,7 @@ export default function PricingPage() {
       // This is fine, they can pay first and then go through the wizard
       setHasExistingProject(false);
       console.log(
-        "No pending project - user will pay first, then go through wizard"
+        "No pending project - user will pay first, then go through wizard",
       );
     }
 
@@ -150,10 +150,10 @@ export default function PricingPage() {
               </CardTitle>
               <div className="mt-2 md:mt-4 flex items-baseline justify-center gap-2">
                 <span className="text-sm md:text-lg text-gray-500 decoration-gray-400 line-through">
-                  € 29
+                  € 19.99
                 </span>
                 <span className="text-xl md:text-3xl font-bold text-blue-900">
-                  € 19,99
+                  € 14.99
                 </span>
                 <span className="text-gray-600 text-xs md:text-sm">
                   eenmalig

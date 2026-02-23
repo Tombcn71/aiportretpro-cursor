@@ -1,10 +1,10 @@
-"use client"
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { ArrowRight, CheckCircle, Star } from "lucide-react"
-import HeroSection from "@/components/hero-section"
+"use client";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { ArrowRight, CheckCircle, Star } from "lucide-react";
+import HeroSection from "@/components/hero-section";
 
 export default function LandingPage() {
   return (
@@ -23,12 +23,14 @@ export default function LandingPage() {
                 </Badge>
 
                 <h2 className="text-4xl lg:text-5xl font-bold text-[#000000] leading-tight">
-                  Upgrade uw professionele uitstraling in <span className="text-[#0077B5]">15 minuten</span>
+                  Upgrade uw professionele uitstraling in{" "}
+                  <span className="text-[#0077B5]">15 minuten</span>
                 </h2>
 
                 <p className="text-xl text-[#666666] leading-relaxed font-normal">
-                  Transformeer uw casual foto's naar studio-kwaliteit headshots. Perfect voor LinkedIn, CV's en
-                  zakelijke profielen. Geen fotostudio nodig.
+                  Transformeer uw casual foto's naar studio-kwaliteit headshots.
+                  Perfect voor LinkedIn, CV's en zakelijke profielen. Geen
+                  fotostudio nodig.
                 </p>
               </div>
 
@@ -36,15 +38,21 @@ export default function LandingPage() {
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <CheckCircle className="h-6 w-6 text-[#057642] flex-shrink-0" />
-                  <span className="text-lg text-[#000000] font-medium">40 professionele headshots voor €29</span>
+                  <span className="text-lg text-[#000000] font-medium">
+                    40 professionele headshots voor €19.99
+                  </span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <CheckCircle className="h-6 w-6 text-[#057642] flex-shrink-0" />
-                  <span className="text-lg text-[#000000] font-medium">Klaar binnen 15 minuten</span>
+                  <span className="text-lg text-[#000000] font-medium">
+                    Klaar binnen 15 minuten
+                  </span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <CheckCircle className="h-6 w-6 text-[#057642] flex-shrink-0" />
-                  <span className="text-lg text-[#000000] font-medium">Studio-kwaliteit zonder studio-kosten</span>
+                  <span className="text-lg text-[#000000] font-medium">
+                    Studio-kwaliteit zonder studio-kosten
+                  </span>
                 </div>
               </div>
 
@@ -52,12 +60,13 @@ export default function LandingPage() {
               <div className="pt-4">
                 <Button
                   size="lg"
-                  className="bg-[#0077B5] hover:bg-[#004182] text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-lg"
-                >
-                  Start Nu - €29
+                  className="bg-[#0077B5] hover:bg-[#004182] text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-lg">
+                  Start Nu - €19.99
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
-                <p className="text-sm text-[#666666] mt-3">⭐ Vertrouwd door 10.000+ professionals</p>
+                <p className="text-sm text-[#666666] mt-3">
+                  ⭐ Vertrouwd door 10.000+ professionals
+                </p>
               </div>
             </div>
 
@@ -67,7 +76,9 @@ export default function LandingPage() {
               <Card className="bg-white border-0 shadow-xl rounded-2xl overflow-hidden">
                 <CardContent className="p-0">
                   <div className="bg-[#0077B5] text-white text-center py-3">
-                    <h3 className="font-semibold text-lg">Zakelijke Professional - 47 jaar</h3>
+                    <h3 className="font-semibold text-lg">
+                      Zakelijke Professional - 47 jaar
+                    </h3>
                   </div>
                   <div className="grid grid-cols-2">
                     {/* Before */}
@@ -76,10 +87,17 @@ export default function LandingPage() {
                         <span className="text-sm font-medium">VOOR</span>
                       </div>
                       <div className="aspect-square relative bg-gray-100">
-                        <Image src="/images/voorbeeld1.png" alt="Voor - Casual foto" fill className="object-cover" />
+                        <Image
+                          src="/images/voorbeeld1.png"
+                          alt="Voor - Casual foto"
+                          fill
+                          className="object-cover"
+                        />
                       </div>
                       <div className="p-3 bg-[#F3F2EF]">
-                        <p className="text-xs text-[#666666] text-center">Casual selfie</p>
+                        <p className="text-xs text-[#666666] text-center">
+                          Casual selfie
+                        </p>
                       </div>
                     </div>
                     {/* After */}
@@ -96,7 +114,9 @@ export default function LandingPage() {
                         />
                       </div>
                       <div className="p-3 bg-[#F3F2EF]">
-                        <p className="text-xs text-[#666666] text-center">AI Studio-kwaliteit</p>
+                        <p className="text-xs text-[#666666] text-center">
+                          AI Studio-kwaliteit
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -107,7 +127,9 @@ export default function LandingPage() {
               <Card className="bg-white border-0 shadow-xl rounded-2xl overflow-hidden">
                 <CardContent className="p-0">
                   <div className="bg-[#0077B5] text-white text-center py-3">
-                    <h3 className="font-semibold text-lg">Senior Manager - 52 jaar</h3>
+                    <h3 className="font-semibold text-lg">
+                      Senior Manager - 52 jaar
+                    </h3>
                   </div>
                   <div className="grid grid-cols-2">
                     {/* Before */}
@@ -116,10 +138,17 @@ export default function LandingPage() {
                         <span className="text-sm font-medium">VOOR</span>
                       </div>
                       <div className="aspect-square relative bg-gray-100">
-                        <Image src="/images/wazig1.png" alt="Voor - Casual foto" fill className="object-cover" />
+                        <Image
+                          src="/images/wazig1.png"
+                          alt="Voor - Casual foto"
+                          fill
+                          className="object-cover"
+                        />
                       </div>
                       <div className="p-3 bg-[#F3F2EF]">
-                        <p className="text-xs text-[#666666] text-center">Onscherpe foto</p>
+                        <p className="text-xs text-[#666666] text-center">
+                          Onscherpe foto
+                        </p>
                       </div>
                     </div>
                     {/* After */}
@@ -136,7 +165,9 @@ export default function LandingPage() {
                         />
                       </div>
                       <div className="p-3 bg-[#F3F2EF]">
-                        <p className="text-xs text-[#666666] text-center">AI Studio-kwaliteit</p>
+                        <p className="text-xs text-[#666666] text-center">
+                          AI Studio-kwaliteit
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -152,7 +183,9 @@ export default function LandingPage() {
                   <Star className="h-5 w-5 text-[#FDB022] fill-current" />
                   <Star className="h-5 w-5 text-[#FDB022] fill-current" />
                 </div>
-                <p className="text-sm text-[#666666]">"Eindelijk professionele foto's zonder gedoe" - Maria, 49</p>
+                <p className="text-sm text-[#666666]">
+                  "Eindelijk professionele foto's zonder gedoe" - Maria, 49
+                </p>
               </div>
             </div>
           </div>
@@ -162,17 +195,20 @@ export default function LandingPage() {
       {/* Bottom CTA Strip */}
       <section className="bg-[#0077B5] py-8">
         <div className="max-w-4xl mx-auto text-center px-6">
-          <h2 className="text-2xl font-bold text-white mb-4">Klaar om uw professionele imago te versterken?</h2>
+          <h2 className="text-2xl font-bold text-white mb-4">
+            Klaar om uw professionele imago te versterken?
+          </h2>
           <Button
             size="lg"
-            className="bg-white text-[#0077B5] hover:bg-[#F3F2EF] px-8 py-4 text-lg font-semibold rounded-lg shadow-lg"
-          >
-            Start Nu - Slechts €29
+            className="bg-white text-[#0077B5] hover:bg-[#F3F2EF] px-8 py-4 text-lg font-semibold rounded-lg shadow-lg">
+            Start Nu - Slechts €19.99
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
-          <p className="text-[#B7D4EA] mt-3 text-sm">Geen abonnement • Eenmalige betaling • 40 foto's gegarandeerd</p>
+          <p className="text-[#B7D4EA] mt-3 text-sm">
+            Geen abonnement • Eenmalige betaling • 40 foto's gegarandeerd
+          </p>
         </div>
       </section>
     </div>
-  )
+  );
 }

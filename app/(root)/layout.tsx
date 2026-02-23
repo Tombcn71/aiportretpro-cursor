@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title:
     "Zakelijke Profielfoto Laten Maken (AI) | LinkedIn & CV | AI Portret Pro",
   description:
-    "Ontvang exact 40 professionele zakelijke profielfoto's in 15 minuten voor slechts €29. Dé slimme keuze voor je LinkedIn-profiel en CV in 2026.",
+    "Ontvang exact 40 professionele zakelijke profielfoto's in 15 minuten voor slechts €19.99. Dé slimme keuze voor je LinkedIn-profiel en CV in 2026.",
   keywords: [
     "zakelijke profielfoto laten maken",
     "profielfoto LinkedIn AI",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     title:
       "Zakelijke Profielfoto Laten Maken (AI) | LinkedIn & CV | AI Portret Pro",
     description:
-      "Ontvang exact 40 professionele zakelijke profielfoto's in 15 minuten voor slechts €29. Dé slimme keuze voor je LinkedIn-profiel en CV in 2026.",
+      "Ontvang exact 40 professionele zakelijke profielfoto's in 15 minuten voor slechts €19.99. Dé slimme keuze voor je LinkedIn-profiel en CV in 2026.",
     url: "https://aiportretpro.nl",
     type: "website",
     locale: "nl_NL",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     title:
       "Zakelijke Profielfoto Laten Maken (AI) | LinkedIn & CV | AI Portret Pro",
     description:
-      "Ontvang exact 40 professionele zakelijke profielfoto's in 15 minuten voor slechts €29. Dé slimme keuze voor je LinkedIn-profiel en CV in 2026.",
+      "Ontvang exact 40 professionele zakelijke profielfoto's in 15 minuten voor slechts €19.99. Dé slimme keuze voor je LinkedIn-profiel en CV in 2026.",
   },
   robots: {
     index: true,

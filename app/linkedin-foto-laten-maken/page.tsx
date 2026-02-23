@@ -186,8 +186,8 @@ export default function LinkedInProfielFotoPage() {
                 "https://aiportretpro.nl/linkedin-foto-laten-maken#service",
               url: "https://aiportretpro.nl/linkedin-foto-laten-maken",
               description:
-                "Online service voor het laten maken van 40 professionele LinkedIn profielfoto's met AI. Binnen 15 minuten klaar voor slechts €29. Perfect voor je LinkedIn profiel.",
-              priceRange: "€29",
+                "Online service voor het laten maken van 40 professionele LinkedIn profielfoto's met AI. Binnen 15 minuten klaar voor slechts €19.99. Perfect voor je LinkedIn profiel.",
+              priceRange: "€19.99",
               address: {
                 "@type": "PostalAddress",
                 addressCountry: "NL",
@@ -295,7 +295,7 @@ export default function LinkedInProfielFotoPage() {
                     key={i}
                     className="w-4 h-4 fill-yellow-400"
                     viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.19.992a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.19.992c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.19.992a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.19.992z" />
                   </svg>
                 ))}
               </div>
@@ -338,7 +338,7 @@ export default function LinkedInProfielFotoPage() {
             <Link
               href="/login?callbackUrl=/payment"
               onClick={() => trackContact()}>
-              Start jouw fotoshoot nu - € 29{" "}
+              Start jouw fotoshoot nu - € 19.99{" "}
               <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
             </Link>
           </Button>
@@ -492,7 +492,7 @@ export default function LinkedInProfielFotoPage() {
                     <div>
                       <p className="font-semibold text-white mb-1">Prijs:</p>
                       <p className="text-white">
-                        Eenmalig €29 (geen verborgen kosten).
+                        Eenmalig €19.99 (geen verborgen kosten).
                       </p>
                     </div>
                     <div>
@@ -1016,7 +1016,7 @@ export default function LinkedInProfielFotoPage() {
                   (e.currentTarget.style.backgroundColor = "#E67E00")
                 }>
                 <span style={{ color: "#FFFFFF" }}>
-                  Start jouw fotoshoot nu - € 29
+                  Start jouw fotoshoot nu - € 19.99
                 </span>
                 <ArrowRight
                   className="ml-2 h-5 w-5"
@@ -1185,7 +1185,7 @@ export default function LinkedInProfielFotoPage() {
                 <Link
                   href="/login?callbackUrl=/payment"
                   onClick={() => trackContact()}>
-                  Start jouw fotoshoot nu - € 29{" "}
+                  Start jouw fotoshoot nu - € 19.99{" "}
                   <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
                 </Link>
               </Button>

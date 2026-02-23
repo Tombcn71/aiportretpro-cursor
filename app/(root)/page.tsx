@@ -25,7 +25,7 @@ import { trackContact } from "@/lib/facebook-pixel";
 // Gallery photos: All images from the shoot folder (1.png through 26.png)
 const galleryPhotos = Array.from(
   { length: 26 },
-  (_, i) => `/images/shoot/${i + 1}.png`
+  (_, i) => `/images/shoot/${i + 1}.png`,
 );
 
 const faqData = [
@@ -118,8 +118,8 @@ export default function HomePage() {
             "@id": "https://aiportretpro.nl/#service",
             url: "https://aiportretpro.nl",
             description:
-              "Online service voor het laten maken van 40 professionele zakelijke profielfoto's met AI. Perfect voor LinkedIn, CV en website. Binnen 15 minuten klaar voor slechts €29.",
-            priceRange: "€29",
+              "Online service voor het laten maken van 40 professionele zakelijke profielfoto's met AI. Perfect voor LinkedIn, CV en website. Binnen 15 minuten klaar voor slechts €19.99.",
+            priceRange: "€19.99",
             address: {
               "@type": "PostalAddress",
               addressCountry: "NL",
@@ -250,9 +250,9 @@ export default function HomePage() {
                 <span className="whitespace-nowrap">
                   Start uw fotoshoot—{" "}
                   <span className="line-through text-xs opacity-80 decoration-1">
-                    € 29
+                    € 19.99
                   </span>
-                  € 19,99
+                  € 14.99
                 </span>
               </Button>
             </Link>
@@ -532,7 +532,7 @@ export default function HomePage() {
                   size="lg"
                   className="gap-2 h-14 px-10 bg-blue-900 hover:bg-blue-950 text-white border-none shadow-xl transition-all text-lg font-semibold">
                   <Camera className="w-6 h-6" />
-                  Start uw fotoshoot— €29
+                  Start uw fotoshoot— €19.99
                 </Button>
               </Link>
             )}
@@ -763,9 +763,9 @@ export default function HomePage() {
                 <span className="flex items-center justify-center gap-2">
                   <span>Start nu:</span>
                   <span className="line-through text-xs opacity-80 decoration-1">
-                    € 29
+                    € 19.99
                   </span>
-                  <span className="text-lg">€ 19,99</span>
+                  <span className="text-lg">€ 14.99</span>
                   <ArrowRight className="ml-2 h-6 w-6" />
                 </span>
               </Link>

@@ -1,43 +1,46 @@
-import { type NextRequest, NextResponse } from "next/server"
-import { neon } from "@neondatabase/serverless"
+import { type NextRequest, NextResponse } from "next/server";
+import { neon } from "@neondatabase/serverless";
 
-const sql = neon(process.env.DATABASE_URL!)
+const sql = neon(process.env.DATABASE_URL!);
 
 export async function POST(request: NextRequest) {
   try {
-    console.log("🚨 EMERGENCY FETCH STARTING...")
+    console.log("🚨 EMERGENCY FETCH STARTING...");
 
-    const tuneId = "2951161"
-    const projectId = 40
+    const tuneId = "19.9951161";
+    const projectId = 40;
 
-    console.log(`📡 Fetching prompts for tune ${tuneId}...`)
+    console.log(`📡 Fetching prompts for tune ${tuneId}...`);
 
     // Fetch prompts from Astria API
-    const response = await fetch(`https://api.astria.ai/tunes/${tuneId}/prompts`, {
-      headers: {
-        Authorization: `Bearer ${process.env.ASTRIA_API_KEY}`,
-        "Content-Type": "application/json",
+    const response = await fetch(
+      `https://api.astria.ai/tunes/${tuneId}/prompts`,
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.ASTRIA_API_KEY}`,
+          "Content-Type": "application/json",
+        },
       },
-    })
+    );
 
     if (!response.ok) {
-      throw new Error(`Astria API error: ${response.status}`)
+      throw new Error(`Astria API error: ${response.status}`);
     }
 
-    const prompts = await response.json()
-    console.log(`📊 Found ${prompts.length} prompts`)
+    const prompts = await response.json();
+    console.log(`📊 Found ${prompts.length} prompts`);
 
     // Extract all image URLs from all prompts
-    const allImages: string[] = []
+    const allImages: string[] = [];
 
     for (const prompt of prompts) {
       if (prompt.images && Array.isArray(prompt.images)) {
-        console.log(`📸 Prompt ${prompt.id}: ${prompt.images.length} images`)
-        allImages.push(...prompt.images)
+        console.log(`📸 Prompt ${prompt.id}: ${prompt.images.length} images`);
+        allImages.push(...prompt.images);
       }
     }
 
-    console.log(`🎯 Total images found: ${allImages.length}`)
+    console.log(`🎯 Total images found: ${allImages.length}`);
 
     if (allImages.length === 0) {
       return NextResponse.json({
@@ -51,11 +54,11 @@ export async function POST(request: NextRequest) {
             imageCount: p.images?.length || 0,
           })),
         },
-      })
+      });
     }
 
     // Update database with the images - FIXED: Use PostgreSQL array format
-    console.log(`💾 Updating project ${projectId} in database...`)
+    console.log(`💾 Updating project ${projectId} in database...`);
 
     const result = await sql`
       UPDATE projects 
@@ -65,14 +68,14 @@ export async function POST(request: NextRequest) {
         updated_at = CURRENT_TIMESTAMP
       WHERE id = ${projectId}
       RETURNING id, name, status, generated_photos
-    `
+    `;
 
     if (result.length === 0) {
-      throw new Error(`Project ${projectId} not found`)
+      throw new Error(`Project ${projectId} not found`);
     }
 
-    const updatedProject = result[0]
-    console.log(`✅ Project updated: ${updatedProject.name}`)
+    const updatedProject = result[0];
+    console.log(`✅ Project updated: ${updatedProject.name}`);
 
     return NextResponse.json({
       success: true,
@@ -84,9 +87,9 @@ export async function POST(request: NextRequest) {
         photoCount: allImages.length,
       },
       images: allImages,
-    })
+    });
   } catch (error) {
-    console.error("❌ Emergency fetch failed:", error)
+    console.error("❌ Emergency fetch failed:", error);
     return NextResponse.json(
       {
         success: false,
@@ -94,6 +97,6 @@ export async function POST(request: NextRequest) {
         details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
-    )
+    );
   }
 }
