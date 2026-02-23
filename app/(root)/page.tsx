@@ -49,11 +49,7 @@ const faqData = [
     answer:
       "Ja, je krijgt de volledige commerciële rechten. De foto's zijn jouw eigendom en perfect voor LinkedIn, je CV, je website of print.",
   },
-  {
-    question: "Wat als ik niet tevreden ben?",
-    answer:
-      "Heb jij niet minstens 4 profielwaardige foto's? Geen zorgen, we hebben een 14 dagen niet-goed-geld-terug garantie.",
-  },
+
   {
     question: "Hebben jullie een klantenservice?",
     answer:
