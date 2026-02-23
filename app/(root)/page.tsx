@@ -258,7 +258,7 @@ export default function HomePage() {
             </Link>
 
             <p className="mt-3 text-xs text-slate-600">
-              Geen abonnement • Eenmalige betaling • 14 dagen geld terug
+              Geen abonnement • Eenmalige betaling • perfecte profiel afmetingen
               garantie
             </p>
           </div>
