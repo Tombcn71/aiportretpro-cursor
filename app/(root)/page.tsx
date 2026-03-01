@@ -53,7 +53,7 @@ const faqData = [
   {
     question: "Hebben jullie een klantenservice?",
     answer:
-      "Zeker! Wij zijn een Nederlandse klantenservice. Heb je een vraag? Je kunt ons direct bereiken via info@aiportretpro.nl of chat en we helpen je persoonlijk verder.",
+      "Zeker! Wij zijn een Nederlandse klantenservice. Heb je een vraag? Je kunt ons direct bereiken via info@aiportretpro.nl en we helpen je persoonlijk verder.",
   },
 ];
 
