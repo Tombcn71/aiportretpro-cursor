@@ -231,27 +231,26 @@ export default function HomePage() {
               kosten.
             </p>
           </div>
-          {/* De knop container */}
-          <div className="pt-8 w-full flex flex-col items-center px-6">
+          <div className="pt-8 w-full flex flex-col items-center px-4">
+            {" "}
+            {/* Iets minder padding op container */}
             <Link
               href="/login?callbackUrl=/payment"
               onClick={() => trackContact()}
               aria-label="Start jouw fotoshoot nu voor negenentwintig euro"
-              className="w-full max-w-[340px] md:w-auto">
+              className="max-w-[340px] md:w-auto">
+              {" "}
+              {/* w-full weg bij de Link */}
               <Button
                 size="lg"
-                className="gap-2 h-14 w-full bg-blue-900 hover:bg-blue-800 text-white border-none shadow-xl transition-all text-base md:text-lg font-semibold md:px-10">
-                <Camera className="w-5 h-5 md:w-6 md:h-6" />
+                className="gap-2 h-14 w-full bg-blue-900 hover:bg-blue-800 text-white border-none shadow-xl transition-all text-sm md:text-lg font-semibold px-6 md:px-10">
+                {/* text-sm voor mobile zorgt dat het icoon er weer naast past */}
+                <Camera className="shrink-0 w-5 h-5 md:w-6 md:h-6" />
                 <span className="whitespace-nowrap">
-                  Start uw fotoshoot—{" "}
-                  <span className="line-through text-xs opacity-80 decoration-1">
-                    € 19.99
-                  </span>
-                  € 14.99
+                  Start uw fotoshoot — € 14.99
                 </span>
               </Button>
             </Link>
-
             <p className="mt-3 text-xs text-slate-600">
               Geen abonnement • Eenmalige betaling • perfecte profiel afmetingen
               garantie
