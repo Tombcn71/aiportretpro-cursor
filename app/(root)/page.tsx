@@ -213,7 +213,7 @@ export default function HomePage() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 border border-blue-100 rounded-full text-sm font-medium text-blue-800 mb-4">
             <Sparkles className="w-4 h-4 text-blue-600" />
-            <span>AI Gedreven Fotostudio</span>
+            <span>Online Fotostudio</span>
           </div>
 
           {/* Titel en Subtekst als één vloeiend geheel zonder extra witruimte */}
@@ -224,11 +224,10 @@ export default function HomePage() {
               <span className="text-blue-900">zonder een fotograaf</span>
             </p>
 
-            <p className="mt-2 text-base md:text-lg lg:text-xl text-slate-600 leading-relaxed max-w-5xl">
+            <p className="mt-2 text-base md:text-lg lg:text-xl text-slate-600 leading-relaxed max-w-5xl text-center [text-wrap:balance]">
               Ontvang binnen 15 minuten een volledige zakelijke fotoshoot voor
-              LinkedIn en uw CV, <br />
-              met de kwaliteit van een fotograaf maar zonder de reistijd of hoge
-              kosten.
+              LinkedIn en uw CV, met de kwaliteit van een fotograaf maar zonder
+              de reistijd of hoge kosten.
             </p>
           </div>
           <div className="pt-8 w-full flex flex-col items-center px-4">
