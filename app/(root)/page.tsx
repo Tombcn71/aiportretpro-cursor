@@ -20,7 +20,6 @@ import SchemaMarkup from "@/components/schema-markup";
 import CityNavigation from "@/components/city-navigation";
 import FAQSchema from "@/components/faq-schema";
 import HowItWorks from "@/components/how-it-works";
-import { trackContact } from "@/lib/facebook-pixel";
 
 // Gallery photos: All images from the shoot folder (1.png through 26.png)
 const galleryPhotos = Array.from(
@@ -235,7 +234,6 @@ export default function HomePage() {
             {/* Iets minder padding op container */}
             <Link
               href="/login?callbackUrl=/payment"
-              onClick={() => trackContact()}
               aria-label="Start jouw fotoshoot nu voor negenentwintig euro"
               className="max-w-[340px] md:w-auto">
               {" "}
@@ -519,7 +517,6 @@ export default function HomePage() {
             {isClient && (
               <Link
                 href="/login?callbackUrl=/payment"
-                onClick={() => trackContact()}
                 aria-label="Start jouw fotoshoot nu voor negenentwintig euro">
                 <Button
                   size="lg"
@@ -751,7 +748,6 @@ export default function HomePage() {
               style={{ textShadow: "0 0 1px white" }}>
               <Link
                 href="/login?callbackUrl=/payment"
-                onClick={() => trackContact()}
                 aria-label="Start nu voor negentien euro negenennegentig">
                 <span className="flex items-center justify-center gap-2">
                   <span>Start nu:</span>

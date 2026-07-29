@@ -6,7 +6,6 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Providers } from "./providers";
 import { Toaster } from "@/components/ui/toaster";
-import FacebookPixel from "@/components/facebook-pixel";
 import GoogleAnalytics from "@/components/google-analytics";
 import { Analytics } from "@vercel/analytics/next";
 import { Suspense } from "react";
@@ -108,13 +107,6 @@ export default function RootLayout({
           href="https://www.googletagmanager.com"
           crossOrigin="anonymous"
         />
-        <link
-          rel="preconnect"
-          href="https://connect.facebook.net"
-          crossOrigin="anonymous"
-        />
-        <link rel="dns-prefetch" href="https://connect.facebook.net" />
-
         {/* Performance Budget */}
         <meta
           name="viewport"
@@ -233,7 +225,6 @@ export default function RootLayout({
             <Suspense fallback={null}>
               {children}
               <Toaster />
-              <FacebookPixel />
               <Analytics />
             </Suspense>
           </Providers>

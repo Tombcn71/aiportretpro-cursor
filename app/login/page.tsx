@@ -7,7 +7,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Check, Mail, MailPlus } from "lucide-react";
 import Image from "next/image";
-import { trackSignUp, trackEvent } from "@/lib/facebook-pixel";
 export default function LoginPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
@@ -35,8 +34,6 @@ export default function LoginPage() {
       let callbackUrl =
         searchParams.get("callbackUrl") ||
         (isHomepageCTA ? "/pricing" : "/dashboard");
-      // Track Google sign in attempt
-      trackEvent("GoogleSignIn", {});
 
       // Note: Google sign in will handle the redirect after authentication
       // If user is already logged in, the useEffect will redirect to dashboard
@@ -114,9 +111,6 @@ export default function LoginPage() {
           );
           setIsSignUp(false); // Switch to login mode
         } else if (signInResult?.ok) {
-          // Track Facebook Pixel event for signup
-          trackSignUp("email");
-
           // After SIGNUP: always go to pricing (new customers need to pay)
           // If callbackUrl is /payment, redirect to /pricing instead
           const callbackUrl = searchParams.get("callbackUrl");
@@ -140,9 +134,6 @@ export default function LoginPage() {
         if (result?.error) {
           setError("Ongeldige email of wachtwoord");
         } else if (result?.ok) {
-          // Track Facebook Pixel event for login
-          trackEvent("Login", { method: "email" });
-
           // After LOGIN: if callbackUrl is /payment (from CTA), go to dashboard instead
           // This way logged in users can see their photos and start new projects
           const callbackUrl = searchParams.get("callbackUrl");

@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check, Star } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { trackViewContent, trackInitiateCheckout } from "@/lib/facebook-pixel";
 
 export default function PricingPage() {
   const { data: session, status } = useSession();
@@ -16,22 +15,7 @@ export default function PricingPage() {
   const [hasExistingProject, setHasExistingProject] = useState(false);
   const router = useRouter();
 
-  // Track pricing page view and initiate checkout
   useEffect(() => {
-    trackViewContent("Pricing Page", "19.99");
-
-    // Track InitiateCheckout event when page loads
-    if (status === "authenticated" && session?.user) {
-      const userId =
-        (session.user as any).id || session.user.email || `guest_${Date.now()}`;
-      const eventID = `checkout_${userId}`;
-      trackInitiateCheckout(19.99, "EUR", eventID);
-    } else if (status === "unauthenticated") {
-      // Track for unauthenticated users with guest ID
-      const eventID = `checkout_guest_${Date.now()}`;
-      trackInitiateCheckout(19.99, "EUR", eventID);
-    }
-
     // Get project data from localStorage
     const pendingProject = localStorage.getItem("pendingProject");
     if (pendingProject) {
@@ -60,7 +44,7 @@ export default function PricingPage() {
 
     // Return undefined (no cleanup function needed)
     return undefined;
-  }, [status, session]);
+  }, []);
 
   const handlePlanSelect = () => {
     // Wait for session to load

@@ -30,7 +30,6 @@ const ReviewsEnVoorbeelden = dynamic(
 const HowItWorks = dynamic(() => import("@/components/how-it-works"), {
   ssr: false,
 });
-import { trackContact, trackLead } from "@/lib/facebook-pixel";
 
 // Gallery photos: All images from the shoot folder (1.png through 26.png)
 const galleryPhotos = Array.from(
@@ -336,8 +335,7 @@ export default function LinkedInProfielFotoPage() {
             size="lg"
             className=" bg-[#FF8C00] hover:bg-[#FFA500] text-white px-6 md:px-10 py-8 md:py-8 text-base md:text-lg mb-3 md:max-w-sm">
             <Link
-              href="/login?callbackUrl=/payment"
-              onClick={() => trackContact()}>
+              href="/login?callbackUrl=/payment">
               Start jouw fotoshoot nu - € 19.99{" "}
               <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
             </Link>
@@ -532,8 +530,7 @@ export default function LinkedInProfielFotoPage() {
                   Bespaar €170+
                 </p>
                 <Link
-                  href="/login?callbackUrl=/payment"
-                  onClick={() => trackLead()}>
+                  href="/login?callbackUrl=/payment">
                   <button
                     className="bg-[#FF8C00] hover:bg-[#FFA500] text-white px-6 md:px-10 py-8 md:py-8 text-base md:text-lg mb-3 md:max-w-sm"
                     style={{
@@ -1001,8 +998,7 @@ export default function LinkedInProfielFotoPage() {
               Verhoog je LinkedIn zichtbaarheid met een krachtige profielfoto
             </p>
             <Link
-              href="/login?callbackUrl=/payment"
-              onClick={() => trackLead()}>
+              href="/login?callbackUrl=/payment">
               <button
                 className="bg-[#FF8C00] hover:bg-[#FFA500] text-white px-6 md:px-10 py-8 md:py-8 text-base md:text-lg mb-3 md:max-w-sm"
                 style={{
@@ -1183,8 +1179,7 @@ export default function LinkedInProfielFotoPage() {
                 size="lg"
                 className="w-full bg-[#FF8C00] hover:bg-[#FFA500] text-white px-6 py-8 text-base font-semibold">
                 <Link
-                  href="/login?callbackUrl=/payment"
-                  onClick={() => trackContact()}>
+                  href="/login?callbackUrl=/payment">
                   Start jouw fotoshoot nu - € 19.99{" "}
                   <ArrowRight className="ml-2 h-6 md:h-7 w-6 md:w-7" />
                 </Link>

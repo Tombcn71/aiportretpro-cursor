@@ -20,7 +20,6 @@ import { Facebook, Instagram } from "lucide-react";
 import SchemaMarkup from "@/components/schema-markup";
 import FAQSchema from "@/components/faq-schema";
 import Breadcrumb from "@/components/breadcrumb";
-import { trackContact } from "@/lib/facebook-pixel";
 import HowItWorks from "@/components/how-it-works";
 // Gallery photos: All images from the shoot folder (1.png through 26.png)
 const galleryPhotos = Array.from(
@@ -239,7 +238,6 @@ export default function LinkedInEindhovenPage() {
         <div className="pt-8">
           <Link
             href="/login?callbackUrl=/payment"
-            onClick={() => trackContact()}
             aria-label="Start jouw fotoshoot nu voor negenentwintig euro"
             className="w-full max-w-sm md:w-auto">
             <Button
@@ -592,7 +590,6 @@ export default function LinkedInEindhovenPage() {
           {isClient && (
             <Link
               href="/login?callbackUrl=/payment"
-              onClick={() => trackContact()}
               aria-label="Start jouw fotoshoot nu voor negenentwintig euro">
               <Button
                 size="lg"

@@ -606,7 +606,6 @@ export default function LinkedInAmsterdamPage() {
           {isClient && (
             <Link
               href="/login?callbackUrl=/payment"
-              onClick={() => trackContact()}
               aria-label="Start jouw fotoshoot nu voor negenentwintig euro">
               <Button
                 size="lg"
